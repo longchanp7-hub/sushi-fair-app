@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-15T22:15:32.576Z",
+  "updatedAt": "2026-07-15T23:15:52.917Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
       "chain": "sushiro",
-      "storeName": "豊橋新栄店",
+      "storeName": "豊橋エリア（磯辺店基準）",
       "fairName": "フェア商品",
       "startDate": "2026-07-03",
       "endDate": "2026-07-20",
@@ -40,52 +40,151 @@
         {
           "name": "うなマヨ炙り 卵黄醤油がけ",
           "price": 200
+        },
+        {
+          "name": "厳選 天然本鮪赤身",
+          "price": 260
+        },
+        {
+          "name": "コク旨 魚介豚骨ラーメン",
+          "price": 480
         }
       ],
-      "sourceUrl": "https://www.akindo-sushiro.co.jp/campaign/",
+      "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
       "storeUrl": "https://www.akindo-sushiro.co.jp/shop/",
-      "status": "warning",
-      "message": "今回の自動取得に失敗したため、前回データを表示しています。",
-      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/news/260715_hp_nodoguro_01.jpg"
+      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/2026_002235.png",
+      "status": "ok",
+      "message": null
     },
     {
       "chain": "hamazushi",
       "storeName": "豊橋新栄周辺",
-      "fairName": "九州うまかねた祭り",
+      "fairName": "期間限定メニュー",
       "startDate": null,
       "endDate": null,
       "items": [
         {
-          "name": "九州産生さば",
+          "name": "大切りびんちょうまぐろ大とろ",
           "price": 110
         },
         {
-          "name": "炙り九州産さば",
+          "name": "三陸産大切り銀鮭",
           "price": 110
         },
         {
-          "name": "アジのたたき",
+          "name": "炙り三陸産大切り銀鮭",
           "price": 110
+        },
+        {
+          "name": "三陸産大切り銀鮭（山わさびのせ）",
+          "price": 110
+        },
+        {
+          "name": "ベーコンマヨ軍艦",
+          "price": 110
+        },
+        {
+          "name": "野沢菜昆布軍艦",
+          "price": 110
+        },
+        {
+          "name": "きすの天ぷら握り",
+          "price": 176
+        },
+        {
+          "name": "なすの揚げびたし握り",
+          "price": 176
+        },
+        {
+          "name": "いかげそ",
+          "price": 176
+        },
+        {
+          "name": "厳選まぐろ中とろ",
+          "price": 176
+        },
+        {
+          "name": "炙り厳選まぐろ中とろゆず塩",
+          "price": 176
+        },
+        {
+          "name": "特製漬け中とろ",
+          "price": 176
+        },
+        {
+          "name": "なすの揚げびたし握りおろし盛り",
+          "price": 231
+        },
+        {
+          "name": "野菜と食べるサムギョプサル風つつみ",
+          "price": 319
+        },
+        {
+          "name": "宮崎県産大切りうなぎ",
+          "price": 319
+        },
+        {
+          "name": "重ね厳選まぐろ中とろ",
+          "price": 319
+        },
+        {
+          "name": "炙り重ね厳選まぐろ中とろゆず塩",
+          "price": 319
+        },
+        {
+          "name": "うに軍艦",
+          "price": 319
+        },
+        {
+          "name": "うにいくら軍艦",
+          "price": 319
+        },
+        {
+          "name": "一本穴子",
+          "price": 528
+        },
+        {
+          "name": "特製 麻辣ラーメン",
+          "price": 506
+        },
+        {
+          "name": "うなぎの肝串山椒付き",
+          "price": 429
+        },
+        {
+          "name": "サクもちじゃがいもチヂミ",
+          "price": 319
+        },
+        {
+          "name": "きすの天ぷら",
+          "price": 176
+        },
+        {
+          "name": "クリームソーダ風パルフェ",
+          "price": 429
+        },
+        {
+          "name": "ストロベリードーナツバニラアイスのせ",
+          "price": 363
+        },
+        {
+          "name": "純米酒 英勲",
+          "price": 880
         }
       ],
       "sourceUrl": "https://www.hamazushi.com/menu/",
       "storeUrl": "https://maps.hama-sushi.co.jp/jp/index.html",
-      "status": "warning",
-      "message": "今回の自動取得に失敗したため、前回データを表示しています。",
-      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/oogiri_bincho_maguro_ootoro.png"
+      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/oogiri_bincho_maguro_ootoro.png",
+      "status": "ok",
+      "message": null
     },
     {
       "chain": "kurasushi",
       "storeName": "豊橋新栄店",
-      "fairName": "北海道フェア ＼「北海道フェア",
-      "imageUrl": "https://canlyhp.s3.ap-northeast-1.amazonaws.com/%E3%81%8F%E3%82%89%E5%AF%BF%E5%8F%B8%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE/general/ogp.png",
+      "fairName": "北海道フェア",
       "startDate": "2026-07-10",
       "endDate": "2026-07-20",
       "items": [
-        {
-          "name": "北海道フェア開催‼",
-          "price": null
-        },
         {
           "name": "北海道牛にぎり",
           "price": null
@@ -101,37 +200,55 @@
       ],
       "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "imageUrl": "https://www.kurasushi.co.jp/common/images/gnav_home_sp.png",
       "status": "ok",
       "message": null
     },
     {
       "chain": "kappasushi",
       "storeName": "豊橋飯村店",
-      "fairName": "期間限定メニュー",
+      "fairName": "かっぱ寿司　|　Kappa Sushi",
       "startDate": null,
       "endDate": null,
       "items": [
         {
-          "name": "北海道産 ほたて",
-          "price": 140
+          "name": "かっぱ寿司　|　Kappa Sushi",
+          "price": null
         },
         {
-          "name": "蟹いくら包み",
-          "price": 140
-        },
-        {
-          "name": "北海道産 北釧〆いわし",
+          "name": "16日はとろの日　大とろ一貫100円(税込110円)　 16日はとろの日　大とろ一貫100円(税込110円)",
           "price": 110
         },
         {
-          "name": "北海道産北釧〆いわし塩炙り",
-          "price": 110
+          "name": "かっぱの贅沢うにいくら祭り！ かっぱの贅沢うにいくら祭り！",
+          "price": null
+        },
+        {
+          "name": "かっぱのごち寿司店内飲食限定『かっぱのごち寿司』 店内飲食限定『かっぱのごち寿司』",
+          "price": null
+        },
+        {
+          "name": "2026.6.11(木)〜夏のおすすめ　〜夏のトマトガーリック〜 夏のおすすめ　〜夏のトマトガーリック〜",
+          "price": null
+        },
+        {
+          "name": "2026.6.11(木)〜夏のおすすめ　〜うなぎ〜 夏のおすすめ　〜うなぎ〜",
+          "price": null
+        },
+        {
+          "name": "2026.6.11(木)〜夏のおすすめ　〜かき氷〜始めました 夏のおすすめ　〜かき氷〜始めました",
+          "price": null
+        },
+        {
+          "name": "2026.6.11(木)〜夏のおすすめ〜ジューシー白桃杏仁豆腐〜 夏のおすすめ〜ジューシー白桃杏仁豆腐〜",
+          "price": null
         }
       ],
-      "sourceUrl": "https://www.kappasushi.jp/menu2",
+      "sourceUrl": "https://www.kappasushi.jp/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
-      "status": "warning",
-      "message": "今回の自動取得に失敗したため、前回データを表示しています。"
+      "imageUrl": "https://www.kappasushi.jp/share/img/common/logo_kappasushi.png",
+      "status": "ok",
+      "message": null
     }
   ]
 }
