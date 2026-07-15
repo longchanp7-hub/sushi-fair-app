@@ -2,6 +2,13 @@ name: Update and deploy sushi fairs
 
 on:
   workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/update-fairs.yml'
   schedule:
     # 06:17 JST every day (21:17 UTC on previous day)
     - cron: '17 21 * * *'
