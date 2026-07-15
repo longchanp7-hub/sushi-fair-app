@@ -3,6 +3,10 @@ name: Deploy Pages
 on:
   push:
     branches: ['main']
+    paths-ignore:
+      - 'scripts/**'
+      - '.github/workflows/update-fairs.yml'
+      - 'app/data/fairs.json'
   workflow_dispatch:
 
 permissions:
@@ -11,7 +15,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-static-deploy
   cancel-in-progress: true
 
 jobs:
@@ -29,5 +33,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-# redeploy trigger: 2026-07-15 21:31 JST
