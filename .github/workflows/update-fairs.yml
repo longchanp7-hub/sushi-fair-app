@@ -19,6 +19,7 @@ jobs:
           node-version: '20'
       - run: npm install
       - run: npm run update
+      - run: node scripts/apply-store-overrides.mjs
       - name: Commit updated data
         run: |
           if git diff --quiet -- app/data/fairs.json; then
