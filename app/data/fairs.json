@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T23:15:52.917Z",
+  "updatedAt": "2026-07-15T23:17:49.062Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -200,27 +200,23 @@
       ],
       "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": "https://www.kurasushi.co.jp/common/images/gnav_home_sp.png",
+      "imageUrl": null,
       "status": "ok",
       "message": null
     },
     {
       "chain": "kappasushi",
       "storeName": "豊橋飯村店",
-      "fairName": "かっぱ寿司　|　Kappa Sushi",
+      "fairName": "16日はとろの日 大とろ一貫100円(税込110円)",
       "startDate": null,
       "endDate": null,
       "items": [
         {
-          "name": "かっぱ寿司　|　Kappa Sushi",
-          "price": null
-        },
-        {
-          "name": "16日はとろの日　大とろ一貫100円(税込110円)　 16日はとろの日　大とろ一貫100円(税込110円)",
+          "name": "16日はとろの日 大とろ一貫100円(税込110円)",
           "price": 110
         },
         {
-          "name": "かっぱの贅沢うにいくら祭り！ かっぱの贅沢うにいくら祭り！",
+          "name": "かっぱの贅沢うにいくら祭り！",
           "price": null
         },
         {
@@ -228,25 +224,25 @@
           "price": null
         },
         {
-          "name": "2026.6.11(木)〜夏のおすすめ　〜夏のトマトガーリック〜 夏のおすすめ　〜夏のトマトガーリック〜",
+          "name": "夏のおすすめ 〜夏のトマトガーリック〜 夏のおすすめ 〜夏のトマトガーリック〜",
           "price": null
         },
         {
-          "name": "2026.6.11(木)〜夏のおすすめ　〜うなぎ〜 夏のおすすめ　〜うなぎ〜",
+          "name": "夏のおすすめ 〜うなぎ〜 夏のおすすめ 〜うなぎ〜",
           "price": null
         },
         {
-          "name": "2026.6.11(木)〜夏のおすすめ　〜かき氷〜始めました 夏のおすすめ　〜かき氷〜始めました",
+          "name": "夏のおすすめ 〜かき氷〜始めました 夏のおすすめ 〜かき氷〜始めました",
           "price": null
         },
         {
-          "name": "2026.6.11(木)〜夏のおすすめ〜ジューシー白桃杏仁豆腐〜 夏のおすすめ〜ジューシー白桃杏仁豆腐〜",
+          "name": "夏のおすすめ〜ジューシー白桃杏仁豆腐〜 夏のおすすめ〜ジューシー白桃杏仁豆腐〜",
           "price": null
         }
       ],
-      "sourceUrl": "https://www.kappasushi.jp/",
+      "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
-      "imageUrl": "https://www.kappasushi.jp/share/img/common/logo_kappasushi.png",
+      "imageUrl": null,
       "status": "ok",
       "message": null
     }
