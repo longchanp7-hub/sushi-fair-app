@@ -1,0 +1,33 @@
+name: Update sushi fairs
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 06:17 JST every day (21:17 UTC on previous day)
+    - cron: '17 21 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run update
+      - name: Commit updated data
+        run: |
+          if git diff --quiet -- app/data/fairs.json; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/data/fairs.json
+          git commit -m "Update sushi fair data"
+          git push
