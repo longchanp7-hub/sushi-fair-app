@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-15T09:50:09.000Z",
+  "updatedAt": "2026-07-15T12:15:00.000Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
       "chain": "sushiro",
-      "storeName": "豊橋磯辺店",
+      "storeName": "豊橋新栄周辺",
       "fairName": "フェア商品",
       "startDate": "2026-07-03",
       "endDate": "2026-07-20",
@@ -18,15 +18,15 @@
         { "name": "厳選 天然めばち鮪 煮切り醤油漬け", "price": 180 },
         { "name": "うなマヨ炙り 卵黄醤油がけ", "price": 200 }
       ],
-      "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
-      "storeUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
+      "sourceUrl": "https://www.akindo-sushiro.co.jp/campaign/",
+      "storeUrl": "https://www.akindo-sushiro.co.jp/shop/",
       "status": "ok",
       "message": null,
       "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/news/260715_hp_nodoguro_01.jpg"
     },
     {
       "chain": "hamazushi",
-      "storeName": "豊橋曙店",
+      "storeName": "豊橋新栄周辺",
       "fairName": "九州うまかねた祭り",
       "startDate": null,
       "endDate": null,
@@ -36,7 +36,7 @@
         { "name": "アジのたたき", "price": 110 }
       ],
       "sourceUrl": "https://www.hamazushi.com/menu/",
-      "storeUrl": "https://maps.hama-sushi.co.jp/jp/detail/5457.html",
+      "storeUrl": "https://maps.hama-sushi.co.jp/jp/index.html",
       "status": "ok",
       "message": null,
       "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/oogiri_bincho_maguro_ootoro.png"
