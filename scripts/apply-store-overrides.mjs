@@ -6,7 +6,7 @@ const OUT = path.join(ROOT, 'app', 'data', 'fairs.json');
 
 const overrides = {
   sushiro: {
-    storeName: '豊橋新栄店',
+    storeName: '豊橋エリア（磯辺店基準）',
     storeUrl: 'https://www.akindo-sushiro.co.jp/shop/'
   },
   hamazushi: {
@@ -21,4 +21,4 @@ data.chains = (data.chains || []).map(chain => ({
   ...(overrides[chain.chain] || {})
 }));
 await fs.writeFile(OUT, JSON.stringify(data, null, 2) + '\n');
-console.log('Applied preferred Toyohashi/Shinsakae store area overrides.');
+console.log('Applied Toyohashi area store labels.');
