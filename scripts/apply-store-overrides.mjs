@@ -15,10 +15,50 @@ const overrides = {
   }
 };
 
+function cleanRepeatedText(value = '') {
+  let text = String(value).replace(/\s+/g, ' ').trim();
+  const repeated = text.match(/^(.{4,}?)\s+\1$/);
+  if (repeated) text = repeated[1].trim();
+  text = text
+    .replace(/^20\d{2}[./]\d{1,2}[./]\d{1,2}(?:\([^)]*\))?\s*[～〜~\-–—]\s*(?:20\d{2}[./])?\d{1,2}[./]\d{1,2}(?:\([^)]*\))?(?:まで予定|迄|まで)?\s*/, '')
+    .replace(/^20\d{2}[./]\d{1,2}[./]\d{1,2}(?:\([^)]*\))?\s*[～〜~\-–—]\s*/, '')
+    .trim();
+  return text;
+}
+
 const data = JSON.parse(await fs.readFile(OUT, 'utf8'));
-data.chains = (data.chains || []).map(chain => ({
-  ...chain,
-  ...(overrides[chain.chain] || {})
-}));
+data.chains = (data.chains || []).map(chain => {
+  let next = {
+    ...chain,
+    ...(overrides[chain.chain] || {})
+  };
+
+  if (next.chain === 'kappasushi') {
+    const seen = new Set();
+    const items = (next.items || [])
+      .map(item => ({ ...item, name: cleanRepeatedText(item.name) }))
+      .filter(item => item.name && !/Kappa Sushi|かっぱ寿司\s*[|｜]/i.test(item.name))
+      .filter(item => {
+        if (seen.has(item.name)) return false;
+        seen.add(item.name);
+        return true;
+      });
+
+    next = {
+      ...next,
+      fairName: items[0]?.name || '期間限定キャンペーン',
+      items,
+      sourceUrl: 'https://www.kappasushi.jp/campaign_list/',
+      imageUrl: /logo_kappasushi|\/logo/i.test(next.imageUrl || '') ? null : next.imageUrl
+    };
+  }
+
+  if (next.chain === 'kurasushi' && /gnav_home|\/gnav_/i.test(next.imageUrl || '')) {
+    next.imageUrl = null;
+  }
+
+  return next;
+});
+
 await fs.writeFile(OUT, JSON.stringify(data, null, 2) + '\n');
-console.log('Applied Toyohashi area store labels.');
+console.log('Applied Toyohashi labels and display cleanup.');
