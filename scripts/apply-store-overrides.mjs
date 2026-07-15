@@ -26,6 +26,13 @@ function cleanRepeatedText(value = '') {
   return text;
 }
 
+function jstDay() {
+  return Number(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Tokyo',
+    day: 'numeric'
+  }).format(new Date()));
+}
+
 const data = JSON.parse(await fs.readFile(OUT, 'utf8'));
 data.chains = (data.chains || []).map(chain => {
   let next = {
@@ -34,10 +41,16 @@ data.chains = (data.chains || []).map(chain => {
   };
 
   if (next.chain === 'kappasushi') {
+    const today = jstDay();
     const seen = new Set();
     const items = (next.items || [])
       .map(item => ({ ...item, name: cleanRepeatedText(item.name) }))
       .filter(item => item.name && !/Kappa Sushi|かっぱ寿司\s*[|｜]/i.test(item.name))
+      .filter(item => /とろの日|祭り|フェア/.test(item.name))
+      .filter(item => {
+        const oneDay = item.name.match(/(\d{1,2})日はとろの日/);
+        return !oneDay || Number(oneDay[1]) === today;
+      })
       .filter(item => {
         if (seen.has(item.name)) return false;
         seen.add(item.name);
