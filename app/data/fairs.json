@@ -1,0 +1,79 @@
+{
+  "updatedAt": "2026-07-15T13:30:00.000Z",
+  "timezone": "Asia/Tokyo",
+  "chains": [
+    {
+      "chain": "sushiro",
+      "storeName": "豊橋磯辺店",
+      "fairName": "フェア商品",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-20",
+      "items": [
+        { "name": "厳選 大切りびん長まぐろ", "price": 110 },
+        { "name": "天然のどぐろの炙り 2貫", "price": 110 },
+        { "name": "厳選 天然めばち鮪赤身", "price": 120 },
+        { "name": "厳選 天然めばち鮪食べ比べ", "price": 140 },
+        { "name": "炭焼きせせり", "price": 140 },
+        { "name": "厳選 天然本鮪中とろ", "price": 180 },
+        { "name": "厳選 天然めばち鮪 煮切り醤油漬け", "price": 180 },
+        { "name": "うなマヨ炙り 卵黄醤油がけ", "price": 200 }
+      ],
+      "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
+      "storeUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
+      "status": "ok",
+      "message": null,
+      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/news/260715_hp_nodoguro_01.jpg"
+    },
+    {
+      "chain": "hamazushi",
+      "storeName": "豊橋曙店",
+      "fairName": "九州うまかねた祭り",
+      "startDate": null,
+      "endDate": null,
+      "items": [
+        { "name": "九州産生さば", "price": 110 },
+        { "name": "炙り九州産さば", "price": 110 },
+        { "name": "アジのたたき", "price": 110 }
+      ],
+      "sourceUrl": "https://www.hamazushi.com/menu/",
+      "storeUrl": "https://maps.hama-sushi.co.jp/jp/detail/5457.html",
+      "status": "ok",
+      "message": null,
+      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/oogiri_bincho_maguro_ootoro.png"
+    },
+    {
+      "chain": "kurasushi",
+      "storeName": "豊橋新栄店",
+      "fairName": "北海道フェア",
+      "startDate": "2026-07-10",
+      "endDate": "2026-07-20",
+      "items": [
+        { "name": "北海道牛にぎり", "price": null },
+        { "name": "北海道ほたて", "price": null },
+        { "name": "北海道天然ぶり", "price": null },
+        { "name": "北海道産とろにしん", "price": null }
+      ],
+      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "status": "ok",
+      "message": null
+    },
+    {
+      "chain": "kappasushi",
+      "storeName": "豊橋飯村店",
+      "fairName": "期間限定メニュー",
+      "startDate": null,
+      "endDate": null,
+      "items": [
+        { "name": "北海道産 ほたて", "price": 140 },
+        { "name": "蟹いくら包み", "price": 140 },
+        { "name": "北海道産 北釧〆いわし", "price": 110 },
+        { "name": "北海道産北釧〆いわし塩炙り", "price": 110 }
+      ],
+      "sourceUrl": "https://www.kappasushi.jp/menu2",
+      "storeUrl": "https://www.kappasushi.jp/shop/0220",
+      "status": "ok",
+      "message": null
+    }
+  ]
+}
