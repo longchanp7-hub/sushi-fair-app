@@ -1,0 +1,13 @@
+{
+  "name": "寿司フェア - 回転寿司4社まとめ",
+  "short_name": "寿司フェア",
+  "description": "スシロー・はま寿司・くら寿司・かっぱ寿司の期間限定フェアまとめ",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0d12",
+  "theme_color": "#10131a",
+  "icons": [
+    { "src": "./assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
