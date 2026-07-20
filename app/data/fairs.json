@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-19T22:11:12.323Z",
+  "updatedAt": "2026-07-20T22:15:00.135Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -33,8 +33,8 @@
       "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
       "storeUrl": "https://www.akindo-sushiro.co.jp/shop/",
       "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/2026_002235.png",
-      "status": "ok",
-      "message": null
+      "status": "warning",
+      "message": "フェア商品の自動抽出結果が0件でした。"
     },
     {
       "chain": "hamazushi",
@@ -181,8 +181,8 @@
       "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
       "imageUrl": null,
-      "status": "ok",
-      "message": null
+      "status": "warning",
+      "message": "店舗イベント名を自動取得できませんでした。"
     },
     {
       "chain": "kappasushi",
