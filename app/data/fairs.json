@@ -1,40 +1,88 @@
 {
-  "updatedAt": "2026-07-20T22:15:00.135Z",
+  "updatedAt": "2026-07-21T22:13:21.265Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
       "chain": "sushiro",
       "storeName": "豊橋エリア（磯辺店基準）",
       "fairName": "フェア商品",
-      "startDate": "2026-07-03",
-      "endDate": "2026-07-20",
+      "startDate": "2026-07-22",
+      "endDate": "2026-08-18",
       "items": [
         {
-          "name": "厳選 大切りびん長まぐろ",
+          "name": "大切りサーモン",
           "price": 110
         },
         {
-          "name": "天然のどぐろの炙り 2貫",
+          "name": "大切りうなぎ",
           "price": 110
         },
         {
-          "name": "うなマヨ炙り 卵黄醤油がけ",
+          "name": "むらさきいかゲソ軍艦",
+          "price": 120
+        },
+        {
+          "name": "うな玉巻",
+          "price": 120
+        },
+        {
+          "name": "合鴨オニオンガーリックペッパー",
+          "price": 140
+        },
+        {
+          "name": "たい",
+          "price": 150
+        },
+        {
+          "name": "炙り豚しゃぶ 七味おろしポン酢",
           "price": 200
         },
         {
-          "name": "厳選 天然本鮪赤身",
+          "name": "ガーリックオニオンマヨ3貫盛り",
           "price": 260
         },
         {
-          "name": "コク旨 魚介豚骨ラーメン",
+          "name": "帆立の天ぷらにぎり チリソース",
+          "price": 360
+        },
+        {
+          "name": "黒毛和牛ローストビーフ 七味おろしポン酢",
+          "price": 360
+        },
+        {
+          "name": "創作うなぎづくし4種盛り",
+          "price": 720
+        },
+        {
+          "name": "鶏ガラ醤油 中華そば",
           "price": 480
+        },
+        {
+          "name": "旨辛濃厚 担担麺",
+          "price": 480
+        },
+        {
+          "name": "茶碗蒸し エビチリのせ",
+          "price": 350
+        },
+        {
+          "name": "かつお出汁香る唐揚げ",
+          "price": 390
+        },
+        {
+          "name": "半額！生ビール ジョッキ",
+          "price": 295
+        },
+        {
+          "name": "パリパリチョコのコーヒーゼリーパフェ",
+          "price": 330
         }
       ],
       "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
       "storeUrl": "https://www.akindo-sushiro.co.jp/shop/",
-      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/2026_002235.png",
-      "status": "warning",
-      "message": "フェア商品の自動抽出結果が0件でした。"
+      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260722_002099V2.png",
+      "status": "ok",
+      "message": null
     },
     {
       "chain": "hamazushi",
