@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T22:16:41.200Z",
+  "updatedAt": "2026-07-24T22:29:13.023Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -230,7 +230,7 @@
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
       "imageUrl": null,
       "status": "warning",
-      "message": "店舗イベント名を自動取得できませんでした。"
+      "message": "今回の自動取得に失敗したため、前回データを表示しています。"
     },
     {
       "chain": "kappasushi",
