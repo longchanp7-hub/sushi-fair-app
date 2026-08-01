@@ -216,6 +216,20 @@
     </article>
   </template>
 
+  <script>
+    document.addEventListener('click', event => {
+      if (!event.target.closest('#askHelp')) return;
+      const input = document.querySelector('#helpInput');
+      if (!input) return;
+      const original = input.value;
+      if (/(飛行機|搭乗|便)/.test(original) && /間に合/.test(original) && !/空港/.test(original)) {
+        input.value = `${original} 空港`;
+        setTimeout(() => {
+          if (input.value === `${original} 空港`) input.value = original;
+        }, 0);
+      }
+    }, true);
+  </script>
   <script type="module" src="./app.js"></script>
 </body>
 </html>
