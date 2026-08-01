@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+  <meta name="theme-color" content="#fff5f7">
+  <meta name="description" content="2026年8月のソウル3日間旅行だけに使う、日本語の旅ナビ。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ソウル旅ナビ">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>ソウル3日間 旅ナビ</title>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">2026年8月28日〜30日</p>
+        <h1>ソウル3日間 旅ナビ</h1>
+      </div>
+      <button id="openInfo" class="icon-button" type="button" aria-label="使い方を開く">?</button>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section id="view-today" class="view active" data-view="today" aria-labelledby="todayHeading">
+        <div class="hero-card">
+          <div>
+            <p id="tripStatus" class="status-pill">旅行まで計算中</p>
+            <h2 id="todayHeading">次にやること</h2>
+            <p id="nextAction" class="hero-action">予定を読み込んでいます</p>
+          </div>
+          <div id="tripCountdown" class="countdown-badge" aria-label="旅行までの日数">--</div>
+        </div>
+
+        <div id="globalWarning" class="warning-card hidden" role="alert"></div>
+
+        <div id="dayTabs" class="day-tabs" role="tablist" aria-label="日付を選ぶ"></div>
+        <section class="section-card">
+          <div class="section-title-row">
+            <div>
+              <p id="selectedDate" class="section-kicker"></p>
+              <h2 id="selectedTheme">予定</h2>
+            </div>
+            <span id="dayProgress" class="progress-text"></span>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+      </section>
+
+      <section id="view-map" class="view" data-view="map" aria-labelledby="mapHeading">
+        <div class="page-heading">
+          <p class="section-kicker">位置関係を正しく整理</p>
+          <h2 id="mapHeading">地図</h2>
+          <p>この図は距離の目安です。移動するときは各カードの「地図を開く」を使ってください。</p>
+        </div>
+        <div class="map-card">
+          <svg id="schematicMap" class="schematic-map" viewBox="0 0 100 100" role="img" aria-label="ソウル旅行の位置関係を示す簡易地図">
+            <path class="river" d="M-5,67 C18,59 29,73 52,65 C73,58 84,70 105,62" />
+            <text x="76" y="66" class="river-label">漢江</text>
+            <path class="arex-line" d="M6,82 L24,46 L40,52" />
+            <text x="10" y="73" class="line-label">空港鉄道</text>
+            <g id="mapPins"></g>
+          </svg>
+        </div>
+        <div id="placeFilters" class="chip-row" aria-label="地域を絞り込む"></div>
+        <div id="placeList" class="place-list"></div>
+      </section>
+
+      <section id="view-shopping" class="view" data-view="shopping" aria-labelledby="shoppingHeading">
+        <div class="page-heading">
+          <p class="section-kicker">忘れ物を減らす</p>
+          <h2 id="shoppingHeading">買い物</h2>
+          <p>買った物にチェック。内容はこのiPhoneに保存されます。</p>
+        </div>
+        <section class="section-card">
+          <h3>買いたい物</h3>
+          <div id="shoppingList" class="check-list"></div>
+          <form id="addShoppingForm" class="add-form">
+            <label for="shoppingInput" class="sr-only">買いたい物を追加</label>
+            <input id="shoppingInput" type="text" maxlength="40" placeholder="買いたい物を追加">
+            <button type="submit">追加</button>
+          </form>
+        </section>
+        <section class="section-card">
+          <h3>持ち物</h3>
+          <div id="packingList" class="check-list"></div>
+        </section>
+      </section>
+
+      <section id="view-help" class="view" data-view="help" aria-labelledby="helpHeading">
+        <div class="page-heading">
+          <p class="section-kicker">困った内容を日本語で</p>
+          <h2 id="helpHeading">困ったとき</h2>
+          <p>近い内容を押すか、下に日本語で入力してください。</p>
+        </div>
+        <div id="quickHelp" class="quick-help-grid"></div>
+        <section class="section-card help-input-card">
+          <label for="helpInput">今、何に困っていますか？</label>
+          <textarea id="helpInput" rows="3" maxlength="120" placeholder="例：予約に遅れそう。どうしたらいい？"></textarea>
+          <p class="input-hint">iPhoneキーボードのマイクでも入力できます。</p>
+          <button id="askHelp" class="primary-button" type="button">答えを出す</button>
+          <div class="ai-prepare-row">
+            <div>
+              <strong>ことばを読み取る機能</strong>
+              <small id="aiStatus">未準備でも基本機能は使えます</small>
+            </div>
+            <button id="prepareAi" class="secondary-button" type="button">旅行前に準備</button>
+          </div>
+          <div id="aiProgress" class="progress-bar hidden" aria-live="polite"><span></span></div>
+        </section>
+        <section id="helpResult" class="help-result hidden" aria-live="polite"></section>
+        <section class="section-card emergency-card">
+          <h3>緊急連絡先</h3>
+          <p class="small-note">命や安全に関わる場合は、相談機能より電話を優先してください。</p>
+          <div id="contactList" class="contact-list"></div>
+        </section>
+      </section>
+
+      <section id="view-airport" class="view" data-view="airport" aria-labelledby="airportHeading">
+        <div class="page-heading">
+          <p class="section-kicker">帰国日の時間を守る</p>
+          <h2 id="airportHeading">空港</h2>
+          <p>出発時刻ではなく「空港に着く時刻」を基準にします。</p>
+        </div>
+        <div class="airport-clock-card">
+          <p>仁川空港の到着目標まで</p>
+          <strong id="airportCountdown">計算中</strong>
+          <small id="airportTargetText"></small>
+        </div>
+        <div id="airportRisk" class="warning-card"></div>
+        <section class="section-card flight-card">
+          <div class="section-title-row">
+            <h3>帰国便</h3>
+            <button id="editFlight" class="text-button" type="button">便名を登録</button>
+          </div>
+          <dl class="flight-details">
+            <div><dt>出発</dt><dd id="flightDeparture"></dd></div>
+            <div><dt>便名</dt><dd id="flightNumber"></dd></div>
+            <div><dt>ターミナル</dt><dd id="flightTerminal"></dd></div>
+            <div><dt>空港到着目標</dt><dd id="flightArrivalTarget"></dd></div>
+            <div><dt>弘大を出る目標</dt><dd id="hongdaeLeaveTarget"></dd></div>
+          </dl>
+          <div class="button-row">
+            <button class="primary-button" type="button" data-action="airportMap">空港の地図</button>
+            <a class="secondary-button link-button" href="https://www.airport.kr/ap_en/1413/subview.do" target="_blank" rel="noopener noreferrer">空港の公式案内</a>
+          </div>
+        </section>
+        <section class="section-card">
+          <h3>空港へ出る前</h3>
+          <div id="airportChecklist" class="check-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="メインメニュー">
+      <button class="nav-button active" type="button" data-target="today"><span>☀️</span><small>今日</small></button>
+      <button class="nav-button" type="button" data-target="map"><span>🗺️</span><small>地図</small></button>
+      <button class="nav-button" type="button" data-target="shopping"><span>🛍️</span><small>買い物</small></button>
+      <button class="nav-button" type="button" data-target="help"><span>🆘</span><small>困った</small></button>
+      <button class="nav-button" type="button" data-target="airport"><span>✈️</span><small>空港</small></button>
+    </nav>
+  </div>
+
+  <dialog id="infoDialog" class="app-dialog">
+    <form method="dialog">
+      <button class="dialog-close" value="close" aria-label="閉じる">×</button>
+      <h2>使い方</h2>
+      <ol>
+        <li>旅行前にホーム画面へ追加します。</li>
+        <li>「困ったとき」の「旅行前に準備」をWi-Fiで一度押します。</li>
+        <li>予約票に書かれた便名・ターミナル・美容店の住所を確認します。</li>
+      </ol>
+      <div class="notice-box">
+        <strong>ホーム画面への追加</strong>
+        <p>Safariの共有ボタン →「ホーム画面に追加」を押します。</p>
+      </div>
+      <p class="small-note">このアプリは予定を勝手に組み替えません。確認と注意だけを出します。</p>
+      <button class="primary-button dialog-ok" value="close">閉じる</button>
+    </form>
+  </dialog>
+
+  <dialog id="showCardDialog" class="app-dialog show-card-dialog">
+    <form method="dialog">
+      <button class="dialog-close" value="close" aria-label="閉じる">×</button>
+      <p class="section-kicker">この画面を見せてください</p>
+      <h2 id="showCardTitle"></h2>
+      <p id="showCardKo" class="show-korean"></p>
+      <p id="showCardJa" class="show-japanese"></p>
+      <button class="primary-button dialog-ok" value="close">閉じる</button>
+    </form>
+  </dialog>
+
+  <dialog id="flightDialog" class="app-dialog">
+    <form id="flightForm">
+      <button class="dialog-close" type="button" data-close-dialog="flightDialog" aria-label="閉じる">×</button>
+      <h2>帰国便を登録</h2>
+      <label>便名<input id="flightNumberInput" type="text" maxlength="12" placeholder="例：KE123"></label>
+      <label>ターミナル<select id="flightTerminalInput"><option value="未登録">未登録</option><option value="第1ターミナル">第1ターミナル</option><option value="第2ターミナル">第2ターミナル</option></select></label>
+      <p class="small-note">Eチケットに書かれた内容をそのまま入れてください。</p>
+      <button class="primary-button" type="submit">保存</button>
+    </form>
+  </dialog>
+
+  <template id="timelineItemTemplate">
+    <article class="timeline-item">
+      <button class="done-button" type="button" aria-label="完了にする"></button>
+      <div class="timeline-body">
+        <div class="timeline-meta"><span class="time-label"></span><span class="fixed-label hidden">予約</span></div>
+        <h3></h3>
+        <p class="timeline-note"></p>
+        <div class="timeline-actions"></div>
+      </div>
+    </article>
+  </template>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
