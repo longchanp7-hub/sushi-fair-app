@@ -1,4 +1,4 @@
-const CACHE_NAME = 'seoul-trip-v1.0.1';
+const CACHE_NAME = 'seoul-trip-v1.0.2';
 const APP_SHELL = [
   './',
   './index.html',
@@ -7,6 +7,7 @@ const APP_SHELL = [
   './trip-data.js',
   './ai-worker.js',
   './manifest.webmanifest',
+  './assets/icon-192.png',
   './assets/icon.svg',
 ];
 
