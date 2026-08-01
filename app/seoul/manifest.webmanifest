@@ -1,0 +1,16 @@
+{
+  "name": "ソウル3日間 旅ナビ",
+  "short_name": "ソウル旅ナビ",
+  "description": "2026年8月のソウル3日間旅行だけに使う日本語の旅ナビ",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8fa",
+  "theme_color": "#fff5f7",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "./assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
