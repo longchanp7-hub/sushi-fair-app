@@ -1,1 +1,306 @@
-{"updatedAt":"2026-07-27T20:52:08.000Z","timezone":"Asia/Tokyo","chains":[{"chain":"sushiro","storeName":"豊橋エリア（磯辺店基準）","fairName":"フェア商品","startDate":"2026-07-22","endDate":"2026-08-18","items":[{"name":"大切りサーモン","price":110},{"name":"大切りうなぎ","price":110},{"name":"むらさきいかゲソ軍艦","price":120},{"name":"うな玉巻","price":120},{"name":"合鴨オニオンガーリックペッパー","price":140},{"name":"たい","price":150},{"name":"炙り豚しゃぶ 七味おろしポン酢","price":200},{"name":"ガーリックオニオンマヨ3貫盛り","price":260},{"name":"帆立の天ぷらにぎり チリソース","price":360},{"name":"黒毛和牛ローストビーフ 七味おろしポン酢","price":360},{"name":"創作うなぎづくし4種盛り","price":720},{"name":"鶏ガラ醤油 中華そば","price":480},{"name":"旨辛濃厚 担担麺","price":480},{"name":"茶碗蒸し エビチリのせ","price":350},{"name":"かつお出汁香る唐揚げ","price":390},{"name":"半額！生ビール ジョッキ","price":295},{"name":"パリパリチョコのコーヒーゼリーパフェ","price":330}],"sourceUrl":"https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244","storeUrl":"https://www.akindo-sushiro.co.jp/shop/","imageUrl":"https://cmsimage.akindo-sushiro.co.jp/menu/260722_002099V2.png","status":"ok","message":null},{"chain":"hamazushi","storeName":"豊橋新栄周辺","fairName":"期間限定メニュー","startDate":null,"endDate":null,"items":[{"name":"大切りびんちょうまぐろ大とろ","price":110},{"name":"三陸産大切り銀鮭","price":110},{"name":"炙り三陸産大切り銀鮭","price":110},{"name":"三陸産大切り銀鮭（山わさびのせ）","price":110},{"name":"ベーコンマヨ軍艦","price":110},{"name":"野沢菜昆布軍艦","price":110},{"name":"きすの天ぷら握り","price":176},{"name":"なすの揚げびたし握り","price":176},{"name":"いかげそ","price":176},{"name":"厳選まぐろ中とろ","price":176},{"name":"炙り厳選まぐろ中とろゆず塩","price":176},{"name":"特製漬け中とろ","price":176},{"name":"なすの揚げびたし握りおろし盛り","price":231},{"name":"野菜と食べるサムギョプサル風つつみ","price":319},{"name":"宮崎県産大切りうなぎ","price":319},{"name":"重ね厳選まぐろ中とろ","price":319},{"name":"炙り重ね厳選まぐろ中とろゆず塩","price":319},{"name":"うに軍艦","price":319},{"name":"うにいくら軍艦","price":319},{"name":"一本穴子","price":528},{"name":"特製 麻辣ラーメン","price":506},{"name":"うなぎの肝串山椒付き","price":429},{"name":"サクもちじゃがいもチヂミ","price":319},{"name":"きすの天ぷら","price":176},{"name":"クリームソーダ風パルフェ","price":429},{"name":"ストロベリードーナツバニラアイスのせ","price":363},{"name":"純米酒 英勲","price":880}],"sourceUrl":"https://www.hamazushi.com/menu/","storeUrl":"https://maps.hama-sushi.co.jp/jp/index.html","imageUrl":"https://www.hamazushi.com/assets/menu/img/fair/oogiri_bincho_maguro_ootoro.png","status":"ok","message":null},{"chain":"kurasushi","storeName":"豊橋新栄店","fairName":"極上かにフェア","startDate":"2026-07-24","endDate":"2026-08-05","items":[{"name":"かに三種盛り","price":null},{"name":"たらばがに軍艦","price":null}],"sourceUrl":"https://shop.kurasushi.co.jp/detail/609","storeUrl":"https://shop.kurasushi.co.jp/detail/609","imageUrl":null,"status":"ok","message":null},{"chain":"kappasushi","storeName":"豊橋飯村店","fairName":"かっぱの贅沢うにいくら祭り！","startDate":null,"endDate":null,"items":[{"name":"かっぱの贅沢うにいくら祭り！","price":null}],"sourceUrl":"https://www.kappasushi.jp/campaign_list/","storeUrl":"https://www.kappasushi.jp/shop/0220","imageUrl":null,"status":"ok","message":null}]}
+{
+  "updatedAt": "2026-08-05T09:42:03.531Z",
+  "timezone": "Asia/Tokyo",
+  "chains": [
+    {
+      "chain": "sushiro",
+      "storeName": "豊橋エリア（磯辺店基準）",
+      "fairName": "フェア商品",
+      "startDate": "2026-07-22",
+      "endDate": "2026-09-27",
+      "items": [
+        {
+          "name": "大とろ",
+          "price": 110
+        },
+        {
+          "name": "ジャンボとろサーモン",
+          "price": 110
+        },
+        {
+          "name": "てりたま軍艦",
+          "price": 120
+        },
+        {
+          "name": "合鴨オニオンガーリックペッパー",
+          "price": 140
+        },
+        {
+          "name": "炭火焼き牛カルビ",
+          "price": 140
+        },
+        {
+          "name": "タコさんウインナー包み",
+          "price": 140
+        },
+        {
+          "name": "北海道産 天然かれい",
+          "price": 180
+        },
+        {
+          "name": "うなぎ 梅しそおろし",
+          "price": 180
+        },
+        {
+          "name": "生本ずわい蟹",
+          "price": 220
+        },
+        {
+          "name": "北海道産 つぶ貝",
+          "price": 260
+        },
+        {
+          "name": "店内切り 数の子",
+          "price": 260
+        },
+        {
+          "name": "天然 生車えび食べ比べ",
+          "price": 360
+        },
+        {
+          "name": "北海道産 上いくら",
+          "price": 360
+        },
+        {
+          "name": "国産ほたて食べ比べ",
+          "price": 360
+        },
+        {
+          "name": "かにと筋子 とろたく高菜巻",
+          "price": 720
+        },
+        {
+          "name": "天然本鮪7貫盛り",
+          "price": 1250
+        },
+        {
+          "name": "家系風！豚骨醤油ラーメン",
+          "price": 480
+        },
+        {
+          "name": "混ぜて冷やす とり天おろしうどん",
+          "price": 430
+        },
+        {
+          "name": "かつお出汁香る唐揚げ",
+          "price": 390
+        },
+        {
+          "name": "おいしーレモンの甘酸っぱパフェ",
+          "price": 390
+        },
+        {
+          "name": "クラシックプリンパフェ",
+          "price": 380
+        },
+        {
+          "name": "果肉そのまマンゴーアイスバー",
+          "price": 170
+        },
+        {
+          "name": "飲むミルクティーッペ",
+          "price": 290
+        }
+      ],
+      "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=244",
+      "storeUrl": "https://www.akindo-sushiro.co.jp/shop/",
+      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_000399_2.png",
+      "status": "ok",
+      "message": null
+    },
+    {
+      "chain": "hamazushi",
+      "storeName": "豊橋新栄周辺",
+      "fairName": "期間限定メニュー",
+      "startDate": null,
+      "endDate": null,
+      "items": [
+        {
+          "name": "コーンの天ぷら握り",
+          "price": 110
+        },
+        {
+          "name": "コーンの天ぷら握りマヨ",
+          "price": 110
+        },
+        {
+          "name": "大切り直火焼きびんちょう（大葉にんにく風味）",
+          "price": 110
+        },
+        {
+          "name": "青森名産ねぶた漬け軍艦",
+          "price": 176
+        },
+        {
+          "name": "炙りとろ煮穴子",
+          "price": 176
+        },
+        {
+          "name": "あわび",
+          "price": 176
+        },
+        {
+          "name": "サーモンカルパッチョ",
+          "price": 176
+        },
+        {
+          "name": "えびカルパッチョ",
+          "price": 176
+        },
+        {
+          "name": "アカイカカルパッチョ",
+          "price": 176
+        },
+        {
+          "name": "生ハムカルパッチョ",
+          "price": 176
+        },
+        {
+          "name": "合鴨カルパッチョ",
+          "price": 176
+        },
+        {
+          "name": "厳選まぐろ中とろ",
+          "price": 176
+        },
+        {
+          "name": "炙り厳選まぐろ中とろゆず塩",
+          "price": 176
+        },
+        {
+          "name": "特製漬け中とろ",
+          "price": 176
+        },
+        {
+          "name": "活〆まだいカルパッチョ",
+          "price": 231
+        },
+        {
+          "name": "大判豚角煮握りからし付き",
+          "price": 319
+        },
+        {
+          "name": "重ね厳選まぐろ中とろ",
+          "price": 319
+        },
+        {
+          "name": "炙り重ね厳選まぐろ中とろゆず塩",
+          "price": 319
+        },
+        {
+          "name": "うに軍艦",
+          "price": 319
+        },
+        {
+          "name": "うにいくら軍艦",
+          "price": 319
+        },
+        {
+          "name": "かに三昧",
+          "price": 792
+        },
+        {
+          "name": "濃厚冷やし担々麺（花椒付き）",
+          "price": 473
+        },
+        {
+          "name": "気仙沼産ふかひれあんかけ茶碗蒸し",
+          "price": 363
+        },
+        {
+          "name": "おつまみ砂肝",
+          "price": 297
+        },
+        {
+          "name": "カリカリポテト（ホットチリ味）",
+          "price": 297
+        },
+        {
+          "name": "MEGAカリカリポテト（ホットチリ味）",
+          "price": 473
+        },
+        {
+          "name": "トロピカル☆マンゴーキウイパルフェ",
+          "price": 473
+        },
+        {
+          "name": "はまとろっミルクアイス",
+          "price": 297
+        },
+        {
+          "name": "はまとろっミルクアイス（白桃ソース）",
+          "price": 319
+        },
+        {
+          "name": "はまスカッシュ（ブルー）",
+          "price": 319
+        },
+        {
+          "name": "はまスカッシュ（ストロベリー）",
+          "price": 319
+        },
+        {
+          "name": "はまフロート（ブルー）",
+          "price": 396
+        },
+        {
+          "name": "はまフロート（ストロベリー）",
+          "price": 396
+        },
+        {
+          "name": "純米酒 英勲",
+          "price": 880
+        },
+        {
+          "name": "※画像は4人前中とろ、活〆まだい、いか、まぐろ、サーモン、ほたて、赤えび、あわび、とろ煮穴子、いくら、うに、厚焼きたまご",
+          "price": 1700
+        }
+      ],
+      "sourceUrl": "https://www.hamazushi.com/menu/",
+      "storeUrl": "https://maps.hama-sushi.co.jp/jp/index.html",
+      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/corn_no_tempura_nigiri.png",
+      "status": "ok",
+      "message": null
+    },
+    {
+      "chain": "kurasushi",
+      "storeName": "豊橋新栄店",
+      "fairName": "極上かにフェア",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-05",
+      "items": [
+        {
+          "name": "かに三種盛り",
+          "price": null
+        },
+        {
+          "name": "たらばがに軍艦",
+          "price": null
+        }
+      ],
+      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "imageUrl": null,
+      "status": "warning",
+      "message": "今回の自動取得に失敗したため、前回データを表示しています。"
+    },
+    {
+      "chain": "kappasushi",
+      "storeName": "豊橋飯村店",
+      "fairName": "かっぱの本鮪中とろ祭り！",
+      "startDate": null,
+      "endDate": null,
+      "items": [
+        {
+          "name": "かっぱの本鮪中とろ祭り！",
+          "price": null
+        }
+      ],
+      "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
+      "storeUrl": "https://www.kappasushi.jp/shop/0220",
+      "imageUrl": null,
+      "status": "ok",
+      "message": null
+    }
+  ]
+}
