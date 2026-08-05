@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T09:42:03.531Z",
+  "updatedAt": "2026-08-05T22:29:01.376Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -88,10 +88,6 @@
         {
           "name": "おいしーレモンの甘酸っぱパフェ",
           "price": 390
-        },
-        {
-          "name": "クラシックプリンパフェ",
-          "price": 380
         },
         {
           "name": "果肉そのまマンゴーアイスバー",
@@ -282,7 +278,7 @@
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
       "imageUrl": null,
       "status": "warning",
-      "message": "今回の自動取得に失敗したため、前回データを表示しています。"
+      "message": "店舗イベント名を自動取得できませんでした。"
     },
     {
       "chain": "kappasushi",
