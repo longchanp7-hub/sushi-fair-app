@@ -48,14 +48,41 @@ jobs:
           wranglerVersion: '4'
           command: deploy
 
-      - name: Configure app with Worker URL
+      - name: Verify live crowd API
         if: steps.credentials.outputs.ready == 'true' && steps.deploy.outcome == 'success'
+        id: verify
         env:
-          CROWD_API_URL: ${{ steps.deploy.outputs.deployment-url }}
+          WORKER_URL: ${{ steps.deploy.outputs.deployment-url }}
+        shell: bash
+        run: |
+          if [[ -z "$WORKER_URL" ]]; then
+            echo "Worker deployment URL was not returned."
+            exit 1
+          fi
+
+          for attempt in {1..10}; do
+            if curl --fail --silent --show-error "$WORKER_URL/health" > /tmp/crowd-health.json; then
+              break
+            fi
+            if [[ "$attempt" == "10" ]]; then
+              echo "Worker health check failed after 10 attempts."
+              exit 1
+            fi
+            sleep 3
+          done
+
+          curl --fail --silent --show-error "$WORKER_URL/crowd" > /tmp/crowd-live.json
+          node -e "const fs=require('fs');const d=JSON.parse(fs.readFileSync('/tmp/crowd-live.json','utf8'));if(!Array.isArray(d.stores)||d.stores.length!==4)throw new Error('Crowd API must return four stores');console.log('Crowd API verified:',d.stores.map(x=>x.chain+': '+x.label).join(' | '));"
+          echo "worker_url=${WORKER_URL%/}" >> "$GITHUB_OUTPUT"
+
+      - name: Configure app with Worker URL
+        if: steps.credentials.outputs.ready == 'true' && steps.verify.outcome == 'success'
+        env:
+          CROWD_API_URL: ${{ steps.verify.outputs.worker_url }}
         run: node scripts/set-crowd-api-url.mjs "$CROWD_API_URL"
 
       - name: Commit Worker URL to app
-        if: steps.credentials.outputs.ready == 'true' && steps.deploy.outcome == 'success'
+        if: steps.credentials.outputs.ready == 'true' && steps.verify.outcome == 'success'
         shell: bash
         run: |
           if git diff --quiet -- app/features.js; then
