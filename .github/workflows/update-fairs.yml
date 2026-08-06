@@ -42,16 +42,18 @@ jobs:
       - run: node scripts/apply-store-overrides.mjs
       - name: Refresh Kura data when available
         run: node scripts/fix-kura.mjs || echo "Kura refresh failed; keeping main scraper/fallback data"
+      - name: Refresh crowd fallback snapshot
+        run: node scripts/update-crowd.mjs || echo "Crowd snapshot refresh failed; keeping previous crowd data"
 
       - name: Commit updated data when changed
         run: |
-          if git diff --quiet -- app/data/fairs.json; then
+          if git diff --quiet -- app/data/fairs.json app/data/crowd.json; then
             echo "No data changes"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add app/data/fairs.json
-            git commit -m "Update sushi fair data"
+            git add app/data/fairs.json app/data/crowd.json
+            git commit -m "Update sushi app data"
             git push
           fi
 
