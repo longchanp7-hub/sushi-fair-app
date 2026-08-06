@@ -1,0 +1,78 @@
+.crowd-panel {
+  margin: 0 0 18px;
+  padding: 16px;
+  border: 1px solid rgba(111,224,168,.18);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(111,224,168,.08), rgba(79,166,255,.04)), var(--panel);
+  box-shadow: 0 18px 48px rgba(0,0,0,.18);
+}
+.crowd-panel[hidden] { display: none !important; }
+.crowd-heading { align-items: flex-start; margin: 0 0 8px; }
+.crowd-heading .kicker { margin: 0 0 3px; color: var(--ok); font-size: 10px; font-weight: 900; letter-spacing: .18em; }
+.crowd-head-actions { display: grid; justify-items: end; gap: 7px; }
+#crowdUpdatedAt { color: var(--muted); font-size: 10px; }
+#crowdRefreshBtn {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 11px;
+  font-size: 11px;
+  font-weight: 800;
+}
+#crowdRefreshBtn:disabled { opacity: .55; }
+.crowd-mode {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--muted);
+  background: rgba(255,255,255,.035);
+}
+.crowd-mode.live { color: #b8f7d6; background: rgba(111,224,168,.08); }
+.crowd-mode.warning { color: #ffd2cd; background: rgba(255,107,95,.08); }
+.crowd-grid { display: grid; gap: 10px; }
+.crowd-loading { padding: 24px 12px; text-align: center; color: var(--muted); font-size: 12px; }
+.crowd-card {
+  padding: 13px;
+  border-radius: 17px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.035);
+}
+.crowd-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.crowd-card-head > div { min-width: 0; display: grid; gap: 3px; }
+.crowd-chain { color: var(--muted); font-size: 10px; font-weight: 800; }
+.crowd-card-head strong { font-size: 14px; line-height: 1.35; }
+.crowd-method {
+  flex: 0 0 auto;
+  padding: 5px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+}
+.crowd-status-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.crowd-level-icon { flex: 0 0 auto; font-size: 24px; }
+.crowd-status-row > div { min-width: 0; display: grid; gap: 3px; }
+.crowd-status-row b { font-size: 16px; line-height: 1.35; }
+.crowd-status-row small { color: var(--muted); font-size: 10px; line-height: 1.45; }
+.crowd-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--line); }
+.crowd-card-foot > span { color: var(--muted); font-size: 10px; font-weight: 800; }
+.crowd-card-foot a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 8px 10px;
+  border-radius: 11px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--line);
+}
+.crowd-card.level-low { border-color: rgba(111,224,168,.24); }
+.crowd-card.level-medium { border-color: rgba(255,184,92,.28); }
+.crowd-card.level-high, .crowd-card.level-very_high { border-color: rgba(255,107,95,.30); }
+.crowd-note { margin: 10px 2px 0; color: var(--muted); font-size: 9px; line-height: 1.55; }
+@media (min-width: 680px) { .crowd-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 520px) { .crowd-panel { padding: 14px; border-radius: 20px; } }
