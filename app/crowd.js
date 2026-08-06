@@ -1,4 +1,4 @@
-import { FEATURES, crowdFeatureEnabled, resolveCrowdApiUrl } from './features.js?v=20260807-1';
+import { FEATURES, crowdFeatureEnabled } from './features.js?v=20260807-2';
 
 const chainMeta = {
   sushiro: { name: 'スシロー', dot: '🔴' },
@@ -79,7 +79,14 @@ function formatUpdatedAt(iso) {
   }).format(date);
 }
 
-function renderCrowd(data, { live = false, error = null } = {}) {
+function ageMinutes(iso) {
+  if (!iso) return null;
+  const time = new Date(iso).getTime();
+  if (!Number.isFinite(time)) return null;
+  return Math.max(0, Math.floor((Date.now() - time) / 60000));
+}
+
+function renderCrowd(data, { error = null } = {}) {
   const panel = document.querySelector('#crowdPanel');
   const grid = document.querySelector('#crowdGrid');
   const updated = document.querySelector('#crowdUpdatedAt');
@@ -90,14 +97,18 @@ function renderCrowd(data, { live = false, error = null } = {}) {
   const stores = Array.isArray(data?.stores) && data.stores.length ? data.stores : fallbackStores;
   updated.textContent = data?.updatedAt ? `取得 ${formatUpdatedAt(data.updatedAt)}` : '取得時刻なし';
 
+  const age = ageMinutes(data?.updatedAt);
   if (error) {
-    mode.textContent = `リアルタイム取得失敗・公式リンクを表示中（${error}）`;
+    mode.textContent = `混雑スナップショット取得失敗・公式リンクを表示中（${error}）`;
     mode.className = 'crowd-mode warning';
-  } else if (live) {
-    mode.textContent = '起動時に公式予約情報をリアルタイム取得';
+  } else if (age !== null && age > 10) {
+    mode.textContent = `GitHub Actionsの更新が遅れています（約${age}分前の情報）`;
+    mode.className = 'crowd-mode warning';
+  } else if (age !== null) {
+    mode.textContent = `約5分ごとに自動更新・現在は約${age}分前の情報`;
     mode.className = 'crowd-mode live';
   } else {
-    mode.textContent = 'リアルタイムAPI未接続・前回取得データ／公式リンクを表示';
+    mode.textContent = '約5分ごとの混雑スナップショットを表示';
     mode.className = 'crowd-mode fallback';
   }
 
@@ -159,25 +170,16 @@ async function loadCrowd({ force = false } = {}) {
     button.disabled = true;
     button.textContent = '↻ 取得中';
   }
-  if (grid && !grid.children.length) grid.innerHTML = '<div class="crowd-loading">混雑情報を確認しています…</div>';
+  if (grid && !grid.children.length) grid.innerHTML = '<div class="crowd-loading">最新の混雑スナップショットを確認しています…</div>';
 
   inFlight = (async () => {
-    const apiUrl = resolveCrowdApiUrl();
     try {
-      if (apiUrl) {
-        const endpoint = apiUrl.endsWith('/crowd') ? apiUrl : `${apiUrl}/crowd`;
-        const liveData = await fetchJson(endpoint, FEATURES.crowd.requestTimeoutMs);
-        lastFetchAt = Date.now();
-        renderCrowd(liveData, { live: true });
-        return;
-      }
-
-      const fallback = await fetchJson(FEATURES.crowd.fallbackUrl, FEATURES.crowd.requestTimeoutMs);
+      const snapshot = await fetchJson(FEATURES.crowd.snapshotUrl, FEATURES.crowd.requestTimeoutMs);
       lastFetchAt = Date.now();
-      renderCrowd(fallback, { live: false });
+      renderCrowd(snapshot);
     } catch (error) {
       lastFetchAt = Date.now();
-      renderCrowd({ updatedAt: null, stores: fallbackStores }, { live: false, error: error.name === 'AbortError' ? 'タイムアウト' : error.message });
+      renderCrowd({ updatedAt: null, stores: fallbackStores }, { error: error.name === 'AbortError' ? 'タイムアウト' : error.message });
     } finally {
       if (button) {
         button.disabled = false;
