@@ -1,0 +1,4 @@
+name = "sushi-crowd"
+main = "crowd-worker.js"
+compatibility_date = "2026-08-07"
+workers_dev = true
