@@ -1,0 +1,47 @@
+name: Refresh crowd snapshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 5-minute interval, shifted away from the top of the hour to reduce GitHub Actions queue delays.
+    - cron: '2-57/5 * * * *'
+      timezone: 'Asia/Tokyo'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-static-deploy
+  cancel-in-progress: true
+
+jobs:
+  refresh-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Refresh crowd snapshot
+        run: node scripts/update-crowd.mjs
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: './app'
+
+      - name: Deploy latest crowd snapshot
+        id: deployment
+        uses: actions/deploy-pages@v4
