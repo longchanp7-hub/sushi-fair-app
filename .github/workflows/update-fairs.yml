@@ -36,9 +36,12 @@ jobs:
           node-version: '20'
 
       - run: npm install
+      - name: Use Toyohashi Shinsakae stores
+        run: node scripts/configure-shinsakae-stores.mjs
       - run: npm run update
       - run: node scripts/apply-store-overrides.mjs
-      - run: node scripts/fix-kura.mjs
+      - name: Refresh Kura data when available
+        run: node scripts/fix-kura.mjs || echo "Kura refresh failed; keeping main scraper/fallback data"
 
       - name: Commit updated data when changed
         run: |
