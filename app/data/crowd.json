@@ -1,5 +1,5 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-08-06T23:27:25.337Z",
   "timezone": "Asia/Tokyo",
   "disclaimer": "混雑状況は参考値です。予約枠からの推定は実際の待ち時間と一致しない場合があります。",
   "stores": [
@@ -27,21 +27,25 @@
       "chain": "kurasushi",
       "storeName": "くら寿司 豊橋新栄店",
       "method": "reservation_slot",
-      "level": "unknown",
-      "label": "取得待ち",
-      "detail": "最短予約可能時間から混雑度を推定します",
+      "level": "very_high",
+      "earliestSlot": "11:00",
+      "estimatedMinutes": 153,
+      "label": "最短 11:00（約153分後）",
+      "detail": "予約可能時刻からの推定で、実際の待ち時間とは異なる場合があります",
       "reservationUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "status": "pending"
+      "status": "ok"
     },
     {
       "chain": "kappasushi",
       "storeName": "かっぱ寿司 豊橋飯村店",
       "method": "actual_wait",
-      "level": "unknown",
-      "label": "取得待ち",
-      "detail": "公式順番待ちページの待ち組数・待ち時間を表示します",
+      "level": "low",
+      "waitGroups": 0,
+      "waitMinutes": 0,
+      "label": "待ちなし",
+      "detail": "現在、お待ちのお客様はいません",
       "reservationUrl": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
-      "status": "pending"
+      "status": "ok"
     }
   ]
 }
