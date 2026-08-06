@@ -1,0 +1,47 @@
+{
+  "updatedAt": null,
+  "timezone": "Asia/Tokyo",
+  "disclaimer": "混雑状況は参考値です。予約枠からの推定は実際の待ち時間と一致しない場合があります。",
+  "stores": [
+    {
+      "chain": "sushiro",
+      "storeName": "スシロー 豊橋新栄店",
+      "method": "official_link",
+      "level": "unknown",
+      "label": "公式予約で確認",
+      "detail": "LINEの公式受付・予約画面を開きます",
+      "reservationUrl": "https://liff.line.me/1621199246-zJXb0Rx4/LINE-mini/ui/store/reservation/entry/?storeId=179&utm_source=01linemini_shoppage",
+      "status": "link_only"
+    },
+    {
+      "chain": "hamazushi",
+      "storeName": "はま寿司 豊橋新栄店",
+      "method": "official_link",
+      "level": "unknown",
+      "label": "公式予約で確認",
+      "detail": "公式アプリで順番待ち・日時指定予約を確認します",
+      "reservationUrl": "https://www.hamazushi.com/app/",
+      "status": "link_only"
+    },
+    {
+      "chain": "kurasushi",
+      "storeName": "くら寿司 豊橋新栄店",
+      "method": "reservation_slot",
+      "level": "unknown",
+      "label": "取得待ち",
+      "detail": "最短予約可能時間から混雑度を推定します",
+      "reservationUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "status": "pending"
+    },
+    {
+      "chain": "kappasushi",
+      "storeName": "かっぱ寿司 豊橋飯村店",
+      "method": "actual_wait",
+      "level": "unknown",
+      "label": "取得待ち",
+      "detail": "公式順番待ちページの待ち組数・待ち時間を表示します",
+      "reservationUrl": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
+      "status": "pending"
+    }
+  ]
+}
