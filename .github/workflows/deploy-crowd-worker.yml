@@ -1,0 +1,69 @@
+name: Deploy live crowd API
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - 'worker/**'
+      - 'scripts/set-crowd-api-url.mjs'
+      - '.github/workflows/deploy-crowd-worker.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-live-crowd-api
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check Cloudflare credentials
+        id: credentials
+        shell: bash
+        run: |
+          if [[ -n "$CLOUDFLARE_API_TOKEN" && -n "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare secrets are not configured; deployment is skipped."
+          fi
+
+      - name: Deploy Worker
+        if: steps.credentials.outputs.ready == 'true'
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          wranglerVersion: '4'
+          command: deploy
+
+      - name: Configure app with Worker URL
+        if: steps.credentials.outputs.ready == 'true' && steps.deploy.outcome == 'success'
+        env:
+          CROWD_API_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: node scripts/set-crowd-api-url.mjs "$CROWD_API_URL"
+
+      - name: Commit Worker URL to app
+        if: steps.credentials.outputs.ready == 'true' && steps.deploy.outcome == 'success'
+        shell: bash
+        run: |
+          if git diff --quiet -- app/features.js; then
+            echo "Crowd API URL is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/features.js
+          git commit -m "Connect live crowd API"
+          git push
