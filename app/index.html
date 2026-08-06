@@ -43,17 +43,17 @@
     <section id="crowdPanel" class="crowd-panel" aria-labelledby="crowdTitle" hidden>
       <div class="section-heading crowd-heading">
         <div>
-          <p class="kicker">LIVE</p>
+          <p class="kicker">NEAR LIVE</p>
           <h2 id="crowdTitle">今の混雑・予約</h2>
         </div>
         <div class="crowd-head-actions">
           <span id="crowdUpdatedAt">取得準備中…</span>
-          <button id="crowdRefreshBtn" type="button" aria-label="混雑情報だけを再取得">↻ 混雑を更新</button>
+          <button id="crowdRefreshBtn" type="button" aria-label="混雑情報だけを再読み込み">↻ 混雑を更新</button>
         </div>
       </div>
-      <div id="crowdMode" class="crowd-mode">起動時に最新状況を確認します</div>
+      <div id="crowdMode" class="crowd-mode">約5分ごとに最新状況を取得します</div>
       <div id="crowdGrid" class="crowd-grid" aria-live="polite"></div>
-      <p class="crowd-note">「実待ち」は公式順番待ち表示、「予約枠から推定」は最短予約可能時刻からの参考値です。最終判断は各社公式予約画面で確認してください。</p>
+      <p class="crowd-note">GitHub Actionsで約5分ごとに公式予約情報を取得します。「実待ち」は公式順番待ち表示、「予約枠から推定」は最短予約可能時刻からの参考値です。実行遅延が起きる場合があるため、最終判断は各社公式予約画面で確認してください。</p>
     </section>
 
     <nav id="filters" class="filters" aria-label="チェーン絞り込み">
@@ -82,7 +82,7 @@
   <footer>公式公開情報をまとめて表示する個人向けビューア</footer>
   <script src="./app.js?v=20260728-0552" type="module"></script>
   <script type="module">
-    import { initCrowd } from './crowd.js?v=20260807-1';
+    import { initCrowd } from './crowd.js?v=20260807-2';
     initCrowd();
   </script>
 </body>
