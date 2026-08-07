@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-06T23:27:25.337Z",
+  "updatedAt": "2026-08-07T00:03:11.322Z",
   "timezone": "Asia/Tokyo",
   "disclaimer": "混雑状況は参考値です。予約枠からの推定は実際の待ち時間と一致しない場合があります。",
   "stores": [
@@ -29,8 +29,8 @@
       "method": "reservation_slot",
       "level": "very_high",
       "earliestSlot": "11:00",
-      "estimatedMinutes": 153,
-      "label": "最短 11:00（約153分後）",
+      "estimatedMinutes": 117,
+      "label": "最短 11:00（約117分後）",
       "detail": "予約可能時刻からの推定で、実際の待ち時間とは異なる場合があります",
       "reservationUrl": "https://shop.kurasushi.co.jp/detail/609",
       "status": "ok"
