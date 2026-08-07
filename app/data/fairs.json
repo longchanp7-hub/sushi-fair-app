@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T00:34:15.794Z",
+  "updatedAt": "2026-08-07T00:58:40.020Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -257,24 +257,20 @@
     {
       "chain": "kurasushi",
       "storeName": "豊橋新栄店",
-      "fairName": "極上かにフェア",
-      "startDate": "2026-07-24",
-      "endDate": "2026-08-05",
+      "fairName": "創業50年祭 第4弾",
+      "startDate": "2026-08-07",
+      "endDate": "2026-08-11",
       "items": [
         {
-          "name": "かに三種盛り",
-          "price": null
-        },
-        {
-          "name": "たらばがに軍艦",
-          "price": null
+          "name": "地中海中とろ（一貫）",
+          "price": 110
         }
       ],
-      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "sourceUrl": "https://www.kurasushi.co.jp/author/008143.html",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
       "imageUrl": null,
-      "status": "warning",
-      "message": "店舗イベント名を自動取得できませんでした。"
+      "status": "ok",
+      "message": null
     },
     {
       "chain": "kappasushi",
