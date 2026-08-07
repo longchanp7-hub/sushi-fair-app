@@ -9,7 +9,7 @@
   <link rel="icon" href="./assets/sushi-icon-192-v2.png?v=20260717-1350" type="image/png" />
   <link rel="apple-touch-icon" href="./assets/sushi-icon-192-v2.png?v=20260717-1350" />
   <link rel="stylesheet" href="./styles.css?v=20260715-2115" />
-  <link rel="stylesheet" href="./crowd.css?v=20260807-3" />
+  <link rel="stylesheet" href="./crowd.css?v=20260807-2" />
   <title>寿司フェア</title>
 </head>
 <body>
@@ -48,12 +48,12 @@
         </div>
         <div class="crowd-head-actions">
           <span id="crowdUpdatedAt">取得準備中…</span>
-          <button id="crowdRefreshBtn" type="button" aria-label="混雑情報だけを再読み込み">↻ 混雑を更新</button>
+          <button id="crowdRefreshBtn" type="button" aria-label="取得済みの最新混雑情報を再読み込み">↻ 再読込</button>
         </div>
       </div>
       <div id="crowdMode" class="crowd-mode">約5分ごとに最新状況を取得します</div>
       <div id="crowdGrid" class="crowd-grid" aria-live="polite"></div>
-      <p class="crowd-note">混雑データは約5分ごとに専用データへ更新します。くら寿司の「日時指定予約枠」と「現在の店頭待ち」は別指標として表示し、予約可能時刻だけで「かなり混雑」とは判定しません。各店の通常営業時間も考慮し、祝日・臨時営業時間は公式情報をご確認ください。</p>
+      <p class="crowd-note">混雑データの新規取得は約5分ごとに自動実行します。「再読込」は取得済みの最新データを読み直すボタンです。くら寿司の日時指定予約枠と現在の店頭待ちは別指標として扱い、予約可能時刻だけで混雑とは判定しません。祝日・臨時営業時間は公式情報をご確認ください。</p>
     </section>
 
     <nav id="filters" class="filters" aria-label="チェーン絞り込み">
@@ -80,7 +80,7 @@
   </main>
 
   <footer>公式公開情報をまとめて表示する個人向けビューア</footer>
-  <script src="./app.js?v=20260807-5" type="module"></script>
+  <script src="./app.js?v=20260728-0552" type="module"></script>
   <script type="module">
     import { initCrowd } from './crowd.js?v=20260807-5';
     initCrowd();
