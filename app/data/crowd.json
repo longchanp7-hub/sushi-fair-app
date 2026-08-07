@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T00:58:42.333Z",
+  "updatedAt": "2026-08-07T01:02:39.009Z",
   "timezone": "Asia/Tokyo",
   "disclaimer": "混雑状況は参考値です。くら寿司の日時指定予約枠は店頭待ちとは別に扱い、混雑度へ直接換算しません。各店の通常営業時間も考慮します。",
   "stores": [
@@ -23,11 +23,11 @@
       "storeName": "はま寿司 豊橋新栄店",
       "method": "official_link",
       "level": "unknown",
-      "label": "営業時間前（10:00開店）",
-      "detail": "公式アプリで順番待ち・日時指定予約を確認します。通常営業時間 10:00〜23:00",
+      "label": "公式予約で確認",
+      "detail": "はま寿司の順番待ち・時間指定予約はログイン後の機能が中心で、公開ページから現在待ちを自動取得できる値は確認できていません。",
       "reservationUrl": "https://www.hamazushi.com/app/",
-      "status": "ok",
-      "businessState": "before_open",
+      "status": "link_only",
+      "businessState": "open",
       "openTime": "10:00",
       "closeTime": "23:00",
       "hoursLabel": "10:00〜23:00",
