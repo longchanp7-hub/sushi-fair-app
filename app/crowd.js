@@ -1,4 +1,4 @@
-import { FEATURES, crowdFeatureEnabled } from './features.js?v=20260807-2';
+import { FEATURES, crowdFeatureEnabled } from './features.js?v=20260807-4';
 
 const chainMeta = {
   sushiro: { name: 'スシロー', dot: '🔴' },
@@ -33,8 +33,8 @@ const fallbackStores = [
     storeName: 'くら寿司 豊橋新栄店',
     method: 'reservation_slot',
     level: 'unknown',
-    label: '予約ページで確認',
-    detail: '最短予約可能時間を公式ページで確認できます',
+    label: '店頭混雑は確認できません',
+    detail: '日時指定予約の空きと店頭待ちは別の指標として扱います',
     reservationUrl: 'https://shop.kurasushi.co.jp/detail/609',
     status: 'link_only',
   },
@@ -78,7 +78,7 @@ function levelIcon(store) {
 }
 
 function methodLabel(method) {
-  return ({ actual_wait: '実待ち', reservation_slot: '予約枠から推定', official_link: '公式確認' })[method] || '参考';
+  return ({ actual_wait: '実待ち', reservation_slot: '予約枠', official_link: '公式確認' })[method] || '参考';
 }
 
 function formatUpdatedAt(iso) {
@@ -98,7 +98,7 @@ function ageMinutes(iso) {
   return Math.max(0, Math.floor((Date.now() - time) / 60000));
 }
 
-function renderCrowd(data, { error = null } = {}) {
+function renderCrowd(data, { error = null, source = 'live' } = {}) {
   const panel = document.querySelector('#crowdPanel');
   const grid = document.querySelector('#crowdGrid');
   const updated = document.querySelector('#crowdUpdatedAt');
@@ -111,13 +111,18 @@ function renderCrowd(data, { error = null } = {}) {
 
   const age = ageMinutes(data?.updatedAt);
   if (error) {
-    mode.textContent = `混雑スナップショット取得失敗・公式リンクを表示中（${error}）`;
+    mode.textContent = `最新データ取得失敗・公式リンクを表示中（${error}）`;
     mode.className = 'crowd-mode warning';
-  } else if (age !== null && age > 10) {
-    mode.textContent = `GitHub Actionsの更新が遅れています（約${age}分前の情報）`;
+  } else if (source === 'fallback') {
+    mode.textContent = age !== null
+      ? `専用データ取得に失敗・約${age}分前の予備データを表示`
+      : '専用データ取得に失敗・予備データを表示';
+    mode.className = 'crowd-mode warning';
+  } else if (age !== null && age > 12) {
+    mode.textContent = `5分更新が遅れています（約${age}分前の情報）`;
     mode.className = 'crowd-mode warning';
   } else if (age !== null) {
-    mode.textContent = `約5分ごとに自動更新・現在は約${age}分前の情報`;
+    mode.textContent = `約5分ごとに自動取得・現在は約${age}分前の情報`;
     mode.className = 'crowd-mode live';
   } else {
     mode.textContent = '約5分ごとの混雑スナップショットを表示';
@@ -131,6 +136,9 @@ function renderCrowd(data, { error = null } = {}) {
     const detail = store.detail || '公式予約ページで最新状況をご確認ください';
     const label = store.label || displayStateLabel(store);
     const hours = store.hoursLabel ? `通常営業時間 ${store.hoursLabel}` : '';
+    const reservation = store.reservationLabel
+      ? `<div class="crowd-reservation"><b>${escapeHtml(store.reservationLabel)}</b>${store.reservationDetail ? `<small>${escapeHtml(store.reservationDetail)}</small>` : ''}</div>`
+      : '';
     return `
       <article class="crowd-card ${statusClass}">
         <div class="crowd-card-head">
@@ -148,6 +156,7 @@ function renderCrowd(data, { error = null } = {}) {
             ${hours ? `<small>${escapeHtml(hours)}</small>` : ''}
           </div>
         </div>
+        ${reservation}
         <div class="crowd-card-foot">
           <span>${escapeHtml(displayStateLabel(store))}</span>
           <a href="${escapeHtml(store.reservationUrl || '#')}" target="_blank" rel="noopener noreferrer">${buttonText} ↗</a>
@@ -190,10 +199,19 @@ async function loadCrowd({ force = false } = {}) {
     try {
       const snapshot = await fetchJson(FEATURES.crowd.snapshotUrl, FEATURES.crowd.requestTimeoutMs);
       lastFetchAt = Date.now();
-      renderCrowd(snapshot);
-    } catch (error) {
-      lastFetchAt = Date.now();
-      renderCrowd({ updatedAt: null, stores: fallbackStores }, { error: error.name === 'AbortError' ? 'タイムアウト' : error.message });
+      renderCrowd(snapshot, { source: 'live' });
+    } catch (primaryError) {
+      try {
+        const fallback = await fetchJson(FEATURES.crowd.fallbackUrl, FEATURES.crowd.requestTimeoutMs);
+        lastFetchAt = Date.now();
+        renderCrowd(fallback, { source: 'fallback' });
+      } catch {
+        lastFetchAt = Date.now();
+        renderCrowd(
+          { updatedAt: null, stores: fallbackStores },
+          { error: primaryError.name === 'AbortError' ? 'タイムアウト' : primaryError.message }
+        );
+      }
     } finally {
       if (button) {
         button.disabled = false;
