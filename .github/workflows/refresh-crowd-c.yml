@@ -1,0 +1,43 @@
+name: Refresh crowd snapshot C
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '12,27,42,57 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crowd-snapshot-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Refresh crowd snapshot
+        run: node scripts/refresh-crowd-standalone.mjs
+      - name: Publish latest snapshot to crowd-live branch
+        shell: bash
+        run: |
+          cp app/data/crowd.json /tmp/crowd.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/crowd.json app/data/crowd.json
+          git add app/data/crowd.json
+          git commit -m "Latest crowd snapshot"
+          for attempt in 1 2 3; do
+            if git push --force origin HEAD:crowd-live; then exit 0; fi
+            sleep 3
+          done
+          exit 1
