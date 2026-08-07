@@ -2,6 +2,11 @@ name: Refresh crowd snapshot
 
 on:
   workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - '.github/workflows/refresh-crowd.yml'
+      - 'scripts/update-crowd.mjs'
   schedule:
     # 5-minute interval, shifted away from the top of the hour to reduce GitHub Actions queue delays.
     - cron: '2-57/5 * * * *'
