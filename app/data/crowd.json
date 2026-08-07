@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-07T00:16:37.000Z",
+  "updatedAt": "2026-08-07T00:34:17.152Z",
   "timezone": "Asia/Tokyo",
-  "disclaimer": "混雑状況は参考値です。通常営業時間を考慮し、営業時間前の予約枠推定は「営業時間前」と明示します。祝日・臨時営業時間は公式情報をご確認ください。",
+  "disclaimer": "混雑状況は参考値です。くら寿司の日時指定予約枠は店頭待ちとは別に扱い、混雑度へ直接換算しません。各店の通常営業時間も考慮します。",
   "stores": [
     {
       "chain": "sushiro",
@@ -37,18 +37,20 @@
       "chain": "kurasushi",
       "storeName": "くら寿司 豊橋新栄店",
       "method": "reservation_slot",
-      "level": "very_high",
-      "earliestSlot": "17:00",
-      "estimatedMinutes": 360,
-      "label": "かなり混雑（営業時間前）",
-      "detail": "開店 11:00／最短予約 17:00。開店時刻から予約可能時刻まで約360分のため、予約状況から推定しています",
+      "level": "unknown",
+      "earliestSlot": "11:00",
+      "estimatedMinutes": null,
+      "label": "営業時間前（11:00開店）",
+      "detail": "店頭混雑は営業時間前のため不明です。予約枠：最短 11:00ですが、これを店頭混雑度には換算しません。",
       "reservationUrl": "https://shop.kurasushi.co.jp/detail/609",
       "status": "ok",
       "businessState": "before_open",
       "openTime": "11:00",
       "closeTime": "23:00",
       "hoursLabel": "11:00〜23:00",
-      "hoursSourceUrl": "https://shop.kurasushi.co.jp/detail/609"
+      "hoursSourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "reservationLabel": "予約枠：最短 11:00",
+      "reservationDetail": "日時指定の予約枠と、店頭の現在待ち・順番待ちは別の指標です。"
     },
     {
       "chain": "kappasushi",
