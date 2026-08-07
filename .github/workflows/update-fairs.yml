@@ -1,4 +1,4 @@
-name: Update and deploy sushi fairs
+name: Update sushi fairs
 
 on:
   workflow_dispatch:
@@ -7,7 +7,6 @@ on:
     paths:
       - 'scripts/**'
       - 'package.json'
-      - 'package-lock.json'
       - '.github/workflows/update-fairs.yml'
   schedule:
     # 06:17 JST every day (21:17 UTC on previous day)
@@ -15,19 +14,15 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
-  group: sushi-update-and-deploy
+  group: sushi-data-update
   cancel-in-progress: true
 
 jobs:
-  update-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  update:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -56,13 +51,3 @@ jobs:
             git commit -m "Update sushi app data"
             git push
           fi
-
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: './app'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
