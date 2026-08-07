@@ -1,4 +1,4 @@
-name: Refresh crowd snapshot
+name: Refresh crowd snapshot A
 
 on:
   workflow_dispatch:
@@ -6,13 +6,11 @@ on:
     branches: ['main']
     paths:
       - '.github/workflows/refresh-crowd.yml'
+      - '.github/workflows/refresh-crowd-b.yml'
+      - '.github/workflows/refresh-crowd-c.yml'
       - 'scripts/refresh-crowd-standalone.mjs'
   schedule:
-    # Three staggered 15-minute schedules provide an effective 5-minute cadence.
-    # This is more resilient than relying on one high-frequency schedule entry.
     - cron: '2,17,32,47 * * * *'
-    - cron: '7,22,37,52 * * * *'
-    - cron: '12,27,42,57 * * * *'
 
 permissions:
   contents: write
@@ -29,14 +27,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: Refresh crowd snapshot
         run: node scripts/refresh-crowd-standalone.mjs
-
       - name: Publish latest snapshot to crowd-live branch
         shell: bash
         run: |
@@ -48,12 +43,8 @@ jobs:
           cp /tmp/crowd.json app/data/crowd.json
           git add app/data/crowd.json
           git commit -m "Latest crowd snapshot"
-
           for attempt in 1 2 3; do
-            if git push --force origin HEAD:crowd-live; then
-              exit 0
-            fi
-            echo "Push attempt $attempt failed; retrying..."
+            if git push --force origin HEAD:crowd-live; then exit 0; fi
             sleep 3
           done
           exit 1
