@@ -53,7 +53,7 @@
       </div>
       <div id="crowdMode" class="crowd-mode">約5分ごとに最新状況を取得します</div>
       <div id="crowdGrid" class="crowd-grid" aria-live="polite"></div>
-      <p class="crowd-note">GitHub Actionsで約5分ごとに公式予約情報を取得します。「実待ち」は公式順番待ち表示、「予約枠から推定」は最短予約可能時刻からの参考値です。実行遅延が起きる場合があるため、最終判断は各社公式予約画面で確認してください。</p>
+      <p class="crowd-note">各店の通常営業時間を考慮します。営業時間前はその旨を表示し、予約枠から混雑を推定できる場合のみ「かなり混雑（営業時間前）」のように明示します。祝日・臨時営業時間は公式情報をご確認ください。</p>
     </section>
 
     <nav id="filters" class="filters" aria-label="チェーン絞り込み">
@@ -82,7 +82,7 @@
   <footer>公式公開情報をまとめて表示する個人向けビューア</footer>
   <script src="./app.js?v=20260728-0552" type="module"></script>
   <script type="module">
-    import { initCrowd } from './crowd.js?v=20260807-2';
+    import { initCrowd } from './crowd.js?v=20260807-3';
     initCrowd();
   </script>
 </body>
