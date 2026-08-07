@@ -61,8 +61,20 @@ function levelLabel(level) {
   return ({ low: '空き', medium: 'やや混雑', high: '混雑', very_high: 'かなり混雑', unknown: '確認' })[level] || '確認';
 }
 
-function levelIcon(level) {
-  return ({ low: '🟢', medium: '🟡', high: '🟠', very_high: '🔴', unknown: '⚪' })[level] || '⚪';
+function displayStateLabel(store) {
+  if (store.businessState === 'before_open') {
+    return store.level && store.level !== 'unknown'
+      ? `${levelLabel(store.level)}（営業時間前）`
+      : '営業時間前';
+  }
+  if (store.businessState === 'after_close') return '営業時間外';
+  return levelLabel(store.level);
+}
+
+function levelIcon(store) {
+  if (store.businessState === 'before_open' && (!store.level || store.level === 'unknown')) return '🕘';
+  if (store.businessState === 'after_close') return '🌙';
+  return ({ low: '🟢', medium: '🟡', high: '🟠', very_high: '🔴', unknown: '⚪' })[store.level] || '⚪';
 }
 
 function methodLabel(method) {
@@ -114,10 +126,11 @@ function renderCrowd(data, { error = null } = {}) {
 
   grid.innerHTML = stores.map(store => {
     const meta = chainMeta[store.chain] || { name: store.chain || '店舗', dot: '⚪' };
-    const statusClass = `level-${escapeHtml(store.level || 'unknown')}`;
+    const statusClass = `level-${escapeHtml(store.level || 'unknown')} business-${escapeHtml(store.businessState || 'unknown')}`;
     const buttonText = store.method === 'official_link' ? '予約を確認' : '公式で確認';
     const detail = store.detail || '公式予約ページで最新状況をご確認ください';
-    const label = store.label || levelLabel(store.level);
+    const label = store.label || displayStateLabel(store);
+    const hours = store.hoursLabel ? `通常営業時間 ${store.hoursLabel}` : '';
     return `
       <article class="crowd-card ${statusClass}">
         <div class="crowd-card-head">
@@ -128,14 +141,15 @@ function renderCrowd(data, { error = null } = {}) {
           <span class="crowd-method">${escapeHtml(methodLabel(store.method))}</span>
         </div>
         <div class="crowd-status-row">
-          <span class="crowd-level-icon">${levelIcon(store.level)}</span>
+          <span class="crowd-level-icon">${levelIcon(store)}</span>
           <div>
             <b>${escapeHtml(label)}</b>
             <small>${escapeHtml(detail)}</small>
+            ${hours ? `<small>${escapeHtml(hours)}</small>` : ''}
           </div>
         </div>
         <div class="crowd-card-foot">
-          <span>${escapeHtml(levelLabel(store.level))}</span>
+          <span>${escapeHtml(displayStateLabel(store))}</span>
           <a href="${escapeHtml(store.reservationUrl || '#')}" target="_blank" rel="noopener noreferrer">${buttonText} ↗</a>
         </div>
       </article>`;
