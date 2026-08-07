@@ -6,7 +6,9 @@ on:
     paths-ignore:
       - 'scripts/**'
       - '.github/workflows/update-fairs.yml'
+      - '.github/workflows/refresh-crowd.yml'
       - 'app/data/fairs.json'
+      - 'app/data/crowd.json'
   workflow_dispatch:
 
 permissions:
