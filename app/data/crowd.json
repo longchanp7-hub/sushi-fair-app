@@ -1,51 +1,69 @@
 {
-  "updatedAt": "2026-08-07T00:03:11.322Z",
+  "updatedAt": "2026-08-07T00:16:37.000Z",
   "timezone": "Asia/Tokyo",
-  "disclaimer": "混雑状況は参考値です。予約枠からの推定は実際の待ち時間と一致しない場合があります。",
+  "disclaimer": "混雑状況は参考値です。通常営業時間を考慮し、営業時間前の予約枠推定は「営業時間前」と明示します。祝日・臨時営業時間は公式情報をご確認ください。",
   "stores": [
     {
       "chain": "sushiro",
       "storeName": "スシロー 豊橋新栄店",
       "method": "official_link",
       "level": "unknown",
-      "label": "公式予約で確認",
-      "detail": "LINEの公式受付・予約画面を開きます",
+      "label": "営業時間前（11:00開店）",
+      "detail": "LINEの公式受付・予約画面を開きます。通常営業時間 11:00〜23:00",
       "reservationUrl": "https://liff.line.me/1621199246-zJXb0Rx4/LINE-mini/ui/store/reservation/entry/?storeId=179&utm_source=01linemini_shoppage",
-      "status": "link_only"
+      "status": "ok",
+      "businessState": "before_open",
+      "openTime": "11:00",
+      "closeTime": "23:00",
+      "hoursLabel": "11:00〜23:00",
+      "hoursSourceUrl": "https://www.akindo-sushiro.co.jp/shop/detail.php?id=142"
     },
     {
       "chain": "hamazushi",
       "storeName": "はま寿司 豊橋新栄店",
       "method": "official_link",
       "level": "unknown",
-      "label": "公式予約で確認",
-      "detail": "公式アプリで順番待ち・日時指定予約を確認します",
+      "label": "営業時間前（10:00開店）",
+      "detail": "公式アプリで順番待ち・日時指定予約を確認します。通常営業時間 10:00〜23:00",
       "reservationUrl": "https://www.hamazushi.com/app/",
-      "status": "link_only"
+      "status": "ok",
+      "businessState": "before_open",
+      "openTime": "10:00",
+      "closeTime": "23:00",
+      "hoursLabel": "10:00〜23:00",
+      "hoursSourceUrl": "https://maps.hama-sushi.co.jp/jp/detail/4208.html"
     },
     {
       "chain": "kurasushi",
       "storeName": "くら寿司 豊橋新栄店",
       "method": "reservation_slot",
       "level": "very_high",
-      "earliestSlot": "11:00",
-      "estimatedMinutes": 117,
-      "label": "最短 11:00（約117分後）",
-      "detail": "予約可能時刻からの推定で、実際の待ち時間とは異なる場合があります",
+      "earliestSlot": "17:00",
+      "estimatedMinutes": 360,
+      "label": "かなり混雑（営業時間前）",
+      "detail": "開店 11:00／最短予約 17:00。開店時刻から予約可能時刻まで約360分のため、予約状況から推定しています",
       "reservationUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "status": "ok"
+      "status": "ok",
+      "businessState": "before_open",
+      "openTime": "11:00",
+      "closeTime": "23:00",
+      "hoursLabel": "11:00〜23:00",
+      "hoursSourceUrl": "https://shop.kurasushi.co.jp/detail/609"
     },
     {
       "chain": "kappasushi",
       "storeName": "かっぱ寿司 豊橋飯村店",
-      "method": "actual_wait",
-      "level": "low",
-      "waitGroups": 0,
-      "waitMinutes": 0,
-      "label": "待ちなし",
-      "detail": "現在、お待ちのお客様はいません",
+      "method": "official_link",
+      "level": "unknown",
+      "label": "営業時間前（10:30開店）",
+      "detail": "通常営業時間 10:30〜23:00。店頭待ち人数は営業時間前のため混雑判定に使用しません",
       "reservationUrl": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
-      "status": "ok"
+      "status": "ok",
+      "businessState": "before_open",
+      "openTime": "10:30",
+      "closeTime": "23:00",
+      "hoursLabel": "10:30〜23:00",
+      "hoursSourceUrl": "https://www.kappasushi.jp/shop/0220"
     }
   ]
 }
