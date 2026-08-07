@@ -37,6 +37,8 @@ jobs:
       - run: node scripts/apply-store-overrides.mjs
       - name: Refresh Kura data when available
         run: node scripts/fix-kura.mjs || echo "Kura refresh failed; keeping main scraper/fallback data"
+      - name: Clean fair data quality flags
+        run: node scripts/clean-fair-data.mjs
       - name: Refresh crowd fallback snapshot
         run: node scripts/refresh-crowd-standalone.mjs || echo "Crowd snapshot refresh failed; keeping previous crowd data"
 
