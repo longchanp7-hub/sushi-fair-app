@@ -6,24 +6,22 @@ on:
     branches: ['main']
     paths:
       - '.github/workflows/refresh-crowd.yml'
-      - 'scripts/update-crowd.mjs'
-      - 'scripts/refine-crowd.mjs'
+      - 'scripts/refresh-crowd-standalone.mjs'
   schedule:
-    # GitHub Actions minimum interval is 5 minutes. Shift away from minute 0 to reduce queue delays.
-    - cron: '2-57/5 * * * *'
-      timezone: 'Asia/Tokyo'
+    # GitHub Actions allows a minimum interval of 5 minutes.
+    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
   group: crowd-snapshot-refresh
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,13 +31,8 @@ jobs:
         with:
           node-version: '20'
 
-      - run: npm install
-
       - name: Refresh crowd snapshot
-        run: node scripts/update-crowd.mjs
-
-      - name: Refine crowd semantics and probe public waits
-        run: node scripts/refine-crowd.mjs
+        run: node scripts/refresh-crowd-standalone.mjs
 
       - name: Publish latest snapshot to crowd-live branch
         shell: bash
@@ -52,4 +45,12 @@ jobs:
           cp /tmp/crowd.json app/data/crowd.json
           git add app/data/crowd.json
           git commit -m "Latest crowd snapshot"
-          git push --force origin HEAD:crowd-live
+
+          for attempt in 1 2 3; do
+            if git push --force origin HEAD:crowd-live; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying..."
+            sleep 3
+          done
+          exit 1
