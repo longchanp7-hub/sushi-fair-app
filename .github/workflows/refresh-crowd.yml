@@ -7,6 +7,7 @@ on:
     paths:
       - '.github/workflows/refresh-crowd.yml'
       - 'scripts/update-crowd.mjs'
+      - 'scripts/refine-crowd.mjs'
   schedule:
     # 5-minute interval, shifted away from the top of the hour to reduce GitHub Actions queue delays.
     - cron: '2-57/5 * * * *'
@@ -39,6 +40,9 @@ jobs:
 
       - name: Refresh crowd snapshot
         run: node scripts/update-crowd.mjs
+
+      - name: Refine crowd semantics and probe public waits
+        run: node scripts/refine-crowd.mjs
 
       - uses: actions/configure-pages@v5
 
