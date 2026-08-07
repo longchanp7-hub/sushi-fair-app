@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T04:57:30.352Z",
+  "updatedAt": "2026-08-07T04:57:59.999Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -242,10 +242,6 @@
         {
           "name": "純米酒 英勲",
           "price": 880
-        },
-        {
-          "name": "※画像は4人前中とろ、活〆まだい、いか、まぐろ、サーモン、ほたて、赤えび、あわび、とろ煮穴子、いくら、うに、厚焼きたまご",
-          "price": 1700
         }
       ],
       "sourceUrl": "https://www.hamazushi.com/menu/",
@@ -287,8 +283,8 @@
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
       "imageUrl": null,
-      "status": "ok",
-      "message": null
+      "status": "warning",
+      "message": "開催中フェア名は取得できていますが、個別商品の自動取得はできていません。公式ページで確認してください。"
     }
   ]
 }
