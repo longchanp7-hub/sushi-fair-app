@@ -39,6 +39,8 @@ jobs:
         run: node scripts/fix-kura.mjs || echo "Kura refresh failed; keeping main scraper/fallback data"
       - name: Refresh crowd fallback snapshot
         run: node scripts/update-crowd.mjs || echo "Crowd snapshot refresh failed; keeping previous crowd data"
+      - name: Refine crowd semantics and probe public waits
+        run: node scripts/refine-crowd.mjs || echo "Crowd refinement failed; keeping generated crowd data"
 
       - name: Commit updated data when changed
         run: |
