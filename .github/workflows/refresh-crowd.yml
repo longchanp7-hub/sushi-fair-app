@@ -9,28 +9,25 @@ on:
       - 'scripts/update-crowd.mjs'
       - 'scripts/refine-crowd.mjs'
   schedule:
-    # 5-minute interval, shifted away from the top of the hour to reduce GitHub Actions queue delays.
+    # GitHub Actions minimum interval is 5 minutes. Shift away from minute 0 to reduce queue delays.
     - cron: '2-57/5 * * * *'
       timezone: 'Asia/Tokyo'
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages-static-deploy
+  group: crowd-snapshot-refresh
   cancel-in-progress: true
 
 jobs:
-  refresh-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
@@ -44,12 +41,15 @@ jobs:
       - name: Refine crowd semantics and probe public waits
         run: node scripts/refine-crowd.mjs
 
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: './app'
-
-      - name: Deploy latest crowd snapshot
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish latest snapshot to crowd-live branch
+        shell: bash
+        run: |
+          cp app/data/crowd.json /tmp/crowd.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/crowd.json app/data/crowd.json
+          git add app/data/crowd.json
+          git commit -m "Latest crowd snapshot"
+          git push --force origin HEAD:crowd-live
