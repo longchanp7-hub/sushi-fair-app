@@ -1,7 +1,8 @@
 export const FEATURES = {
   crowd: {
     enabled: true,
-    snapshotUrl: './data/crowd.json',
+    snapshotUrl: 'https://raw.githubusercontent.com/longchanp7-hub/sushi-fair-app/crowd-live/app/data/crowd.json',
+    fallbackUrl: './data/crowd.json',
     requestTimeoutMs: 10000,
     refreshOnReturnAfterMs: 60000,
   },
