@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T21:57:35.090Z",
+  "updatedAt": "2026-08-08T21:39:37.239Z",
   "timezone": "Asia/Tokyo",
   "source": "github-actions-snapshot",
   "disclaimer": "混雑状況は参考値です。くら寿司の日時指定予約枠は店頭待ちとは別に扱い、混雑度へ直接換算しません。各店の通常営業時間も考慮します。",
@@ -57,13 +57,13 @@
       "method": "official_link",
       "level": "unknown",
       "label": "営業時間前（10:00開店）",
-      "detail": "通常営業時間 10:00〜23:30。店頭待ち人数は営業時間外のため混雑判定に使用しません",
+      "detail": "通常営業時間 10:00〜23:00。店頭待ち人数は営業時間外のため混雑判定に使用しません",
       "reservationUrl": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
       "status": "ok",
       "businessState": "before_open",
       "openTime": "10:00",
-      "closeTime": "23:30",
-      "hoursLabel": "10:00〜23:30",
+      "closeTime": "23:00",
+      "hoursLabel": "10:00〜23:00",
       "hoursSourceUrl": "https://www.kappasushi.jp/shop/0220"
     }
   ]
