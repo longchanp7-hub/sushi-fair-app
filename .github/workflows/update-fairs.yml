@@ -31,6 +31,10 @@ jobs:
           node-version: '20'
 
       - run: npm install
+      - name: Validate parser rules
+        run: |
+          node scripts/refresh-crowd-standalone.mjs --self-test
+          node scripts/fix-kura.mjs --self-test
       - name: Use Toyohashi Shinsakae stores
         run: node scripts/configure-shinsakae-stores.mjs
       - run: npm run update

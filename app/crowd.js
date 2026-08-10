@@ -135,7 +135,10 @@ function renderCrowd(data, { error = null, source = 'live' } = {}) {
     const buttonText = store.method === 'official_link' ? '予約を確認' : '公式で確認';
     const detail = store.detail || '公式予約ページで最新状況をご確認ください';
     const label = store.label || displayStateLabel(store);
-    const hours = store.hoursLabel ? `通常営業時間 ${store.hoursLabel}` : '';
+    const hoursPrefix = ['special', 'official_override'].includes(store.hoursKind) ? '本日の営業時間' : '通常営業時間';
+    const hours = store.hoursLabel
+      ? `${hoursPrefix} ${store.hoursLabel}${store.hoursNote ? `（${store.hoursNote}）` : ''}`
+      : '';
     const reservation = store.reservationLabel
       ? `<div class="crowd-reservation"><b>${escapeHtml(store.reservationLabel)}</b>${store.reservationDetail ? `<small>${escapeHtml(store.reservationDetail)}</small>` : ''}</div>`
       : '';
