@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10T07:05:37.745Z",
+  "updatedAt": "2026-08-10T07:09:36.321Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -262,9 +262,9 @@
           "price": null
         }
       ],
-      "sourceUrl": "https://www.kurasushi.co.jp/",
+      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": "https://www.kurasushi.co.jp/common/images/logo.svg",
+      "imageUrl": null,
       "status": "warning",
       "message": "開催中フェア名と期間は取得済みですが、個別商品の自動取得はできていません。公式ページで確認してください。"
     },
