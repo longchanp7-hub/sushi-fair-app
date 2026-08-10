@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-10T06:50:44.811Z",
+  "updatedAt": "2026-08-10T07:05:40.319Z",
   "timezone": "Asia/Tokyo",
   "source": "github-actions-snapshot",
-  "disclaimer": "混雑状況は参考値です。くら寿司の日時指定予約枠は店頭待ちとは別に扱い、混雑度へ直接換算しません。各店の通常営業時間も考慮します。",
+  "disclaimer": "実待ちを公式公開している店舗だけ待ち時間・待ち組数を表示します。くら寿司の日時指定予約枠は店頭待ちとは別に扱い、混雑度へ換算しません。営業時間外の0組表示も混雑判定に使用しません。",
   "stores": [
     {
       "chain": "sushiro",
@@ -10,13 +10,15 @@
       "method": "official_link",
       "level": "unknown",
       "label": "公式予約で確認",
-      "detail": "スシロー公式アプリには現在待ち時間の表示がありますが、公開ページから自動取得できる値は確認できていません。",
+      "detail": "公式画面には待ち状況欄がありますが、公開HTMLから店舗全体の待ち時間を安定取得できる値は確認できていません。",
       "reservationUrl": "https://liff.line.me/1621199246-zJXb0Rx4/LINE-mini/ui/store/reservation/entry/?storeId=179&utm_source=01linemini_shoppage",
       "status": "link_only",
       "businessState": "open",
       "openTime": "11:00",
       "closeTime": "23:00",
       "hoursLabel": "11:00〜23:00",
+      "hoursKind": "regular",
+      "hoursNote": null,
       "hoursSourceUrl": "https://www.akindo-sushiro.co.jp/shop/detail.php?id=142"
     },
     {
@@ -25,13 +27,15 @@
       "method": "official_link",
       "level": "unknown",
       "label": "公式予約で確認",
-      "detail": "はま寿司は順番待ち・時間指定予約がログイン後の機能中心で、公開ページから現在待ちを自動取得できる値は確認できていません。",
+      "detail": "順番待ち・時間指定予約がログイン後の機能中心で、公開ページから現在待ちを安定取得できる値は確認できていません。",
       "reservationUrl": "https://www.hamazushi.com/app/",
       "status": "link_only",
       "businessState": "open",
       "openTime": "10:00",
       "closeTime": "23:00",
       "hoursLabel": "10:00〜23:00",
+      "hoursKind": "regular",
+      "hoursNote": null,
       "hoursSourceUrl": "https://maps.hama-sushi.co.jp/jp/detail/4208.html"
     },
     {
@@ -39,11 +43,11 @@
       "storeName": "くら寿司 豊橋新栄店",
       "method": "reservation_slot",
       "level": "unknown",
-      "earliestSlot": "16:00",
+      "earliestSlot": "16:20",
       "estimatedMinutes": null,
       "label": "店頭混雑は取得できません",
-      "detail": "予約枠：最短 16:00。日時指定予約の空き状況だけでは、現在の店頭待ち時間は判断しません。",
-      "reservationLabel": "予約枠：最短 16:00",
+      "detail": "予約枠：最短 16:20。日時指定予約の空き状況だけでは、現在の店頭待ち時間は判断しません。",
+      "reservationLabel": "予約枠：最短 16:20",
       "reservationDetail": "日時指定の予約枠と、店頭の現在待ち・順番待ちは別の指標です。",
       "reservationUrl": "https://shop.kurasushi.co.jp/detail/609",
       "status": "ok",
@@ -51,6 +55,8 @@
       "openTime": "11:00",
       "closeTime": "23:00",
       "hoursLabel": "11:00〜23:00",
+      "hoursKind": "official",
+      "hoursNote": "公式店舗ページから取得",
       "hoursSourceUrl": "https://shop.kurasushi.co.jp/detail/609"
     },
     {
@@ -58,17 +64,19 @@
       "storeName": "かっぱ寿司 豊橋飯村店",
       "method": "actual_wait",
       "level": "low",
-      "waitGroups": 0,
       "waitMinutes": 0,
+      "waitGroups": null,
       "label": "待ちなし",
       "detail": "現在、お待ちのお客様はいません",
       "reservationUrl": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
       "status": "ok",
       "businessState": "open",
-      "openTime": "10:30",
-      "closeTime": "23:00",
-      "hoursLabel": "10:30〜23:00",
-      "hoursSourceUrl": "https://www.kappasushi.jp/shop/0220"
+      "openTime": "10:00",
+      "closeTime": "23:30",
+      "hoursLabel": "10:00〜23:30",
+      "hoursKind": "special",
+      "hoursNote": "お盆期間は土曜日の営業時間に準拠",
+      "hoursSourceUrl": "https://www.kappasushi.jp/202608/oshirase"
     }
   ]
 }
