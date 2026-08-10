@@ -2,11 +2,8 @@ name: Probe crowd sources
 
 on:
   workflow_dispatch:
-  push:
-    branches: ['main']
-    paths:
-      - 'scripts/probe-crowd-sources.mjs'
-      - '.github/workflows/probe-crowd-sources.yml'
+  schedule:
+    - cron: '4-59/5 * * * *'
 
 permissions:
   contents: write
