@@ -1,0 +1,1373 @@
+{
+  "generatedAt": "2026-08-10T07:42:46.191Z",
+  "purpose": "One-time browser/network inspection of public official pages without login credentials or persisted cookies.",
+  "results": [
+    {
+      "id": "sushiro-entry",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/store/reservation/entry/?storeId=179",
+      "finalUrl": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E",
+      "title": "LINE Login",
+      "navigationError": null,
+      "bodyText": "LINE alert 400 Bad Request Bad Request. © LY Corporation LINEヤフー株式会社のリンク LINEについてプライバシーポリシー利用規約",
+      "requests": [
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/store/reservation/entry/?storeId=179"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://code.jquery.com/jquery-3.4.1.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/liff/edge/2/sdk.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://linemini.akindo-sushiro.co.jp/js/linemini/app.js?202608100741=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://linemini.akindo-sushiro.co.jp/js/newRelic.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&gtm=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.google-analytics.com/analytics.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/liff/edge/2/non-ios-extensions_2_22_0.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://api.line.me/liff/v2/apps/1621199246-zJXb0Rx4/contextToken"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://js-agent.newrelic.com/nr-spa-1.278.3.min.js"
+        },
+        {
+          "method": "POST",
+          "resourceType": "xhr",
+          "url": "https://bam.nr-data.net/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E&af=%3Credacted%3E&be=%3Credacted%3E&fe=%3Credacted%3E&dc=%3Credacted%3E&fsh=%3Credacted%3E&perf=%3Credacted%3E&fp=%3Credacted%3E&fcp=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://js-agent.newrelic.com/nr-spa-recorder-1.278.3.min.js"
+        },
+        {
+          "method": "POST",
+          "resourceType": "xhr",
+          "url": "https://bam.nr-data.net/events/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://js-agent.newrelic.com/nr-spa-compressor-1.278.3.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://liffsdk.line-scdn.net/xlt/manifest.json"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://liffsdk.line-scdn.net/xlt/messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://access.line.me/liff/v1/authorize?app_id=%3Credacted%3E&state=%3Credacted%3E&response_type=%3Credacted%3E&code_challenge_method=%3Credacted%3E&code_challenge=%3Credacted%3E&liff_sdk_version=%3Credacted%3E&redirect_uri=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/polyfills-ZhJJIC5R.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://access.line.me/oauth2/v2.1/messages"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/commonError-B2JYF04y.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/common-CzyuEHZG.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/modulepreload-polyfill-yj_LhEhV.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cButton01-CuI6iDB4.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/CompareVersion-CeJ6Xyli.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cExternalLinkModal-Tfrjp38R.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/createLayoutWrapper-DtUjOUJn.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/Constant-BLc9ctkG.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/lFooter01-DPK-GClf.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cLogo01-CeBxgkGK.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/lContents01-Bdvo5_Pu.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/uLayoutMixin-CH8-buNi.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://d.line-scdn.net/n/_4/torimochi.js/public/v1/release/stable/min/torimochi.js"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "resourceType": "document",
+          "contentType": "text/html;charset=UTF-8",
+          "url": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/store/reservation/entry/?storeId=179",
+          "snippet": "el=\"stylesheet\" type=\"text/css\" href=\"/css/linemini/style.css?202608100741\" /> <link rel=\"icon\" href=\"/image/linemini/logo.png?20250424\" /> </head> <body> <span id=\"liff-id\" style=\"display: none\">1621199246-zJXb0Rx4</span> <div class=\"overlay\" style=\"display: none;\"></div> <aside id=\"aside\" class=\"\"> <h2>その他・設定</h2> <h3>お知らせ</h3> <div class=\"list-group\"> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/campaign/\" class=\"list-group-item\">おすすめ・ニュース</a> </div> <h3>受付・予約</h3> <div class=\"list-group\"> <a id=\"side-store\" href=\"/LINE-mini/ui/stores/area/\" class=\"list-group-item\">お店を探して受付・予約する</a> <a href=\"/LINE-mini/ui/ticket-menu/\" class=\"list-group-item\">受付・予約状況</a> <!-- <a th:href=\"@{/LINE-mini/ui/mypage/}\" class=\"list-group-item maido-link\">まいどポイント</a>--> </div> <h3>メニュー情報</h3> <div class=\"list-group\"> <a id=\"side-menu\" href=\"/LINE-mini/ui/menu-table/\" class=\"list-group-item\">メニュー</a> <a id=\"allergy\" href=\"/LINE-mini/ui/menu-table/allergy/\" class=\"list-group-item\">アレルギー情報</a> <a id=\"origin\" href=\"/LINE-mini/ui/menu-table/material-origin/\" class=\"list-group-item\">原産地情報</a> </div> <!-- <div class=\"member-block\" style=\"display: none\"> <h3>会員情報</h3> <div class=\"list-group\"> <a th:href=\"@{/LINE-mini/ui/login/}\" class=\"list-group-item\">会員連携</a> </div> </div> <div class=\"member-checkout\" style=\"display: none\"> <h3>会員情報</h3> <div class=\"list-group\"> <a href=\"#\" class=\"list-group-item\" id=\"sidenav-member-checkout\">会員連携解除</a> </div> </div> --> <h3>アプリケーションについて</h3> <div class=\"list-group\"> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/other/terms.html\" class=\"list-group-item\">利用規約</a> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/other/privacy.html\" class=\"list-group-item\">プライバシーポリシー</a> </div> </aside> <article id=\"article\"> <div class=\"container\"> <br> <div class=\"panel-title\">受付・予約</div> <div id=\"ticket-list-block\" class=\"yoyaku-list\" style=\"display: none\"> <div class=\"panel panel-default\"> <div class=\"panel-head\">受付・予約番号</div> <div class=\"panel-body\"> <ul id=\"ticket-list\" class=\"ticket-list\"></ul> </div> </div> <div class=\"more-see\"><a href=\"/LINE-mini/ui/ticket-menu/\">もっと見る</a></div> </div> <div class=\"panel panel-default panel-tenpo-select\"> <input type=\"hidden\" id=\"storeId\" value=\"179\"></input> <input type=\"hidden\" id=\"storeStatus\" value=\"OPEN\"></input> <input type=\"hidden\" id=\"netTicketStatus\" value=\"ONLINE\"></input> <input type=\"hidden\" id=\"maxCustomersMobileCounter\" value=\"18\"></input> <input type=\"hidden\" id=\"maxCustomersMobileTable\" value=\"18\"></input> <input type=\"hidden\" id=\"maxCustomersReservationCounter\" value=\"18\"></input> <input type=\"hidden\" id=\"maxCustomersReservationTable\" value=\"18\"></input> <input type=\"hidden\" id=\"minCustomersMobileCounter\" value=\"1\"></input> <input type=\"hidden\" id=\"minCustomersMobileTable\" value=\"1\"></input> <input type=\"hidden\" id=\"minCustomersReservationCounter\" value=\"1\"></input> <input type=\"hidden\" id=\"min"
+        },
+        {
+          "status": 200,
+          "resourceType": "image",
+          "contentType": "image/png",
+          "url": "https://linemini.akindo-sushiro.co.jp/image/linemini/icon_store.png?20250424=%3Credacted%3E"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 200,
+          "resourceType": "xhr",
+          "contentType": "application/json",
+          "url": "https://bam.nr-data.net/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E&af=%3Credacted%3E&be=%3Credacted%3E&fe=%3Credacted%3E&dc=%3Credacted%3E&fsh=%3Credacted%3E&perf=%3Credacted%3E&fp=%3Credacted%3E&fcp=%3Credacted%3E",
+          "snippet": "{\"stn\":0,\"err\":1,\"ins\":1,\"spa\":1,\"sr\":1,\"srs\":2,\"st\":1,\"sts\":2,\"log\":0,\"logapi\":0,\"app\":{\"agents\":[{\"entityGuid\":\"NjIyOTczM3xCUk9XU0VSfEFQUExJQ0FUSU9OfDEzODYyMzk1NTc\"}],\"nrServerTime\":1786347672949}}"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://api.line.me/liff/v2/apps/1621199246-zJXb0Rx4/contextToken",
+          "snippet": "{\"contextToken\":\"<jwt redacted>\"}"
+        },
+        {
+          "status": 200,
+          "resourceType": "xhr",
+          "contentType": "image/gif",
+          "url": "https://bam.nr-data.net/events/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://liffsdk.line-scdn.net/xlt/manifest.json",
+          "snippet": "{\"createAt\":1737622217220,\"languages\":{\"de\":\"messages_de.b75f1329a2f9ae4b2aeb36eab44d83fb.json\",\"en\":\"messages_en.405289141c4efaeb44c1a460642c6ab0.json\",\"es\":\"messages_es.860b95623e0680826232e7ff4319e12f.json\",\"fr\":\"messages_fr.c9d2cdee9ef3042d89170da9e4931afd.json\",\"id\":\"messages_id.fd1d366c8ff061ada05f18e314115704.json\",\"it\":\"messages_it.a357ae292e1c5716d4094d3f530f59d0.json\",\"ja\":\"messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json\",\"ko\":\"messages_ko.ffb6a4cccfe2715837d08d16042cf8e1.json\",\"pt-BR\":\"messages_pt-BR.49a72183b323ffd98cb67e13c67d606d.json\",\"ru\":\"messages_ru.f628e4b4b30d209ea6c6781697ae2aa2.json\",\"th\":\"messages_th.7afa9cb30405f1251edecc41476e5f74.json\",\"tr\":\"messages_tr.e34e3ca537ec3ffe18f0038c87998e3a.json\",\"vi\":\"messages_vi.88d1c5d29dfb6aa8efab9d850c9438c8.json\",\"zh-CN\":\"messages_zh-CN.97037c10284a73d15b350b75d4252591.json\",\"zh-TW\":\"messages_zh-TW.ad68754fc7d0af50fb9ce13ffc808726.json\"}}"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://liffsdk.line-scdn.net/xlt/messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json",
+          "snippet": "{ \"alert.android.extBrowser.autoLoginWorkaround.button.text\": \"続行\", \"alert.android.extBrowser.autoLoginWorkaround.desc\": \"[続行]をタップしてサービスをご利用ください。\", \"alert.android.extBrowser.autoLoginWorkaround.title\": \"ログインしました\" }"
+        },
+        {
+          "status": 302,
+          "resourceType": "document",
+          "contentType": "",
+          "url": "https://access.line.me/liff/v1/authorize?app_id=%3Credacted%3E&state=%3Credacted%3E&response_type=%3Credacted%3E&code_challenge_method=%3Credacted%3E&code_challenge=%3Credacted%3E&liff_sdk_version=%3Credacted%3E&redirect_uri=%3Credacted%3E"
+        },
+        {
+          "status": 400,
+          "resourceType": "document",
+          "contentType": "text/html;charset=UTF-8",
+          "url": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E",
+          "snippet": "<!DOCTYPE html> <html dir=\"ltr\" lang=\"ja_JP\"> <head> <script type=\"module\" crossorigin src=\"https://static.line-scdn.net/line_web_login/edge/dist/assets/polyfills-ZhJJIC5R.js\"></script> <meta charset=\"UTF-8\"> <meta name=\"robots\" content=\"noindex\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\"> <title>LINE Login</title> <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"https://vos.line-scdn.net/login-web/img/favicon.ico\"> <link rel=\"icon\" type=\"image/x-icon\" sizes=\"32x32\" href=\"https://vos.line-scdn.net/login-web/img/favicon-32x32.png\"> <link rel=\"icon\" type=\"image/x-icon\" sizes=\"16x16\" href=\"https://vos.line-scdn.net/login-web/img/favicon-16x16.png\"> <link rel=\"apple-touch-icon-precomposed\" href=\"https://vos.line-scdn.net/login-web/img/apple-touch-icon-precomposed.png\"> <script>/* analytics */ (function(g,d){ var v='release/stable'; g._trmq=[];g._trm=function(){g._trmq.push(arguments)}; g.onerror=function(m,f,l,c){g._trm('send','exception',m,f,l,c)}; var h=location.protocol==='https:'?'https://d.line-scdn.net':'http://d.line-cdn.net'; var s=d.createElement('script');s.async=1; s.src=h+'/n/_4/torimochi.js/public/v1/'+v+'/min/torimochi.js';"
+        },
+        {
+          "status": 200,
+          "resourceType": "image",
+          "contentType": "image/gif",
+          "url": "https://torimochi.line-apps.com/1/req?cid=%3Credacted%3E&threshold=%3Credacted%3E&eventType=%3Credacted%3E&timestamp=%3Credacted%3E&logVersion=%3Credacted%3E&productKey=%3Credacted%3E&productVersion=%3Credacted%3E&url=%3Credacted%3E&host=%3Credacted%3E&path=%3Credacted%3E&query=%3Credacted%3E&hash=%3Credacted%3E&referrer=%3Credacted%3E&userId=%3Credacted%3E&sessionId=%3Credacted%3E&sessionPath=%3Credacted%3E&sessionQuery=%3Credacted%3E&sessionParams=%3Credacted%3E&sessionTime=%3Credacted%3E&sessionDuration=%3Credacted%3E&touchX=%3Credacted%3E&touchY=%3Credacted%3E&scrollX=%3Credacted%3E&scrollY=%3Credacted%3E&windowX=%3Credacted%3E&windowY=%3Credacted%3E&targets=%3Credacted%3E&content=%3Credacted%3E"
+        }
+      ],
+      "resourceUrls": [],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "[WARN] liff.init() was called with a current URL that is not related to the endpoint URL. https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/store/reservation/entry/?storeId=179 is not under https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/top"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 400 ()"
+        }
+      ]
+    },
+    {
+      "id": "sushiro-area",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/stores/area/?storeId=179",
+      "finalUrl": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E",
+      "title": "LINE Login",
+      "navigationError": null,
+      "bodyText": "LINE alert 400 Bad Request Bad Request. © LY Corporation LINEヤフー株式会社のリンク LINEについてプライバシーポリシー利用規約",
+      "requests": [
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/stores/area/?storeId=179"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&gtm=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.google-analytics.com/analytics.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://code.jquery.com/jquery-3.4.1.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/liff/edge/2/sdk.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://linemini.akindo-sushiro.co.jp/js/linemini/app.js?202608100741=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://linemini.akindo-sushiro.co.jp/js/newRelic.js"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://www.akindo-sushiro.co.jp/apps/shop/?storeId=179"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/liff/edge/2/non-ios-extensions_2_22_0.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://api.line.me/liff/v2/apps/1621199246-zJXb0Rx4/contextToken"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://liffsdk.line-scdn.net/xlt/manifest.json"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://liffsdk.line-scdn.net/xlt/messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://access.line.me/liff/v1/authorize?app_id=%3Credacted%3E&state=%3Credacted%3E&response_type=%3Credacted%3E&code_challenge_method=%3Credacted%3E&code_challenge=%3Credacted%3E&liff_sdk_version=%3Credacted%3E&redirect_uri=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/polyfills-ZhJJIC5R.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://access.line.me/oauth2/v2.1/messages"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/commonError-B2JYF04y.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/common-CzyuEHZG.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/modulepreload-polyfill-yj_LhEhV.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cButton01-CuI6iDB4.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/CompareVersion-CeJ6Xyli.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cExternalLinkModal-Tfrjp38R.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/createLayoutWrapper-DtUjOUJn.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/Constant-BLc9ctkG.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/lFooter01-DPK-GClf.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cLogo01-CeBxgkGK.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/lContents01-Bdvo5_Pu.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/uLayoutMixin-CH8-buNi.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://d.line-scdn.net/n/_4/torimochi.js/public/v1/release/stable/min/torimochi.js"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "resourceType": "document",
+          "contentType": "text/html;charset=UTF-8",
+          "url": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/stores/area/?storeId=179",
+          "snippet": "=\"text/css\" href=\"/css/linemini/style.css?202608100741\" /> <link rel=\"icon\" href=\"/image/linemini/logo.png?20250424\" /> </head> <body class=\"iframe-page\"> <span id=\"liff-id\" style=\"display: none\">1621199246-zJXb0Rx4</span> <div class=\"overlay\" style=\"display: none;\"></div> <aside id=\"aside\" class=\"\"> <h2>その他・設定</h2> <h3>お知らせ</h3> <div class=\"list-group\"> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/campaign/\" class=\"list-group-item\">おすすめ・ニュース</a> </div> <h3>受付・予約</h3> <div class=\"list-group\"> <a id=\"side-store\" href=\"/LINE-mini/ui/stores/area/\" class=\"list-group-item\">お店を探して受付・予約する</a> <a href=\"/LINE-mini/ui/ticket-menu/\" class=\"list-group-item\">受付・予約状況</a> <!-- <a th:href=\"@{/LINE-mini/ui/mypage/}\" class=\"list-group-item maido-link\">まいどポイント</a>--> </div> <h3>メニュー情報</h3> <div class=\"list-group\"> <a id=\"side-menu\" href=\"/LINE-mini/ui/menu-table/\" class=\"list-group-item\">メニュー</a> <a id=\"allergy\" href=\"/LINE-mini/ui/menu-table/allergy/\" class=\"list-group-item\">アレルギー情報</a> <a id=\"origin\" href=\"/LINE-mini/ui/menu-table/material-origin/\" class=\"list-group-item\">原産地情報</a> </div> <!-- <div class=\"member-block\" style=\"display: none\"> <h3>会員情報</h3> <div class=\"list-group\"> <a th:href=\"@{/LINE-mini/ui/login/}\" class=\"list-group-item\">会員連携</a> </div> </div> <div class=\"member-checkout\" style=\"display: none\"> <h3>会員情報</h3> <div class=\"list-group\"> <a href=\"#\" class=\"list-group-item\" id=\"sidenav-member-checkout\">会員連携解除</a> </div> </div> --> <h3>アプリケーションについて</h3> <div class=\"list-group\"> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/other/terms.html\" class=\"list-group-item\">利用規約</a> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/other/privacy.html\" class=\"list-group-item\">プライバシーポリシー</a> </div> </aside> <article id=\"article\"> <div class=\"container\"> <!-- <div th:replace=\"/linemini/common/flowbar::flowbar('1')\"></div> --> <div class = 'stores-area-waittime' style=\"display: none;\"> <div class=\"status-item\"> <div class=\"stores-area-label\" style=\"font-weight: bold;\">現在の<br>待ち状況</div> </div> <div class=\"status-item\"> <div class=\"stores-area-label\">来店予約</div> <div class=\"stores-area-value reservation\"> <span class='waiting-group'></span><span class='waiting-time'></span> </div> </div> <div class=\"status-item\"> <div class=\"stores-area-label\">お持ち帰り</div> <div class=\"stores-area-value takeout\">約<span class='takeout-time' style=\"color:red; font-size: 14px;\"></span>分</div> </div> </div> <div class=\"\" style=\"margin-bottom:30px; margin-top:10px; text-align:center;\"> <a id=\"entry-btn\" class=\"btn btn-success\" style=\"display: none; width: 85%\">受付・予約</a> <!-- <a id=\"rsv-btn\" class=\"btn btn-success square\" style=\"display: none; margin-left: 5px;\">後から行く【予約】</a> --> </div> <div class=\"loading\"> <span class=\"circle\"></span> </div> <div class=\"iframe-wrap has-flowbar\"> <input type=\"hidden\" id=\"iframe_url\" value=\"https://www.akindo-sushiro.co.jp/apps/shop/\"></input> <iframe i"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://api.line.me/liff/v2/apps/1621199246-zJXb0Rx4/contextToken",
+          "snippet": "{\"contextToken\":\"<jwt redacted>\"}"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://liffsdk.line-scdn.net/xlt/manifest.json",
+          "snippet": "{\"createAt\":1737622217220,\"languages\":{\"de\":\"messages_de.b75f1329a2f9ae4b2aeb36eab44d83fb.json\",\"en\":\"messages_en.405289141c4efaeb44c1a460642c6ab0.json\",\"es\":\"messages_es.860b95623e0680826232e7ff4319e12f.json\",\"fr\":\"messages_fr.c9d2cdee9ef3042d89170da9e4931afd.json\",\"id\":\"messages_id.fd1d366c8ff061ada05f18e314115704.json\",\"it\":\"messages_it.a357ae292e1c5716d4094d3f530f59d0.json\",\"ja\":\"messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json\",\"ko\":\"messages_ko.ffb6a4cccfe2715837d08d16042cf8e1.json\",\"pt-BR\":\"messages_pt-BR.49a72183b323ffd98cb67e13c67d606d.json\",\"ru\":\"messages_ru.f628e4b4b30d209ea6c6781697ae2aa2.json\",\"th\":\"messages_th.7afa9cb30405f1251edecc41476e5f74.json\",\"tr\":\"messages_tr.e34e3ca537ec3ffe18f0038c87998e3a.json\",\"vi\":\"messages_vi.88d1c5d29dfb6aa8efab9d850c9438c8.json\",\"zh-CN\":\"messages_zh-CN.97037c10284a73d15b350b75d4252591.json\",\"zh-TW\":\"messages_zh-TW.ad68754fc7d0af50fb9ce13ffc808726.json\"}}"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://liffsdk.line-scdn.net/xlt/messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json",
+          "snippet": "{ \"alert.android.extBrowser.autoLoginWorkaround.button.text\": \"続行\", \"alert.android.extBrowser.autoLoginWorkaround.desc\": \"[続行]をタップしてサービスをご利用ください。\", \"alert.android.extBrowser.autoLoginWorkaround.title\": \"ログインしました\" }"
+        },
+        {
+          "status": 302,
+          "resourceType": "document",
+          "contentType": "",
+          "url": "https://access.line.me/liff/v1/authorize?app_id=%3Credacted%3E&state=%3Credacted%3E&response_type=%3Credacted%3E&code_challenge_method=%3Credacted%3E&code_challenge=%3Credacted%3E&liff_sdk_version=%3Credacted%3E&redirect_uri=%3Credacted%3E"
+        },
+        {
+          "status": 400,
+          "resourceType": "document",
+          "contentType": "text/html;charset=UTF-8",
+          "url": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E",
+          "snippet": "<!DOCTYPE html> <html dir=\"ltr\" lang=\"ja_JP\"> <head> <script type=\"module\" crossorigin src=\"https://static.line-scdn.net/line_web_login/edge/dist/assets/polyfills-ZhJJIC5R.js\"></script> <meta charset=\"UTF-8\"> <meta name=\"robots\" content=\"noindex\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\"> <title>LINE Login</title> <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"https://vos.line-scdn.net/login-web/img/favicon.ico\"> <link rel=\"icon\" type=\"image/x-icon\" sizes=\"32x32\" href=\"https://vos.line-scdn.net/login-web/img/favicon-32x32.png\"> <link rel=\"icon\" type=\"image/x-icon\" sizes=\"16x16\" href=\"https://vos.line-scdn.net/login-web/img/favicon-16x16.png\"> <link rel=\"apple-touch-icon-precomposed\" href=\"https://vos.line-scdn.net/login-web/img/apple-touch-icon-precomposed.png\"> <script>/* analytics */ (function(g,d){ var v='release/stable'; g._trmq=[];g._trm=function(){g._trmq.push(arguments)}; g.onerror=function(m,f,l,c){g._trm('send','exception',m,f,l,c)}; var h=location.protocol==='https:'?'https://d.line-scdn.net':'http://d.line-cdn.net'; var s=d.createElement('script');s.async=1; s.src=h+'/n/_4/torimochi.js/public/v1/'+v+'/min/torimochi.js';"
+        }
+      ],
+      "resourceUrls": [],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "[WARN] liff.init() was called with a current URL that is not related to the endpoint URL. https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/stores/area/?storeId=179 is not under https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/top"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 400 ()"
+        }
+      ]
+    },
+    {
+      "id": "sushiro-localticket",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/localticket/stores/?storeId=179",
+      "finalUrl": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E",
+      "title": "LINE Login",
+      "navigationError": null,
+      "bodyText": "LINE alert 400 Bad Request Bad Request. © LY Corporation LINEヤフー株式会社のリンク LINEについてプライバシーポリシー利用規約",
+      "requests": [
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/localticket/stores/?storeId=179"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://code.jquery.com/jquery-3.4.1.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/liff/edge/2/sdk.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://linemini.akindo-sushiro.co.jp/js/linemini/app.js?202608100741=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://linemini.akindo-sushiro.co.jp/js/newRelic.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&gtm=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.google-analytics.com/analytics.js"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://js-agent.newrelic.com/nr-spa-1.278.3.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/liff/edge/2/non-ios-extensions_2_22_0.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://api.line.me/liff/v2/apps/1621199246-zJXb0Rx4/contextToken"
+        },
+        {
+          "method": "POST",
+          "resourceType": "xhr",
+          "url": "https://bam.nr-data.net/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E&af=%3Credacted%3E&be=%3Credacted%3E&fe=%3Credacted%3E&dc=%3Credacted%3E&fsh=%3Credacted%3E&perf=%3Credacted%3E&fp=%3Credacted%3E&fcp=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://js-agent.newrelic.com/nr-spa-recorder-1.278.3.min.js"
+        },
+        {
+          "method": "POST",
+          "resourceType": "xhr",
+          "url": "https://bam.nr-data.net/events/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://js-agent.newrelic.com/nr-spa-compressor-1.278.3.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://liffsdk.line-scdn.net/xlt/manifest.json"
+        },
+        {
+          "method": "GET",
+          "resourceType": "fetch",
+          "url": "https://liffsdk.line-scdn.net/xlt/messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://access.line.me/liff/v1/authorize?app_id=%3Credacted%3E&state=%3Credacted%3E&response_type=%3Credacted%3E&code_challenge_method=%3Credacted%3E&code_challenge=%3Credacted%3E&liff_sdk_version=%3Credacted%3E&redirect_uri=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/polyfills-ZhJJIC5R.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://access.line.me/oauth2/v2.1/messages"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/commonError-B2JYF04y.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/common-CzyuEHZG.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/modulepreload-polyfill-yj_LhEhV.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cButton01-CuI6iDB4.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/CompareVersion-CeJ6Xyli.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cExternalLinkModal-Tfrjp38R.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/createLayoutWrapper-DtUjOUJn.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/Constant-BLc9ctkG.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/lFooter01-DPK-GClf.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/cLogo01-CeBxgkGK.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/lContents01-Bdvo5_Pu.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://static.line-scdn.net/line_web_login/edge/dist/assets/uLayoutMixin-CH8-buNi.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://d.line-scdn.net/n/_4/torimochi.js/public/v1/release/stable/min/torimochi.js"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "resourceType": "document",
+          "contentType": "text/html;charset=UTF-8",
+          "url": "https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/localticket/stores/?storeId=179",
+          "snippet": "el=\"stylesheet\" type=\"text/css\" href=\"/css/linemini/style.css?202608100741\" /> <link rel=\"icon\" href=\"/image/linemini/logo.png?20250424\" /> </head> <body> <span id=\"liff-id\" style=\"display: none\">1621199246-zJXb0Rx4</span> <div class=\"overlay\" style=\"display: none;\"></div> <aside id=\"aside\" class=\"\"> <h2>その他・設定</h2> <h3>お知らせ</h3> <div class=\"list-group\"> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/campaign/\" class=\"list-group-item\">おすすめ・ニュース</a> </div> <h3>受付・予約</h3> <div class=\"list-group\"> <a id=\"side-store\" href=\"/LINE-mini/ui/stores/area/\" class=\"list-group-item\">お店を探して受付・予約する</a> <a href=\"/LINE-mini/ui/ticket-menu/\" class=\"list-group-item\">受付・予約状況</a> <!-- <a th:href=\"@{/LINE-mini/ui/mypage/}\" class=\"list-group-item maido-link\">まいどポイント</a>--> </div> <h3>メニュー情報</h3> <div class=\"list-group\"> <a id=\"side-menu\" href=\"/LINE-mini/ui/menu-table/\" class=\"list-group-item\">メニュー</a> <a id=\"allergy\" href=\"/LINE-mini/ui/menu-table/allergy/\" class=\"list-group-item\">アレルギー情報</a> <a id=\"origin\" href=\"/LINE-mini/ui/menu-table/material-origin/\" class=\"list-group-item\">原産地情報</a> </div> <!-- <div class=\"member-block\" style=\"display: none\"> <h3>会員情報</h3> <div class=\"list-group\"> <a th:href=\"@{/LINE-mini/ui/login/}\" class=\"list-group-item\">会員連携</a> </div> </div> <div class=\"member-checkout\" style=\"display: none\"> <h3>会員情報</h3> <div class=\"list-group\"> <a href=\"#\" class=\"list-group-item\" id=\"sidenav-member-checkout\">会員連携解除</a> </div> </div> --> <h3>アプリケーションについて</h3> <div class=\"list-group\"> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/other/terms.html\" class=\"list-group-item\">利用規約</a> <a href=\"/LINE-mini/ui/external-view/?target=https://www.akindo-sushiro.co.jp/apps/other/privacy.html\" class=\"list-group-item\">プライバシーポリシー</a> </div> </aside> <article id=\"article\"> <div class=\"main-content\"> <div class=\"panel-title\">店舗を選ぶ</div> <div class=\"panel-title\" style=\"margin:40px 0 20px\">近くの店舗一覧</div> <div class=\"content-wrap\"> <div class=\"store-list\"></div> <p id=\"location-error-msg\" style=\"display: none\">位置情報設定を有効にしてください。<br/>有効にすると近隣の店舗が表示されます。</p> </div> </div> <div class=\"bottom-area\"></div> </article> <div id=\"alertDialog\" class=\"modal fade\" data-backdrop=\"static\" data-keyboard=\"false\" role=\"dialog\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"> <h4 class=\"modal-title\" id=\"alertTitle\"></h4> </div> <div class=\"modal-body\"> <p id=\"alertMessage\"></p> </div> <div class=\"modal-footer\"> <button type=\"button\" class=\"btn btn-outline-primary btn-yes\" id=\"okAlert\">はい</button> </div> </div> </div> </div> <div id=\"confirmDialog\" class=\"modal fade\" data-backdrop=\"static\" data-keyboard=\"false\" role=\"dialog\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"> <h4 class=\"modal-title\" id=\"confirmTitle\"></h4> </div> <div class=\"modal-body\"> <p id=\"confirmMessage\"></p> </div> <div class=\"modal-footer\"> <div class=\"\" "
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 200,
+          "resourceType": "xhr",
+          "contentType": "application/json",
+          "url": "https://bam.nr-data.net/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E&af=%3Credacted%3E&be=%3Credacted%3E&fe=%3Credacted%3E&dc=%3Credacted%3E&fsh=%3Credacted%3E&perf=%3Credacted%3E&fp=%3Credacted%3E&fcp=%3Credacted%3E",
+          "snippet": "{\"stn\":0,\"err\":1,\"ins\":1,\"spa\":1,\"sr\":1,\"srs\":2,\"st\":1,\"sts\":2,\"log\":0,\"logapi\":0,\"app\":{\"agents\":[{\"entityGuid\":\"NjIyOTczM3xCUk9XU0VSfEFQUExJQ0FUSU9OfDEzODYyMzk1NTc\"}],\"nrServerTime\":1786347698691}}"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://api.line.me/liff/v2/apps/1621199246-zJXb0Rx4/contextToken",
+          "snippet": "{\"contextToken\":\"<jwt redacted>\"}"
+        },
+        {
+          "status": 200,
+          "resourceType": "xhr",
+          "contentType": "image/gif",
+          "url": "https://bam.nr-data.net/events/1/NRJS-b304d7c2eae412dee12?a=%3Credacted%3E&sa=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&rst=%3Credacted%3E&ck=%3Credacted%3E&s=%3Credacted%3E&ref=%3Credacted%3E&ptid=%3Credacted%3E"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://liffsdk.line-scdn.net/xlt/manifest.json",
+          "snippet": "{\"createAt\":1737622217220,\"languages\":{\"de\":\"messages_de.b75f1329a2f9ae4b2aeb36eab44d83fb.json\",\"en\":\"messages_en.405289141c4efaeb44c1a460642c6ab0.json\",\"es\":\"messages_es.860b95623e0680826232e7ff4319e12f.json\",\"fr\":\"messages_fr.c9d2cdee9ef3042d89170da9e4931afd.json\",\"id\":\"messages_id.fd1d366c8ff061ada05f18e314115704.json\",\"it\":\"messages_it.a357ae292e1c5716d4094d3f530f59d0.json\",\"ja\":\"messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json\",\"ko\":\"messages_ko.ffb6a4cccfe2715837d08d16042cf8e1.json\",\"pt-BR\":\"messages_pt-BR.49a72183b323ffd98cb67e13c67d606d.json\",\"ru\":\"messages_ru.f628e4b4b30d209ea6c6781697ae2aa2.json\",\"th\":\"messages_th.7afa9cb30405f1251edecc41476e5f74.json\",\"tr\":\"messages_tr.e34e3ca537ec3ffe18f0038c87998e3a.json\",\"vi\":\"messages_vi.88d1c5d29dfb6aa8efab9d850c9438c8.json\",\"zh-CN\":\"messages_zh-CN.97037c10284a73d15b350b75d4252591.json\",\"zh-TW\":\"messages_zh-TW.ad68754fc7d0af50fb9ce13ffc808726.json\"}}"
+        },
+        {
+          "status": 200,
+          "resourceType": "fetch",
+          "contentType": "application/json",
+          "url": "https://liffsdk.line-scdn.net/xlt/messages_ja.a6c70cd59c58bbb382d0b4be8156668a.json",
+          "snippet": "{ \"alert.android.extBrowser.autoLoginWorkaround.button.text\": \"続行\", \"alert.android.extBrowser.autoLoginWorkaround.desc\": \"[続行]をタップしてサービスをご利用ください。\", \"alert.android.extBrowser.autoLoginWorkaround.title\": \"ログインしました\" }"
+        },
+        {
+          "status": 302,
+          "resourceType": "document",
+          "contentType": "",
+          "url": "https://access.line.me/liff/v1/authorize?app_id=%3Credacted%3E&state=%3Credacted%3E&response_type=%3Credacted%3E&code_challenge_method=%3Credacted%3E&code_challenge=%3Credacted%3E&liff_sdk_version=%3Credacted%3E&redirect_uri=%3Credacted%3E"
+        },
+        {
+          "status": 400,
+          "resourceType": "document",
+          "contentType": "text/html;charset=UTF-8",
+          "url": "https://access.line.me/oauth2/v2.1/error400?error=%3Credacted%3E&error_description=%3Credacted%3E",
+          "snippet": "<!DOCTYPE html> <html dir=\"ltr\" lang=\"ja_JP\"> <head> <script type=\"module\" crossorigin src=\"https://static.line-scdn.net/line_web_login/edge/dist/assets/polyfills-ZhJJIC5R.js\"></script> <meta charset=\"UTF-8\"> <meta name=\"robots\" content=\"noindex\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\"> <title>LINE Login</title> <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"https://vos.line-scdn.net/login-web/img/favicon.ico\"> <link rel=\"icon\" type=\"image/x-icon\" sizes=\"32x32\" href=\"https://vos.line-scdn.net/login-web/img/favicon-32x32.png\"> <link rel=\"icon\" type=\"image/x-icon\" sizes=\"16x16\" href=\"https://vos.line-scdn.net/login-web/img/favicon-16x16.png\"> <link rel=\"apple-touch-icon-precomposed\" href=\"https://vos.line-scdn.net/login-web/img/apple-touch-icon-precomposed.png\"> <script>/* analytics */ (function(g,d){ var v='release/stable'; g._trmq=[];g._trm=function(){g._trmq.push(arguments)}; g.onerror=function(m,f,l,c){g._trm('send','exception',m,f,l,c)}; var h=location.protocol==='https:'?'https://d.line-scdn.net':'http://d.line-cdn.net'; var s=d.createElement('script');s.async=1; s.src=h+'/n/_4/torimochi.js/public/v1/'+v+'/min/torimochi.js';"
+        }
+      ],
+      "resourceUrls": [],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "[WARN] liff.init() was called with a current URL that is not related to the endpoint URL. https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/localticket/stores/?storeId=179 is not under https://linemini.akindo-sushiro.co.jp/LINE-mini/ui/top"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 400 ()"
+        }
+      ]
+    },
+    {
+      "id": "hamazushi-primary",
+      "requestedUrl": "https://my.hama-sushi.co.jp/shop/index/?search=1&shopId=148",
+      "finalUrl": "https://my.hama-sushi.co.jp/shop/index/?search=1&shopId=148",
+      "title": "トップ |はまナビ - はま寿司WEB予約サイト",
+      "navigationError": null,
+      "bodyText": "ログイン 豊橋新栄店 10:00～23:00 ※最終入店 閉店30分前 ※ラストオーダー 閉店15分前 住所:愛知県豊橋市新栄町55-1 電話:0570-021-153 地図を見る Web予約をする Web予約をご希望の方は、下記より会員登録（無料）を行ってください。 すでに会員の方は、下記よりログインしてWeb予約を行ってください。 メールアドレス(必須) パスワード(必須) パスワードを表示する パスワードを忘れた方はこちら はま寿司PCサイト 利用規約 新卒採用募集 よくあるご質問 個人情報保護方針 アルバイト募集 公式SNSで最新情報をチェック! Copyright © ZENSHO HOLDINGS CO., LTD. All Rights Reserved.",
+      "requests": [
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://my.hama-sushi.co.jp/shop/index/?search=1&shopId=148"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://code.jquery.com/jquery-3.5.1.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://my.hama-sushi.co.jp/js/style.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.google-analytics.com/analytics.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtm.js?id=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "xhr",
+          "url": "https://www.google-analytics.com/j/collect?v=%3Credacted%3E&_v=%3Credacted%3E&a=%3Credacted%3E&t=%3Credacted%3E&_s=%3Credacted%3E&dl=%3Credacted%3E&ul=%3Credacted%3E&dt=%3Credacted%3E&sr=%3Credacted%3E&vp=%3Credacted%3E&_u=%3Credacted%3E&jid=%3Credacted%3E&gjid=%3Credacted%3E&cid=%3Credacted%3E&tid=%3Credacted%3E&_gid=%3Credacted%3E&_r=%3Credacted%3E&_slc=%3Credacted%3E&z=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&_slc=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&gtm=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&ngs=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&_ee=%3Credacted%3E&tfd=%3Credacted%3E"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "resourceType": "document",
+          "contentType": "text/html; charset=UTF-8",
+          "url": "https://my.hama-sushi.co.jp/shop/index/?search=1&shopId=148",
+          "snippet": "<!DOCTYPE html> <html lang=\"ja-JP\"> <head> <meta charset=\"UTF-8\"> <title>トップ |はまナビ - はま寿司WEB予約サイト</title> <meta name=\"description\" content=\"株式会社はま寿司の店舗予約サイトです。スマートフォンから店舗検索や店舗予約など、便利な機能をご利用いただけます。\"> <meta name=\"keywords\" content=\"はま寿司,はまナビ,予約,携帯,順番,ケータイ,発券,呼\"> <!-- facebook メタタグ --> <meta property=\"og:title\" content=\"トップ | はまナビ - はま寿司WEB予約サイト\"/> <meta property=\"og:type\" content=\"website\"/> <meta property=\"og:url\" content=\"https://my.hama-sushi.co.jp/default/index/index/\"/> <meta property=\"og:image\" content=\"https://my.hama-sushi.co.jp/public/common/img/layout/header_site-id_img01.jpg\" /> <meta property=\"og:image:width\" content=\"200\" /> <meta property=\"og:image:height\" content=\"200\" /> <meta property=\"og:site_name\" content=\"はまナビ - はま寿司WEB予約サイト\"> <!-- facebook メタタグ --> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"> <meta name=\"format-detection\" content=\"telephone=no\"> <link rel=\"stylesheet\" href=\"/css/reset.css\" /> <link rel=\"apple-touch-icon\" href=\"https://www.hama-sushi.co.jp/assets/common/img/logo_hamasushi.png\"> <meta name=\"apple-mobile-web-app-title\" content=\"はまナビ\"> <link rel=\"shortcut icon\" href=\"/favicon.ico\"> <link rel=\"stylesheet\" href=\"/css/style.css?3\"> <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script> <!--//GoogleのCDN--> <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script> <!--//MicrosoftのCDN--> <script src=\"https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js\"></script> <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-60601443-9', 'auto'); ga('send', 'pageview'); </script> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','G-10ZCVSJBXR');</script> <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=G-10ZCVSJBXR\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[]"
+        },
+        {
+          "status": 200,
+          "resourceType": "xhr",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/j/collect?v=%3Credacted%3E&_v=%3Credacted%3E&a=%3Credacted%3E&t=%3Credacted%3E&_s=%3Credacted%3E&dl=%3Credacted%3E&ul=%3Credacted%3E&dt=%3Credacted%3E&sr=%3Credacted%3E&vp=%3Credacted%3E&_u=%3Credacted%3E&jid=%3Credacted%3E&gjid=%3Credacted%3E&cid=%3Credacted%3E&tid=%3Credacted%3E&_gid=%3Credacted%3E&_r=%3Credacted%3E&_slc=%3Credacted%3E&z=%3Credacted%3E",
+          "snippet": "2,cG-V1WLSLJY5E"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&ngs=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&_ee=%3Credacted%3E&tfd=%3Credacted%3E"
+        }
+      ],
+      "resourceUrls": [],
+      "consoleMessages": [
+        {
+          "type": "verbose",
+          "text": "[DOM] Input elements should have autocomplete attributes (suggested: \"new-password\"): (More info: https://goo.gl/9p2vKq) %o"
+        }
+      ]
+    },
+    {
+      "id": "hamazushi-alternate",
+      "requestedUrl": "https://my.hamazushi.com/shop/index/?search=1&shopId=148",
+      "finalUrl": "https://my.hamazushi.com/shop/index/?search=1&shopId=148",
+      "title": "トップ |はまナビ - はま寿司WEB予約サイト",
+      "navigationError": null,
+      "bodyText": "ログイン 豊橋新栄店 10:00～23:00 ※最終入店 閉店30分前 ※ラストオーダー 閉店15分前 住所:愛知県豊橋市新栄町55-1 電話:0570-021-153 地図を見る Web予約をする Web予約をご希望の方は、下記より会員登録（無料）を行ってください。 すでに会員の方は、下記よりログインしてWeb予約を行ってください。 メールアドレス(必須) パスワード(必須) パスワードを表示する パスワードを忘れた方はこちら はま寿司PCサイト 利用規約 新卒採用募集 よくあるご質問 個人情報保護方針 アルバイト募集 公式SNSで最新情報をチェック! Copyright © ZENSHO HOLDINGS CO., LTD. All Rights Reserved.",
+      "requests": [
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://my.hamazushi.com/shop/index/?search=1&shopId=148"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://code.jquery.com/jquery-3.5.1.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://my.hamazushi.com/js/style.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.google-analytics.com/analytics.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtm.js?id=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "xhr",
+          "url": "https://www.google-analytics.com/j/collect?v=%3Credacted%3E&_v=%3Credacted%3E&a=%3Credacted%3E&t=%3Credacted%3E&_s=%3Credacted%3E&dl=%3Credacted%3E&ul=%3Credacted%3E&dt=%3Credacted%3E&sr=%3Credacted%3E&vp=%3Credacted%3E&_u=%3Credacted%3E&jid=%3Credacted%3E&gjid=%3Credacted%3E&cid=%3Credacted%3E&tid=%3Credacted%3E&_gid=%3Credacted%3E&_r=%3Credacted%3E&_slc=%3Credacted%3E&z=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&_slc=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&gtm=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ngs=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&_ee=%3Credacted%3E&tfd=%3Credacted%3E"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "resourceType": "document",
+          "contentType": "text/html; charset=UTF-8",
+          "url": "https://my.hamazushi.com/shop/index/?search=1&shopId=148",
+          "snippet": "<!DOCTYPE html> <html lang=\"ja-JP\"> <head> <meta charset=\"UTF-8\"> <title>トップ |はまナビ - はま寿司WEB予約サイト</title> <meta name=\"description\" content=\"株式会社はま寿司の店舗予約サイトです。スマートフォンから店舗検索や店舗予約など、便利な機能をご利用いただけます。\"> <meta name=\"keywords\" content=\"はま寿司,はまナビ,予約,携帯,順番,ケータイ,発券,呼\"> <!-- facebook メタタグ --> <meta property=\"og:title\" content=\"トップ | はまナビ - はま寿司WEB予約サイト\"/> <meta property=\"og:type\" content=\"website\"/> <meta property=\"og:url\" content=\"https://my.hama-sushi.co.jp/default/index/index/\"/> <meta property=\"og:image\" content=\"https://my.hama-sushi.co.jp/public/common/img/layout/header_site-id_img01.jpg\" /> <meta property=\"og:image:width\" content=\"200\" /> <meta property=\"og:image:height\" content=\"200\" /> <meta property=\"og:site_name\" content=\"はまナビ - はま寿司WEB予約サイト\"> <!-- facebook メタタグ --> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"> <meta name=\"format-detection\" content=\"telephone=no\"> <link rel=\"stylesheet\" href=\"/css/reset.css\" /> <link rel=\"apple-touch-icon\" href=\"https://www.hama-sushi.co.jp/assets/common/img/logo_hamasushi.png\"> <meta name=\"apple-mobile-web-app-title\" content=\"はまナビ\"> <link rel=\"shortcut icon\" href=\"/favicon.ico\"> <link rel=\"stylesheet\" href=\"/css/style.css?3\"> <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script> <!--//GoogleのCDN--> <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script> <!--//MicrosoftのCDN--> <script src=\"https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js\"></script> <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-60601443-9', 'auto'); ga('send', 'pageview'); </script> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','G-10ZCVSJBXR');</script> <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=G-10ZCVSJBXR\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[]"
+        },
+        {
+          "status": 200,
+          "resourceType": "xhr",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/j/collect?v=%3Credacted%3E&_v=%3Credacted%3E&a=%3Credacted%3E&t=%3Credacted%3E&_s=%3Credacted%3E&dl=%3Credacted%3E&ul=%3Credacted%3E&dt=%3Credacted%3E&sr=%3Credacted%3E&vp=%3Credacted%3E&_u=%3Credacted%3E&jid=%3Credacted%3E&gjid=%3Credacted%3E&cid=%3Credacted%3E&tid=%3Credacted%3E&_gid=%3Credacted%3E&_r=%3Credacted%3E&_slc=%3Credacted%3E&z=%3Credacted%3E",
+          "snippet": "2,cG-V1WLSLJY5E"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ngs=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&_ee=%3Credacted%3E&tfd=%3Credacted%3E"
+        }
+      ],
+      "resourceUrls": [],
+      "consoleMessages": [
+        {
+          "type": "verbose",
+          "text": "[DOM] Input elements should have autocomplete attributes (suggested: \"new-password\"): (More info: https://goo.gl/9p2vKq) %o"
+        }
+      ]
+    },
+    {
+      "id": "kurasushi",
+      "requestedUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "finalUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "title": "くら寿司 豊橋新栄店｜くら寿司｜回転寿司",
+      "navigationError": null,
+      "bodyText": "店舗検索トップへ戻る 豊橋新栄店【１皿115円～】 住所 〒 441-8016 愛知県豊橋市新栄町新田中7-1 マップを確認する ルートを検索 電話番号 0532-39-6107 お持帰りの注文も承ります！ LINE友だち追加 出前館 営業時間 月曜日 11:00-23:00 火曜日 11:00-23:00 水曜日 11:00-23:00 2026/8/13 木曜日 10:20-23:00 2026/8/14 金曜日 10:20-23:00 2026/8/15 土曜日 10:20-23:00 2026/8/16 日曜日 10:20-23:00 ※ご入店は閉店の30分前。 お持ち帰り WEBお持ち帰り予約 イベント 詳細ページをみる 2026.08.07 - 2026.08.19 地中海本まぐろフェア ＼「地中海本まぐろフェア開催‼」／ 地中海本まぐろ大とろ登場！ きめ細かな脂と、スジが少ない口当たりの良さが特徴👀 さらに、鹿児島で育った高級魚【鹿児島県産活〆かんぱち】など 海の幸を食べ比べていただ ··· 続きを読む イベント一覧をみる 提供サービス スマイルチャレンジ プレゼントシステム スロープ対応 多機能トイレ対応 車いす用席対応 エレベーター設置 2階以上 スマホで注文 スマホでお持ち帰り スマートくら寿司 CHARGE SPOT 無料WIFI グローバル旗艦店 プラス型店舗 1皿115円～ 1皿120円～ 1皿130円～ 1皿150円～ どこでもくら寿司 出前館 Uber Eats menu RocketNow LINEのご予約サービス 本日のおすすめ 決済サービス 駐車場 52台 座席数 199席 デリバリー UberEats 出前館 RocketNow 近隣店舗 豊橋大村店【１皿115円～】 営業中 - 営業終了時間 23:00 愛知県豊橋市大村町字橋元35 3.9 km 0532-57-5616 豊川インター店【１皿115円～】 営業中 - 営業終了時間 23:00 愛知県豊川市東名町2-98 8.4 km 0533-80-2610 岡崎法性寺店【１皿115円～】 営業中 - 営業終了時間 23:00 愛知県岡崎市法性寺町字猿待56-1 27.3 km 0564-72-6105 Googleマップでみる おすすめ情報 店舗検索 メニュー お持ち帰り寿司 企業情報 採用情報 お問い合わせ プライバシーポリシー アレルギー・原材料・原産地情報 お米の放射性物質結果 Copyright Kura Sushi, Inc. All Rights Reserved. 最短予約可能時間 16:50～17:00 アプリ お席・お持ち帰り予約 ＼会員登録不要／ WEBお席予約",
+      "requests": [
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://shop.kurasushi.co.jp/detail/609"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.google-analytics.com/analytics.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtag/js?id=%3Credacted%3E&cx=%3Credacted%3E&gtm=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.googletagmanager.com/gtm.js?id=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://www.google.com/maps/embed/v1/place?key=%3Credacted%3E&q=%3Credacted%3E&language=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://shop.kurasushi.co.jp/js/app.js?id=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://www.clarity.ms/tag/urgt13o1ks?ref=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&ep.content_group=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.gstatic.com/maps-api-v3/embed/js/65/12f/intl/ja_ALL/init_embed.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps/api/js?key=%3Credacted%3E&paint_origin=%3Credacted%3E&libraries=%3Credacted%3E&v=%3Credacted%3E&loading=%3Credacted%3E&language=%3Credacted%3E&callback=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ngs=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/search.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/geometry.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/main.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "xhr",
+          "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=%3Credacted%3E"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/common.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/util.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/map.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/controls.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/places_impl.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/places.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/onion.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://maps.googleapis.com/maps-api-v3/api/js/65/12f/intl/ja_ALL/search_impl.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://shop.kurasushi.co.jp/js/pages/store_detail.js?id=%3Credacted%3E"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://scripts.clarity.ms/0.8.69/clarity.js"
+        },
+        {
+          "method": "POST",
+          "resourceType": "xhr",
+          "url": "https://b.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "resourceType": "fetch",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_et=%3Credacted%3E&tfd=%3Credacted%3E"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "resourceType": "document",
+          "contentType": "text/html; charset=UTF-8",
+          "url": "https://shop.kurasushi.co.jp/detail/609",
+          "snippet": "com data: blob:; frame-src * *.google.com data:; connect-src * 'self' https://*.googleapis.com *.google.com https://*.gstatic.com https://www.google-analytics.com data: blob:; font-src * 'self' https://fonts.gstatic.com https://fonts.gstatic.com data:; style-src * 'self' 'unsafe-inline' https://fonts.googleapis.com data:; worker-src * blob:;\" /> <title>くら寿司 豊橋新栄店｜くら寿司｜回転寿司</title> <meta name=\"title\" content=\"くら寿司 豊橋新栄店｜くら寿司｜回転寿司\"> <meta name=\"description\" content=\"回転寿司のくら寿司豊橋新栄店公式ページの最新情報です。【ネット予約可】営業時間・定休日や支払い方法、電話番号、メニュー情報などを掲載中。お持ち帰り用メニューも充実しています。\"> <meta name=\"keywords\" content=\"くら寿司,店舗検索,豊橋新栄店\"> <meta property=\"og:title\" content=\"くら寿司 豊橋新栄店｜くら寿司｜回転寿司\"> <meta property=\"og:description\" content=\"回転寿司のくら寿司豊橋新栄店公式ページの最新情報です。【ネット予約可】営業時間・定休日や支払い方法、電話番号、メニュー情報などを掲載中。お持ち帰り用メニューも充実しています。\"> <meta property=\"og:type\" content=\"website\"> <meta property=\"og:image\" content=\"https://canlyhp.s3.ap-northeast-1.amazonaws.com/くら寿司株式会社/general/ogp.png\"> <link rel=\"icon\" type=\"image/png\" href=\"https://canlyhp.s3.ap-northeast-1.amazonaws.com/くら寿司株式会社/general/kura_favicon.ico\" /> <link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"https://canlyhp.s3.ap-northeast-1.amazonaws.com/apple-touch-icons/くら寿司.png\"> <link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"https://canlyhp.s3.ap-northeast-1.amazonaws.com/apple-touch-icons/くら寿司.png\"> <link rel=\"apple-touch-icon\" sizes=\"167x167\" href=\"https://canlyhp.s3.ap-northeast-1.amazonaws.com/apple-touch-icons/くら寿司.png\"> <link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"https://canlyhp.s3.ap-northeast-1.amazonaws.com/apple-touch-icons/くら寿司.png\"> <link rel=\"index\" href=\"/\"> <link rel=\"preload\" as=\"style\" type=\"text/css\" href=\"/css/app.css?id=1443610ea2e8bf22d6bf\"/> <link rel=\"stylesheet\" href=\"/css/app.css?id=1443610ea2e8bf22d6bf\"/> <script type=\"application/ld+json\"> [{\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https:\\/\\/shop.kurasushi.co.jp\\/detail\\/609\",\"name\":\"\\u304f\\u3089\\u5bff\\u53f8 \\u8c4a\\u6a4b\\u65b0\\u6804\\u5e97\",\"image\":[\"https:\\/\\/canlyhp.s3.ap-northeast-1.amazonaws.com\\/\\u304f\\u3089\\u5bff\\u53f8\\u682a\\u5f0f\\u4f1a\\u793e\\/general\\/ogp.png\"],\"address\":{\"@type\":\"PostalAddress\",\"addressCountry\":\"JP\",\"postalCode\":\"441-8016\",\"addressRegion\":\"\\u611b\\u77e5\\u770c\",\"addressLocality\":\"\\u8c4a\\u6a4b\\u5e02\",\"streetAddress\":\"\\u65b0\\u6804\\u753a\\u65b0\\u7530\\u4e2d7-1\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":34.7664969,\"longitude\":137.3655882},\"url\":\"https:\\/\\/shop.kurasushi.co.jp\",\"telephone\":\"0532-39-6107\",\"event\":[{\"@type\":\"Event\",\"name\":\"\\u5730\\u4e2d\\u6d77\\u672c\\u307e\\u3050\\u308d\\u30d5\\u30a7\\u30a2\",\"startDate\":\"2026-08-07 09:00:00\",\"endDate\":\"2026-08-19 23:30:00\",\"eventAttendanceMode\":\"https:\\/\\/schema.org\\/OfflineEventAttendanceMode\",\"eventStatus\":\"https:\\/\\/schema.org\\/EventScheduled\",\"offers\":{\"priceCurrency\":\"JPY\",\"validFrom\":\"2026-08-07 09:00:00\",\"availability\":\"https:\\/\\/schema.org\\/InStock\"},\"location\":{\"@type\":\"Place\",\"name\":\"\\u304f\\u3089\\u5bff\\u53f8 \\u8c4a\\u6a4b\\u65b0\\u6804\\u5e97\",\"address\":{\"@type\":\"Po"
+        },
+        {
+          "status": 200,
+          "resourceType": "stylesheet",
+          "contentType": "text/css",
+          "url": "https://shop.kurasushi.co.jp/css/pages/store_detail.css?id=%3Credacted%3E",
+          "snippet": "index:0}.owl-carousel .owl-animated-out{z-index:1}.owl-carousel .fadeOut{-webkit-animation-name:fadeOut;animation-name:fadeOut}@-webkit-keyframes fadeOut{0%{opacity:1}to{opacity:0}}@keyframes fadeOut{0%{opacity:1}to{opacity:0}}.owl-height{transition:height .5s ease-in-out}.owl-carousel .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}.owl-carousel .owl-item .owl-lazy:not([src]),.owl-carousel .owl-item .owl-lazy[src^=\"\"]{max-height:0}.owl-carousel .owl-item img.owl-lazy{transform-style:preserve-3d}.owl-carousel .owl-video-wrapper{position:relative;height:100%;background:#000}.owl-carousel .owl-video-play-icon{position:absolute;height:80px;width:80px;left:50%;top:50%;margin-left:-40px;margin-top:-40px;background:url(/images/vendor/owl.carousel/dist/owl.video.play.png?4a37f8008959c75f619bf0a3a4e2d7a2) no-repeat;cursor:pointer;z-index:1;-webkit-backface-visibility:hidden;transition:transform .1s ease}.owl-carousel .owl-video-play-icon:hover{transform:scale(1.3)}.owl-carousel .owl-video-playing .owl-video-play-icon,.owl-carousel .owl-video-playing .owl-video-tn{display:none}.owl-carousel .owl-video-tn{opacity:0;height:100%;background-position:50%;background-repeat:no-repeat;background-size:contain;transition:opacity .4s ease}.owl-carousel .owl-video-frame{position:relative;z-index:1;height:100%;width:100%}@-webkit-keyframes opacity-sp{0%{opacity:1}25%{opacity:.5}50%{opacity:.5}75%{opacity:.5}to{opacity:1}}@keyframes opacity-sp{0%{opacity:1}25%{opacity:.5}50%{opacity:.5}75%{opacity:.5}to{opacity:1}}@media screen and (min-width:768px){#mainContainer{margin:38px auto 0;width:95%;max-width:1100px}.store-detail__header{margin-top:38px}.top-image,.top-image .modal-top-image{height:225px}.store-detail__content{margin-top:60px}.store-detail__map{width:95%;max-width:1100px}.store-detail__map:after{content:\"\";clear:both;display:table}.store-detail__map .store-detail__map__link{transition:opacity .2s ease;margin-top:11px;display:flex;align-items:center;color:#bc0d19;float:right}}@media screen and (min-width:768px) and (hover:none){.store-detail__map .store-detail__map__link:hover{-webkit-animation-name:opacity-sp;animation-name:opacity-sp;-webkit-animation-duration:.5s;animation-duration:.5s}}@media screen and (min-width:768px){.store-detail__map .store-detail__map__link svg{margin-bottom:1.1px;margin-left:8px}}@media screen and (min-width:768px){.content-item{display:flex;justify-content:space-between}.content-item:not(:first-child){margin-top:24px}.content-item:not(:last-child){padding-bottom:24px}.content-item .content-item__left{width:17.4230769231%}.content-item .content-item__left .content-name--sp{display:none}.content-item .content-item__right{width:80.5769230769%}}@media screen and (min-width:768px){.address .address__detail__index_container{display:flex}.address .address__detail__index_container .address__detail__index:not(:first-child){margin-left:20px}.address .address__btn-container{margin-top:16px}.address .address__btn-container .check-ma"
+        },
+        {
+          "status": 200,
+          "resourceType": "stylesheet",
+          "contentType": "text/css",
+          "url": "https://shop.kurasushi.co.jp/css/app.css?id=%3Credacted%3E",
+          "snippet": "webkit-autofill{box-shadow:inset 0 0 0 1000px #fff;-webkit-box-shadow:0 0 0 1000px #fff inset}.font-12{font-size:12px!important}.font-14{font-size:14px}.font-16{font-size:16px}.word-break-keep-all{word-break:keep-all!important}*{font-family:Hiragino Sans W3;line-height:24px;-webkit-tap-highlight-color:transparent}.tLogo{margin-right:8px;padding:2.1px .7px;width:28px;height:28px;border:1px solid #000;border-radius:4px}#global-nav ul li .option-menu__center{display:flex}.mr12px{margin-right:12px}.store-list__link-without-epark-info{margin-top:22px}.store-detail__without-epark-info{margin-top:32px!important}.opening-date__info{color:#e57c2f}dialog{-webkit-animation:fadeIn .4s ease-in-out;animation:fadeIn .4s ease-in-out;padding:0;border:none}dialog::-webkit-backdrop{background:#000;opacity:.8}dialog::backdrop{background:#000;opacity:.8}dialog button{border:none;background:transparent;padding:0;-webkit-appearance:none;position:fixed;right:20px;top:20px;color:#fff;cursor:pointer;opacity:1;width:50px;height:50px;border-radius:100%;transition:all .3s ease-in-out}dialog button:hover{outline:none;background:#fff}dialog button:hover:after,dialog button:hover:before{background:#b93d0c}dialog button span{position:absolute!important;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);padding:0!important;border:0!important;height:1px!important;width:1px!important;overflow:hidden}dialog button:after,dialog button:before{display:block;content:\" \";position:absolute;top:14px;left:23px;width:4px;height:22px;border-radius:4px;background:#fff}dialog button:before{transform:rotate(-45deg)}dialog button:after{transform:rotate(45deg)}#postImagePreview img{width:100%;height:auto;display:block;margin:0 auto}@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:.8}}@keyframes fadeIn{0%{opacity:0}to{opacity:.8}}abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:\"\";content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{text-decoration:none}ins,mark{background-color:#ff9;color:#000}mark{font-style:italic;font-weight:700}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{font-family:inherit;font-size:inherit;vertical-align:middle}*{box-sizing:bor"
+        },
+        {
+          "status": 204,
+          "resourceType": "image",
+          "contentType": "text/plain",
+          "url": "https://www.googletagmanager.com/td?id=%3Credacted%3E&v=%3Credacted%3E&t=%3Credacted%3E&pid=%3Credacted%3E&gtm=%3Credacted%3E&seq=%3Credacted%3E&exp=%3Credacted%3E&dl=%3Credacted%3E&tdp=%3Credacted%3E&frm=%3Credacted%3E&slo=%3Credacted%3E&hlo=%3Credacted%3E&lst=%3Credacted%3E&bt=%3Credacted%3E&ct=%3Credacted%3E&z=%3Credacted%3E",
+          "snippet": ""
+        },
+        {
+          "status": 200,
+          "resourceType": "image",
+          "contentType": "image/svg+xml",
+          "url": "https://shop.kurasushi.co.jp/svg/path853.svg"
+        },
+        {
+          "status": 200,
+          "resourceType": "image",
+          "contentType": "image/png",
+          "url": "https://www.kurasushi.co.jp/common/images/gnav_store_sp.png"
+        },
+        {
+          "status": 200,
+          "resourceType": "image",
+          "contentType": "image/svg+xml",
+          "url": "https://shop.kurasushi.co.jp/svg/phone.svg"
+        },
+        {
+          "status": 200,
+          "resourceType": "image",
+          "contentType": "image/svg+xml",
+          "url": "https://shop.kurasushi.co.jp/svg/logo.svg"
+        },
+        {
+          "status": 200,
+          "resourceType": "xhr",
+          "contentType": "application/json; charset=UTF-8",
+          "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=%3Credacted%3E",
+          "snippet": "{}"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ir=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&ep.content_group=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 200,
+          "resourceType": "font",
+          "contentType": "font/collection",
+          "url": "https://shop.kurasushi.co.jp/e7ac049a4ba83fdd7a733c9d859435ff.ttc",
+          "snippet": "\u0000\b\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0006\u0000\u000f\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0007\u0000>\u0002\u0005\u0000\u0001\u0000\u0001\u0000 \u0000\b\u0000\u001c\u0002C\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u0011\u0002_\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001d\u0002p\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001b\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000\u0012\u0000\u0015\u0002�\u0000\u0003\u0000\u0001\u0004 \u0000\u0000\u0000�\u0002�\u0000\u0003\u0000\u0001\u0004 \u0000\u0001\u0000 \u0003g\u0000\u0003\u0000\u0001\u0004 \u0000\u0002\u0000\u000e\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0003\u0000L\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0004\u0000 \u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0005\u0000\u0010\u0004\u0001\u0000\u0003\u0000\u0001\u0004 \u0000\u0006\u0000\u001e\u0004\u0011\u0000\u0003\u0000\u0001\u0004 \u0000\u0007\u0000t\u0004/\u0000\u0003\u0000\u0001\u0004 \u0000\b\u0000>\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000\u001a\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000:\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000 \u00006\u00055\u0000\u0003\u0000\u0001\u0004 \u0000\u0010\u0000\u001a\u0005k\u0000\u0003\u0000\u0001\u0004 \u0000\u0011\u0000\u0004\u0005�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0000\u0000�\u0005�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0001\u0000\u0018\u0006 \u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0002\u0000\u000e\u0006%\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0003\u0000L\u00063\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0004\u0000\u0018\u0006\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0005\u0000\u0010\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0006\u0000\u001e\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0007\u0000>\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\b\u0000\u001c\u0007\u0003\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000\u0012\u0007\u001f\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000:\u00071\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u00006\u0007k\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0010\u0000\u0012\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0011\u0000\u0004\u0007�ver8.21, Copyright (c) 1993-2013 Dainippon Screen Mfg. Co., Ltd. All Rights Reserved.Hiragino SansW3Hiragino Sans W3; 15.0d1e3; 2019-06-13Hiragino Sans W315.0d1e3HiraginoSans-W3HIRAGINO is a trademark of Dainippon Screen Mfg. Co., Ltd.Dainippon Screen Mfg. Co., Ltd.JIYUKOBO Ltd.http://www.screen.co.jp/font/http://www.jiyu-kobo.co.jp/ver8.21, Copyright � 1993-2013 ����{�X�N���[������������� All Rights Reserved.�q���M�m�p�S�V�b�NW3Hiragino Sans W3; 15.0d1e3; 2019-06-13�q���M�m�p�S�V�b�N W315.0d1e3HiraginoSans-W3��s����уq���M�m�͑���{�X�N���[������������Ђ̓o�^���W�ł�����{�X�N���[������������ЗL����� �����H�[http://www.screen.co.jp/font/http://www.jiyu-kobo.co.jp/�q���M�m�p�S�V�b�N W3\u0000v\u0000e\u0000r\u00008\u0000.\u00002\u00001\u0000,\u0000 \u0000C\u0000o\u0000p\u0000y\u0000r\u0000i\u0000g\u0000h\u0000t\u0000 \u0000(\u0000c\u0000)\u0000 \u00001\u00009\u00009\u00003\u0000-\u00002\u00000\u00001\u00003\u0000 \u0000D\u0000a\u0000i\u0000n\u0000i\u0000p\u0000p\u0000o\u0000n\u0000 \u0000S\u0000c\u0000r\u0000e\u0000e\u0000n\u0000 \u0000M\u0000f\u0000g\u0000.\u0000 \u0000C\u0000o\u0000.\u0000,\u0000 \u0000L\u0000t\u0000d\u0000.\u0000 \u0000A\u0000l\u0000l\u0000 \u0000R\u0000i\u0000g\u0000h\u0000t\u0000s\u0000 \u0000R\u0000e\u0000s\u0000e\u0000r\u0000v\u0000e\u0000d\u0000.\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00003\u0000R\u0000e\u0000g\u0000u\u0000l\u0000a\u0000r\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00003\u0000;\u0000 \u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000;\u0000 \u00002\u00000\u00001\u00009\u0000-\u00000\u00006\u0000-\u00001\u00003\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00003\u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000S\u0000a\u0000n\u0000s\u0000-\u0000W\u00003\u0000H\u0000I\u0000R\u0000A\u0000G\u0000I\u0000N\u0000O\u0000 \u0000i\u0000s\u0000 \u0000a\u0000 \u0000t\u0000r\u0000a\u0000d\u0000e\u0000m\u0000a\u0000r\u0000k\u0000 \u0000o\u0000f\u0000 \u0000D\u0000a\u0000i\u0000n\u0000i\u0000p\u0000p\u0000o\u0000n\u0000 \u0000S\u0000c\u0000r\u0000e\u0000e\u0000n\u0000 \u0000M\u0000f\u0000g\u0000.\u0000 \u0000C\u0000o\u0000.\u0000,\u0000 \u0000L\u0000t\u0000d\u0000.\u0000D\u0000a\u0000i\u0000n\u0000i\u0000p\u0000p\u0000o\u0000n\u0000 \u0000S\u0000c\u0000r\u0000e\u0000e\u0000n\u0000 \u0000M\u0000f\u0000g\u0000.\u0000 \u0000C\u0000o\u0000.\u0000,\u0000 \u0000L\u0000t\u0000d\u0000.\u0000J\u0000I\u0000Y\u0000U\u0000K\u0000O\u0000B\u0000O\u0000 \u0000L\u0000t\u0000d\u0000.\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000s\u0000c\u0000r\u0000e\u0000e\u0000n\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/\u0000f\u0000o\u0000n\u0000t\u0000/\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000j\u0000i\u0000y\u0000u\u0000-\u0000k\u0000o\u0000b\u0000o\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000W\u00003\u0000v\u0000e\u0000r\u00008\u0000.\u00002\u00001\u0000,\u0000 \u0000C\u0000o\u0000p\u0000y\u0000r\u0000i\u0000g\u0000h\u0000t\u0000 \u0000�\u0000 \u00001\u00009\u00009\u00003\u0000-\u00002\u00000\u00001\u00003\u0000 Y'e�g,0�0�0�0�0��� h*_\u000fO\u001ay>\u0000 \u0000A\u0000l\u0000l\u0000 \u0000R\u0000i\u0000g\u0000h\u0000t\u0000s\u0000 \u0000R\u0000e\u0000s\u0000e\u0000r\u0000v\u0000e\u0000d\u0000.0�0�0�0Ή�0�0�0�0�\u0000 \u0000W\u00003\u0000R\u0000e\u0000g\u0000u\u0000l\u0000a\u0000r\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00003\u0000;\u0000 \u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000;\u0000 \u00002\u00000\u00001\u00009\u0000-\u00000\u00006\u0000-\u00001\u000030�0�0�0Ή�0�0�0�0�\u0000 \u0000W\u00003\u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000S\u0000a\u0000n\u0000s\u0000-\u0000W\u00003SC��0J0�0s0�0�0�0�0oY'e�g,0�0�0�0�0��� h*_\u000fO\u001ay>0nv{�2UFj\u00190g0YY'e�g,0�0�0�0�0��� h*_\u000fO\u001ay>g �PO\u001ay>\u0000 [Wn8]�b?\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000s\u0000c\u0000r\u0000e\u0000e\u0000n\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/\u0000f\u0000o\u0000n\u0000t\u0000/\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000j\u0000i\u0000y\u0000u\u0000-\u0000k\u0000o\u0000b\u0000o\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/0�0�0�0Ή�0�0�0�0�\u0000W\u00003\u0000\u0000\u0000\u0000\u0000\u00005\u0002�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000U\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0001\u0000\u0018\u0000U\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0002\u0000\u0002\u0000m\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0003\u00001\u0000o\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0004\u0000\u001b\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0005\u0000\b\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0006\u0000\u000e\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0007\u0000O\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\b\u0000\u001f\u0001 \u0000\u0001\u0000\u0000\u0000\u0000\u0000 \u0000 \u0001?\u0000\u0001\u0000\u0000\u0000\u0000\u0000 \u0000\u001d\u0001L\u0000\u0001\u0000\u0000\u0000\u0000\u0000 \u0000\u001b\u0001i\u0000\u0001\u0000\u0001\u0000 \u0000\u0000\u0000Q\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0001\u0000\u0010\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0002\u0000\u0002\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0003\u00001\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0004\u0000\u0013\u0002\u0018\u0000\u0001\u0000\u0001\u0000 \u0000\u0005\u0000\b\u0002+\u0000\u0001\u0000\u0001\u0000 \u0000\u0006\u0000\u000e\u00023\u0000\u0001\u0000\u0001\u0000 \u0000\u0007\u0000>\u0002A\u0000\u0001\u0000\u0001\u0000 \u0000\b\u0000\u001c\u0002\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u0011\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001d\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001b\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000\u0012\u0000\u0013\u0002�\u0000\u0001\u0000\u0001��\u0000\u0014\u0000\u001a\u0002�\u0000\u0003\u0000\u0001\u0004 \u0000\u0000\u0000�\u0003\u0011\u0000\u0003\u0000\u0001\u0004 \u0000\u0001\u00006\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0002\u0000\u000e\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0003\u0000b\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0005\u0000\u0010\u0004a\u0000\u0003\u0000\u0001\u0004 \u0000\u0006\u0000\u001c\u0004q\u0000\u0003\u0000\u0001\u0004 \u0000\u0007\u0000�\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000\b\u0000>\u0005+\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000\u001a\u0005i\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000:\u0005�\u0000\u0003\u0000\u0001\u0004 \u0000 \u00006\u0005�\u0000\u0003\u0000\u0001\u0004 \u0000\u0010\u00000\u0005�\u0000\u0003\u0000\u0001\u0004 \u0000\u0011\u0000\u0004\u0006#\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0000\u0000�\u0006'\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0001\u0000\u001a\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0002\u0000\u000e\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0003\u0000b\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0004\u0000\u001a\u00077\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0005\u0000\u0010\u0007Q\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0006\u0000\u001c\u0007a\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0007\u0000>\u0007}\u0000\u0003\u0000\u0001\u0004\u0011\u0000\b\u0000\u001c\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000\u0012\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000:\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u00006\b#\u0000"
+        },
+        {
+          "status": 200,
+          "resourceType": "font",
+          "contentType": "font/collection",
+          "url": "https://shop.kurasushi.co.jp/596e7f1f2135412ba8f5bc2895a59364.ttc",
+          "snippet": "\u0000\b\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0006\u0000\u000f\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0007\u0000>\u0002\u0005\u0000\u0001\u0000\u0001\u0000 \u0000\b\u0000\u001c\u0002C\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u0011\u0002_\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001d\u0002p\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001b\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000\u0012\u0000\u0015\u0002�\u0000\u0003\u0000\u0001\u0004 \u0000\u0000\u0000�\u0002�\u0000\u0003\u0000\u0001\u0004 \u0000\u0001\u0000 \u0003g\u0000\u0003\u0000\u0001\u0004 \u0000\u0002\u0000\u000e\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0003\u0000L\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0004\u0000 \u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0005\u0000\u0010\u0004\u0001\u0000\u0003\u0000\u0001\u0004 \u0000\u0006\u0000\u001e\u0004\u0011\u0000\u0003\u0000\u0001\u0004 \u0000\u0007\u0000t\u0004/\u0000\u0003\u0000\u0001\u0004 \u0000\b\u0000>\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000\u001a\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000:\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000 \u00006\u00055\u0000\u0003\u0000\u0001\u0004 \u0000\u0010\u0000\u001a\u0005k\u0000\u0003\u0000\u0001\u0004 \u0000\u0011\u0000\u0004\u0005�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0000\u0000�\u0005�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0001\u0000\u0018\u0006 \u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0002\u0000\u000e\u0006%\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0003\u0000L\u00063\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0004\u0000\u0018\u0006\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0005\u0000\u0010\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0006\u0000\u001e\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0007\u0000>\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\b\u0000\u001c\u0007\u0003\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000\u0012\u0007\u001f\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000:\u00071\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u00006\u0007k\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0010\u0000\u0012\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0011\u0000\u0004\u0007�ver8.20, Copyright (c) 1993-2013 Dainippon Screen Mfg. Co., Ltd. All Rights Reserved.Hiragino SansW6Hiragino Sans W6; 15.0d1e3; 2019-06-13Hiragino Sans W615.0d1e3HiraginoSans-W6HIRAGINO is a trademark of Dainippon Screen Mfg. Co., Ltd.Dainippon Screen Mfg. Co., Ltd.JIYUKOBO Ltd.http://www.screen.co.jp/font/http://www.jiyu-kobo.co.jp/ver8.20, Copyright � 1993-2013 ����{�X�N���[������������� All Rights Reserved.�q���M�m�p�S�V�b�NW6Hiragino Sans W6; 15.0d1e3; 2019-06-13�q���M�m�p�S�V�b�N W615.0d1e3HiraginoSans-W6��s����уq���M�m�͑���{�X�N���[������������Ђ̓o�^���W�ł�����{�X�N���[������������ЗL����� �����H�[http://www.screen.co.jp/font/http://www.jiyu-kobo.co.jp/�q���M�m�p�S�V�b�N W6\u0000v\u0000e\u0000r\u00008\u0000.\u00002\u00000\u0000,\u0000 \u0000C\u0000o\u0000p\u0000y\u0000r\u0000i\u0000g\u0000h\u0000t\u0000 \u0000(\u0000c\u0000)\u0000 \u00001\u00009\u00009\u00003\u0000-\u00002\u00000\u00001\u00003\u0000 \u0000D\u0000a\u0000i\u0000n\u0000i\u0000p\u0000p\u0000o\u0000n\u0000 \u0000S\u0000c\u0000r\u0000e\u0000e\u0000n\u0000 \u0000M\u0000f\u0000g\u0000.\u0000 \u0000C\u0000o\u0000.\u0000,\u0000 \u0000L\u0000t\u0000d\u0000.\u0000 \u0000A\u0000l\u0000l\u0000 \u0000R\u0000i\u0000g\u0000h\u0000t\u0000s\u0000 \u0000R\u0000e\u0000s\u0000e\u0000r\u0000v\u0000e\u0000d\u0000.\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00006\u0000R\u0000e\u0000g\u0000u\u0000l\u0000a\u0000r\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00006\u0000;\u0000 \u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000;\u0000 \u00002\u00000\u00001\u00009\u0000-\u00000\u00006\u0000-\u00001\u00003\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00006\u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000S\u0000a\u0000n\u0000s\u0000-\u0000W\u00006\u0000H\u0000I\u0000R\u0000A\u0000G\u0000I\u0000N\u0000O\u0000 \u0000i\u0000s\u0000 \u0000a\u0000 \u0000t\u0000r\u0000a\u0000d\u0000e\u0000m\u0000a\u0000r\u0000k\u0000 \u0000o\u0000f\u0000 \u0000D\u0000a\u0000i\u0000n\u0000i\u0000p\u0000p\u0000o\u0000n\u0000 \u0000S\u0000c\u0000r\u0000e\u0000e\u0000n\u0000 \u0000M\u0000f\u0000g\u0000.\u0000 \u0000C\u0000o\u0000.\u0000,\u0000 \u0000L\u0000t\u0000d\u0000.\u0000D\u0000a\u0000i\u0000n\u0000i\u0000p\u0000p\u0000o\u0000n\u0000 \u0000S\u0000c\u0000r\u0000e\u0000e\u0000n\u0000 \u0000M\u0000f\u0000g\u0000.\u0000 \u0000C\u0000o\u0000.\u0000,\u0000 \u0000L\u0000t\u0000d\u0000.\u0000J\u0000I\u0000Y\u0000U\u0000K\u0000O\u0000B\u0000O\u0000 \u0000L\u0000t\u0000d\u0000.\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000s\u0000c\u0000r\u0000e\u0000e\u0000n\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/\u0000f\u0000o\u0000n\u0000t\u0000/\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000j\u0000i\u0000y\u0000u\u0000-\u0000k\u0000o\u0000b\u0000o\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000W\u00006\u0000v\u0000e\u0000r\u00008\u0000.\u00002\u00000\u0000,\u0000 \u0000C\u0000o\u0000p\u0000y\u0000r\u0000i\u0000g\u0000h\u0000t\u0000 \u0000�\u0000 \u00001\u00009\u00009\u00003\u0000-\u00002\u00000\u00001\u00003\u0000 Y'e�g,0�0�0�0�0��� h*_\u000fO\u001ay>\u0000 \u0000A\u0000l\u0000l\u0000 \u0000R\u0000i\u0000g\u0000h\u0000t\u0000s\u0000 \u0000R\u0000e\u0000s\u0000e\u0000r\u0000v\u0000e\u0000d\u0000.0�0�0�0Ή�0�0�0�0�\u0000 \u0000W\u00006\u0000R\u0000e\u0000g\u0000u\u0000l\u0000a\u0000r\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000 \u0000S\u0000a\u0000n\u0000s\u0000 \u0000W\u00006\u0000;\u0000 \u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000;\u0000 \u00002\u00000\u00001\u00009\u0000-\u00000\u00006\u0000-\u00001\u000030�0�0�0Ή�0�0�0�0�\u0000 \u0000W\u00006\u00001\u00005\u0000.\u00000\u0000d\u00001\u0000e\u00003\u0000H\u0000i\u0000r\u0000a\u0000g\u0000i\u0000n\u0000o\u0000S\u0000a\u0000n\u0000s\u0000-\u0000W\u00006SC��0J0�0s0�0�0�0�0oY'e�g,0�0�0�0�0��� h*_\u000fO\u001ay>0nv{�2UFj\u00190g0YY'e�g,0�0�0�0�0��� h*_\u000fO\u001ay>g �PO\u001ay>\u0000 [Wn8]�b?\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000s\u0000c\u0000r\u0000e\u0000e\u0000n\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/\u0000f\u0000o\u0000n\u0000t\u0000/\u0000h\u0000t\u0000t\u0000p\u0000:\u0000/\u0000/\u0000w\u0000w\u0000w\u0000.\u0000j\u0000i\u0000y\u0000u\u0000-\u0000k\u0000o\u0000b\u0000o\u0000.\u0000c\u0000o\u0000.\u0000j\u0000p\u0000/0�0�0�0Ή�0�0�0�0�\u0000W\u00006\u0000\u0000\u0000\u0000\u0000\u00005\u0002�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000U\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0001\u0000\u0018\u0000U\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0002\u0000\u0002\u0000m\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0003\u00001\u0000o\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0004\u0000\u001b\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0005\u0000\b\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0006\u0000\u000e\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0007\u0000O\u0000�\u0000\u0001\u0000\u0000\u0000\u0000\u0000\b\u0000\u001f\u0001 \u0000\u0001\u0000\u0000\u0000\u0000\u0000 \u0000 \u0001?\u0000\u0001\u0000\u0000\u0000\u0000\u0000 \u0000\u001d\u0001L\u0000\u0001\u0000\u0000\u0000\u0000\u0000 \u0000\u001b\u0001i\u0000\u0001\u0000\u0001\u0000 \u0000\u0000\u0000Q\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0001\u0000\u0010\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0002\u0000\u0002\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0003\u00001\u0001�\u0000\u0001\u0000\u0001\u0000 \u0000\u0004\u0000\u0013\u0002\u0018\u0000\u0001\u0000\u0001\u0000 \u0000\u0005\u0000\b\u0002+\u0000\u0001\u0000\u0001\u0000 \u0000\u0006\u0000\u000e\u00023\u0000\u0001\u0000\u0001\u0000 \u0000\u0007\u0000>\u0002A\u0000\u0001\u0000\u0001\u0000 \u0000\b\u0000\u001c\u0002\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u0011\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001d\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000 \u0000\u001b\u0002�\u0000\u0001\u0000\u0001\u0000 \u0000\u0012\u0000\u0013\u0002�\u0000\u0001\u0000\u0001��\u0000\u0014\u0000\u001a\u0002�\u0000\u0003\u0000\u0001\u0004 \u0000\u0000\u0000�\u0003\u0011\u0000\u0003\u0000\u0001\u0004 \u0000\u0001\u00006\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0002\u0000\u000e\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0003\u0000b\u0003�\u0000\u0003\u0000\u0001\u0004 \u0000\u0005\u0000\u0010\u0004a\u0000\u0003\u0000\u0001\u0004 \u0000\u0006\u0000\u001c\u0004q\u0000\u0003\u0000\u0001\u0004 \u0000\u0007\u0000�\u0004�\u0000\u0003\u0000\u0001\u0004 \u0000\b\u0000>\u0005+\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000\u001a\u0005i\u0000\u0003\u0000\u0001\u0004 \u0000 \u0000:\u0005�\u0000\u0003\u0000\u0001\u0004 \u0000 \u00006\u0005�\u0000\u0003\u0000\u0001\u0004 \u0000\u0010\u00000\u0005�\u0000\u0003\u0000\u0001\u0004 \u0000\u0011\u0000\u0004\u0006#\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0000\u0000�\u0006'\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0001\u0000\u001a\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0002\u0000\u000e\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0003\u0000b\u0006�\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0004\u0000\u001a\u00077\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0005\u0000\u0010\u0007Q\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0006\u0000\u001c\u0007a\u0000\u0003\u0000\u0001\u0004\u0011\u0000\u0007\u0000>\u0007}\u0000\u0003\u0000\u0001\u0004\u0011\u0000\b\u0000\u001c\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000\u0012\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u0000:\u0007�\u0000\u0003\u0000\u0001\u0004\u0011\u0000 \u00006\b#\u0000"
+        },
+        {
+          "status": 200,
+          "resourceType": "script",
+          "contentType": "application/javascript",
+          "url": "https://shop.kurasushi.co.jp/js/app.js?id=%3Credacted%3E",
+          "snippet": "|Internal|Range|Reference|Syntax|Type|URI)Error$/;C.Deferred.exceptionHook=function(e,t){n.console&&n.console.warn&&e&&W.test(e.name)&&n.console.warn(\"jQuery.Deferred exception: \"+e.message,e.stack,t)},C.readyException=function(e){n.setTimeout((function(){throw e}))};var B=C.Deferred();function F(){b.removeEventListener(\"DOMContentLoaded\",F),n.removeEventListener(\"load\",F),C.ready()}C.fn.ready=function(e){return B.then(e).catch((function(e){C.readyException(e)})),this},C.extend({isReady:!1,readyWait:1,ready:function(e){(!0===e?--C.readyWait:C.isReady)||(C.isReady=!0,!0!==e&&--C.readyWait>0||B.resolveWith(b,[C]))}}),C.ready.then=B.then,\"complete\"===b.readyState||\"loading\"!==b.readyState&&!b.documentElement.doScroll?n.setTimeout(C.ready):(b.addEventListener(\"DOMContentLoaded\",F),n.addEventListener(\"load\",F));var z=function(e,t,n,o,r,i,a){var s=0,l=e.length,c=null==n;if(\"object\"===_(n))for(s in r=!0,n)z(e,t,s,n[s],!0,i,a);else if(void 0!==o&&(r=!0,v(o)||(a=!0),c&&(a?(t.call(e,o),t=null):(c=t,t=function(e,t,n){return c.call(C(e),n)})),t))for(;s<l;s++)t(e[s],n,a?o:o.call(e[s],s,t(e[s],n)));return r?e:c?t.call(e):l?t(e[0],n):i},U=/^-ms-/,X=/-([a-z])/g;function V(e,t){return t.toUpperCase()}function Y(e){return e.replace(U,\"ms-\").replace(X,V)}var G=function(e){return 1===e.nodeType||9===e.nodeType||!+e.nodeType};function Q(){this.expando=C.expando+Q.uid++}Q.uid=1,Q.prototype={cache:function(e){var t=e[this.expando];return t||(t={},G(e)&&(e.nodeType?e[this.expando]=t:Object.defineProperty(e,this.expando,{value:t,configurable:!0}))),t},set:function(e,t,n){var o,r=this.cache(e);if(\"string\"==typeof t)r[Y(t)]=n;else for(o in t)r[Y(o)]=t[o];return r},get:function(e,t){return void 0===t?this.cache(e):e[this.expando]&&e[this.expando][Y(t)]},access:function(e,t,n){return void 0===t||t&&\"string\"==typeof t&&void 0===n?this.get(e,t):(this.set(e,t,n),void 0!==n?n:t)},remove:function(e,t){var n,o=e[this.expando];if(void 0!==o){if(void 0!==t){n=(t=Array.isArray(t)?t.map(Y):(t=Y(t))in o?[t]:t.match(P)||[]).length;for(;n--;)delete o[t[n]]}(void 0===t||C.isEmptyObject(o))&&(e.nodeType?e[this.expando]=void 0:delete e[this.expando])}},hasData:function(e){var t=e[this.expando];return void 0!==t&&!C.isEmptyObject(t)}};var K=new Q,J=new Q,Z=/^(?:\\{[\\w\\W]*\\}|\\[[\\w\\W]*\\])$/,ee=/[A-Z]/g;function te(e,t,n){var o;if(void 0===n&&1===e.nodeType)if(o=\"data-\"+t.replace(ee,\"-$&\").toLowerCase(),\"string\"==typeof(n=e.getAttribute(o))){try{n=function(e){return\"true\"===e||\"false\"!==e&&(\"null\"===e?null:e===+e+\"\"?+e:Z.test(e)?JSON.parse(e):e)}(n)}catch(e){}J.set(e,t,n)}else n=void 0;return n}C.extend({hasData:function(e){return J.hasData(e)||K.hasData(e)},data:function(e,t,n){return J.access(e,t,n)},removeData:function(e,t){J.remove(e,t)},_data:function(e,t,n){return K.access(e,t,n)},_removeData:function(e,t){K.remove(e,t)}}),C.fn.extend({data:function(e,t){var n,o,r,i=this[0],a=i&&i.attributes;if(void 0===e){if(this.length&&(r=J.get(i),1===i.nodeType&&!K.get(i,\"hasDataAttrs\"))){for(n=a.lengt"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://www.google-analytics.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&ngs=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&_gaz=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_fv=%3Credacted%3E&_ss=%3Credacted%3E&tfd=%3Credacted%3E"
+        },
+        {
+          "status": 200,
+          "resourceType": "script",
+          "contentType": "application/javascript",
+          "url": "https://shop.kurasushi.co.jp/js/pages/store_detail.js?id=%3Credacted%3E",
+          "snippet": "t)},\"i73+\":function(t,e){function i(t){return(i=\"function\"==typeof Symbol&&\"symbol\"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\"function\"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\"symbol\":typeof t})(t)}window.LOCAL_STORAGE_CURRENT_LAT_LON=\"kuraCurrentLatLon\",window.SEARCH_FROM_CURRENT_LOCATION=\"searchFromCurrentLocation\",window.CHECK_USING_CURRENT_LOCATION=\"checkUsingCurrentLocation\",window.SP_MAX_WIDTH_PX=767,window.SLIDE_SPEED=400,window.MAX_STORE_SHOW_WHEN_LOCATION_ON=10,window.addRequestToUrl=function(t,e){var i=arguments.length>2&&void 0!==arguments[2]&&arguments[2],s=\"/all\",n=window.location.protocol+\"//\"+window.location.host+window.location.pathname;if(navigator.appVersion.indexOf(\"Trident/\")<=-1){var o=new URLSearchParams(window.location.search);\"\"!==t&&o.set(t,e),(\"\"===e||void 0===e||void 0!==e&&0===e.length||\"0\"===e&&\"provinceId\"===t||0==e)&&o.delete(t),o.toString()&&(n+=\"?\"+o.toString(),!0===i&&(s+=\"?\"+o.toString()))}if(void 0!==history.pushState?window.history.replaceState({path:n},\"\",n):window.location.assign(n),!0===i)localStorage.setItem(\"historySearchTopUrl\",window.location.href),$(\"#btnSearch\").attr(\"data-href\",s);else{var r=$(\"#searchTopUrl\").attr(\"url-index\");localStorage.setItem(\"historySearchTopUrl\",r+\"/?\"+getAllParamsFilter(!1)),getAllParamsFilter().length||localStorage.setItem(\"historySearchTopUrl\",r),localStorage.setItem(\"historySearchListUrl\",window.location.href);var a=localStorage.getItem(\"historySearchTopUrl\"),h=$(\"#searchTopUrl\"),l=null!==a?a:r;h.attr(\"href\",l)}},window.getUrlParameter=function(t){for(var e,s=getAllParamsFilter(),n=0;n<s.length;n++)if((e=s[n].split(\"=\"))[0]===t)return void 0===i(e[1])?\"\":decodeURIComponent(e[1]);return\"\"},window.getAllParamsFilter=function(){var t=!(arguments.length>0&&void 0!==arguments[0])||arguments[0],e=window.location.search.substring(1);return e&&t?e.split(\"&\"):e},window.decodeParams=function(t){return new URLSearchParams(\"?query=\".concat(t)).get(\"query\")},window.replaceSpace=function(t){return t.replace(/\\s+/g,\"\")},window.getUrlPathName=function(){var t=window.location.pathname.replace(/\\/+$/,\"\").split(\"/\");return t[t.length-1]},window.setUrlPathName=function(t){window.history.pushState(null,null,\"/\".concat(t))},window.handleLocationSuccess=function(t){localStorage.setItem(SEARCH_FROM_CURRENT_LOCATION,\"true\"),localStorage.setItem(CHECK_USING_CURRENT_LOCATION,\"true\"),localStorage.setItem(LOCAL_STORAGE_CURRENT_LAT_LON,JSON.stringify({lat:t.coords.latitude,lon:t.coords.longitude}))},window.handleLocationError=function(t){handleRemoveCurrentLocation(),alert(\"ご指定の検索条件に合う店舗が見つかりませんでした。大変お手数ですが、条件を変えて再度検索してください。\")},window.handleRemoveCurrentLocation=function(){localStorage.removeItem(CHECK_USING_CURRENT_LOCATION),localStorage.removeItem(SEARCH_FROM_CURRENT_LOCATION),localStorage.removeItem(LOCAL_STORAGE_CURRENT_LAT_LON)},window.handleLocation=function(t,e){var i=window.navigator.geolocation;i?i.getCurrentPosition(t,e,{maximumAge:1e3,"
+        },
+        {
+          "status": 204,
+          "resourceType": "xhr",
+          "contentType": "",
+          "url": "https://b.clarity.ms/collect"
+        },
+        {
+          "status": 204,
+          "resourceType": "fetch",
+          "contentType": "text/plain",
+          "url": "https://analytics.google.com/g/collect?v=%3Credacted%3E&tid=%3Credacted%3E&gtm=%3Credacted%3E&_p=%3Credacted%3E&gcd=%3Credacted%3E&npa=%3Credacted%3E&dma=%3Credacted%3E&_eu=%3Credacted%3E&are=%3Credacted%3E&cid=%3Credacted%3E&frm=%3Credacted%3E&pscdl=%3Credacted%3E&rcb=%3Credacted%3E&sr=%3Credacted%3E&uaa=%3Credacted%3E&uab=%3Credacted%3E&uafvl=%3Credacted%3E&uam=%3Credacted%3E&uamb=%3Credacted%3E&uap=%3Credacted%3E&uapv=%3Credacted%3E&uaw=%3Credacted%3E&ul=%3Credacted%3E&gaf=%3Credacted%3E&_s=%3Credacted%3E&tag_exp=%3Credacted%3E&sid=%3Credacted%3E&sct=%3Credacted%3E&seg=%3Credacted%3E&dl=%3Credacted%3E&dt=%3Credacted%3E&en=%3Credacted%3E&_et=%3Credacted%3E&tfd=%3Credacted%3E"
+        }
+      ],
+      "resourceUrls": [
+        "https://shop.kurasushi.co.jp/css/app.css?id=%3Credacted%3E",
+        "https://shop.kurasushi.co.jp/css/pages/store_detail.css?id=%3Credacted%3E",
+        "https://www.kurasushi.co.jp/common/images/gnav_store_sp.png",
+        "https://shop.kurasushi.co.jp/svg/phone.svg",
+        "https://shop.kurasushi.co.jp/svg/path853.svg",
+        "https://shop.kurasushi.co.jp/svg/logo.svg",
+        "https://shop.kurasushi.co.jp/js/app.js?id=%3Credacted%3E",
+        "https://shop.kurasushi.co.jp/e7ac049a4ba83fdd7a733c9d859435ff.ttc",
+        "https://shop.kurasushi.co.jp/596e7f1f2135412ba8f5bc2895a59364.ttc",
+        "https://shop.kurasushi.co.jp/js/pages/store_detail.js?id=%3Credacted%3E"
+      ],
+      "consoleMessages": [
+        {
+          "type": "debug",
+          "text": "Search endpoint requested!"
+        },
+        {
+          "type": "warning",
+          "text": "jQuery.Deferred exception: Cannot read properties of null (reading 'search') TypeError: Cannot read properties of null (reading 'search') at HTMLDocument.<anonymous> (https://shop.kurasushi.co.jp/js/pages/store_detail.js?id=ba3bc616eca38fe6c5f6:1:49550) at c (https://shop.kurasushi.co.jp/js/app.js?id=41c133b9db4d7b0a7fdd:2:34049) at u (https://shop.kurasushi.co.jp/js/app.js?id=41c133b9db4d7b0a7fdd:2:34351) undefined"
+        }
+      ]
+    },
+    {
+      "id": "kappasushi",
+      "requestedUrl": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
+      "finalUrl": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
+      "title": "豊橋飯村店｜かっぱ寿司 店舗・順番待ち予約",
+      "navigationError": null,
+      "bodyText": "ログイン 店舗情報 豊橋飯村店 現在、お待ちのお客様はいらっしゃいません ご来店の上、店頭での発券をお願いします。 日時を指定して予約 ※こちらのボタンは 食べ放題予約ではございません 食べ放題ご希望のお客様は 以下よりご予約をお願いします。 食べ放題予約 店舗情報 住所 〒440-0836 愛知県 豊橋市 飯村町7-624 電話番号 0532-66-3830 店舗の詳細情報は、こちら ホームへ戻る ©Kappa Create Co., ltd. All Rights Reserved.",
+      "requests": [
+        {
+          "method": "GET",
+          "resourceType": "document",
+          "url": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"
+        },
+        {
+          "method": "GET",
+          "resourceType": "script",
+          "url": "https://yoyaku.kappasushi.jp/js/gps.js"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "resourceType": "document",
+          "contentType": "text/html; charset=UTF-8",
+          "url": "https://yoyaku.kappasushi.jp/shop/detail/shop_id/988",
+          "snippet": "<!DOCTYPE html> <html lang=\"ja\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset= UTF-8\"> <meta name=\"description\" content=\"かっぱ寿司全店の順番待ち予約サイトです。\"> <meta name=\"keywords\" content=\"かっぱ寿司,回転寿司,予約,かっぱ,カッパ,回転すし\"> <meta name=\"disparea\" content=\"vga\"> <meta name=\"format-detection\" content=\"telephone=no\"> <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no\"> <meta http-equiv=\"Pragma\" content=\"no-cache\"> <meta http-equiv=\"Cache-Control\" content=\"no-cache\"> <meta http-equiv=\"Expires\" content=\"0\"> <link rel=\"shortcut icon\" href=\"/img/favicon.ico\"> <link rel=\"stylesheet\" href=\"/css/normalize.css\"> <link rel=\"stylesheet\" href=\"/css/style.css?20260810164233\" type=\"text/css\"> <link rel=\"apple-touch-icon-precomposed\" href=\"/apple-touch-icon-precomposed.png\"> <meta name=\"robots\" content=\"index,follow\"> <script type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js\"></script> <script type=\"text/javascript\" src=\"/js/gps.js\"></script> <title>豊橋飯村店｜かっぱ寿司 店舗・順番待ち予約</title> </head> <body> <div id=\"layout\"> <div id=\"header\" class=\"clearfix\"> <div class=\"clearfix\"> <p id=\"logo\"><a href=\"/?CKC_SSID=dj62ojaqhs2p8c26qouckmiuu17ioj8u\"><img src=\"/img/logo.png\" alt=\"かっぱ寿司\"></a></p> <p class=\"btn_home\"><a href=\"https://app3.kappasushi.jp/sso/authorize?response_type=code&client_id=v54kx2ap\">ログイン</a></p> </div> </div> <h1>店舗情報</h1> <div id=\"content\"> <h2 class=\"mb20\">豊橋飯村店</h2> <p class=\"mb10 center\"><span class=\"bold\">現在、お待ちのお客様はいらっしゃいません</span></p> <p class=\"mb10 center\"><span class=\"bold\">ご来店の上、店頭での発券をお願いします。</span></p> <p class=\"mb45\"> <a class=\"btn_default blue\" href=\"/reserve/day/shop_id/988/type/2?CKC_SSID=dj62ojaqhs2p8c26qouckmiuu17ioj8u\"> <strong>日時を指定して予約</strong></br> ※こちらのボタンは</br>食べ放題予約ではございません </a> </p> <p class=\"mb05 center\"><strong>食べ放題ご希望のお客様は<br>以下よりご予約をお願いします。</strong></p> <p class=\"mb25\"> <a class=\"btn_default red\" style=\"padding:27px;\" href=\"/login?CKC_SSID=dj62ojaqhs2p8c26qouckmiuu17ioj8u\"> <strong style=\"font-size:30px\">食べ放題予約</strong> </a> </p> <hr class=\"mb20\"> <p class=\"mb10\">店舗情報</p><hr> <ul class=\"list02 none_br\"> <li> <span class=\"title01\">住所</span> 〒440-0836<br> 愛知県 豊橋市 飯村町7-624 </li> <li> <span class=\"title01\">電話番号</span> 0532-66-3830 <a href=\"http://kappasushi.jp/shop/0220\" target=\"_blank\" style=\"display:block;padding-top:20px;padding-bottom:10px;\">店舗の詳細情報は、こちら</a> </li> </ul> <p><a class=\"btn_default gray btn_small\" href=\"/?CKC_SSID=dj62ojaqhs2p8c26qouckmiuu17ioj8u\">ホームへ戻る</a></p> </div><!-- end content --> <div id=\"footer\"> <p class=\"copyright\">©Kappa Create Co., ltd. All Rights Reserved"
+        },
+        {
+          "status": 200,
+          "resourceType": "image",
+          "contentType": "image/gif",
+          "url": "https://yoyaku.kappasushi.jp/ga.php?utmac=%3Credacted%3E&utmn=%3Credacted%3E&utmr=%3Credacted%3E&utmp=%3Credacted%3E&guid=%3Credacted%3E"
+        }
+      ],
+      "resourceUrls": [],
+      "consoleMessages": []
+    }
+  ]
+}
