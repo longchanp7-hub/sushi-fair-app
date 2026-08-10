@@ -1,0 +1,62 @@
+name: Apply Sushiro public wait integration
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - 'scripts/apply-sushiro-public-wait.py'
+      - '.github/workflows/apply-sushiro-public-wait.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-sushiro-public-wait
+  cancel-in-progress: true
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Apply production patch
+        run: python3 scripts/apply-sushiro-public-wait.py
+
+      - name: Run parser self-tests
+        run: node scripts/refresh-crowd-standalone.mjs --self-test
+
+      - name: Generate a live snapshot
+        run: node scripts/refresh-crowd-standalone.mjs
+
+      - name: Remove one-shot patch files
+        shell: bash
+        run: |
+          rm -f scripts/apply-sushiro-public-wait.py
+          rm -f .github/workflows/apply-sushiro-public-wait.yml
+
+      - name: Commit production integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A scripts/refresh-crowd-standalone.mjs app/data/crowd.json scripts/apply-sushiro-public-wait.py .github/workflows/apply-sushiro-public-wait.yml
+          git commit -m "Use Sushiro public wait data"
+          for attempt in 1 2 3 4; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          exit 1
