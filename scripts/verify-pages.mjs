@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const PAGE_URL = process.argv[2];
+const REPORT_PATH = process.env.SMOKE_REPORT_PATH || null;
 const CROWD_URL = 'https://raw.githubusercontent.com/longchanp7-hub/sushi-fair-app/crowd-live/app/data/crowd.json';
 const MAX_ATTEMPTS = 12;
 const RETRY_DELAY_MS = 5_000;
@@ -101,11 +102,24 @@ async function verifyOnce(attempt, localIndex, localFairsText) {
   validateCrowd(crowd);
 
   return {
+    status: 'ok',
+    verifiedAt: new Date().toISOString(),
+    testedCommit: process.env.GITHUB_SHA || null,
     pageUrl: baseUrl.href,
+    publicIndexMatchesSource: true,
+    publicFairsMatchSource: true,
     fairsUpdatedAt: fairs.updatedAt,
     crowdUpdatedAt: crowd.updatedAt,
+    crowdAgeMinutes: Math.max(0, Math.floor((Date.now() - Date.parse(crowd.updatedAt)) / 60_000)),
     crowdLabels: Object.fromEntries(crowd.stores.map(store => [store.chain, store.label])),
   };
+}
+
+async function writeReport(result) {
+  if (!REPORT_PATH) return;
+  await fs.mkdir(path.dirname(REPORT_PATH), { recursive: true });
+  await fs.writeFile(REPORT_PATH, `${JSON.stringify(result, null, 2)}\n`);
+  console.log(`Wrote smoke report to ${REPORT_PATH}`);
 }
 
 const localIndex = await fs.readFile(path.join(ROOT, 'app', 'index.html'), 'utf8');
@@ -115,6 +129,7 @@ let lastError = null;
 for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
   try {
     const result = await verifyOnce(attempt, localIndex, localFairsText);
+    await writeReport(result);
     console.log('Published app smoke test passed.');
     console.log(JSON.stringify(result, null, 2));
     process.exit(0);

@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
   statuses: write
@@ -42,15 +42,49 @@ jobs:
         continue-on-error: true
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          SMOKE_REPORT_PATH: /tmp/pages-smoke.json
         run: node scripts/verify-pages.mjs "$PAGE_URL"
+      - name: Publish latest verification report to pages-live
+        id: health
+        if: steps.smoke.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s /tmp/pages-smoke.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin +main:refs/remotes/origin/main
+          git reset --hard refs/remotes/origin/main
+          mkdir -p diagnostics
+          cp /tmp/pages-smoke.json diagnostics/pages-smoke.json
+          git add diagnostics/pages-smoke.json
+          git commit -m "Latest Pages smoke report"
+
+          for attempt in 1 2 3; do
+            remote_sha=$(git ls-remote --heads origin pages-live | awk '{print $1}')
+            if [[ -n "$remote_sha" ]]; then
+              if git push --force-with-lease=refs/heads/pages-live:$remote_sha origin HEAD:pages-live; then
+                exit 0
+              fi
+            elif git push origin HEAD:pages-live; then
+              exit 0
+            fi
+            sleep 3
+          done
+          exit 1
       - name: Record publication verification status
         if: always()
+        continue-on-error: true
         uses: actions/github-script@v7
         with:
           script: |
             const deploymentOutcome = '${{ steps.deployment.outcome }}';
             const smokeOutcome = '${{ steps.smoke.outcome }}';
-            const success = deploymentOutcome === 'success' && smokeOutcome === 'success';
+            const healthOutcome = '${{ steps.health.outcome }}';
+            const success = deploymentOutcome === 'success'
+              && smokeOutcome === 'success'
+              && healthOutcome === 'success';
             const params = {
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -59,11 +93,11 @@ jobs:
               context: 'pages-smoke',
               description: success
                 ? 'Published HTML, fairs, and crowd data verified'
-                : `Deploy=${deploymentOutcome}, smoke=${smokeOutcome}`,
+                : `Deploy=${deploymentOutcome}, smoke=${smokeOutcome}, report=${healthOutcome}`,
             };
             const pageUrl = '${{ steps.deployment.outputs.page_url }}';
             if (pageUrl) params.target_url = pageUrl;
             await github.rest.repos.createCommitStatus(params);
       - name: Fail when publication verification failed
-        if: always() && steps.smoke.outcome == 'failure'
+        if: always() && (steps.smoke.outcome == 'failure' || steps.health.outcome == 'failure')
         run: exit 1
