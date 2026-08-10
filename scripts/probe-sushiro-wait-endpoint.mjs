@@ -13,20 +13,12 @@ const targets = [
     path: '/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=179',
   },
   {
-    id: 'waiting-config-142',
-    path: '/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=142',
+    id: 'nearby-stores-toyohashi-shinsakae',
+    path: '/LINE-mini/api/stores?latitude=34.7634355&longitude=137.3656127&numresults=3',
   },
   {
-    id: 'waiting-config-both',
-    path: '/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=179,142',
-  },
-  {
-    id: 'stores-179',
+    id: 'stores-179-invalid-shape-check',
     path: '/LINE-mini/api/stores?storeId=179',
-  },
-  {
-    id: 'stores-list-179',
-    path: '/LINE-mini/api/stores?stores=179',
   },
 ];
 
@@ -36,10 +28,10 @@ function parseMaybeJson(text, contentType) {
 }
 
 function summarize(value, depth = 0) {
-  if (depth > 4) return '[max-depth]';
+  if (depth > 5) return '[max-depth]';
   if (value === null || typeof value !== 'object') return value;
   if (Array.isArray(value)) return value.slice(0, 20).map(item => summarize(item, depth + 1));
-  return Object.fromEntries(Object.entries(value).slice(0, 60).map(([key, item]) => [key, summarize(item, depth + 1)]));
+  return Object.fromEntries(Object.entries(value).slice(0, 80).map(([key, item]) => [key, summarize(item, depth + 1)]));
 }
 
 async function inspect(target) {
