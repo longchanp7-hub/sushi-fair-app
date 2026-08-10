@@ -14,6 +14,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  statuses: write
 
 concurrency:
   group: pages-static-deploy
@@ -25,6 +26,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
@@ -34,3 +36,34 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify published HTML, fair data, and live crowd data
+        id: smoke
+        if: steps.deployment.outcome == 'success'
+        continue-on-error: true
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node scripts/verify-pages.mjs "$PAGE_URL"
+      - name: Record publication verification status
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const deploymentOutcome = '${{ steps.deployment.outcome }}';
+            const smokeOutcome = '${{ steps.smoke.outcome }}';
+            const success = deploymentOutcome === 'success' && smokeOutcome === 'success';
+            const params = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: success ? 'success' : 'failure',
+              context: 'pages-smoke',
+              description: success
+                ? 'Published HTML, fairs, and crowd data verified'
+                : `Deploy=${deploymentOutcome}, smoke=${smokeOutcome}`,
+            };
+            const pageUrl = '${{ steps.deployment.outputs.page_url }}';
+            if (pageUrl) params.target_url = pageUrl;
+            await github.rest.repos.createCommitStatus(params);
+      - name: Fail when publication verification failed
+        if: always() && steps.smoke.outcome == 'failure'
+        run: exit 1
