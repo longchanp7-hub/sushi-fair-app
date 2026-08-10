@@ -48,7 +48,7 @@ jobs:
           git commit -m "Latest crowd snapshot"
 
           for attempt in 1 2 3; do
-            git fetch origin crowd-live:refs/remotes/origin/crowd-live || true
+            git fetch origin +crowd-live:refs/remotes/origin/crowd-live || true
             remote_sha=$(git rev-parse refs/remotes/origin/crowd-live 2>/dev/null || true)
 
             if [[ -n "$remote_sha" ]]; then
