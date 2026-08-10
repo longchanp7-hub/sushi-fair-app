@@ -1,0 +1,70 @@
+name: Refresh crowd snapshot C
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - '.github/workflows/refresh-crowd-c.yml'
+      - 'scripts/refresh-crowd-standalone.mjs'
+  schedule:
+    - cron: '12,27,42,57 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crowd-snapshot-refresh-c
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate crowd parser rules
+        run: node scripts/refresh-crowd-standalone.mjs --self-test
+      - name: Refresh crowd snapshot
+        run: node scripts/refresh-crowd-standalone.mjs
+      - name: Publish only when this snapshot is newer
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp app/data/crowd.json /tmp/crowd.json
+          current_time=$(node -e "const fs=require('fs'); console.log(Date.parse(JSON.parse(fs.readFileSync('/tmp/crowd.json','utf8')).updatedAt))")
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/crowd.json app/data/crowd.json
+          git add app/data/crowd.json
+          git commit -m "Latest crowd snapshot"
+
+          for attempt in 1 2 3; do
+            git fetch origin +crowd-live:refs/remotes/origin/crowd-live || true
+            remote_sha=$(git rev-parse refs/remotes/origin/crowd-live 2>/dev/null || true)
+
+            if [[ -n "$remote_sha" ]]; then
+              git show refs/remotes/origin/crowd-live:app/data/crowd.json > /tmp/remote-crowd.json || echo '{}' > /tmp/remote-crowd.json
+              remote_time=$(node -e "const fs=require('fs'); const t=Date.parse(JSON.parse(fs.readFileSync('/tmp/remote-crowd.json','utf8')).updatedAt || ''); console.log(Number.isFinite(t)?t:0)")
+              if (( remote_time >= current_time )); then
+                echo "A newer or equal crowd snapshot is already published"
+                exit 0
+              fi
+              if git push --force-with-lease=refs/heads/crowd-live:$remote_sha origin HEAD:crowd-live; then
+                exit 0
+              fi
+            elif git push origin HEAD:crowd-live; then
+              exit 0
+            fi
+
+            sleep 3
+          done
+          exit 1
