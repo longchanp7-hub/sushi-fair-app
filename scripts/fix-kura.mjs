@@ -134,39 +134,6 @@ function eventSectionText($) {
   return bodyText.slice(start, end);
 }
 
-function findEventMedia($, fairName) {
-  let sourceUrl = STORE_URL;
-  let imageUrl = null;
-  let selectedContainer = null;
-
-  $('a[href]').each((_, element) => {
-    if (selectedContainer) return;
-    const link = $(element);
-    const href = link.attr('href');
-    if (!href) return;
-    let node = link;
-    for (let depth = 0; depth < 6 && node.length; depth += 1) {
-      const text = clean(node.text());
-      if (text.includes(fairName)) {
-        selectedContainer = node;
-        try { sourceUrl = new URL(href, STORE_URL).href; } catch {}
-        return;
-      }
-      node = node.parent();
-    }
-  });
-
-  if (selectedContainer?.length) {
-    const image = selectedContainer.find('img').first();
-    const rawImage = image.attr('src') || image.attr('data-src') || image.attr('data-lazy-src');
-    if (rawImage) {
-      try { imageUrl = new URL(rawImage, STORE_URL).href; } catch {}
-    }
-  }
-
-  return { sourceUrl, imageUrl };
-}
-
 function parseStoreCampaign(html) {
   const $ = cheerio.load(html);
   const eventText = eventSectionText($);
@@ -191,8 +158,10 @@ function parseStoreCampaign(html) {
   if (!candidates.length) return null;
   candidates.sort((a, b) => campaignRank(a) - campaignRank(b));
   const selected = candidates[0];
-  const media = findEventMedia($, selected.fairName);
-  return { ...selected, ...media };
+  // The store page reliably contains the active event, but surrounding navigation can
+  // make generic ancestor-based link/image matching select the site logo. Keep the
+  // source anchored to the verified store event page unless a dedicated parser is added.
+  return { ...selected, sourceUrl: STORE_URL, imageUrl: null };
 }
 
 function parseOfficialSpecialCampaign(html) {
@@ -277,7 +246,8 @@ function runSelfTests() {
   assert.equal(parsed.fairName, '地中海本まぐろフェア');
   assert.equal(parsed.startDate, '2026-08-07');
   assert.equal(parsed.endDate, '2026-08-19');
-  assert.equal(parsed.sourceUrl, 'https://www.kurasushi.co.jp/topic/mediterranean-tuna');
+  assert.equal(parsed.sourceUrl, STORE_URL);
+  assert.equal(parsed.imageUrl, null);
   assert.equal(parseRange('2026/8/7 - 8/19').endDate, '2026-08-19');
   console.log('Kura parser self-tests passed.');
 }
