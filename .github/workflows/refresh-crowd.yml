@@ -2,6 +2,7 @@ name: Refresh crowd snapshot A
 
 on:
   workflow_dispatch:
+  # Collector changes committed outside Actions trigger an immediate production refresh.
   push:
     branches: ['main']
     paths:
