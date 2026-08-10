@@ -1,0 +1,17 @@
+{
+  "status": "ok",
+  "verifiedAt": "2026-08-10T08:00:32.738Z",
+  "testedCommit": "e43ce632de9a505aec966a33c06d1684963b9166",
+  "pageUrl": "https://longchanp7-hub.github.io/sushi-fair-app/",
+  "publicIndexMatchesSource": true,
+  "publicFairsMatchSource": true,
+  "fairsUpdatedAt": "2026-08-10T07:54:50.499Z",
+  "crowdUpdatedAt": "2026-08-10T07:55:54.453Z",
+  "crowdAgeMinutes": 4,
+  "crowdLabels": {
+    "sushiro": "待ちなし",
+    "hamazushi": "公式予約で確認",
+    "kurasushi": "店頭混雑は取得できません",
+    "kappasushi": "待ちなし"
+  }
+}
