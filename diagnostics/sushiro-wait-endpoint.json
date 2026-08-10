@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-08-10T07:47:24.904Z",
+  "results": [
+    {
+      "id": "waiting-config-179",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=179",
+      "finalUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=179",
+      "status": 200,
+      "contentType": "application/json;charset=UTF-8",
+      "allowOrigin": null,
+      "bodyLength": 89,
+      "json": {
+        "configs": [
+          {
+            "storeId": 179,
+            "top": false,
+            "stores": false,
+            "ticketing": false,
+            "ticket": false
+          }
+        ]
+      },
+      "textSample": null
+    },
+    {
+      "id": "waiting-config-142",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=142",
+      "finalUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=142",
+      "status": 200,
+      "contentType": "application/json;charset=UTF-8",
+      "allowOrigin": null,
+      "bodyLength": 89,
+      "json": {
+        "configs": [
+          {
+            "storeId": 142,
+            "top": false,
+            "stores": false,
+            "ticketing": false,
+            "ticket": false
+          }
+        ]
+      },
+      "textSample": null
+    },
+    {
+      "id": "waiting-config-both",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=179,142",
+      "finalUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/info/storewaitingtimeconfig?region=JP&stores=179,142",
+      "status": 200,
+      "contentType": "application/json;charset=UTF-8",
+      "allowOrigin": null,
+      "bodyLength": 165,
+      "json": {
+        "configs": [
+          {
+            "storeId": 142,
+            "top": false,
+            "stores": false,
+            "ticketing": false,
+            "ticket": false
+          },
+          {
+            "storeId": 179,
+            "top": false,
+            "stores": false,
+            "ticketing": false,
+            "ticket": false
+          }
+        ]
+      },
+      "textSample": null
+    },
+    {
+      "id": "stores-179",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/stores?storeId=179",
+      "finalUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/stores?storeId=179",
+      "status": 500,
+      "contentType": "application/json;charset=UTF-8",
+      "allowOrigin": null,
+      "bodyLength": 142,
+      "json": {
+        "message": "ご迷惑おかけします。サーバー側でエラーが発生しました。後で再度お試し下さい。",
+        "code": "E010"
+      },
+      "textSample": null
+    },
+    {
+      "id": "stores-list-179",
+      "requestedUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/stores?stores=179",
+      "finalUrl": "https://linemini.akindo-sushiro.co.jp/LINE-mini/api/stores?stores=179",
+      "status": 500,
+      "contentType": "application/json;charset=UTF-8",
+      "allowOrigin": null,
+      "bodyLength": 142,
+      "json": {
+        "message": "ご迷惑おかけします。サーバー側でエラーが発生しました。後で再度お試し下さい。",
+        "code": "E010"
+      },
+      "textSample": null
+    }
+  ]
+}
