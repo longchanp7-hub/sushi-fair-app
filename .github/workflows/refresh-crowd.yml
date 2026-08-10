@@ -1,4 +1,4 @@
-name: Refresh crowd snapshot
+name: Refresh crowd snapshot A
 
 on:
   workflow_dispatch:
@@ -8,13 +8,13 @@ on:
       - '.github/workflows/refresh-crowd.yml'
       - 'scripts/refresh-crowd-standalone.mjs'
   schedule:
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
+    - cron: '2,17,32,47 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
-  group: crowd-snapshot-refresh
+  group: crowd-snapshot-refresh-a
   cancel-in-progress: false
 
 jobs:
