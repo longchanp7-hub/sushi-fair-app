@@ -1,0 +1,106 @@
+name: Verify current public sushi app
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - '.github/workflows/verify-current-public-app.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-current-public-sushi-app
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify published Pages application
+        env:
+          SMOKE_REPORT_PATH: /tmp/pages-smoke.json
+        run: node scripts/verify-pages.mjs https://longchanp7-hub.github.io/sushi-fair-app/
+
+      - name: Verify published Sushiro live wait data
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs/promises';
+          const url = `https://raw.githubusercontent.com/longchanp7-hub/sushi-fair-app/crowd-live/app/data/crowd.json?t=${Date.now()}`;
+          const response = await fetch(url, { cache:'no-store', headers:{ accept:'application/json' } });
+          if (!response.ok) throw new Error(`crowd-live HTTP ${response.status}`);
+          const crowd = await response.json();
+          const sushiro = crowd.stores?.find(store => store.chain === 'sushiro');
+          if (!sushiro) throw new Error('Sushiro is missing from crowd-live');
+          if (sushiro.method !== 'actual_wait' || sushiro.status !== 'ok') {
+            throw new Error(`Sushiro is not using actual_wait: ${JSON.stringify(sushiro)}`);
+          }
+          if (!Number.isFinite(sushiro.waitMinutes) && !Number.isFinite(sushiro.waitGroups)) {
+            throw new Error('Sushiro has no numeric public wait value');
+          }
+          if (Date.parse(crowd.updatedAt) < Date.parse('2026-08-10T07:55:00Z')) {
+            throw new Error(`crowd-live is older than the integration: ${crowd.updatedAt}`);
+          }
+          const report = JSON.parse(await fs.readFile('/tmp/pages-smoke.json', 'utf8'));
+          report.sushiroLive = {
+            method: sushiro.method,
+            status: sushiro.status,
+            label: sushiro.label,
+            waitMinutes: sushiro.waitMinutes ?? null,
+            waitGroups: sushiro.waitGroups ?? null,
+            updatedAt: crowd.updatedAt,
+          };
+          await fs.writeFile('/tmp/pages-smoke.json', `${JSON.stringify(report, null, 2)}\n`);
+          console.log(JSON.stringify(report.sushiroLive, null, 2));
+          NODE
+
+      - name: Publish verification report
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s /tmp/pages-smoke.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin +main:refs/remotes/origin/main
+          git reset --hard refs/remotes/origin/main
+          mkdir -p diagnostics
+          cp /tmp/pages-smoke.json diagnostics/pages-smoke.json
+          git add diagnostics/pages-smoke.json
+          git commit -m "Latest Pages smoke report"
+          for attempt in 1 2 3; do
+            remote_sha=$(git ls-remote --heads origin pages-live | awk '{print $1}')
+            if [[ -n "$remote_sha" ]]; then
+              if git push --force-with-lease=refs/heads/pages-live:$remote_sha origin HEAD:pages-live; then exit 0; fi
+            elif git push origin HEAD:pages-live; then
+              exit 0
+            fi
+            sleep 3
+          done
+          exit 1
+
+      - name: Remove one-shot verification workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin +main:refs/remotes/origin/main
+          git reset --hard refs/remotes/origin/main
+          git rm -f .github/workflows/verify-current-public-app.yml
+          git commit -m "Remove one-shot public verification workflow"
+          for attempt in 1 2 3 4; do
+            if git pull --rebase origin main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          exit 1
