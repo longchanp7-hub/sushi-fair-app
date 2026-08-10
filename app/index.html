@@ -53,7 +53,7 @@
       </div>
       <div id="crowdMode" class="crowd-mode">約5分ごとに最新状況を取得します</div>
       <div id="crowdGrid" class="crowd-grid" aria-live="polite"></div>
-      <p class="crowd-note">混雑データの新規取得は約5分ごとに自動実行します。「再読込」は取得済みの最新データを読み直すボタンです。くら寿司の日時指定予約枠と現在の店頭待ちは別指標として扱い、予約可能時刻だけで混雑とは判定しません。祝日・臨時営業時間は公式情報をご確認ください。</p>
+      <p class="crowd-note">混雑データの新規取得は約5分ごとに自動実行します。「再読込」は取得済みの最新データを読み直すボタンです。くら寿司の日時指定予約枠と現在の店頭待ちは別指標として扱い、予約可能時刻だけで混雑とは判定しません。特別営業時間は公式ページから取得できる範囲で反映しますが、来店前に最終確認してください。</p>
     </section>
 
     <nav id="filters" class="filters" aria-label="チェーン絞り込み">
@@ -82,7 +82,7 @@
   <footer>公式公開情報をまとめて表示する個人向けビューア</footer>
   <script src="./app.js?v=20260728-0552" type="module"></script>
   <script type="module">
-    import { initCrowd } from './crowd.js?v=20260807-5';
+    import { initCrowd } from './crowd.js?v=20260810-1';
     initCrowd();
   </script>
 </body>
