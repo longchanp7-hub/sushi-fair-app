@@ -3,7 +3,7 @@ name: Probe crowd sources
 on:
   workflow_dispatch:
   push:
-    branches: ['agent/crowd-source-probe']
+    branches: ['main']
     paths:
       - 'scripts/probe-crowd-sources.mjs'
       - '.github/workflows/probe-crowd-sources.yml'
@@ -22,13 +22,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: agent/crowd-source-probe
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: Inspect public official pages and assets
         run: node scripts/probe-crowd-sources.mjs
-      - name: Save diagnostic report to this branch
+      - name: Save diagnostic report
         shell: bash
         run: |
           if git diff --quiet -- diagnostics/crowd-sources.json; then
@@ -39,4 +39,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add diagnostics/crowd-sources.json
           git commit -m "Add crowd source diagnostic report"
-          git push origin HEAD:agent/crowd-source-probe
+          git push origin HEAD:main
