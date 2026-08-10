@@ -1,20 +1,20 @@
-name: Refresh crowd snapshot A
+name: Refresh crowd snapshot C
 
 on:
   workflow_dispatch:
   push:
     branches: ['main']
     paths:
-      - '.github/workflows/refresh-crowd.yml'
+      - '.github/workflows/refresh-crowd-c.yml'
       - 'scripts/refresh-crowd-standalone.mjs'
   schedule:
-    - cron: '2,17,32,47 * * * *'
+    - cron: '12,27,42,57 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
-  group: crowd-snapshot-refresh-a
+  group: crowd-snapshot-refresh-c
   cancel-in-progress: false
 
 jobs:
