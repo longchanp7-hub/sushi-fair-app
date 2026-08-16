@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-15T21:36:59.426Z",
+  "updatedAt": "2026-08-16T21:36:04.424Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -258,17 +258,13 @@
         {
           "name": "かっぱの本鮪中とろ祭り！",
           "price": null
-        },
-        {
-          "name": "かっぱの夏！得トク祭り！",
-          "price": null
         }
       ],
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
       "imageUrl": null,
-      "status": "ok",
-      "message": null
+      "status": "warning",
+      "message": "開催中フェア名は取得できていますが、個別商品の自動取得はできていません。公式ページで確認してください。"
     }
   ]
 }
