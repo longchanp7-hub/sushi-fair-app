@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T21:36:04.424Z",
+  "updatedAt": "2026-08-17T21:15:26.585Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -36,10 +36,6 @@
         {
           "name": "うなぎ 梅しそおろし",
           "price": 180
-        },
-        {
-          "name": "生本ずわい蟹",
-          "price": 220
         },
         {
           "name": "北海道産 上いくら",
@@ -238,15 +234,42 @@
       "endDate": "2026-08-19",
       "items": [
         {
-          "name": "地中海本まぐろフェア",
-          "price": null
+          "name": "地中海大とろ（一貫）",
+          "price": 380,
+          "startDate": "2026-08-07",
+          "endDate": "2026-08-19"
+        },
+        {
+          "name": "【鹿児島県産】活〆かんぱち",
+          "price": 300,
+          "startDate": "2026-08-07",
+          "endDate": "2026-08-30"
+        },
+        {
+          "name": "とろける上煮穴子（一貫）",
+          "price": 160,
+          "startDate": "2026-08-07",
+          "endDate": "2026-08-30"
+        },
+        {
+          "name": "ます寿司",
+          "price": 240,
+          "startDate": "2026-08-07",
+          "endDate": "2026-08-19"
+        },
+        {
+          "name": "鯛めんたい",
+          "price": 140,
+          "startDate": "2026-08-07",
+          "endDate": "2026-08-30"
         }
       ],
-      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "sourceUrl": "https://www.kurasushi.co.jp/author/008315.html",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": null,
-      "status": "warning",
-      "message": "開催中フェア名と期間は取得済みですが、個別商品の自動取得はできていません。公式ページで確認してください。"
+      "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
+      "status": "ok",
+      "message": null,
+      "priceNote": "公式プレスリリース掲載価格です。店舗により価格が異なる場合があります。"
     },
     {
       "chain": "kappasushi",
