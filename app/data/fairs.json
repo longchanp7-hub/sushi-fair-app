@@ -1,29 +1,25 @@
 {
-  "updatedAt": "2026-08-18T03:00:24.289Z",
+  "updatedAt": "2026-08-18T21:41:01.516Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
       "chain": "sushiro",
       "storeName": "豊橋新栄店",
       "fairName": "フェア商品",
-      "startDate": "2026-07-22",
+      "startDate": "2026-08-05",
       "endDate": "2026-09-27",
       "items": [
         {
-          "name": "大とろ",
+          "name": "本鮪中とろ",
           "price": 110
         },
         {
-          "name": "ジャンボとろサーモン",
+          "name": "あわび1貫",
           "price": 110
         },
         {
           "name": "てりたま軍艦",
           "price": 120
-        },
-        {
-          "name": "合鴨オニオンガーリックペッパー",
-          "price": 140
         },
         {
           "name": "炭火焼き牛カルビ",
@@ -34,12 +30,12 @@
           "price": 140
         },
         {
-          "name": "うなぎ 梅しそおろし",
+          "name": "天然赤えび",
           "price": 180
         },
         {
-          "name": "北海道産 上いくら",
-          "price": 360
+          "name": "ハッカクとシマゾイ盛り合わせ",
+          "price": 280
         },
         {
           "name": "国産ほたて食べ比べ",
@@ -54,16 +50,32 @@
           "price": 1250
         },
         {
+          "name": "鰹節香る醤油ラーメン",
+          "price": 480
+        },
+        {
           "name": "家系風！豚骨醤油ラーメン",
           "price": 480
+        },
+        {
+          "name": "コリコリ軟骨の唐揚げ",
+          "price": 390
         },
         {
           "name": "おいしーレモンの甘酸っぱパフェ",
           "price": 390
         },
         {
+          "name": "カタラーナ・グランデ",
+          "price": 270
+        },
+        {
           "name": "果肉そのまマンゴーアイスバー",
           "price": 170
+        },
+        {
+          "name": "ぷるもちクリームわらび餅盛り合わせ",
+          "price": 280
         },
         {
           "name": "飲むミルクティーッペ",
@@ -72,7 +84,7 @@
       ],
       "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "storeUrl": "https://www.akindo-sushiro.co.jp/shop/detail.php?id=142",
-      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_000399_2.png",
+      "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6153.png",
       "status": "ok",
       "message": null
     },
