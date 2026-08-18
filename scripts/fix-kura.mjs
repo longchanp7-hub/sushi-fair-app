@@ -180,10 +180,30 @@ function pressReleaseIndexUrl(year) {
   return `${PRESS_RELEASE_ROOT}${year}.html`;
 }
 
-function findPressReleaseUrl(indexHtml, fairName, baseUrl) {
+function archivePublicationDate(text = '') {
+  const matches = [...String(text).matchAll(/(20\d{2})[./](\d{1,2})[./](\d{1,2})(?:\s+\d{1,2}:\d{2})?/g)];
+  const match = matches.at(-1);
+  return match ? isoDate(Number(match[1]), Number(match[2]), Number(match[3])) : null;
+}
+
+function dateDistanceDays(a, b) {
+  if (!a || !b) return 99_999;
+  const first = new Date(`${a}T00:00:00+09:00`).getTime();
+  const second = new Date(`${b}T00:00:00+09:00`).getTime();
+  return Math.abs(Math.round((first - second) / 86_400_000));
+}
+
+function pressReleaseDateRank(publicationDate, storeCampaign) {
+  if (!publicationDate || !storeCampaign?.startDate) return 99_999;
+  const distance = dateDistanceDays(publicationDate, storeCampaign.startDate);
+  const publishedAfterStart = publicationDate > storeCampaign.startDate;
+  return distance + (publishedAfterStart ? 10_000 : 0);
+}
+
+function findPressReleaseUrl(indexHtml, storeCampaign, baseUrl) {
   const $ = cheerio.load(indexHtml);
-  const target = normalizeFairKey(fairName);
-  const core = fairCore(fairName);
+  const target = normalizeFairKey(storeCampaign?.fairName || '');
+  const core = fairCore(storeCampaign?.fairName || '');
   const candidates = [];
 
   $('a[href]').each((_, element) => {
@@ -193,13 +213,26 @@ function findPressReleaseUrl(indexHtml, fairName, baseUrl) {
     const key = normalizeFairKey(text);
     if (!key) return;
 
-    let score = 99;
-    if (target && key.includes(target)) score = 0;
-    else if (core.length >= 4 && key.includes(core) && /(フェア|祭り|キャンペーン)/.test(text)) score = 1;
-    if (score < 99) candidates.push({ href, score, textLength: text.length });
+    let nameScore = 99;
+    if (target && key.includes(target)) nameScore = 0;
+    else if (core.length >= 4 && key.includes(core) && /(フェア|祭り|キャンペーン)/.test(text)) nameScore = 1;
+    if (nameScore >= 99) return;
+
+    const publicationDate = archivePublicationDate(text);
+    candidates.push({
+      href,
+      nameScore,
+      dateScore: pressReleaseDateRank(publicationDate, storeCampaign),
+      publicationDate,
+      textLength: text.length,
+    });
   });
 
-  candidates.sort((a, b) => a.score - b.score || a.textLength - b.textLength);
+  candidates.sort((a, b) =>
+    a.nameScore - b.nameScore
+    || a.dateScore - b.dateScore
+    || a.textLength - b.textLength
+  );
   return candidates[0]?.href || null;
 }
 
@@ -212,24 +245,35 @@ function pageLines($) {
   return fragment('div').first().text().split(/\n+/).map(clean).filter(Boolean);
 }
 
-function parseJapaneseRange(text, defaultYear) {
+function parseJapaneseRange(text, campaignStartDate, campaignEndDate = null) {
   const value = clean(text);
+  const startYear = Number(campaignStartDate?.slice(0, 4));
+  const campaignStartMonth = Number(campaignStartDate?.slice(5, 7));
+  const campaignEndYear = Number(campaignEndDate?.slice(0, 4) || startYear);
+  if (!startYear || !campaignStartMonth) return { startDate: null, endDate: null };
+
   const full = value.match(/(\d{1,2})\s*月\s*(\d{1,2})\s*日(?:\s*[（(][^）)]*[）)])?\s*[～〜~\-–—]\s*(?:(20\d{2})\s*年\s*)?(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
   if (full) {
-    const startYear = Number(defaultYear);
-    const startMonth = Number(full[1]);
+    const itemStartMonth = Number(full[1]);
+    const itemStartYear = campaignEndYear > startYear && itemStartMonth < campaignStartMonth
+      ? campaignEndYear
+      : startYear;
     const endMonth = Number(full[4]);
-    const endYear = Number(full[3] || (endMonth < startMonth ? startYear + 1 : startYear));
+    const endYear = Number(full[3] || (endMonth < itemStartMonth ? itemStartYear + 1 : itemStartYear));
     return {
-      startDate: isoDate(startYear, startMonth, Number(full[2])),
+      startDate: isoDate(itemStartYear, itemStartMonth, Number(full[2])),
       endDate: isoDate(endYear, endMonth, Number(full[5])),
     };
   }
 
   const openEnded = value.match(/(\d{1,2})\s*月\s*(\d{1,2})\s*日(?:\s*[（(][^）)]*[）)])?\s*[～〜~\-–—]\s*$/);
   if (openEnded) {
+    const itemStartMonth = Number(openEnded[1]);
+    const itemStartYear = campaignEndYear > startYear && itemStartMonth < campaignStartMonth
+      ? campaignEndYear
+      : startYear;
     return {
-      startDate: isoDate(Number(defaultYear), Number(openEnded[1]), Number(openEnded[2])),
+      startDate: isoDate(itemStartYear, itemStartMonth, Number(openEnded[2])),
       endDate: null,
     };
   }
@@ -275,7 +319,6 @@ function parseOfficialFairRelease(html, storeCampaign, sourceUrl, today = jstTod
   let end = lines.findIndex((line, index) => index > start && /^■/.test(line));
   if (end < 0) end = lines.length;
   const section = lines.slice(start + 1, end);
-  const year = Number(storeCampaign.startDate?.slice(0, 4) || today.slice(0, 4));
   const items = [];
 
   for (let index = 0; index < section.length; index += 1) {
@@ -284,7 +327,9 @@ function parseOfficialFairRelease(html, storeCampaign, sourceUrl, today = jstTod
 
     const nearby = section.slice(index + 1, index + 5);
     const periodLine = nearby.find(line => /(?:販売|売)期間/.test(line));
-    const range = periodLine ? parseJapaneseRange(periodLine, year) : { startDate: null, endDate: null };
+    const range = periodLine
+      ? parseJapaneseRange(periodLine, storeCampaign.startDate || `${today.slice(0, 4)}-01-01`, storeCampaign.endDate)
+      : { startDate: null, endDate: null };
     const item = { ...product, ...range };
     if (itemIsActive(item, today)) items.push(item);
   }
@@ -398,12 +443,14 @@ function runSelfTests() {
   assert.equal(parseRange('2026/8/7 - 8/19').endDate, '2026-08-19');
 
   const indexFixture = `<!doctype html><html><body>
-    <a href="/author/008300.html">別のニュース</a>
-    <a href="/author/008315.html">碧く澄み渡る海でじっくり育てた「地中海本まぐろ」フェア -8月7日より販売-</a>
+    <a href="/author/008100.html">碧く澄み渡る海でじっくり育てた「地中海本まぐろ」フェア -2月6日より販売- 2026/02/03 14:00</a>
+    <a href="/author/008300.html">別のニュース 2026/08/03 10:00</a>
+    <a href="/author/008315.html">碧く澄み渡る海でじっくり育てた「地中海本まぐろ」フェア -8月7日より販売- 2026/08/04 14:00</a>
   </body></html>`;
   assert.equal(
-    findPressReleaseUrl(indexFixture, store.fairName, 'https://www.kurasushi.co.jp/author/2026.html'),
+    findPressReleaseUrl(indexFixture, store, 'https://www.kurasushi.co.jp/author/2026.html'),
     'https://www.kurasushi.co.jp/author/008315.html',
+    'recurring fair names must resolve to the release nearest the store campaign start date',
   );
 
   const releaseFixture = `<!doctype html><html><head><meta property="og:image" content="/images/fair.png"></head><body>
@@ -426,6 +473,22 @@ function runSelfTests() {
   ]);
   assert.equal(release.items[0].endDate, '2026-08-19');
   assert.equal(release.imageUrl, 'https://www.kurasushi.co.jp/images/fair.png');
+
+  const yearCrossingStore = {
+    fairName: '年末年始フェア',
+    startDate: '2026-12-25',
+    endDate: '2027-01-10',
+    items: [], sourceUrl: STORE_URL, imageUrl: null,
+  };
+  assert.deepEqual(
+    parseJapaneseRange('販売期間：1月2日（金）～1月10日（日）', yearCrossingStore.startDate, yearCrossingStore.endDate),
+    { startDate: '2027-01-02', endDate: '2027-01-10' },
+    'January item dates in a December-to-January fair must roll into the next year',
+  );
+  assert.deepEqual(
+    parseJapaneseRange('販売期間：12月28日（月）～1月5日（火）', yearCrossingStore.startDate, yearCrossingStore.endDate),
+    { startDate: '2026-12-28', endDate: '2027-01-05' },
+  );
 
   const endDayData = { chains: [{
     chain: 'kurasushi', fairName: store.fairName, startDate: store.startDate, endDate: store.endDate,
@@ -477,7 +540,7 @@ async function main() {
         const year = Number(selected.startDate?.slice(0, 4) || today.slice(0, 4));
         const indexUrl = pressReleaseIndexUrl(year);
         const indexHtml = await fetchHtml(indexUrl);
-        const releaseUrl = findPressReleaseUrl(indexHtml, selected.fairName, indexUrl);
+        const releaseUrl = findPressReleaseUrl(indexHtml, selected, indexUrl);
         if (releaseUrl) {
           const releaseHtml = await fetchHtml(releaseUrl);
           const release = parseOfficialFairRelease(releaseHtml, selected, releaseUrl, today);
