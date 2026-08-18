@@ -40,22 +40,6 @@
       <div id="todayHighlights" class="today-highlights" aria-live="polite"></div>
     </section>
 
-    <section id="crowdPanel" class="crowd-panel" aria-labelledby="crowdTitle" hidden>
-      <div class="section-heading crowd-heading">
-        <div>
-          <p class="kicker">NEAR LIVE</p>
-          <h2 id="crowdTitle">今の混雑・予約</h2>
-        </div>
-        <div class="crowd-head-actions">
-          <span id="crowdUpdatedAt">取得準備中…</span>
-          <button id="crowdRefreshBtn" type="button" aria-label="取得済みの最新混雑情報を再読み込み">↻ 再読込</button>
-        </div>
-      </div>
-      <div id="crowdMode" class="crowd-mode">約5分ごとに最新状況を取得します</div>
-      <div id="crowdGrid" class="crowd-grid" aria-live="polite"></div>
-      <p class="crowd-note">混雑データの新規取得は約5分ごとに自動実行します。「再読込」は取得済みの最新データを読み直すボタンです。くら寿司の日時指定予約枠と現在の店頭待ちは別指標として扱い、予約可能時刻だけで混雑とは判定しません。特別営業時間は公式ページから取得できる範囲で反映しますが、来店前に最終確認してください。</p>
-    </section>
-
     <nav id="filters" class="filters" aria-label="チェーン絞り込み">
       <button class="filter active" data-chain="all">すべて</button>
       <button class="filter" data-chain="sushiro">スシロー</button>
@@ -72,6 +56,22 @@
       <div id="summary" class="summary" aria-live="polite"></div>
     </section>
     <section id="cards" class="cards" aria-live="polite"></section>
+
+    <section id="crowdPanel" class="crowd-panel" aria-labelledby="crowdTitle" hidden>
+      <div class="section-heading crowd-heading">
+        <div>
+          <p class="kicker">NEAR LIVE</p>
+          <h2 id="crowdTitle">今の混雑・予約</h2>
+        </div>
+        <div class="crowd-head-actions">
+          <span id="crowdUpdatedAt">取得準備中…</span>
+          <button id="crowdRefreshBtn" type="button" aria-label="取得済みの最新混雑情報を再読み込み">↻ 再読込</button>
+        </div>
+      </div>
+      <div id="crowdMode" class="crowd-mode">約5分ごとに最新状況を取得します</div>
+      <div id="crowdGrid" class="crowd-grid" aria-live="polite"></div>
+      <p class="crowd-note">混雑データの新規取得は約5分ごとに自動実行します。「再読込」は取得済みの最新データを読み直すボタンです。くら寿司の日時指定予約枠と現在の店頭待ちは別指標として扱い、予約可能時刻だけで混雑とは判定しません。特別営業時間は公式ページから取得できる範囲で反映しますが、来店前に最終確認してください。</p>
+    </section>
 
     <section class="note-card">
       <strong>ご注意</strong>
