@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T21:41:01.516Z",
+  "updatedAt": "2026-08-19T21:43:04.402Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -96,47 +96,51 @@
       "endDate": null,
       "items": [
         {
-          "name": "コーンの天ぷら握り",
+          "name": "北海道水揚げ秋鮭",
           "price": 110
         },
         {
-          "name": "コーンの天ぷら握りマヨ",
+          "name": "かき揚げ握り（富山県産白えび使用）",
           "price": 110
         },
         {
-          "name": "大切り直火焼きびんちょう（大葉にんにく風味）",
-          "price": 110
-        },
-        {
-          "name": "青森名産ねぶた漬け軍艦",
+          "name": "宮城県産さんま",
           "price": 176
         },
         {
-          "name": "炙りとろ煮穴子",
+          "name": "炙り宮城県産さんま塩レモン",
           "price": 176
         },
         {
-          "name": "あわび",
+          "name": "えびおろし盛り(沖縄県産シークヮーサーだれ)",
           "price": 176
         },
         {
-          "name": "サーモンカルパッチョ",
+          "name": "アカイカおろし盛り(沖縄県産シークヮーサーだれ)",
           "price": 176
         },
         {
-          "name": "えびカルパッチョ",
+          "name": "えび天握りおろし盛り(沖縄県産シークヮーサーだれ)",
           "price": 176
         },
         {
-          "name": "アカイカカルパッチョ",
+          "name": "いか天握りおろし盛り(沖縄県産シークヮーサーだれ)",
           "price": 176
         },
         {
-          "name": "生ハムカルパッチョ",
+          "name": "豚塩カルビおろし盛り(沖縄県産シークヮーサーだれ)",
           "price": 176
         },
         {
-          "name": "合鴨カルパッチョ",
+          "name": "合鴨おろし盛り(沖縄県産シークヮーサーだれ)",
+          "price": 176
+        },
+        {
+          "name": "生ハムおろし盛り(沖縄県産シークヮーサーだれ)",
+          "price": 176
+        },
+        {
+          "name": "北海道産つぶ貝のわさび和え",
           "price": 176
         },
         {
@@ -152,11 +156,19 @@
           "price": 176
         },
         {
-          "name": "活〆まだいカルパッチョ",
+          "name": "活〆まだいおろし盛り(沖縄県産シークヮーサーだれ)",
           "price": 231
         },
         {
-          "name": "大判豚角煮握りからし付き",
+          "name": "活〆はまちおろし盛り(沖縄県産シークヮーサーだれ)",
+          "price": 231
+        },
+        {
+          "name": "和牛とろ握り レモン",
+          "price": 319
+        },
+        {
+          "name": "和牛とろ握り おろしのせ",
           "price": 319
         },
         {
@@ -180,15 +192,27 @@
           "price": 792
         },
         {
+          "name": "あさりとチーズのトマトラーメン",
+          "price": 506
+        },
+        {
+          "name": "トマトラーメン追いチーズ",
+          "price": 539
+        },
+        {
           "name": "濃厚冷やし担々麺（花椒付き）",
           "price": 473
+        },
+        {
+          "name": "特製とん汁うどん",
+          "price": 429
         },
         {
           "name": "気仙沼産ふかひれあんかけ茶碗蒸し",
           "price": 363
         },
         {
-          "name": "おつまみ砂肝",
+          "name": "北海道水揚げたことんびの唐揚げ",
           "price": 297
         },
         {
@@ -206,10 +230,6 @@
         {
           "name": "はまとろっミルクアイス",
           "price": 297
-        },
-        {
-          "name": "はまとろっミルクアイス（白桃ソース）",
-          "price": 319
         },
         {
           "name": "はまスカッシュ（ブルー）",
@@ -234,72 +254,45 @@
       ],
       "sourceUrl": "https://www.hamazushi.com/menu/",
       "storeUrl": "https://maps.hama-sushi.co.jp/jp/detail/4208.html",
-      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/corn_no_tempura_nigiri.png",
+      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/hokkaidou_mizuage_akijake.png",
       "status": "ok",
       "message": null
     },
     {
       "chain": "kurasushi",
       "storeName": "豊橋新栄店",
-      "fairName": "地中海本まぐろフェア",
-      "startDate": "2026-08-07",
-      "endDate": "2026-08-19",
-      "items": [
-        {
-          "name": "地中海大とろ（一貫）",
-          "price": 380,
-          "startDate": "2026-08-07",
-          "endDate": "2026-08-19"
-        },
-        {
-          "name": "【鹿児島県産】活〆かんぱち",
-          "price": 300,
-          "startDate": "2026-08-07",
-          "endDate": "2026-08-30"
-        },
-        {
-          "name": "とろける上煮穴子（一貫）",
-          "price": 160,
-          "startDate": "2026-08-07",
-          "endDate": "2026-08-30"
-        },
-        {
-          "name": "ます寿司",
-          "price": 240,
-          "startDate": "2026-08-07",
-          "endDate": "2026-08-19"
-        },
-        {
-          "name": "鯛めんたい",
-          "price": 140,
-          "startDate": "2026-08-07",
-          "endDate": "2026-08-30"
-        }
-      ],
-      "sourceUrl": "https://www.kurasushi.co.jp/author/008315.html",
+      "fairName": "最新フェア確認中",
+      "startDate": null,
+      "endDate": null,
+      "items": [],
+      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
-      "status": "ok",
-      "message": null,
-      "priceNote": "公式プレスリリース掲載価格です。店舗により価格が異なる場合があります。"
+      "imageUrl": null,
+      "status": "warning",
+      "message": "終了済みフェアは非表示にしました。公式ページの更新を確認中です。",
+      "priceNote": null
     },
     {
       "chain": "kappasushi",
       "storeName": "豊橋飯村店",
-      "fairName": "かっぱの本鮪中とろ祭り！",
+      "fairName": "かっぱの百十円満点祭り開催！",
       "startDate": null,
       "endDate": null,
       "items": [
         {
-          "name": "かっぱの本鮪中とろ祭り！",
+          "name": "かっぱの百十円満点祭り開催！",
+          "price": null
+        },
+        {
+          "name": "かっぱの元気モリモリ祭り開催！",
           "price": null
         }
       ],
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
       "imageUrl": null,
-      "status": "warning",
-      "message": "開催中フェア名は取得できていますが、個別商品の自動取得はできていません。公式ページで確認してください。"
+      "status": "ok",
+      "message": null
     }
   ]
 }
