@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T21:43:04.402Z",
+  "updatedAt": "2026-08-20T21:45:41.793Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -261,7 +261,7 @@
     {
       "chain": "kurasushi",
       "storeName": "豊橋新栄店",
-      "fairName": "最新フェア確認中",
+      "fairName": "開催中イベント",
       "startDate": null,
       "endDate": null,
       "items": [],
@@ -269,8 +269,7 @@
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
       "imageUrl": null,
       "status": "warning",
-      "message": "終了済みフェアは非表示にしました。公式ページの更新を確認中です。",
-      "priceNote": null
+      "message": "店舗イベント名を自動取得できませんでした。"
     },
     {
       "chain": "kappasushi",
