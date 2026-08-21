@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T21:45:41.793Z",
+  "updatedAt": "2026-08-21T21:42:00.197Z",
   "timezone": "Asia/Tokyo",
   "chains": [
     {
@@ -20,10 +20,6 @@
         {
           "name": "てりたま軍艦",
           "price": 120
-        },
-        {
-          "name": "炭火焼き牛カルビ",
-          "price": 140
         },
         {
           "name": "タコさんウインナー包み",
@@ -261,15 +257,16 @@
     {
       "chain": "kurasushi",
       "storeName": "豊橋新栄店",
-      "fairName": "開催中イベント",
-      "startDate": null,
-      "endDate": null,
+      "fairName": "うなぎと肉フェア",
+      "startDate": "2026-08-21",
+      "endDate": "2026-08-30",
       "items": [],
       "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
       "imageUrl": null,
       "status": "warning",
-      "message": "店舗イベント名を自動取得できませんでした。"
+      "message": "開催中フェア名と期間は取得済みですが、個別商品の自動取得はできていません。公式ページで確認してください。",
+      "priceNote": null
     },
     {
       "chain": "kappasushi",
