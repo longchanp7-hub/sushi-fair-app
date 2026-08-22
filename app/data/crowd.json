@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-22T21:38:54.802Z",
+  "updatedAt": "2026-08-22T23:08:41.231Z",
   "timezone": "Asia/Tokyo",
   "source": "github-actions-snapshot",
   "disclaimer": "実待ちを公式公開している店舗だけ待ち時間・待ち組数を表示します。くら寿司の日時指定予約枠は店頭待ちとは別に扱い、混雑度へ換算しません。営業時間外の0組表示も混雑判定に使用しません。",
@@ -44,7 +44,7 @@
       "method": "reservation_slot",
       "level": "unknown",
       "label": "営業時間前（10:20開店）",
-      "detail": "店頭混雑は営業時間前のため不明です。予約枠：最短 11:50ですが、これを店頭混雑度には換算しません。",
+      "detail": "店頭混雑は営業時間前のため不明です。予約枠：最短 12:20ですが、これを店頭混雑度には換算しません。",
       "reservationUrl": "https://shop.kurasushi.co.jp/detail/609",
       "status": "ok",
       "businessState": "before_open",
@@ -54,7 +54,7 @@
       "hoursKind": "official_override",
       "hoursNote": "公式店舗ページの本日指定営業時間",
       "hoursSourceUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "reservationLabel": "予約枠：最短 11:50",
+      "reservationLabel": "予約枠：最短 12:20",
       "reservationDetail": "日時指定の予約枠と、店頭の現在待ち・順番待ちは別の指標です。"
     },
     {
