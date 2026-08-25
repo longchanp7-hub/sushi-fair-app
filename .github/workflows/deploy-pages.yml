@@ -20,8 +20,8 @@ permissions:
   statuses: write
 
 concurrency:
-  group: pages-static-deploy
-  cancel-in-progress: true
+  group: sushi-pages-pipeline
+  cancel-in-progress: false
 
 jobs:
   deploy:
