@@ -1,12 +1,12 @@
 html{background:#07131e}
 body{position:relative;isolation:isolate;background:#07131e;min-height:100vh}
 body::before,body::after{content:none!important;display:none!important}
-.app-scene{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,17,28,.24) 0%,rgba(5,15,25,.40) 28%,rgba(5,12,20,.55) 60%,rgba(4,9,15,.72) 100%),url('./assets/suruga-bay-fuji-bg.png') center 24%/cover no-repeat;background-color:#07131e}
+.app-scene{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,17,28,.18) 0%,rgba(5,15,25,.30) 28%,rgba(5,12,20,.46) 60%,rgba(4,9,15,.68) 100%),url('./assets/suruga-bay-fuji-bg.webp') center 24%/cover no-repeat;background-color:#07131e}
 .hero,main,footer{position:relative;z-index:1}
-.hero{background:linear-gradient(180deg,rgba(8,20,31,.56),rgba(8,20,31,.18))}
+.hero{background:linear-gradient(180deg,rgba(8,20,31,.50),rgba(8,20,31,.14))}
 .region-panel,.quick-compare-section,.chain-list-section,.note-card{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 .region-panel{display:block!important;visibility:visible!important;opacity:1!important;position:relative;min-height:0;background:linear-gradient(145deg,rgba(10,27,40,.88),rgba(11,19,29,.90));box-shadow:0 14px 34px rgba(0,0,0,.22)}
-.quick-compare-section{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:linear-gradient(145deg,rgba(8,22,34,.84),rgba(10,17,26,.88));box-shadow:0 14px 34px rgba(0,0,0,.24)}
+.quick-compare-section{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:linear-gradient(145deg,rgba(8,22,34,.82),rgba(10,17,26,.86));box-shadow:0 14px 34px rgba(0,0,0,.24)}
 .quick-compare-grid{gap:10px}
 .quick-chain{min-height:98px;padding:8px;grid-template-columns:58px minmax(0,1fr);gap:9px;background:linear-gradient(140deg,color-mix(in srgb,var(--chain-soft) 88%,rgba(8,17,27,.88)),rgba(10,18,28,.94));box-shadow:0 9px 24px rgba(0,0,0,.24)}
 .quick-chain-photo{position:relative;width:58px;height:68px;border-radius:11px;overflow:hidden;background:var(--chain-soft);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 4px 12px rgba(0,0,0,.22)}
@@ -21,8 +21,8 @@ body::before,body::after{content:none!important;display:none!important}
 .card{background-color:rgba(13,22,32,.88)}
 .note-card{background:rgba(7,16,25,.80)}
 @media(max-width:679px){
- .app-scene{background-position:center 16%;background-size:cover}
- .hero{background:linear-gradient(180deg,rgba(8,20,31,.50),rgba(8,20,31,.20))}
+ .app-scene{background-position:center 15%;background-size:cover}
+ .hero{background:linear-gradient(180deg,rgba(8,20,31,.46),rgba(8,20,31,.16))}
  main{padding-top:12px}
  .region-panel{margin-bottom:12px;padding:14px;background:linear-gradient(145deg,rgba(10,27,40,.90),rgba(11,19,29,.92))}
  .quick-compare-section{padding:10px;margin-top:0}
