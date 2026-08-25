@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T11:08:38.550Z",
+  "updatedAt": "2026-08-25T11:13:02.125Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -762,7 +762,15 @@
       "endDate": "2026-11-03",
       "items": [
         {
-          "name": "さんま‥‥‥",
+          "name": "さんま食べ比べ三貫",
+          "price": 649,
+          "startDate": "2026-08-18",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "さんま",
           "price": 407,
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
@@ -770,7 +778,7 @@
           "scrapeStatus": "ok"
         },
         {
-          "name": "さんま炙り‥‥‥",
+          "name": "さんま炙り",
           "price": 451,
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
@@ -778,8 +786,8 @@
           "scrapeStatus": "ok"
         },
         {
-          "name": "さんま天‥‥‥",
-          "price": 451,
+          "name": "さんま天",
+          "price": 459,
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
           "saleStatus": "active",
@@ -791,7 +799,7 @@
       "imageUrl": null,
       "status": "ok",
       "message": null,
-      "dataScope": "local_official_release",
+      "dataScope": "local_official_company_release",
       "officialActionLabel": "店舗・予約を公式で確認",
       "officialActionUrl": "https://www.nigirinotokubei.com/shop/",
       "regionalModel": {
@@ -799,7 +807,9 @@
         "label": "選択市区町村の実店舗",
         "priceVariesByLocation": true
       },
-      "priceNote": "店舗・FC店等により一部メニューやサービスが異なる場合があります。"
+      "priceNote": "株式会社アトムの公式発表掲載価格です。一部店舗では価格が異なります。",
+      "officialReleaseUrl": "https://origin.digitalpr.jp/r/141163",
+      "productSourceUrl": "https://origin.digitalpr.jp/r/141163"
     }
   ]
 }
