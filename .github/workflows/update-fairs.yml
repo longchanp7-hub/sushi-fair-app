@@ -26,7 +26,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -40,9 +40,13 @@ jobs:
           node scripts/fix-national-releases.mjs --self-test
           node scripts/clean-national-products.mjs --self-test
           node scripts/build-store-contexts.mjs --self-test
+          node scripts/enrich-store-contexts.mjs --self-test
+          node scripts/resolve-representative-images.mjs --self-test
       - name: Refresh nationwide official store catalog
         if: github.event_name != 'schedule'
-        run: node scripts/build-store-contexts.mjs
+        run: |
+          node scripts/build-store-contexts.mjs
+          node scripts/enrich-store-contexts.mjs
       - name: Preserve previous published fair snapshot
         run: cp app/data/fairs.json /tmp/previous-fairs.json
       - name: Use stable reference stores for legacy parsers
@@ -61,6 +65,8 @@ jobs:
         run: node scripts/fix-national-releases.mjs
       - name: Clean final nationwide product output
         run: node scripts/clean-national-products.mjs
+      - name: Resolve representative fair product images
+        run: node scripts/resolve-representative-images.mjs
       - name: Commit updated public data when changed
         run: |
           if git diff --quiet -- app/data/fairs.json app/data/store-contexts.json; then
