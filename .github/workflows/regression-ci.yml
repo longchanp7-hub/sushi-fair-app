@@ -1,0 +1,42 @@
+name: Regression CI
+
+on:
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - name: Syntax checks
+        run: |
+          node --check app/national.js
+          node --check app/region.js
+          node --check app/sw.js
+          node --check scripts/update-fairs.mjs
+          node --check scripts/verify-pages.mjs
+      - name: Parser and grace self-tests
+        run: |
+          node scripts/fix-kura.mjs --self-test
+          node scripts/build-national-fairs.mjs --self-test
+          node scripts/fix-national-releases.mjs --self-test
+          node scripts/clean-national-products.mjs --self-test
+          node scripts/resolve-representative-images.mjs --self-test
+          node scripts/apply-sushiro-grace.mjs --self-test
+          node scripts/update-local-store-contexts.mjs --self-test
+          node scripts/update-local-tokai.mjs --self-test
+          node scripts/fix-local-official-releases.mjs --self-test
+      - name: Regional switch regression
+        run: |
+          node scripts/ensure-region-contexts.mjs
+          node scripts/verify-region-switch.mjs
