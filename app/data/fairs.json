@@ -1,278 +1,506 @@
 {
-  "updatedAt": "2026-08-24T21:45:52.825Z",
+  "schemaVersion": 2,
+  "updatedAt": "2026-08-25T00:37:17.316Z",
   "timezone": "Asia/Tokyo",
+  "locationModel": {
+    "mode": "manual_prefecture_city",
+    "gps": false,
+    "storage": "localStorage"
+  },
   "chains": [
     {
       "chain": "sushiro",
-      "storeName": "豊橋新栄店",
+      "storeName": "選択地域",
       "fairName": "フェア商品",
       "startDate": "2026-08-05",
       "endDate": "2026-09-27",
       "items": [
         {
           "name": "本鮪中とろ",
-          "price": 110
+          "price": 110,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "あわび1貫",
-          "price": 110
+          "price": 110,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "てりたま軍艦",
-          "price": 120
+          "price": 120,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "タコさんウインナー包み",
-          "price": 140
+          "price": 140,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "国産ほたて食べ比べ",
-          "price": 360
+          "price": 360,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "天然本鮪7貫盛り",
-          "price": 1250
+          "price": 1250,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "鰹節香る醤油ラーメン",
-          "price": 480
+          "price": 480,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "家系風！豚骨醤油ラーメン",
-          "price": 480
+          "price": 480,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "コリコリ軟骨の唐揚げ",
-          "price": 390
+          "price": 390,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "おいしーレモンの甘酸っぱパフェ",
-          "price": 390
+          "price": 390,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "果肉そのまマンゴーアイスバー",
-          "price": 170
+          "price": 170,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "ぷるもちクリームわらび餅盛り合わせ",
-          "price": 280
+          "price": 280,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "飲むミルクティーッペ",
-          "price": 290
+          "price": 290,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         }
       ],
       "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "storeUrl": "https://www.akindo-sushiro.co.jp/shop/detail.php?id=142",
       "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6153.png",
       "status": "ok",
-      "message": null
+      "message": null,
+      "referenceStoreName": "豊橋新栄店",
+      "dataScope": "reference_store_menu_overlay",
+      "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
+      "officialActionUrl": "https://www.akindo-sushiro.co.jp/shop/",
+      "regionalModel": {
+        "strategyKey": "representativeStoreId",
+        "label": "店舗別メニュー・価格",
+        "priceVariesByLocation": true
+      }
     },
     {
       "chain": "hamazushi",
-      "storeName": "豊橋新栄店",
+      "storeName": "選択地域",
       "fairName": "期間限定メニュー",
       "startDate": null,
       "endDate": null,
       "items": [
         {
           "name": "北海道水揚げ秋鮭",
-          "price": 110
+          "price": 110,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "かき揚げ握り（富山県産白えび使用）",
-          "price": 110
+          "price": 110,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "宮城県産さんま",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "炙り宮城県産さんま塩レモン",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "えびおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "アカイカおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "えび天握りおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "いか天握りおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "豚塩カルビおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "合鴨おろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "生ハムおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "北海道産つぶ貝のわさび和え",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "厳選まぐろ中とろ",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "炙り厳選まぐろ中とろゆず塩",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "特製漬け中とろ",
-          "price": 176
+          "price": 176,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "活〆まだいおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 231
+          "price": 231,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "活〆はまちおろし盛り(沖縄県産シークヮーサーだれ)",
-          "price": 231
+          "price": 231,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "和牛とろ握り レモン",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "和牛とろ握り おろしのせ",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "重ね厳選まぐろ中とろ",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "炙り重ね厳選まぐろ中とろゆず塩",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "うに軍艦",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "うにいくら軍艦",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "かに三昧",
-          "price": 792
+          "price": 792,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "あさりとチーズのトマトラーメン",
-          "price": 506
+          "price": 506,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "トマトラーメン追いチーズ",
-          "price": 539
+          "price": 539,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "濃厚冷やし担々麺（花椒付き）",
-          "price": 473
+          "price": 473,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "特製とん汁うどん",
-          "price": 429
+          "price": 429,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "気仙沼産ふかひれあんかけ茶碗蒸し",
-          "price": 363
+          "price": 363,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "北海道水揚げたことんびの唐揚げ",
-          "price": 297
+          "price": 297,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "カリカリポテト（ホットチリ味）",
-          "price": 297
+          "price": 297,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "MEGAカリカリポテト（ホットチリ味）",
-          "price": 473
+          "price": 473,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "トロピカル☆マンゴーキウイパルフェ",
-          "price": 473
+          "price": 473,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "はまとろっミルクアイス",
-          "price": 297
+          "price": 297,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "はまスカッシュ（ブルー）",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "はまスカッシュ（ストロベリー）",
-          "price": 319
+          "price": 319,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "はまフロート（ブルー）",
-          "price": 396
+          "price": 396,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "はまフロート（ストロベリー）",
-          "price": 396
+          "price": 396,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "純米酒 英勲",
-          "price": 880
+          "price": 880,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         }
       ],
       "sourceUrl": "https://www.hamazushi.com/menu/",
       "storeUrl": "https://maps.hama-sushi.co.jp/jp/detail/4208.html",
       "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/hokkaidou_mizuage_akijake.png",
       "status": "ok",
-      "message": null
+      "message": null,
+      "referenceStoreName": "豊橋新栄店",
+      "dataScope": "official_menu_with_regional_variation",
+      "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
+      "officialActionUrl": "https://maps.hama-sushi.co.jp/jp/index.html",
+      "regionalModel": {
+        "strategyKey": "regionCode",
+        "label": "地域区分＋都市型価格",
+        "priceVariesByLocation": true
+      }
     },
     {
       "chain": "kurasushi",
-      "storeName": "豊橋新栄店",
+      "storeName": "選択地域",
       "fairName": "うなぎと肉フェア",
       "startDate": "2026-08-21",
       "endDate": "2026-08-30",
-      "items": [],
-      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "items": [
+        {
+          "name": "うなぎ(一貫)",
+          "price": 110,
+          "startDate": "2026-08-21",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "・対象商品：「うなぎ（一貫）」",
+          "price": 110,
+          "startDate": "2026-08-21",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "【浜名湖産】うなぎ(一貫)",
+          "price": 380,
+          "startDate": "2026-08-21",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "うな肝",
+          "price": 140,
+          "startDate": "2026-08-21",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "黒毛和牛にぎり(一貫)",
+          "price": 380,
+          "startDate": "2026-08-21",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "宮崎牛てんこもり",
+          "price": 270,
+          "startDate": "2026-08-21",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "牛すじ煮込み",
+          "price": 115,
+          "startDate": "2026-08-21",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        }
+      ],
+      "sourceUrl": "https://www.kurasushi.co.jp/author/008391.html",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": null,
-      "status": "warning",
-      "message": "開催中フェア名と期間は取得済みですが、個別商品の自動取得はできていません。公式ページで確認してください。",
-      "priceNote": null
+      "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
+      "status": "ok",
+      "message": null,
+      "priceNote": "公式プレスリリース掲載価格です。店舗により価格が異なる場合があります。",
+      "dataScope": "national_official_release",
+      "referenceStoreName": "豊橋新栄店",
+      "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
+      "officialActionUrl": "https://shop.kurasushi.co.jp/",
+      "regionalModel": {
+        "strategyKey": "priceTier",
+        "label": "店舗価格帯＋提供エリア",
+        "priceVariesByLocation": true
+      }
     },
     {
       "chain": "kappasushi",
-      "storeName": "豊橋飯村店",
+      "storeName": "選択地域",
       "fairName": "かっぱの百十円満点祭り開催！",
       "startDate": null,
       "endDate": null,
       "items": [
         {
           "name": "かっぱの百十円満点祭り開催！",
-          "price": null
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         },
         {
           "name": "かっぱの元気モリモリ祭り開催！",
-          "price": null
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         }
       ],
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
       "imageUrl": null,
       "status": "ok",
-      "message": null
+      "message": null,
+      "referenceStoreName": "豊橋飯村店",
+      "dataScope": "national_fair_with_regional_variation",
+      "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
+      "officialActionUrl": "https://www.kappasushi.jp/shop/",
+      "regionalModel": {
+        "strategyKey": "menuType",
+        "label": "店舗メニュータイプ",
+        "priceVariesByLocation": true
+      }
+    },
+    {
+      "chain": "uobei",
+      "storeName": "選択地域",
+      "fairName": "最新フェア確認中",
+      "startDate": null,
+      "endDate": null,
+      "items": [],
+      "sourceUrl": "https://www.uobei.info/menu/",
+      "imageUrl": null,
+      "status": "warning",
+      "message": "魚べいの公式フェア情報を取得中です。",
+      "referenceStoreName": "選択地域",
+      "dataScope": "national_fair_with_regional_variation",
+      "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
+      "officialActionUrl": "https://www.uobei.info/",
+      "regionalModel": {
+        "strategyKey": "priceClass",
+        "label": "通常／都心型／超都心型",
+        "priceVariesByLocation": true
+      }
     }
   ]
 }
