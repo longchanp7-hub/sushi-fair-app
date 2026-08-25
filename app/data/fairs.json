@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T21:53:27.232Z",
+  "updatedAt": "2026-08-25T22:53:28.126Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -854,6 +854,26 @@
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
         }
       ],
+      "menuHighlights": [
+        {
+          "name": "豊後極み生さば",
+          "price": null,
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "sourceType": "official_menu_item"
+        },
+        {
+          "name": "夏の香味生あじ",
+          "price": null,
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "sourceType": "official_menu_item"
+        },
+        {
+          "name": "海鮮ねばネバ～ランド",
+          "price": null,
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "sourceType": "official_menu_item"
+        }
+      ],
       "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
       "storeUrl": "https://www.comline.co.jp/shoplist/",
       "imageUrl": null,
@@ -878,11 +898,27 @@
       "endDate": null,
       "items": [],
       "campaigns": [],
+      "menuHighlights": [
+        {
+          "name": "店内寿司メニュー",
+          "priceFrom": 176,
+          "note": "税込176円〜",
+          "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
+          "sourceType": "official_menu_page"
+        },
+        {
+          "name": "釣り魚・国産食材の寿司",
+          "priceFrom": null,
+          "note": "最新ネタは公式メニュー・店頭で確認",
+          "sourceUrl": "https://www.634-jp.com/musashimaru.html",
+          "sourceType": "official_brand_page"
+        }
+      ],
       "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
       "storeUrl": "https://www.634-jp.com/musashimaru-shop.html",
       "imageUrl": null,
       "status": "warning",
-      "message": "期間限定商品の安定したテキスト取得元が確認できないため、個別商品は推測せず公式メニューへ案内します。",
+      "message": "期間限定商品の安定したテキスト取得元が確認できないため、商品名は推測せず、公式に確認できるメニュー情報を表示しています。",
       "dataScope": "official_link_only",
       "officialActionLabel": "店舗情報を公式で確認",
       "officialActionUrl": "https://www.634-jp.com/musashimaru-shop.html",
@@ -891,7 +927,7 @@
         "label": "選択市区町村の実店舗",
         "priceVariesByLocation": false
       },
-      "priceNote": "公式メニューで各皿価格と最新のおすすめをご確認ください。"
+      "priceNote": "公式メニューでは店内寿司メニューが税込176円〜。最新ネタ・おすすめは公式メニューまたは店頭でご確認ください。"
     },
     {
       "chain": "tokubei",
@@ -992,6 +1028,26 @@
           "items": [],
           "sourceUrl": "https://www.nigirinotokubei.com/info/11052/",
           "imageUrl": null
+        }
+      ],
+      "menuHighlights": [
+        {
+          "name": "さんま‥‥‥",
+          "price": 407,
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
+          "sourceType": "official_release_item"
+        },
+        {
+          "name": "さんま炙り‥‥‥",
+          "price": 451,
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
+          "sourceType": "official_release_item"
+        },
+        {
+          "name": "さんま天‥‥‥",
+          "price": 451,
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
+          "sourceType": "official_release_item"
         }
       ],
       "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
