@@ -1,7 +1,7 @@
 html{background:#07131e}
 body{position:relative;isolation:isolate;background:#07131e;min-height:100vh}
 body::before,body::after{content:none!important;display:none!important}
-.app-scene{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,17,28,.18) 0%,rgba(5,15,25,.30) 28%,rgba(5,12,20,.46) 60%,rgba(4,9,15,.68) 100%),url('./assets/suruga-bay-fuji-bg.webp') center 24%/cover no-repeat;background-color:#07131e}
+.app-scene{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,17,28,.18) 0%,rgba(5,15,25,.30) 28%,rgba(5,12,20,.46) 60%,rgba(4,9,15,.68) 100%),url('./assets/suruga-bay-fuji-bg.webp?v=20260825-final') center 24%/cover no-repeat;background-color:#07131e}
 .hero,main,footer{position:relative;z-index:1}
 .hero{background:linear-gradient(180deg,rgba(8,20,31,.50),rgba(8,20,31,.14))}
 .region-panel,.quick-compare-section,.chain-list-section,.note-card{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
