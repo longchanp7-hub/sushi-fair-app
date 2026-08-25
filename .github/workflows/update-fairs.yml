@@ -71,11 +71,11 @@ jobs:
         run: node scripts/resolve-representative-images.mjs
       - name: Add local Tokai chains with fail-closed official data
         run: node scripts/update-local-tokai.mjs
-      - name: Apply verified current local company releases
+      - name: Apply verified current local official releases
         run: node scripts/fix-local-official-releases.mjs
       - name: Validate eight-chain public dataset
         run: |
-          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(',')); const t=d.chains.find(x=>x.chain==='tokubei'); const currentTokubei=t?.startDate==='2026-08-18'&&t?.endDate==='2026-11-03'&&t?.productSourceUrl==='https://origin.digitalpr.jp/r/141163'; if(currentTokubei && t.items.find(x=>x.name==='さんま天')?.price!==459) throw new Error('Tokubei official release price mismatch');"
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(',')); const t=d.chains.find(x=>x.chain==='tokubei'); const currentTokubei=t?.startDate==='2026-08-18'&&t?.endDate==='2026-11-03'&&t?.productSourceUrl==='https://www.nigirinotokubei.com/info/11195/'; if(currentTokubei && t.items.find(x=>x.name==='さんま天')?.price!==451) throw new Error('Tokubei brand-official price mismatch'); if(currentTokubei && t.representativeImageUrl!=='https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg') throw new Error('Tokubei campaign image mismatch');"
           node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/store-contexts.json','utf8')); for(const id of ['totomaru','musashimaru','tokubei']) if(!d.catalog?.[id]) throw new Error(id+' local store catalog missing');"
       - name: Commit updated public data when changed
         run: |
