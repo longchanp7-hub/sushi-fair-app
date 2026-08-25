@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T04:49:18.654Z",
+  "updatedAt": "2026-08-25T05:13:27.718Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -369,7 +369,7 @@
         "label": "地域区分＋都市型価格",
         "priceVariesByLocation": true
       },
-      "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/title_limited.png",
+      "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/hokkaidou_mizuage_akijake.png",
       "representativeImageSource": "official_priority_product_image",
       "representativeImageProduct": "北海道水揚げ秋鮭",
       "representativeImagePage": "https://www.hamazushi.com/menu/"
