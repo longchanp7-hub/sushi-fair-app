@@ -19,8 +19,10 @@ const META={
 let data=null;
 let location={prefecture:'愛知県',city:'豊橋市',prefectureCode:'23'};
 let active='all';
+const expandedChains=new Set();
 
 const cards=document.querySelector('#cards');
+const quickNav=document.querySelector('#chainQuickNav');
 const updated=document.querySelector('#updatedAt');
 const refresh=document.querySelector('#refreshBtn');
 
@@ -93,8 +95,14 @@ function visualImage(f){
   return f.representativeImageUrl||f.imageUrl||null;
 }
 
+function representativeItem(f,items){
+  if(!items.length)return null;
+  const preferred=f.representativeImageProduct;
+  return (preferred&&items.find(i=>i.name===preferred))||items[0];
+}
+
 function visual(f,m,itemCount){
-  const img=visualImage(f),heroProduct=f.representativeImageProduct||valid(f)[0]?.name||null;
+  const items=valid(f),img=visualImage(f),heroProduct=representativeItem(f,items)?.name||f.representativeImageProduct||null;
   return `<div class="fair-visual">${img?`<img src="${esc(img)}" alt="${esc(m.name)} ${esc(heroProduct||f.fairName||'フェア')}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}<div class="visual-shade"></div><div class="chain-mark">${m.icon}</div><div class="visual-copy"><strong>${esc(m.name)}</strong><span>${esc(f.fairName||'期間限定メニュー')}</span><small>${esc(period(f))}</small>${heroProduct?`<em>代表メニュー：${esc(heroProduct)}</em>`:''}</div><div class="visual-badges"><b>${esc(remaining(f.endDate))}</b><span>${itemCount}品</span></div></div>`;
 }
 
@@ -112,17 +120,44 @@ function actionLinks(f,c){
   return {primaryUrl,primaryLabel,secondaryUrl,secondaryLabel:'店舗・予約を公式で確認'};
 }
 
+function renderQuickCompare(all){
+  if(!quickNav)return;
+  quickNav.innerHTML=all.map(f=>{
+    const m=META[f.chain]||{name:f.chain,icon:ICON.kurasushi,color:'#888',soft:'#222'};
+    const items=valid(f),item=representativeItem(f,items),status=f.status==='ok'?(items.length?remaining(f.endDate):'確認中'):'確認中';
+    const itemLine=item?`${esc(item.name)}${item.price!=null?` <strong>${esc(priceText(f,item))}</strong>`:''}`:'商品情報を確認中';
+    return `<button type="button" class="quick-chain quick-${f.chain}" data-chain-jump="${esc(f.chain)}" style="--chain-color:${m.color};--chain-soft:${m.soft}" aria-label="${esc(m.name)}の詳細へ移動"><span class="quick-chain-mark">${m.icon}</span><span class="quick-chain-copy"><span class="quick-chain-top"><b>${esc(m.name)}</b><em>${esc(status)}</em></span><span class="quick-fair">${esc(f.fairName||'期間限定メニュー')}</span><small>${itemLine}</small></span></button>`;
+  }).join('');
+}
+
 function render(){
   if(!data)return;
   const all=data.chains||[],shown=all.filter(f=>active==='all'||f.chain===active);
+  renderQuickCompare(all);
   cards.innerHTML=shown.map(f=>{
     const m=META[f.chain]||{name:f.chain,icon:ICON.kurasushi,color:'#888',soft:'#222'};
-    const c=ctx(f),items=valid(f),visible=items.slice(0,10),links=actionLinks(f,c);
-    const lis=visible.length
-      ?`<ul class="items">${visible.map(i=>`<li class="item"><span class="item-name">${esc(i.name)}${i.startDate||i.endDate?`<small class="item-period">${i.startDate?fmt(i.startDate):''}${i.startDate&&i.endDate?'〜':''}${i.endDate?fmt(i.endDate):''}</small>`:''}</span><span class="price">${esc(priceText(f,i))}</span></li>`).join('')}</ul>${items.length>10?`<div class="more">ほか ${items.length-10} 品</div>`:''}`
+    const c=ctx(f),items=valid(f),expanded=expandedChains.has(f.chain),visible=expanded?items:items.slice(0,4),links=actionLinks(f,c);
+    const list=visible.length
+      ?`<ul class="items">${visible.map(i=>`<li class="item"><span class="item-name">${esc(i.name)}${i.startDate||i.endDate?`<small class="item-period">${i.startDate?fmt(i.startDate):''}${i.startDate&&i.endDate?'〜':''}${i.endDate?fmt(i.endDate):''}</small>`:''}</span><span class="price">${esc(priceText(f,i))}</span></li>`).join('')}</ul>`
       :`<div class="empty">個別商品の取得は確認中です。取得失敗を販売終了とは扱いません。</div>`;
-    return `<article id="card-${f.chain}" class="card chain-${f.chain}" style="--chain-color:${m.color};--chain-soft:${m.soft}">${visual(f,m,items.length)}${context(f)}<p class="price-note scope-note">${esc(scope(f))}</p>${f.status!=='ok'?`<div class="error-banner">${esc(f.message||'公式情報の一部を取得できませんでした。')}</div>`:''}${lis}${f.priceNote?`<p class="price-note">※ ${esc(f.priceNote)}</p>`:''}<div class="actions"><a class="primary" href="${esc(links.primaryUrl)}" target="_blank" rel="noopener">${esc(links.primaryLabel)}</a><a class="secondary" href="${esc(links.secondaryUrl)}" target="_blank" rel="noopener">${esc(links.secondaryLabel)}</a></div></article>`;
+    const toggle=items.length>4?`<button type="button" class="product-toggle" data-expand-chain="${esc(f.chain)}" aria-expanded="${expanded}">${expanded?'商品を閉じる ▲':`全${items.length}件の商品を見る ▼`}</button>`:'';
+    return `<article id="card-${f.chain}" class="card chain-${f.chain}" style="--chain-color:${m.color};--chain-soft:${m.soft}">${visual(f,m,items.length)}${context(f)}<p class="price-note scope-note">${esc(scope(f))}</p>${f.status!=='ok'?`<div class="error-banner">${esc(f.message||'公式情報の一部を取得できませんでした。')}</div>`:''}${list}${toggle}${f.priceNote?`<p class="price-note">※ ${esc(f.priceNote)}</p>`:''}<div class="actions"><a class="primary" href="${esc(links.primaryUrl)}" target="_blank" rel="noopener">${esc(links.primaryLabel)}</a><a class="secondary" href="${esc(links.secondaryUrl)}" target="_blank" rel="noopener">${esc(links.secondaryLabel)}</a></div></article>`;
   }).join('');
+}
+
+function setActiveFilter(chain){
+  active=chain;
+  document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.chain===chain));
+}
+
+function jumpToChain(chain){
+  let target=document.querySelector(`#card-${chain}`);
+  if(!target){
+    setActiveFilter('all');
+    render();
+    target=document.querySelector(`#card-${chain}`);
+  }
+  target?.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 async function load(){
@@ -145,11 +180,25 @@ async function load(){
 document.querySelector('#filters')?.addEventListener('click',e=>{
   const b=e.target.closest('.filter');
   if(!b)return;
-  active=b.dataset.chain;
-  document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));
+  setActiveFilter(b.dataset.chain);
   render();
 });
 
+quickNav?.addEventListener('click',e=>{
+  const b=e.target.closest('[data-chain-jump]');
+  if(!b)return;
+  jumpToChain(b.dataset.chainJump);
+});
+
+cards?.addEventListener('click',e=>{
+  const b=e.target.closest('[data-expand-chain]');
+  if(!b)return;
+  const chain=b.dataset.expandChain;
+  if(expandedChains.has(chain))expandedChains.delete(chain);else expandedChains.add(chain);
+  render();
+  if(!expandedChains.has(chain))document.querySelector(`#card-${chain}`)?.scrollIntoView({behavior:'smooth',block:'start'});
+});
+
 refresh?.addEventListener('click',load);
-location=await initRegionSelector({onApply:async next=>{location=next;render();}});
+location=await initRegionSelector({onApply:async next=>{location=next;expandedChains.clear();render();}});
 await load();
