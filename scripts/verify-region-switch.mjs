@@ -22,7 +22,8 @@ assert.notEqual(ha.officialUrl,hb.officialUrl);
 
 const ka=c('kurasushi',A),kb=c('kurasushi',B);
 assert.equal(ka.store?.storeId,'609');assert.equal(ka.priceTier,115);assert.match(ka.officialUrl,/609/);
-assert.equal(kb.store?.storeId,'570');assert.equal(kb.priceTier,120);assert.match(kb.officialUrl,/570/);assert.notEqual(ka.officialUrl,kb.officialUrl);
+assert.equal(kb.store?.prefecture,'北海道');assert.match(kb.store?.municipality||'',/^札幌市/);assert.ok(kb.store?.storeId,'Kura Sapporo representative store missing');assert.ok(Number(kb.priceTier)>0,'Kura Sapporo price tier missing');assert.match(kb.officialUrl||'',/^https:\/\/shop\.kurasushi\.co\.jp\/detail\//);
+assert.notEqual(ka.store.storeId,kb.store.storeId,'Kura must not reuse Toyohashi representative in Sapporo');assert.notEqual(ka.officialUrl,kb.officialUrl);
 
 const pa=c('kappasushi',A),pb=c('kappasushi',B);
 assert.ok(pa.officialUrl);assert.ok('menuType' in pa);
