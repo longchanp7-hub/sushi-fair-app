@@ -6,9 +6,10 @@ on:
     branches: ['main']
     paths:
       - 'scripts/**'
-      - '!scripts/verify-pages.mjs'
-      - '!scripts/update-local-tokai.mjs'
+      - 'app/region.js'
+      - 'app/national.js'
       - 'package.json'
+      - '.github/workflows/update-fairs.yml'
   schedule:
     - cron: '17 21 * * *'
 
@@ -18,8 +19,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: sushi-data-update
-  cancel-in-progress: true
+  group: sushi-pages-pipeline
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -27,33 +28,40 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - run: npm install
-      - name: Validate parser, resolver and front-end syntax
+      - name: Validate parsers, resolver, PWA and front-end syntax
         run: |
           node --check app/national.js
           node --check app/region.js
+          node --check app/sw.js
+          node --check scripts/update-fairs.mjs
           node scripts/fix-kura.mjs --self-test
           node scripts/build-national-fairs.mjs --self-test
           node scripts/fix-national-releases.mjs --self-test
           node scripts/clean-national-products.mjs --self-test
           node scripts/resolve-representative-images.mjs --self-test
+          node scripts/apply-sushiro-grace.mjs --self-test
+          node scripts/update-local-store-contexts.mjs --self-test
           node scripts/update-local-tokai.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
-      - name: Use cached nationwide representative-store catalog
-        run: |
-          test -s app/data/store-contexts.json
-          echo "Using previously verified regional representative-store catalog; exhaustive store crawling is not required for daily fair updates."
       - name: Preserve previous published fair snapshot
         run: cp app/data/fairs.json /tmp/previous-fairs.json
+      - name: Ensure verified regional guard rows
+        run: node scripts/ensure-region-contexts.mjs
+      - name: Refresh local Tokai store catalogs independently
+        run: node scripts/update-local-store-contexts.mjs
+      - name: Verify Toyohashi to Sapporo regional switching
+        run: node scripts/verify-region-switch.mjs
       - name: Use stable reference stores for legacy parsers
         run: node scripts/configure-shinsakae-stores.mjs
-      - run: npm run update
+      - name: Refresh base fair scrapers
+        run: npm run update
       - run: node scripts/apply-store-overrides.mjs
       - name: Refresh Kura official fair data when available
         run: node scripts/fix-kura.mjs || echo "Kura supplemental parser failed; nationwide layer will keep fail-closed data"
@@ -69,13 +77,18 @@ jobs:
         run: node scripts/clean-national-products.mjs
       - name: Resolve representative fair product images
         run: node scripts/resolve-representative-images.mjs
-      - name: Add local Tokai chains with fail-closed official data
+      - name: Apply Sushiro national source-of-truth and missing grace
+        env:
+          PREVIOUS_FAIRS: /tmp/previous-fairs.json
+        run: node scripts/apply-sushiro-grace.mjs
+      - name: Add local Tokai fair data only
         run: node scripts/update-local-tokai.mjs
       - name: Apply verified current local official releases
         run: node scripts/fix-local-official-releases.mjs
-      - name: Validate eight-chain public dataset
+      - name: Validate eight-chain public dataset and regional data
         run: |
-          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(',')); const t=d.chains.find(x=>x.chain==='tokubei'); const currentTokubei=t?.startDate==='2026-08-18'&&t?.endDate==='2026-11-03'&&t?.productSourceUrl==='https://www.nigirinotokubei.com/info/11195/'; if(currentTokubei && t.items.find(x=>x.name==='さんま天')?.price!==451) throw new Error('Tokubei brand-official price mismatch'); if(currentTokubei && t.representativeImageUrl!=='https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg') throw new Error('Tokubei campaign image mismatch');"
+          node scripts/verify-region-switch.mjs
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(',')); const s=d.chains.find(x=>x.chain==='sushiro'); if(!s?.nationalSourceOfTruth||!s?.referenceStoreOverlayOnly) throw new Error('Sushiro source-of-truth flags missing'); for(const i of s.items) if(!('startDate' in i)||!('endDate' in i)||!i.scrapeStatus) throw new Error('Sushiro item metadata missing: '+i.name); const t=d.chains.find(x=>x.chain==='tokubei'); const currentTokubei=t?.startDate==='2026-08-18'&&t?.endDate==='2026-11-03'&&t?.productSourceUrl==='https://www.nigirinotokubei.com/info/11195/'; if(currentTokubei && t.items.find(x=>x.name==='さんま天')?.price!==451) throw new Error('Tokubei brand-official price mismatch'); if(currentTokubei && t.representativeImageUrl!=='https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg') throw new Error('Tokubei campaign image mismatch'); const m=d.chains.find(x=>x.chain==='musashimaru'); if(m?.items?.length) throw new Error('Musashimaru must remain fail-closed until verified products are available');"
           node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/store-contexts.json','utf8')); for(const id of ['totomaru','musashimaru','tokubei']) if(!d.catalog?.[id]) throw new Error(id+' local store catalog missing');"
       - name: Commit updated public data when changed
         run: |
@@ -85,7 +98,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add app/data/fairs.json app/data/store-contexts.json
-            git commit -m "Update sushi fair and local Tokai data"
+            git commit -m "Update sushi fair and regional store data"
             git push
           fi
       - uses: actions/configure-pages@v5
