@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T00:42:07.715Z",
+  "updatedAt": "2026-08-25T00:48:29.167Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -422,11 +422,11 @@
           "scrapeStatus": "ok"
         }
       ],
-      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "sourceUrl": "https://www.kurasushi.co.jp/author/008391.html",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": null,
-      "status": "warning",
-      "message": "公式プレスリリースの再取得に失敗したため、同一フェアで前回確認済みの商品を表示しています。",
+      "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
+      "status": "ok",
+      "message": null,
       "priceNote": "公式プレスリリース掲載価格です。店舗により価格が異なる場合があります。",
       "dataScope": "national_official_release",
       "referenceStoreName": "豊橋新栄店",
@@ -446,14 +446,6 @@
       "endDate": "2026-09-02",
       "items": [
         {
-          "name": "「かっぱの百十円満点祭り」では、人気のネタから店内で仕上げる揚げ物まで、100円",
-          "price": 110,
-          "startDate": "2026-08-20",
-          "endDate": "2026-09-02",
-          "saleStatus": "active",
-          "scrapeStatus": "ok"
-        },
-        {
           "name": "厳選びん長まぐろ",
           "price": 110,
           "startDate": "2026-08-20",
@@ -462,7 +454,7 @@
           "scrapeStatus": "ok"
         },
         {
-          "name": "いかソーメン軍艦 生姜のせ二貫100円",
+          "name": "いかソーメン軍艦 生姜のせ",
           "price": 110,
           "startDate": "2026-08-20",
           "endDate": "2026-09-02",
@@ -470,7 +462,7 @@
           "scrapeStatus": "ok"
         },
         {
-          "name": "海鮮野菜かき揚げにぎり一貫100円",
+          "name": "海鮮野菜かき揚げにぎり",
           "price": 110,
           "startDate": "2026-08-20",
           "endDate": "2026-09-02",
@@ -510,7 +502,7 @@
           "scrapeStatus": "ok"
         },
         {
-          "name": "てんこ盛り海鮮マウンテン391円",
+          "name": "てんこ盛り海鮮マウンテン",
           "price": 430,
           "startDate": "2026-08-20",
           "endDate": "2026-09-02",
