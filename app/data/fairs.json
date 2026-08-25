@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T11:53:22.517Z",
+  "updatedAt": "2026-08-25T21:21:16.841Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -787,7 +787,7 @@
         },
         {
           "name": "さんま天",
-          "price": 459,
+          "price": 451,
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
           "saleStatus": "active",
@@ -796,10 +796,10 @@
       ],
       "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
       "storeUrl": "https://www.nigirinotokubei.com/shop/",
-      "imageUrl": null,
+      "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg",
       "status": "ok",
       "message": null,
-      "dataScope": "local_official_company_release",
+      "dataScope": "local_official_brand_release",
       "officialActionLabel": "店舗・予約を公式で確認",
       "officialActionUrl": "https://www.nigirinotokubei.com/shop/",
       "regionalModel": {
@@ -807,9 +807,14 @@
         "label": "選択市区町村の実店舗",
         "priceVariesByLocation": true
       },
-      "priceNote": "株式会社アトムの公式発表掲載価格です。一部店舗では価格が異なります。",
-      "officialReleaseUrl": "https://origin.digitalpr.jp/r/141163",
-      "productSourceUrl": "https://origin.digitalpr.jp/r/141163"
+      "priceNote": "にぎりの徳兵衛公式ページ・公式フェア画像の税込価格です。一部店舗では価格が異なります。",
+      "officialReleaseUrl": "https://www.nigirinotokubei.com/info/11195/",
+      "productSourceUrl": "https://www.nigirinotokubei.com/info/11195/",
+      "companyReleaseUrl": "https://origin.digitalpr.jp/r/141163",
+      "representativeImageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg",
+      "representativeImageSource": "official_brand_campaign_image",
+      "representativeImageProduct": "さんま食べ比べ三貫",
+      "representativeImagePage": "https://www.nigirinotokubei.com/info/11195/"
     }
   ]
 }
