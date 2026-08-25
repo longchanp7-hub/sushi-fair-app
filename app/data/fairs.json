@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T00:37:17.316Z",
+  "updatedAt": "2026-08-25T00:42:07.715Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -382,14 +382,6 @@
           "scrapeStatus": "ok"
         },
         {
-          "name": "・対象商品：「うなぎ（一貫）」",
-          "price": 110,
-          "startDate": "2026-08-21",
-          "endDate": "2026-08-30",
-          "saleStatus": "active",
-          "scrapeStatus": "ok"
-        },
-        {
           "name": "【浜名湖産】うなぎ(一貫)",
           "price": 380,
           "startDate": "2026-08-21",
@@ -430,11 +422,11 @@
           "scrapeStatus": "ok"
         }
       ],
-      "sourceUrl": "https://www.kurasushi.co.jp/author/008391.html",
+      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
-      "status": "ok",
-      "message": null,
+      "imageUrl": null,
+      "status": "warning",
+      "message": "公式プレスリリースの再取得に失敗したため、同一フェアで前回確認済みの商品を表示しています。",
       "priceNote": "公式プレスリリース掲載価格です。店舗により価格が異なる場合があります。",
       "dataScope": "national_official_release",
       "referenceStoreName": "豊橋新栄店",
@@ -449,58 +441,235 @@
     {
       "chain": "kappasushi",
       "storeName": "選択地域",
-      "fairName": "かっぱの百十円満点祭り開催！",
-      "startDate": null,
-      "endDate": null,
+      "fairName": "かっぱの百十円満点祭り",
+      "startDate": "2026-08-20",
+      "endDate": "2026-09-02",
       "items": [
         {
-          "name": "かっぱの百十円満点祭り開催！",
-          "price": null,
+          "name": "「かっぱの百十円満点祭り」では、人気のネタから店内で仕上げる揚げ物まで、100円",
+          "price": 110,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
           "saleStatus": "active",
           "scrapeStatus": "ok"
         },
         {
-          "name": "かっぱの元気モリモリ祭り開催！",
-          "price": null,
+          "name": "厳選びん長まぐろ",
+          "price": 110,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "いかソーメン軍艦 生姜のせ二貫100円",
+          "price": 110,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "海鮮野菜かき揚げにぎり一貫100円",
+          "price": 110,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "とろサーモン刻みこぼし包みいくらのせ",
+          "price": 110,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "北海道産 ほたて",
+          "price": 430,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "大とろ塩炙り 柚子のせ",
+          "price": 360,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "フライドポテト～夏のとまとガーリック旨辛ソース～",
+          "price": 340,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "てんこ盛り海鮮マウンテン391円",
+          "price": 430,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "モリモリ とろネバプレート",
+          "price": 790,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "大判牛カルビ炙り食べ比べ",
+          "price": 370,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "ボリューム満点！海鮮野菜かき揚げ＆大えび天入りうどん",
+          "price": 510,
+          "startDate": "2026-08-20",
+          "endDate": "2026-09-02",
           "saleStatus": "active",
           "scrapeStatus": "ok"
         }
       ],
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
-      "imageUrl": null,
+      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1186/18731-1186-ec6f3073bc6dce02b175b0ee29c8bd41-2438x698.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
       "status": "ok",
       "message": null,
       "referenceStoreName": "豊橋飯村店",
-      "dataScope": "national_fair_with_regional_variation",
+      "dataScope": "national_official_release",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://www.kappasushi.jp/shop/",
       "regionalModel": {
         "strategyKey": "menuType",
         "label": "店舗メニュータイプ",
         "priceVariesByLocation": true
-      }
+      },
+      "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html",
+      "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。"
     },
     {
       "chain": "uobei",
       "storeName": "選択地域",
-      "fairName": "最新フェア確認中",
-      "startDate": null,
+      "fairName": "豪華ネタフェア",
+      "startDate": "2026-08-04",
       "endDate": null,
-      "items": [],
+      "items": [
+        {
+          "name": "すけそう鱈",
+          "price": 110,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "えんがわぐんかん",
+          "price": 110,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "たこわさぐんかん",
+          "price": 132,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "贅沢大生えび",
+          "price": 198,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "岩手県産やりいか",
+          "price": 198,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "のどぐろ",
+          "price": 198,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "たらば蟹はかま",
+          "price": 198,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "北海道産ほたて",
+          "price": 231,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "本鮪中とろ",
+          "price": 220,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "厳選まぐろ三昧",
+          "price": 363,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "焼き豚にぎり",
+          "price": 220,
+          "startDate": "2026-08-04",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        }
+      ],
       "sourceUrl": "https://www.uobei.info/menu/",
-      "imageUrl": null,
-      "status": "warning",
-      "message": "魚べいの公式フェア情報を取得中です。",
+      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-74ea2fee3b50a5de774856a4a694bfbb-1917x585.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+      "status": "ok",
+      "message": null,
       "referenceStoreName": "選択地域",
-      "dataScope": "national_fair_with_regional_variation",
+      "dataScope": "national_official_release",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://www.uobei.info/",
       "regionalModel": {
         "strategyKey": "priceClass",
         "label": "通常／都心型／超都心型",
         "priceVariesByLocation": true
-      }
+      },
+      "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
+      "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。"
     }
   ]
 }
