@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T03:00:55.058Z",
+  "updatedAt": "2026-08-25T04:49:18.654Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -109,7 +109,9 @@
         "priceVariesByLocation": true
       },
       "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6153.png",
-      "representativeImageSource": "official_product_near_fair_item"
+      "representativeImageSource": "official_priority_product_image",
+      "representativeImageProduct": "本鮪中とろ",
+      "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179"
     },
     {
       "chain": "hamazushi",
@@ -367,8 +369,10 @@
         "label": "地域区分＋都市型価格",
         "priceVariesByLocation": true
       },
-      "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/hokkaidou_mizuage_akijake.png",
-      "representativeImageSource": "official_product_near_fair_item"
+      "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/title_limited.png",
+      "representativeImageSource": "official_priority_product_image",
+      "representativeImageProduct": "北海道水揚げ秋鮭",
+      "representativeImagePage": "https://www.hamazushi.com/menu/"
     },
     {
       "chain": "kurasushi",
@@ -441,8 +445,10 @@
         "label": "店舗価格帯＋提供エリア",
         "priceVariesByLocation": true
       },
-      "representativeImageUrl": "https://www.kurasushi.co.jp/upload/4e7f2a72a5b564e7a765ac298b72c924dd21f4ae.png",
-      "representativeImageSource": "official_product_near_fair_item"
+      "representativeImageUrl": "https://www.kurasushi.co.jp/menu/upload/260821_fair_unagi.jpg",
+      "representativeImageSource": "official_priority_product_image",
+      "representativeImageProduct": "うなぎ(一貫)",
+      "representativeImagePage": "https://www.kurasushi.co.jp/menu/?area=area2"
     },
     {
       "chain": "kappasushi",
@@ -556,8 +562,10 @@
       },
       "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html",
       "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。",
-      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1186/18731-1186-2df0ce45e28f30cd1bf6030d1c5629d2-893x571.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
-      "representativeImageSource": "official_product_near_fair_item"
+      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1186/18731-1186-84f7cc4fa551e144de0a8dc4a76f1c11-749x557.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "representativeImageSource": "official_priority_product_image",
+      "representativeImageProduct": "北海道産 ほたて",
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html"
     },
     {
       "chain": "uobei",
@@ -670,8 +678,10 @@
       },
       "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
       "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。",
-      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-42607866b2aafec0a81b89300d3a425a-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
-      "representativeImageSource": "official_product_near_fair_item"
+      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-553cb01bf8d970f46f8aff3c85063c58-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "representativeImageSource": "official_priority_product_image",
+      "representativeImageProduct": "本鮪中とろ",
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html"
     }
   ]
 }
