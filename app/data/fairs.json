@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T21:46:08.863Z",
+  "updatedAt": "2026-08-25T21:50:05.793Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -18,80 +18,171 @@
         {
           "name": "本鮪中とろ",
           "price": 110,
+          "startDate": "2026-08-19",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6153.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "あわび1貫",
           "price": 110,
+          "startDate": "2026-08-19",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6158.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "てりたま軍艦",
           "price": 120,
+          "startDate": "2026-08-05",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/250806_2081_v1.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "タコさんウインナー包み",
           "price": 140,
+          "startDate": "2026-08-05",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/240110_2392.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "国産ほたて食べ比べ",
           "price": 360,
+          "startDate": "2026-08-05",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_000262.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "天然本鮪7貫盛り",
           "price": 1250,
+          "startDate": "2026-08-05",
+          "endDate": "2026-09-27",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_002046V3.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "鰹節香る醤油ラーメン",
           "price": 480,
+          "startDate": "2026-08-19",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_3922.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "家系風！豚骨醤油ラーメン",
           "price": 480,
+          "startDate": "2026-08-05",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003907.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "コリコリ軟骨の唐揚げ",
           "price": 390,
+          "startDate": "2026-08-19",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_0890.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "おいしーレモンの甘酸っぱパフェ",
           "price": 390,
+          "startDate": "2026-08-05",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003909V2.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "果肉そのまマンゴーアイスバー",
           "price": 170,
+          "startDate": "2026-08-05",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003923.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "ぷるもちクリームわらび餅盛り合わせ",
           "price": 280,
+          "startDate": "2026-08-19",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_3914.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         },
         {
           "name": "飲むミルクティーッペ",
           "price": 290,
+          "startDate": "2026-08-05",
+          "endDate": "2026-08-30",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003910.png",
+          "lastSeenAt": "2026-08-26",
+          "missingSince": null,
+          "graceUntil": null
         }
       ],
       "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
@@ -100,7 +191,7 @@
       "status": "ok",
       "message": null,
       "referenceStoreName": "豊橋新栄店",
-      "dataScope": "reference_store_menu_overlay",
+      "dataScope": "national_fair_with_reference_store_overlay",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://www.akindo-sushiro.co.jp/shop/",
       "regionalModel": {
@@ -112,6 +203,8 @@
       "representativeImageSource": "official_priority_product_image",
       "representativeImageProduct": "本鮪中とろ",
       "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+      "nationalSourceOfTruth": true,
+      "referenceStoreOverlayOnly": true,
       "group": "national"
     },
     {
@@ -699,20 +792,66 @@
         {
           "name": "豊後極み生さば",
           "price": null,
+          "startDate": null,
+          "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
         },
         {
           "name": "夏の香味生あじ",
           "price": null,
+          "startDate": null,
+          "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
         },
         {
           "name": "海鮮ねばネバ～ランド",
           "price": null,
+          "startDate": null,
+          "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+        }
+      ],
+      "campaigns": [
+        {
+          "fairName": "いよいよ夏本番！夏の旬ネタ",
+          "startDate": null,
+          "endDate": null,
+          "items": [
+            {
+              "name": "豊後極み生さば",
+              "price": null,
+              "startDate": null,
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+            },
+            {
+              "name": "夏の香味生あじ",
+              "price": null,
+              "startDate": null,
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+            },
+            {
+              "name": "海鮮ねばネバ～ランド",
+              "price": null,
+              "startDate": null,
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+            }
+          ],
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
         }
       ],
       "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
@@ -738,6 +877,7 @@
       "startDate": null,
       "endDate": null,
       "items": [],
+      "campaigns": [],
       "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
       "storeUrl": "https://www.634-jp.com/musashimaru-shop.html",
       "imageUrl": null,
@@ -767,7 +907,8 @@
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
         },
         {
           "name": "さんま",
@@ -775,7 +916,8 @@
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
         },
         {
           "name": "さんま炙り",
@@ -783,7 +925,8 @@
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
         },
         {
           "name": "さんま天",
@@ -791,7 +934,64 @@
           "startDate": "2026-08-18",
           "endDate": "2026-11-03",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
+        }
+      ],
+      "campaigns": [
+        {
+          "fairName": "秋の味覚、解禁！北海道産さんまのお寿司を食べ比べ！",
+          "startDate": "2026-08-18",
+          "endDate": "2026-11-03",
+          "items": [
+            {
+              "name": "さんま食べ比べ三貫",
+              "price": 649,
+              "startDate": "2026-08-18",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
+            },
+            {
+              "name": "さんま",
+              "price": 407,
+              "startDate": "2026-08-18",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
+            },
+            {
+              "name": "さんま炙り",
+              "price": 451,
+              "startDate": "2026-08-18",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
+            },
+            {
+              "name": "さんま天",
+              "price": 451,
+              "startDate": "2026-08-18",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
+            }
+          ],
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
+          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg",
+          "verified": true
+        },
+        {
+          "fairName": "本まぐろvsキングサーモン「王様対決 夏の陣」",
+          "startDate": "2026-07-17",
+          "endDate": "2026-08-31",
+          "items": [],
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11052/",
+          "imageUrl": null
         }
       ],
       "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",

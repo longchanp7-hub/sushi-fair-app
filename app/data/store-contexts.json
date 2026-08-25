@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-25T21:46:15.573Z",
+  "updatedAt": "2026-08-25T21:49:54.649Z",
   "policy": "Official store directories only. Exact municipality is preferred; ordinance-city fallback may use another ward in the same city. Unknown price/menu classes remain null.",
   "catalog": {
     "sushiro": {
@@ -15719,6 +15719,18 @@
         "officialUrl": "https://maps.hama-sushi.co.jp/jp/address.html",
         "verified": true,
         "source": "official_menu_region_definition"
+      },
+      "愛知県/豊橋市": {
+        "chain": "hamazushi",
+        "prefecture": "愛知県",
+        "municipality": "豊橋市",
+        "storeName": "豊橋新栄店",
+        "storeId": "4208",
+        "regionCode": "tokai",
+        "regionLabel": "東海",
+        "officialUrl": "https://maps.hama-sushi.co.jp/jp/detail/4208.html",
+        "verified": true,
+        "source": "official_store_page"
       }
     },
     "kurasushi": {
@@ -18546,13 +18558,13 @@
         "chain": "kurasushi",
         "prefecture": "愛知県",
         "municipality": "豊橋市",
-        "storeName": "豊橋新栄店【１皿115円～】",
+        "storeName": "豊橋新栄店",
         "storeId": "609",
         "address": "愛知県豊橋市新栄町新田中7-1 0532-39-6107 ※ご入店は閉店の30分前。 下記期間は",
         "priceTier": 115,
         "officialUrl": "https://shop.kurasushi.co.jp/detail/609",
         "verified": true,
-        "source": "official_store_directory"
+        "source": "official_store_page"
       },
       "愛知県/岩倉市": {
         "chain": "kurasushi",
@@ -23413,5 +23425,5 @@
       }
     }
   },
-  "localTokaiPolicy": "Local Tokai chains use exact municipality (or ward within the same ordinance city) only; no same-prefecture distant fallback."
+  "localTokaiPolicy": "Local Tokai store catalogs are refreshed separately from fair scraping. Exact municipality (or ward within the same ordinance city) only; no same-prefecture distant fallback."
 }
