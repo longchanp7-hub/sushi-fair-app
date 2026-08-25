@@ -41,6 +41,7 @@ jobs:
           node scripts/fix-kura.mjs --self-test
           node scripts/build-national-fairs.mjs --self-test
           node scripts/fix-national-releases.mjs --self-test
+          node scripts/clean-national-products.mjs --self-test
 
       - name: Preserve previous published fair snapshot
         run: cp app/data/fairs.json /tmp/previous-fairs.json
@@ -67,6 +68,9 @@ jobs:
 
       - name: Resolve current Kappa and Uobei official releases
         run: node scripts/fix-national-releases.mjs
+
+      - name: Clean final nationwide product output
+        run: node scripts/clean-national-products.mjs
 
       - name: Commit updated fair data when changed
         run: |
