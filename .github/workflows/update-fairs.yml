@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/**'
       - '!scripts/verify-pages.mjs'
+      - '!scripts/update-local-tokai.mjs'
       - 'package.json'
   schedule:
     - cron: '17 21 * * *'
@@ -33,13 +34,16 @@ jobs:
         with:
           node-version: '20'
       - run: npm install
-      - name: Validate parser and resolver rules
+      - name: Validate parser, resolver and front-end syntax
         run: |
+          node --check app/national.js
+          node --check app/region.js
           node scripts/fix-kura.mjs --self-test
           node scripts/build-national-fairs.mjs --self-test
           node scripts/fix-national-releases.mjs --self-test
           node scripts/clean-national-products.mjs --self-test
           node scripts/resolve-representative-images.mjs --self-test
+          node scripts/update-local-tokai.mjs --self-test
       - name: Use cached nationwide representative-store catalog
         run: |
           test -s app/data/store-contexts.json
@@ -64,15 +68,21 @@ jobs:
         run: node scripts/clean-national-products.mjs
       - name: Resolve representative fair product images
         run: node scripts/resolve-representative-images.mjs
+      - name: Add local Tokai chains with fail-closed official data
+        run: node scripts/update-local-tokai.mjs
+      - name: Validate eight-chain public dataset
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(','));"
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/store-contexts.json','utf8')); for(const id of ['totomaru','musashimaru','tokubei']) if(!d.catalog?.[id]) throw new Error(id+' local store catalog missing');"
       - name: Commit updated public data when changed
         run: |
-          if git diff --quiet -- app/data/fairs.json; then
-            echo "No public fair-data changes"
+          if git diff --quiet -- app/data/fairs.json app/data/store-contexts.json; then
+            echo "No public fair/store changes"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add app/data/fairs.json
-            git commit -m "Update nationwide sushi fair data"
+            git add app/data/fairs.json app/data/store-contexts.json
+            git commit -m "Update sushi fair and local Tokai data"
             git push
           fi
       - uses: actions/configure-pages@v5
