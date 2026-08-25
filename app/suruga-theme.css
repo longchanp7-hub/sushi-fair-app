@@ -1,0 +1,34 @@
+html{background:#07131e}
+body{position:relative;background:#07131e;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url('./assets/suruga-bay-fuji-bg.webp') center 34%/cover no-repeat;filter:saturate(.9) contrast(.98)}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,17,28,.42) 0%,rgba(5,15,25,.58) 26%,rgba(5,12,20,.70) 58%,rgba(4,9,15,.82) 100%)}
+.hero,main,footer{position:relative;z-index:1}
+.hero{background:linear-gradient(180deg,rgba(8,20,31,.30),rgba(8,20,31,.08))}
+.region-panel,.quick-compare-section,.chain-list-section,.note-card{backdrop-filter:blur(2px)}
+.quick-compare-section{padding:12px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:linear-gradient(145deg,rgba(8,22,34,.78),rgba(10,17,26,.72));box-shadow:0 14px 34px rgba(0,0,0,.24)}
+.quick-compare-grid{gap:10px}
+.quick-chain{min-height:98px;padding:8px;grid-template-columns:58px minmax(0,1fr);gap:9px;background:linear-gradient(140deg,color-mix(in srgb,var(--chain-soft) 88%,rgba(8,17,27,.88)),rgba(10,18,28,.92));box-shadow:0 9px 24px rgba(0,0,0,.24)}
+.quick-chain-photo{position:relative;width:58px;height:68px;border-radius:11px;overflow:hidden;background:var(--chain-soft);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 4px 12px rgba(0,0,0,.22)}
+.quick-chain-photo img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92}
+.quick-chain-photo .quick-chain-mark{position:absolute;left:4px;bottom:4px;width:25px;height:25px;border-radius:50%;background:rgba(255,255,255,.96);color:var(--chain-color);box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.quick-chain-photo .quick-chain-mark svg{width:17px;height:17px}
+.quick-chain-copy{gap:3px}
+.quick-chain-top b{font-size:13px}.quick-chain-top em{font-size:8px}
+.quick-fair{font-size:11px}.quick-chain small{font-size:9.5px;line-height:1.25;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.quick-period{display:block!important;margin-top:1px;font-size:8.5px!important;color:#bfc9d6!important;white-space:nowrap!important}
+.quick-chain:hover{border-color:color-mix(in srgb,var(--chain-color) 64%,white 8%)}
+.card,.region-panel{background-color:rgba(13,22,32,.84)}
+@media(max-width:679px){
+ body::before{background-position:center 22%;background-size:auto 100vh}
+ .quick-compare-section{padding:10px;margin-top:12px}
+ .quick-compare-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .quick-chain{min-height:94px;padding:7px;grid-template-columns:48px minmax(0,1fr);gap:7px}
+ .quick-chain-photo{width:48px;height:62px;border-radius:9px}
+ .quick-chain-photo .quick-chain-mark{width:22px;height:22px}.quick-chain-photo .quick-chain-mark svg{width:15px;height:15px}
+ .quick-chain-top b{font-size:11.5px}.quick-fair{font-size:10px}.quick-chain small{font-size:8.7px}
+ .quick-uobei{grid-column:1/-1;grid-template-columns:60px minmax(0,1fr);min-height:86px}.quick-uobei .quick-chain-photo{width:60px;height:66px}
+}
+@media(max-width:379px){
+ .quick-chain{grid-template-columns:44px minmax(0,1fr);min-height:90px}.quick-chain-photo{width:44px;height:58px}
+ .quick-chain-top b{font-size:10.5px}.quick-fair{font-size:9.4px}.quick-chain small{font-size:8.2px}
+}
