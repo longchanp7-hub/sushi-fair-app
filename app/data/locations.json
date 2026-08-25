@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "mode": "manual_prefecture_city",
+  "gps": false,
+  "storageKey": "sushiFairLocationV2",
+  "defaultLocation": {
+    "prefecture": "愛知県",
+    "prefectureCode": "23",
+    "city": "豊橋市"
+  },
+  "municipalitySource": {
+    "kind": "staticJsonApi",
+    "url": "https://geolonia.github.io/japanese-addresses/api/ja.json",
+    "note": "都道府県・市区町村選択用。取得できない場合はアプリ内の最小フォールバックを使用します。"
+  }
+}

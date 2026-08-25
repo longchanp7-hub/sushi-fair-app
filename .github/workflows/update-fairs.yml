@@ -14,6 +14,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: sushi-data-update
@@ -21,8 +23,11 @@ concurrency:
 
 jobs:
   update:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
 
@@ -31,29 +36,55 @@ jobs:
           node-version: '20'
 
       - run: npm install
-      - name: Validate parser rules
+      - name: Validate fair parser rules
         run: |
-          node scripts/refresh-crowd-standalone.mjs --self-test
           node scripts/fix-kura.mjs --self-test
-      - name: Use Toyohashi Shinsakae stores
+          node scripts/build-national-fairs.mjs --self-test
+
+      - name: Preserve previous published fair snapshot
+        run: cp app/data/fairs.json /tmp/previous-fairs.json
+
+      # The legacy parsers remain as a stable reference-store input while the
+      # nationwide layer is migrated chain by chain. The final output no longer
+      # treats the reference store as nationwide truth.
+      - name: Use stable reference stores for legacy parsers
         run: node scripts/configure-shinsakae-stores.mjs
+
       - run: npm run update
       - run: node scripts/apply-store-overrides.mjs
-      - name: Refresh Kura data when available
-        run: node scripts/fix-kura.mjs || echo "Kura refresh failed; keeping main scraper/fallback data"
-      - name: Clean fair data quality flags
-        run: node scripts/clean-fair-data.mjs
-      - name: Refresh crowd fallback snapshot
-        run: node scripts/refresh-crowd-standalone.mjs || echo "Crowd snapshot refresh failed; keeping previous crowd data"
 
-      - name: Commit updated data when changed
+      - name: Refresh Kura official fair data when available
+        run: node scripts/fix-kura.mjs || echo "Kura supplemental parser failed; nationwide layer will keep fail-closed data"
+
+      - name: Clean legacy fair quality flags
+        run: node scripts/clean-fair-data.mjs
+
+      - name: Build nationwide five-chain fair data
+        env:
+          PREVIOUS_FAIRS: /tmp/previous-fairs.json
+        run: node scripts/build-national-fairs.mjs
+
+      - name: Commit updated fair data when changed
         run: |
-          if git diff --quiet -- app/data/fairs.json app/data/crowd.json; then
-            echo "No data changes"
+          if git diff --quiet -- app/data/fairs.json; then
+            echo "No fair data changes"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add app/data/fairs.json app/data/crowd.json
-            git commit -m "Update sushi app data"
+            git add app/data/fairs.json
+            git commit -m "Update nationwide sushi fair data"
             git push
           fi
+
+      # A GITHUB_TOKEN-authored data commit does not normally trigger another
+      # workflow. Deploy here so the daily fair refresh reaches GitHub Pages.
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: './app'
+      - name: Deploy refreshed nationwide app
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify published nationwide app
+        run: node scripts/verify-pages.mjs "${{ steps.deployment.outputs.page_url }}"

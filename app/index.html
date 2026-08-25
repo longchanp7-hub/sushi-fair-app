@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#10131a" />
-  <meta name="description" content="スシロー・はま寿司・くら寿司・かっぱ寿司の期間限定フェアをまとめて確認" />
-  <link rel="manifest" href="./manifest.webmanifest?v=20260717-1350" />
+  <meta name="description" content="地域を選んでスシロー・はま寿司・くら寿司・かっぱ寿司・魚べいの期間限定フェアをまとめて確認" />
+  <link rel="manifest" href="./manifest.webmanifest?v=20260825-national" />
   <link rel="icon" href="./assets/sushi-icon-192-v2.png?v=20260717-1350" type="image/png" />
   <link rel="apple-touch-icon" href="./assets/sushi-icon-192-v2.png?v=20260717-1350" />
   <link rel="stylesheet" href="./styles.css?v=20260715-2115" />
-  <link rel="stylesheet" href="./crowd.css?v=20260807-2" />
+  <link rel="stylesheet" href="./region.css?v=20260825-1" />
   <title>寿司フェア</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
         <h1>寿司フェア</h1>
       </div>
     </div>
-    <p class="lead">4大回転寿司の期間限定メニューを、ここだけで。</p>
+    <p class="lead">5大回転寿司の期間限定メニューを、選んだ地域で横断チェック。</p>
     <div class="status-row">
       <span id="updatedAt">更新確認中…</span>
       <button id="refreshBtn" type="button" aria-label="最新情報を再読み込み">↻ 更新</button>
@@ -29,6 +29,27 @@
   </header>
 
   <main>
+    <section class="region-panel" aria-labelledby="regionTitle">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">AREA</p>
+          <h2 id="regionTitle">地域を選択</h2>
+        </div>
+      </div>
+      <div class="region-controls">
+        <div class="region-field">
+          <label for="prefectureSelect">都道府県</label>
+          <select id="prefectureSelect" aria-label="都道府県"></select>
+        </div>
+        <div class="region-field">
+          <label for="citySelect">市区町村</label>
+          <select id="citySelect" aria-label="市区町村"></select>
+        </div>
+      </div>
+      <div class="region-current"><span>選択中</span><strong id="regionStatus">地域データ読込中…</strong></div>
+      <p class="national-note">GPSは使用しません。選択地域はこの端末に保存します。チェーンごとの地域区分・価格区分は公式仕様に合わせて別々に扱います。</p>
+    </section>
+
     <section class="today-panel" aria-labelledby="todayTitle">
       <div class="section-heading today-heading">
         <div>
@@ -46,44 +67,25 @@
       <button class="filter" data-chain="hamazushi">はま寿司</button>
       <button class="filter" data-chain="kurasushi">くら寿司</button>
       <button class="filter" data-chain="kappasushi">かっぱ寿司</button>
+      <button class="filter" data-chain="uobei">魚べい</button>
     </nav>
 
     <section aria-labelledby="chainSummaryTitle">
       <div class="section-heading">
-        <h2 id="chainSummaryTitle">4社の開催中フェア</h2>
-        <span>写真またはカードをタップで公式サイトへ</span>
+        <h2 id="chainSummaryTitle">5社の開催中フェア</h2>
+        <span>全国フェアを基準に、地域差はチェーン別に表示</span>
       </div>
       <div id="summary" class="summary" aria-live="polite"></div>
     </section>
     <section id="cards" class="cards" aria-live="polite"></section>
 
-    <section id="crowdPanel" class="crowd-panel" aria-labelledby="crowdTitle" hidden>
-      <div class="section-heading crowd-heading">
-        <div>
-          <p class="kicker">NEAR LIVE</p>
-          <h2 id="crowdTitle">今の混雑・予約</h2>
-        </div>
-        <div class="crowd-head-actions">
-          <span id="crowdUpdatedAt">取得準備中…</span>
-          <button id="crowdRefreshBtn" type="button" aria-label="取得済みの最新混雑情報を再読み込み">↻ 再読込</button>
-        </div>
-      </div>
-      <div id="crowdMode" class="crowd-mode">約5分ごとに最新状況を取得します</div>
-      <div id="crowdGrid" class="crowd-grid" aria-live="polite"></div>
-      <p class="crowd-note">混雑データの新規取得は約5分ごとに自動実行します。「再読込」は取得済みの最新データを読み直すボタンです。くら寿司の日時指定予約枠と現在の店頭待ちは別指標として扱い、予約可能時刻だけで混雑とは判定しません。特別営業時間は公式ページから取得できる範囲で反映しますが、来店前に最終確認してください。</p>
-    </section>
-
     <section class="note-card">
       <strong>ご注意</strong>
-      <p>商品・価格・販売期間は変更や売り切れになる場合があります。来店前の最終確認は各カードの「公式で確認」から行えます。</p>
+      <p>全国フェア商品と、店舗ごとの在庫・品切れ・価格は別情報として扱います。1店舗で未掲載でもフェア商品を自動的に販売終了にはしません。価格・取扱い・予約状況は各カードの公式リンクで最終確認してください。</p>
     </section>
   </main>
 
   <footer>公式公開情報をまとめて表示する個人向けビューア</footer>
-  <script src="./app.js?v=20260728-0552" type="module"></script>
-  <script type="module">
-    import { initCrowd } from './crowd.js?v=20260810-1';
-    initCrowd();
-  </script>
+  <script src="./national.js?v=20260825-1" type="module"></script>
 </body>
 </html>
