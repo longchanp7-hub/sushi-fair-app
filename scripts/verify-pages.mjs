@@ -13,7 +13,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const normalize=v=>String(v).replace(/\r\n/g,'\n').trimEnd();
 function bust(url,a){const u=new URL(url);u.searchParams.set('__smoke',`${Date.now()}-${a}`);return u.href;}
 async function fetchText(url,a){const r=await fetch(bust(url,a),{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{accept:'text/html,application/json,text/plain,*/*;q=.5','cache-control':'no-cache',pragma:'no-cache'}});if(!r.ok)throw new Error(`${url} returned HTTP ${r.status}`);return r.text();}
-async function fetchBinary(url,a){const r=await fetch(bust(url,a),{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{accept:'image/png,image/*;q=.9,*/*;q=.5','cache-control':'no-cache',pragma:'no-cache'}});if(!r.ok)throw new Error(`${url} returned HTTP ${r.status}`);return {type:r.headers.get('content-type')||'',bytes:new Uint8Array(await r.arrayBuffer())};}
+async function fetchBinary(url,a){const r=await fetch(bust(url,a),{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{accept:'image/webp,image/*;q=.9,*/*;q=.5','cache-control':'no-cache',pragma:'no-cache'}});if(!r.ok)throw new Error(`${url} returned HTTP ${r.status}`);return {type:r.headers.get('content-type')||'',bytes:new Uint8Array(await r.arrayBuffer())};}
 
 function validateFairs(data){
   assert.equal(data?.schemaVersion,2);
@@ -91,10 +91,11 @@ function validateNational(source){
   assert.match(source,/region-context-title/);
 }
 
-function validatePng(asset){
-  assert.match(asset.type,/^image\/png(?:;|$)/i,`Suruga background must be served as image/png, got ${asset.type}`);
-  assert.ok(asset.bytes.length>100000,'Suruga background asset is unexpectedly small');
-  assert.deepEqual(Array.from(asset.bytes.slice(0,8)),[137,80,78,71,13,10,26,10],'Suruga background does not have a PNG signature');
+function validateWebp(asset){
+  assert.match(asset.type,/^image\/webp(?:;|$)/i,`Suruga background must be served as image/webp, got ${asset.type}`);
+  assert.ok(asset.bytes.length>20000,'Suruga background asset is unexpectedly small');
+  assert.equal(String.fromCharCode(...asset.bytes.slice(0,4)),'RIFF','Suruga background is missing RIFF header');
+  assert.equal(String.fromCharCode(...asset.bytes.slice(8,12)),'WEBP','Suruga background is missing WEBP signature');
 }
 
 async function verifyOnce(a,localIndex,localNational,localFairs,localStores){
@@ -102,14 +103,14 @@ async function verifyOnce(a,localIndex,localNational,localFairs,localStores){
   const remoteIndex=await fetchText(base.href,a);
   assert.equal(normalize(remoteIndex),normalize(localIndex));
   validateIndex(remoteIndex);
-  const bg=await fetchBinary(new URL('assets/suruga-bay-fuji-bg.png',base).href,a);validatePng(bg);
+  const bg=await fetchBinary(new URL('assets/suruga-bay-fuji-bg.webp',base).href,a);validateWebp(bg);
   const nationalText=await fetchText(new URL('national.js',base).href,a);
   assert.equal(normalize(nationalText),normalize(localNational));validateNational(nationalText);
   const fairsText=await fetchText(new URL('data/fairs.json',base).href,a);
   assert.equal(normalize(fairsText),normalize(localFairs));const fairs=JSON.parse(fairsText);validateFairs(fairs);
   const storesText=await fetchText(new URL('data/store-contexts.json',base).href,a);
   assert.equal(normalize(storesText),normalize(localStores));const stores=JSON.parse(storesText);validateStores(stores);
-  return{status:'ok',verifiedAt:new Date().toISOString(),testedCommit:process.env.GITHUB_SHA||null,pageUrl:base.href,publicIndexMatchesSource:true,backgroundAssetOk:true,publicNationalMatchesSource:true,publicFairsMatchSource:true,publicStoreContextsMatchSource:true,fairsUpdatedAt:fairs.updatedAt,storeContextsUpdatedAt:stores.updatedAt,storeContextCounts:Object.fromEntries(Object.entries(stores.catalog||{}).map(([k,v])=>[k,Object.keys(v||{}).length])),chains:Object.fromEntries(fairs.chains.map(x=>[x.chain,{fairName:x.fairName,itemCount:x.items.length,status:x.status,representativeImage:Boolean(x.representativeImageUrl||x.imageUrl)}]))};
+  return{status:'ok',verifiedAt:new Date().toISOString(),testedCommit:process.env.GITHUB_SHA||null,pageUrl:base.href,publicIndexMatchesSource:true,backgroundAssetOk:true,backgroundContentType:bg.type,backgroundBytes:bg.bytes.length,publicNationalMatchesSource:true,publicFairsMatchSource:true,publicStoreContextsMatchSource:true,fairsUpdatedAt:fairs.updatedAt,storeContextsUpdatedAt:stores.updatedAt,storeContextCounts:Object.fromEntries(Object.entries(stores.catalog||{}).map(([k,v])=>[k,Object.keys(v||{}).length])),chains:Object.fromEntries(fairs.chains.map(x=>[x.chain,{fairName:x.fairName,itemCount:x.items.length,status:x.status,representativeImage:Boolean(x.representativeImageUrl||x.imageUrl)}]))};
 }
 
 async function report(x){if(!REPORT_PATH)return;await fs.mkdir(path.dirname(REPORT_PATH),{recursive:true});await fs.writeFile(REPORT_PATH,JSON.stringify(x,null,2)+'\n');}
