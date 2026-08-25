@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-25T01:50:00.000Z",
+  "policy": "Official store directories only. Same municipality preferred; ordinance-city fallback may use another ward in the same parent city. Unknown values remain null.",
+  "catalog": {
+    "sushiro": {
+      "北海道/札幌市中央区": {
+        "chain": "sushiro",
+        "prefecture": "北海道",
+        "municipality": "札幌市中央区",
+        "storeName": "札幌パルコ店",
+        "storeId": "2575",
+        "menuAreaCode": "883",
+        "priceTier": 150,
+        "officialUrl": "https://www.akindo-sushiro.co.jp/shop/detail.php?id=2575",
+        "menuUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=883",
+        "verified": true,
+        "source": "official_store_page"
+      }
+    },
+    "hamazushi": {
+      "北海道/札幌市中央区": {
+        "chain": "hamazushi",
+        "prefecture": "北海道",
+        "municipality": "札幌市中央区",
+        "storeName": "札幌中央市場前店",
+        "storeId": "4460",
+        "regionCode": "hokkaido",
+        "regionLabel": "北海道",
+        "officialUrl": "https://maps.hama-sushi.co.jp/jp/detail/4460.html",
+        "verified": true,
+        "source": "official_store_page"
+      }
+    },
+    "kurasushi": {
+      "北海道/札幌市白石区": {
+        "chain": "kurasushi",
+        "prefecture": "北海道",
+        "municipality": "札幌市白石区",
+        "storeName": "ラソラ札幌店",
+        "storeId": "570",
+        "priceTier": 120,
+        "officialUrl": "https://shop.kurasushi.co.jp/detail/570",
+        "verified": true,
+        "source": "official_store_page"
+      }
+    },
+    "kappasushi": {},
+    "uobei": {}
+  }
+}
