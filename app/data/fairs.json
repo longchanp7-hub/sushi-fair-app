@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T10:57:29.657Z",
+  "updatedAt": "2026-08-25T11:08:38.550Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -760,12 +760,37 @@
       "fairName": "秋の味覚、解禁！北海道産さんまのお寿司を食べ比べ！",
       "startDate": "2026-08-18",
       "endDate": "2026-11-03",
-      "items": [],
+      "items": [
+        {
+          "name": "さんま‥‥‥",
+          "price": 407,
+          "startDate": "2026-08-18",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "さんま炙り‥‥‥",
+          "price": 451,
+          "startDate": "2026-08-18",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "さんま天‥‥‥",
+          "price": 451,
+          "startDate": "2026-08-18",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        }
+      ],
       "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
       "storeUrl": "https://www.nigirinotokubei.com/shop/",
-      "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/cmn/og.png",
-      "status": "warning",
-      "message": "フェア名・期間は公式から取得しました。個別商品・価格は公式ページで確認してください。",
+      "imageUrl": null,
+      "status": "ok",
+      "message": null,
       "dataScope": "local_official_release",
       "officialActionLabel": "店舗・予約を公式で確認",
       "officialActionUrl": "https://www.nigirinotokubei.com/shop/",
