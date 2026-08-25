@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T09:19:47.907Z",
+  "updatedAt": "2026-08-25T10:57:29.657Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -111,7 +111,8 @@
       "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6153.png",
       "representativeImageSource": "official_priority_product_image",
       "representativeImageProduct": "本鮪中とろ",
-      "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179"
+      "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+      "group": "national"
     },
     {
       "chain": "hamazushi",
@@ -372,7 +373,8 @@
       "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/hokkaidou_mizuage_akijake.png",
       "representativeImageSource": "official_priority_product_image",
       "representativeImageProduct": "北海道水揚げ秋鮭",
-      "representativeImagePage": "https://www.hamazushi.com/menu/"
+      "representativeImagePage": "https://www.hamazushi.com/menu/",
+      "group": "national"
     },
     {
       "chain": "kurasushi",
@@ -448,7 +450,8 @@
       "representativeImageUrl": "https://www.kurasushi.co.jp/menu/upload/260821_fair_unagi.jpg",
       "representativeImageSource": "official_priority_product_image",
       "representativeImageProduct": "うなぎ(一貫)",
-      "representativeImagePage": "https://www.kurasushi.co.jp/menu/?area=area2"
+      "representativeImagePage": "https://www.kurasushi.co.jp/menu/?area=area2",
+      "group": "national"
     },
     {
       "chain": "kappasushi",
@@ -565,7 +568,8 @@
       "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1186/18731-1186-84f7cc4fa551e144de0a8dc4a76f1c11-749x557.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "representativeImageSource": "official_priority_product_image",
       "representativeImageProduct": "北海道産 ほたて",
-      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html"
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html",
+      "group": "national"
     },
     {
       "chain": "uobei",
@@ -681,7 +685,96 @@
       "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-553cb01bf8d970f46f8aff3c85063c58-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "representativeImageSource": "official_priority_product_image",
       "representativeImageProduct": "本鮪中とろ",
-      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html"
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
+      "group": "national"
+    },
+    {
+      "chain": "totomaru",
+      "group": "local_tokai",
+      "storeName": "選択地域",
+      "fairName": "いよいよ夏本番！夏の旬ネタ",
+      "startDate": null,
+      "endDate": null,
+      "items": [
+        {
+          "name": "豊後極み生さば",
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "夏の香味生あじ",
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "海鮮ねばネバ～ランド",
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        }
+      ],
+      "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+      "storeUrl": "https://www.comline.co.jp/shoplist/",
+      "imageUrl": null,
+      "status": "ok",
+      "message": null,
+      "dataScope": "local_official_menu",
+      "officialActionLabel": "店舗・順番待ちを公式で確認",
+      "officialActionUrl": "https://www.comline.co.jp/shoplist/",
+      "regionalModel": {
+        "strategyKey": "exactLocalStore",
+        "label": "選択市区町村の実店舗",
+        "priceVariesByLocation": true
+      },
+      "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。"
+    },
+    {
+      "chain": "musashimaru",
+      "group": "local_tokai",
+      "storeName": "選択地域",
+      "fairName": "公式メニュー・おすすめ",
+      "startDate": null,
+      "endDate": null,
+      "items": [],
+      "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
+      "storeUrl": "https://www.634-jp.com/musashimaru-shop.html",
+      "imageUrl": null,
+      "status": "warning",
+      "message": "期間限定商品の安定したテキスト取得元が確認できないため、個別商品は推測せず公式メニューへ案内します。",
+      "dataScope": "official_link_only",
+      "officialActionLabel": "店舗情報を公式で確認",
+      "officialActionUrl": "https://www.634-jp.com/musashimaru-shop.html",
+      "regionalModel": {
+        "strategyKey": "exactLocalStore",
+        "label": "選択市区町村の実店舗",
+        "priceVariesByLocation": false
+      },
+      "priceNote": "公式メニューで各皿価格と最新のおすすめをご確認ください。"
+    },
+    {
+      "chain": "tokubei",
+      "group": "local_tokai",
+      "storeName": "選択地域",
+      "fairName": "秋の味覚、解禁！北海道産さんまのお寿司を食べ比べ！",
+      "startDate": "2026-08-18",
+      "endDate": "2026-11-03",
+      "items": [],
+      "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
+      "storeUrl": "https://www.nigirinotokubei.com/shop/",
+      "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/cmn/og.png",
+      "status": "warning",
+      "message": "フェア名・期間は公式から取得しました。個別商品・価格は公式ページで確認してください。",
+      "dataScope": "local_official_release",
+      "officialActionLabel": "店舗・予約を公式で確認",
+      "officialActionUrl": "https://www.nigirinotokubei.com/shop/",
+      "regionalModel": {
+        "strategyKey": "exactLocalStore",
+        "label": "選択市区町村の実店舗",
+        "priceVariesByLocation": true
+      },
+      "priceNote": "店舗・FC店等により一部メニューやサービスが異なる場合があります。"
     }
   ]
 }
