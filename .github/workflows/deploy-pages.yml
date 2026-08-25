@@ -8,6 +8,8 @@ on:
       - '.github/workflows/update-fairs.yml'
       - '.github/workflows/refresh-crowd*.yml'
       - 'app/data/crowd.json'
+      - 'app/data/fairs.json'
+      - 'app/data/store-contexts.json'
   workflow_dispatch:
 
 permissions:
@@ -36,7 +38,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Verify published HTML, fair data, and live crowd data
+      - name: Verify published nationwide app
         id: smoke
         if: steps.deployment.outcome == 'success'
         continue-on-error: true
@@ -60,16 +62,11 @@ jobs:
           cp /tmp/pages-smoke.json diagnostics/pages-smoke.json
           git add diagnostics/pages-smoke.json
           git commit -m "Latest Pages smoke report"
-
           for attempt in 1 2 3; do
             remote_sha=$(git ls-remote --heads origin pages-live | awk '{print $1}')
             if [[ -n "$remote_sha" ]]; then
-              if git push --force-with-lease=refs/heads/pages-live:$remote_sha origin HEAD:pages-live; then
-                exit 0
-              fi
-            elif git push origin HEAD:pages-live; then
-              exit 0
-            fi
+              if git push --force-with-lease=refs/heads/pages-live:$remote_sha origin HEAD:pages-live; then exit 0; fi
+            elif git push origin HEAD:pages-live; then exit 0; fi
             sleep 3
           done
           exit 1
@@ -82,19 +79,10 @@ jobs:
             const deploymentOutcome = '${{ steps.deployment.outcome }}';
             const smokeOutcome = '${{ steps.smoke.outcome }}';
             const healthOutcome = '${{ steps.health.outcome }}';
-            const success = deploymentOutcome === 'success'
-              && smokeOutcome === 'success'
-              && healthOutcome === 'success';
-            const params = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.sha,
-              state: success ? 'success' : 'failure',
-              context: 'pages-smoke',
-              description: success
-                ? 'Published HTML, fairs, and crowd data verified'
-                : `Deploy=${deploymentOutcome}, smoke=${smokeOutcome}, report=${healthOutcome}`,
-            };
+            const success = deploymentOutcome === 'success' && smokeOutcome === 'success' && healthOutcome === 'success';
+            const params = { owner: context.repo.owner, repo: context.repo.repo, sha: context.sha,
+              state: success ? 'success' : 'failure', context: 'pages-smoke',
+              description: success ? 'Published nationwide app verified' : `Deploy=${deploymentOutcome}, smoke=${smokeOutcome}, report=${healthOutcome}` };
             const pageUrl = '${{ steps.deployment.outputs.page_url }}';
             if (pageUrl) params.target_url = pageUrl;
             await github.rest.repos.createCommitStatus(params);
