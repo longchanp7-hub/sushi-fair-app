@@ -46,6 +46,7 @@ jobs:
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           SMOKE_REPORT_PATH: /tmp/pages-smoke.json
+          VERIFY_DATA_MODE: static
         run: node scripts/verify-pages.mjs "$PAGE_URL"
       - name: Publish latest verification report to pages-live
         id: health
