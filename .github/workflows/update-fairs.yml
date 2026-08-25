@@ -69,8 +69,8 @@ jobs:
         run: node scripts/update-local-tokai.mjs
       - name: Validate eight-chain public dataset
         run: |
-          node -e "const d=require('./app/data/fairs.json'); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(','));"
-          node -e "const d=require('./app/data/store-contexts.json'); for(const id of ['totomaru','musashimaru','tokubei']) if(!d.catalog?.[id]) throw new Error(id+' local store catalog missing');"
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(','));"
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/store-contexts.json','utf8')); for(const id of ['totomaru','musashimaru','tokubei']) if(!d.catalog?.[id]) throw new Error(id+' local store catalog missing');"
       - name: Commit updated public data when changed
         run: |
           if git diff --quiet -- app/data/fairs.json app/data/store-contexts.json; then
