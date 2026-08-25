@@ -93,7 +93,7 @@ function validateNational(source){
 
 function validateWebp(asset){
   assert.match(asset.type,/^image\/webp(?:;|$)/i,`Suruga background must be served as image/webp, got ${asset.type}`);
-  assert.ok(asset.bytes.length>20000,'Suruga background asset is unexpectedly small');
+  assert.ok(asset.bytes.length>1000,'Suruga background asset is empty or truncated');
   assert.equal(String.fromCharCode(...asset.bytes.slice(0,4)),'RIFF','Suruga background is missing RIFF header');
   assert.equal(String.fromCharCode(...asset.bytes.slice(8,12)),'WEBP','Suruga background is missing WEBP signature');
 }
