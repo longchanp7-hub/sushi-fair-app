@@ -28,6 +28,21 @@ function range(text,year=Number(TODAY().slice(0,4))){
 const active=r=>r?.startDate&&r.startDate<=TODAY()&&(!r.endDate||TODAY()<=r.endDate);
 function item(name,price=null,dates={}){return{name:clean(name),price:Number.isFinite(price)?price:null,...dates,saleStatus:'active',scrapeStatus:'ok'}}
 function og($,base){return abs($('meta[property="og:image"]').attr('content')||$('meta[name="twitter:image"]').attr('content'),base)}
+function isGenericOg(url){return !url||/\/img\/cmn\/og\.png(?:\?|$)/i.test(url)||/\/favicon|\/logo(?:[._-]|\/)/i.test(url)}
+function parsePricedText(text,dates={}){
+  const out=[];
+  const s=clean(text);
+  const re=/([^0-9¥￥]{2,60}?)\s*(?:¥|￥)?\s*(\d{2,4})円(?:\s*[（(]\s*税込\s*(\d{2,4})円\s*[）)])?/g;
+  for(const m of s.matchAll(re)){
+    let name=clean(m[1]).replace(/^.*?[：:]/,'').replace(/^[・●■★☆◆◇※\s]+/,'').trim();
+    const price=Number(m[3]||m[2]);
+    if(!name||name.length>55||!/\p{L}/u.test(name))continue;
+    if(/開催|期間|クーポン|セット対象|税込|更新|販売|店舗|お知らせ|価格|円$/.test(name))continue;
+    if(!Number.isFinite(price)||price<50||price>9999)continue;
+    out.push(item(name,price,dates));
+  }
+  return out;
+}
 
 const FALLBACK_STORES={
   totomaru:[
@@ -88,10 +103,14 @@ async function tokubei(){
     if(!c)throw new Error('active food fair not found');
     let items=[],image=null,status='warning',message='フェア名・期間は公式から取得しました。個別商品・価格は公式ページで確認してください。';
     try{
-      const detail=await get(c.href),d=cheerio.load(detail);image=og(d,c.href);
-      const lines=clean(d('body').text()).split(/(?=\d{2,4}円)|[\n\r]+/).map(clean).filter(Boolean);
-      for(const line of lines){const m=line.match(/(.{2,55}?)\s*(\d{2,4})円(?:\s*\(税込\s*(\d{2,4})円\))?/);if(!m)continue;const name=clean(m[1]).replace(/^.*?[：:]/,'');const price=Number(m[3]||m[2]);if(name&&name.length<56&&!/開催|期間|クーポン|セット対象/.test(name))items.push(item(name,price,c.r));}
-      items=[...new Map(items.map(x=>[`${x.name}|${x.price}`,x])).values()].slice(0,12);if(items.length){status='ok';message=null}
+      const detail=await get(c.href),d=cheerio.load(detail);
+      image=og(d,c.href);if(isGenericOg(image))image=null;
+      const blocks=[];
+      d('li,p,td,th,figcaption,dd').each((_,el)=>{const t=clean(d(el).text());if(t&&t.length<=240&&/\d{2,4}円/.test(t))blocks.push(t);});
+      const sources=blocks.length?blocks:[clean(d('body').text())];
+      items=sources.flatMap(t=>parsePricedText(t,c.r));
+      items=[...new Map(items.map(x=>[`${x.name}|${x.price}`,x])).values()].slice(0,12);
+      if(items.length){status='ok';message=null}
     }catch{}
     const fairName=c.t.replace(/^20\d{2}\.\d{2}\.\d{2}更新\s*/,'').replace(/20\d{2}年\d{1,2}月\d{1,2}日.*$/,'').trim();
     return {chain:'tokubei',group:'local_tokai',storeName:'選択地域',fairName:fairName||'期間限定フェア',startDate:c.r.startDate,endDate:c.r.endDate,items,sourceUrl:c.href,storeUrl:'https://www.nigirinotokubei.com/shop/',imageUrl:image,status,message,dataScope:'local_official_release',officialActionLabel:'店舗・予約を公式で確認',officialActionUrl:'https://www.nigirinotokubei.com/shop/',regionalModel:{strategyKey:'exactLocalStore',label:'選択市区町村の実店舗',priceVariesByLocation:true},priceNote:'店舗・FC店等により一部メニューやサービスが異なる場合があります。'};
@@ -122,6 +141,8 @@ async function main(){
 if(process.argv.includes('--self-test')){
   const r=range('2026年8月18日（火）～11月3日（火・祝）');
   if(r.startDate!=='2026-08-18'||r.endDate!=='2026-11-03')throw new Error('range parser self-test failed');
+  const pairs=parsePricedText('さんま 480円 まぐろ 300円',r);
+  if(pairs.length!==2||pairs[0].price!==480||pairs[1].price!==300)throw new Error('priced product parser self-test failed');
   if(!FALLBACK_STORES.musashimaru.some(x=>x[1]==='蒲郡市'))throw new Error('Musashimaru Gamagori fallback missing');
   if(!FALLBACK_STORES.totomaru.some(x=>x[1]==='豊橋市'&&/西岩田6丁目17-2/.test(x[4])))throw new Error('Totomaru Toyohashi official address missing');
   console.log('Local Tokai adapter self-tests passed.');

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "update": "node scripts/update-fairs.mjs",
-    "refresh-local": "node scripts/update-local-tokai.mjs"
+    "refresh-local": "node scripts/update-local-tokai.mjs",
+    "verify-local": "node scripts/update-local-tokai.mjs --self-test"
   },
   "dependencies": {
     "cheerio": "^1.0.0"
