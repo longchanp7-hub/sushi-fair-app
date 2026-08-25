@@ -1,8 +1,6 @@
-name: Deploy Pages
+name: Legacy Pages deploy (manual only)
 
 on:
-  push:
-    branches: ['main']
   workflow_dispatch:
 
 permissions:
