@@ -18,7 +18,11 @@ const HERO_PRIORITY = {
 };
 async function fetchHtml(url){const r=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{'user-agent':UA,'accept-language':'ja-JP,ja;q=.9','cache-control':'no-cache'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);return await r.text();}
 function imgSrc($,el,pageUrl){const raw=$(el).attr('src')||$(el).attr('data-src')||$(el).attr('data-lazy-src')||$(el).attr('data-original');return abs(raw,pageUrl);}
-function usefulImage(url,alt=''){return Boolean(url)&&!/(?:logo|icon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|ogp\.png|qr[_-])/i.test(url)&&!/ロゴ|アイコン|会社概要|QR/.test(alt);}
+function usefulImage(url,alt=''){
+  return Boolean(url)
+    && !/(?:logo|icon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|ogp\.png|qr[_-]|title_limited|title[_-](?:fair|menu|limited)|limited[_-]?menu|menu[_-]?title|mainvisual|main_visual)/i.test(url)
+    && !/ロゴ|アイコン|会社概要|QR|期間限定メニュー$/.test(alt);
+}
 function directText($,el){return clean($(el).clone().children().remove().end().text());}
 
 export function orderedItemNames(chain,items=[]){
@@ -56,31 +60,39 @@ export function representativeImage(html,pageUrl,itemNames=[]){
 
 function pageCandidates(fair){
   const list=[];
-  // Kura's official menu page exposes each current product with a direct product image,
-  // which is more reliable for the card hero than the press-release lead/banner image.
   if(fair.chain==='kurasushi') list.push('https://www.kurasushi.co.jp/menu/?area=area2');
   if(fair.officialReleaseUrl) list.push(fair.officialReleaseUrl);
   if(fair.sourceUrl) list.push(fair.sourceUrl);
   return [...new Set(list)];
 }
 
+function trustedExistingProductImage(fair){
+  // Hama's fair scraper already extracts the first actual limited product image.
+  // Do not replace that with the generic `title_limited.png` heading image.
+  if(fair.chain==='hamazushi' && usefulImage(fair.imageUrl||'')) return fair.imageUrl;
+  return null;
+}
+
 async function main(){
  if(process.argv.includes('--self-test')){
-   const fixture='<html><body><img src="banner.jpg"><p>本鮪中とろ 110円</p><figure><img src="tuna.png" alt="本鮪中とろ"></figure><p>すけそう鱈 110円</p><figure><img src="pollock.png" alt="すけそう鱈"></figure></body></html>';
+   const fixture='<html><body><img src="title_limited.png" alt="期間限定メニュー"><p>北海道水揚げ秋鮭 110円</p><figure><img src="salmon.png" alt="北海道水揚げ秋鮭"></figure><p>本鮪中とろ 220円</p><figure><img src="tuna.png" alt="本鮪中とろ"></figure></body></html>';
    assert.deepEqual(orderedItemNames('uobei',[{name:'すけそう鱈'},{name:'本鮪中とろ'}]),['本鮪中とろ','すけそう鱈']);
-   assert.equal(representativeImage(fixture,'https://example.jp/fair',orderedItemNames('uobei',['すけそう鱈','本鮪中とろ'])),'https://example.jp/tuna.png');
-   assert.equal(representativeImage('<html><body><img src="logo.png"><img src="banner.jpg"></body></html>','https://example.jp/',['本鮪中とろ']),null);
+   assert.equal(representativeImage(fixture,'https://example.jp/fair',orderedItemNames('hamazushi',['北海道水揚げ秋鮭','厳選まぐろ中とろ'])),'https://example.jp/salmon.png');
+   assert.equal(usefulImage('https://example.jp/assets/menu/img/title_limited.png'),false);
+   assert.equal(representativeImage('<html><body><img src="logo.png"><img src="title_limited.png"></body></html>','https://example.jp/',['北海道水揚げ秋鮭']),null);
    console.log('Representative image self-tests passed.');return;
  }
  const data=JSON.parse(await fs.readFile(OUT,'utf8'));
  for(const fair of data.chains||[]){
    const itemNames=orderedItemNames(fair.chain,fair.items||[]);
-   let resolved=null,resolvedPage=null;
-   for(const pageUrl of pageCandidates(fair)){
-     try{
-       resolved=representativeImage(await fetchHtml(pageUrl),pageUrl,itemNames);
-       if(resolved){resolvedPage=pageUrl;break;}
-     }catch(e){console.warn(`${fair.chain}: representative image page failed ${pageUrl}: ${e.message}`);}
+   let resolved=trustedExistingProductImage(fair),resolvedPage=resolved?fair.sourceUrl:null;
+   if(!resolved){
+     for(const pageUrl of pageCandidates(fair)){
+       try{
+         resolved=representativeImage(await fetchHtml(pageUrl),pageUrl,itemNames);
+         if(resolved){resolvedPage=pageUrl;break;}
+       }catch(e){console.warn(`${fair.chain}: representative image page failed ${pageUrl}: ${e.message}`);}
+     }
    }
    if(resolved){
      fair.representativeImageUrl=resolved;
