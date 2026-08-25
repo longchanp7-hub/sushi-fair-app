@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/**'
       - '!scripts/verify-pages.mjs'
+      - '!scripts/update-local-tokai.mjs'
       - 'package.json'
   schedule:
     - cron: '17 21 * * *'
