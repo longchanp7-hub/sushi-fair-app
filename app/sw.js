@@ -1,4 +1,4 @@
-const CACHE='sushi-fair-v20260826-pwa1';
+const CACHE='sushi-fair-v20260826-readability2';
 const STATIC=[
   './',
   './index.html',
