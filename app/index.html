@@ -3,89 +3,56 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#10131a" />
+  <meta name="theme-color" content="#1b2230" />
   <meta name="description" content="地域を選んでスシロー・はま寿司・くら寿司・かっぱ寿司・魚べいの期間限定フェアをまとめて確認" />
   <link rel="manifest" href="./manifest.webmanifest?v=20260825-national" />
   <link rel="icon" href="./assets/sushi-icon-192-v2.png?v=20260717-1350" type="image/png" />
   <link rel="apple-touch-icon" href="./assets/sushi-icon-192-v2.png?v=20260717-1350" />
-  <link rel="stylesheet" href="./styles.css?v=20260715-2115" />
-  <link rel="stylesheet" href="./region.css?v=20260825-1" />
+  <link rel="stylesheet" href="./styles.css?v=20260825-regionux" />
+  <link rel="stylesheet" href="./region.css?v=20260825-regionux" />
   <title>寿司フェア</title>
 </head>
 <body>
   <header class="hero">
     <div class="brand-row">
       <img class="app-mark" src="./assets/sushi-icon-192-v2.png?v=20260717-1350" alt="" />
-      <div>
-        <p class="eyebrow">TODAY'S SUSHI PICKS</p>
-        <h1>寿司フェア</h1>
-      </div>
+      <div><p class="eyebrow">TODAY'S SUSHI PICKS</p><h1>寿司フェア</h1></div>
     </div>
-    <p class="lead">5大回転寿司の期間限定メニューを、選んだ地域で横断チェック。</p>
-    <div class="status-row">
-      <span id="updatedAt">更新確認中…</span>
-      <button id="refreshBtn" type="button" aria-label="最新情報を再読み込み">↻ 更新</button>
-    </div>
+    <p class="lead">全国5チェーンの期間限定メニューを、選んだ地域で横断チェック。</p>
+    <div class="status-row"><span id="updatedAt">更新確認中…</span><button id="refreshBtn" type="button">↻ 更新</button></div>
   </header>
 
   <main>
     <section class="region-panel" aria-labelledby="regionTitle">
-      <div class="section-heading">
-        <div>
-          <p class="kicker">AREA</p>
-          <h2 id="regionTitle">地域を選択</h2>
-        </div>
-      </div>
+      <div class="section-heading"><div><p class="kicker">AREA</p><h2 id="regionTitle">地域を選択</h2></div></div>
       <div class="region-controls">
-        <div class="region-field">
-          <label for="prefectureSelect">都道府県</label>
-          <select id="prefectureSelect" aria-label="都道府県"></select>
-        </div>
-        <div class="region-field">
-          <label for="citySelect">市区町村</label>
-          <select id="citySelect" aria-label="市区町村"></select>
-        </div>
+        <div class="region-field"><label for="prefectureSelect">都道府県</label><select id="prefectureSelect"></select></div>
+        <div class="region-field"><label for="citySelect">市区町村</label><select id="citySelect"></select></div>
       </div>
-      <div class="region-current"><span>選択中</span><strong id="regionStatus">地域データ読込中…</strong></div>
-      <p class="national-note">GPSは使用しません。選択地域はこの端末に保存します。チェーンごとの地域区分・価格区分は公式仕様に合わせて別々に扱います。</p>
+      <button id="applyRegionBtn" class="apply-region" type="button">この地域を反映</button>
+      <div class="applied-region"><span>📍 現在の表示地域</span><strong id="regionStatus">地域データ読込中…</strong></div>
+      <div id="regionFeedback" class="region-feedback" aria-live="polite"></div>
+      <p class="national-note">GPSは使用しません。選択欄を変えただけでは表示地域は変わらず、「この地域を反映」を押した後に適用します。地域設定はこの端末に保存します。</p>
     </section>
 
     <section class="today-panel" aria-labelledby="todayTitle">
-      <div class="section-heading today-heading">
-        <div>
-          <p class="kicker">TODAY</p>
-          <h2 id="todayTitle">今日の回転寿司フェア</h2>
-        </div>
-        <span id="todayDate"></span>
-      </div>
+      <div class="section-heading today-heading"><div><p class="kicker">TODAY</p><h2 id="todayTitle">今日の回転寿司フェア</h2></div><span id="todayDate"></span></div>
       <div id="todayHighlights" class="today-highlights" aria-live="polite"></div>
     </section>
 
     <nav id="filters" class="filters" aria-label="チェーン絞り込み">
-      <button class="filter active" data-chain="all">すべて</button>
-      <button class="filter" data-chain="sushiro">スシロー</button>
-      <button class="filter" data-chain="hamazushi">はま寿司</button>
-      <button class="filter" data-chain="kurasushi">くら寿司</button>
-      <button class="filter" data-chain="kappasushi">かっぱ寿司</button>
-      <button class="filter" data-chain="uobei">魚べい</button>
+      <button class="filter active" data-chain="all">すべて</button><button class="filter" data-chain="sushiro">スシロー</button><button class="filter" data-chain="hamazushi">はま寿司</button><button class="filter" data-chain="kurasushi">くら寿司</button><button class="filter" data-chain="kappasushi">かっぱ寿司</button><button class="filter" data-chain="uobei">魚べい</button>
     </nav>
 
     <section aria-labelledby="chainSummaryTitle">
-      <div class="section-heading">
-        <h2 id="chainSummaryTitle">5社の開催中フェア</h2>
-        <span>全国フェアを基準に、地域差はチェーン別に表示</span>
-      </div>
+      <div class="section-heading"><h2 id="chainSummaryTitle">5社の開催中フェア</h2><span>全国フェアと地域・店舗差を分離して表示</span></div>
       <div id="summary" class="summary" aria-live="polite"></div>
     </section>
     <section id="cards" class="cards" aria-live="polite"></section>
 
-    <section class="note-card">
-      <strong>ご注意</strong>
-      <p>全国フェア商品と、店舗ごとの在庫・品切れ・価格は別情報として扱います。1店舗で未掲載でもフェア商品を自動的に販売終了にはしません。価格・取扱い・予約状況は各カードの公式リンクで最終確認してください。</p>
-    </section>
+    <section class="note-card"><strong>ご注意</strong><p>全国フェア商品と店舗ごとの在庫・品切れ・価格は別情報です。地域区分を公式情報で確認できていないチェーンは推測せず、その旨を表示します。1店舗で未掲載でも全国フェアを自動終了にはしません。</p></section>
   </main>
-
   <footer>公式公開情報をまとめて表示する個人向けビューア</footer>
-  <script src="./national.js?v=20260825-1" type="module"></script>
+  <script src="./national.js?v=20260825-regionux" type="module"></script>
 </body>
 </html>
