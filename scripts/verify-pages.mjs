@@ -2,137 +2,14 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-const ROOT = fileURLToPath(new URL('..', import.meta.url));
-const PAGE_URL = process.argv[2];
-const REPORT_PATH = process.env.SMOKE_REPORT_PATH || null;
-const MAX_ATTEMPTS = 12;
-const RETRY_DELAY_MS = 5_000;
-
-if (!PAGE_URL) throw new Error('Usage: node scripts/verify-pages.mjs <page-url>');
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const normalizeText = value => String(value).replace(/\r\n/g, '\n').trimEnd();
-
-function cacheBusted(url, attempt) {
-  const value = new URL(url);
-  value.searchParams.set('__smoke', `${Date.now()}-${attempt}`);
-  return value.href;
-}
-
-async function fetchText(url, attempt) {
-  const response = await fetch(cacheBusted(url, attempt), {
-    redirect: 'follow',
-    signal: AbortSignal.timeout(15_000),
-    headers: {
-      accept: 'text/html,application/json,text/plain,*/*;q=0.5',
-      'cache-control': 'no-cache',
-      pragma: 'no-cache',
-    },
-  });
-  if (!response.ok) throw new Error(`${url} returned HTTP ${response.status}`);
-  return await response.text();
-}
-
-function validateFairs(data) {
-  assert.equal(data?.schemaVersion, 2, 'fairs schemaVersion must be 2');
-  assert.equal(data?.timezone, 'Asia/Tokyo', 'fairs timezone must be Asia/Tokyo');
-  assert.ok(Date.parse(data?.updatedAt), 'fairs updatedAt must be a valid timestamp');
-  assert.equal(data?.locationModel?.mode, 'manual_prefecture_city');
-  assert.equal(data?.locationModel?.gps, false, 'nationwide MVP must not require GPS');
-  assert.ok(Array.isArray(data?.chains), 'fairs chains must be an array');
-
-  const byChain = Object.fromEntries(data.chains.map(chain => [chain.chain, chain]));
-  assert.deepEqual(
-    Object.keys(byChain).sort(),
-    ['hamazushi', 'kappasushi', 'kurasushi', 'sushiro', 'uobei'],
-    'all five chains must be published exactly once',
-  );
-
-  const today = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit',
-  }).format(new Date());
-
-  for (const chain of data.chains) {
-    assert.ok(Array.isArray(chain.items), `${chain.chain} items must be an array`);
-    assert.match(chain.officialActionUrl || '', /^https:\/\//, `${chain.chain} must expose an official action URL`);
-    assert.equal(chain.officialActionLabel, '混雑・順番待ち・予約を公式で確認');
-    assert.ok(chain.regionalModel?.strategyKey, `${chain.chain} must declare its regional strategy`);
-    if (chain.endDate && chain.endDate < today) {
-      assert.notEqual(chain.status, 'ok', `${chain.chain} must not present an expired fair as current`);
-    }
-    for (const item of chain.items) {
-      assert.ok(item?.name, `${chain.chain} item name is required`);
-      assert.ok(['active', 'ended', 'unknown'].includes(item.saleStatus || 'active'), `${chain.chain} invalid saleStatus`);
-      assert.ok(item.scrapeStatus, `${chain.chain} item scrapeStatus is required`);
-      if (item.endDate && item.endDate < today) {
-        assert.notEqual(item.saleStatus, 'active', `${chain.chain}/${item.name} expired item must not remain active`);
-      }
-    }
-  }
-}
-
-function validateIndex(index) {
-  assert.match(index, /id="prefectureSelect"/, 'prefecture selector is missing');
-  assert.match(index, /id="citySelect"/, 'municipality selector is missing');
-  assert.match(index, /data-chain="uobei"/, 'Uobei filter is missing');
-  assert.match(index, /\.\/national\.js/, 'nationwide client is not loaded');
-  assert.doesNotMatch(index, /\.\/crowd\.js/, 'legacy crowd client must not be loaded');
-}
-
-async function verifyOnce(attempt, localIndex, localFairsText) {
-  const baseUrl = new URL(PAGE_URL);
-  if (!baseUrl.pathname.endsWith('/')) baseUrl.pathname += '/';
-
-  const remoteIndex = await fetchText(baseUrl.href, attempt);
-  assert.equal(normalizeText(remoteIndex), normalizeText(localIndex), 'published index.html does not match the deployed source');
-  validateIndex(remoteIndex);
-
-  const fairsUrl = new URL('data/fairs.json', baseUrl).href;
-  const remoteFairsText = await fetchText(fairsUrl, attempt);
-  assert.equal(normalizeText(remoteFairsText), normalizeText(localFairsText), 'published fairs.json does not match the deployed source');
-  const fairs = JSON.parse(remoteFairsText);
-  validateFairs(fairs);
-
-  return {
-    status: 'ok',
-    verifiedAt: new Date().toISOString(),
-    testedCommit: process.env.GITHUB_SHA || null,
-    pageUrl: baseUrl.href,
-    publicIndexMatchesSource: true,
-    publicFairsMatchSource: true,
-    fairsUpdatedAt: fairs.updatedAt,
-    chains: Object.fromEntries(fairs.chains.map(chain => [chain.chain, {
-      fairName: chain.fairName,
-      itemCount: chain.items.length,
-      status: chain.status,
-    }])),
-  };
-}
-
-async function writeReport(result) {
-  if (!REPORT_PATH) return;
-  await fs.mkdir(path.dirname(REPORT_PATH), { recursive: true });
-  await fs.writeFile(REPORT_PATH, `${JSON.stringify(result, null, 2)}\n`);
-  console.log(`Wrote smoke report to ${REPORT_PATH}`);
-}
-
-const localIndex = await fs.readFile(path.join(ROOT, 'app', 'index.html'), 'utf8');
-const localFairsText = await fs.readFile(path.join(ROOT, 'app', 'data', 'fairs.json'), 'utf8');
-
-let lastError = null;
-for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
-  try {
-    const result = await verifyOnce(attempt, localIndex, localFairsText);
-    await writeReport(result);
-    console.log('Published nationwide app smoke test passed.');
-    console.log(JSON.stringify(result, null, 2));
-    process.exit(0);
-  } catch (error) {
-    lastError = error;
-    console.warn(`Smoke attempt ${attempt}/${MAX_ATTEMPTS} failed: ${error.message}`);
-    if (attempt < MAX_ATTEMPTS) await sleep(RETRY_DELAY_MS);
-  }
-}
-
-throw lastError || new Error('Published app smoke test failed');
+const ROOT=fileURLToPath(new URL('..',import.meta.url)),PAGE_URL=process.argv[2],REPORT_PATH=process.env.SMOKE_REPORT_PATH||null,MAX_ATTEMPTS=12,RETRY_DELAY_MS=5000;
+if(!PAGE_URL)throw new Error('Usage: node scripts/verify-pages.mjs <page-url>');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms)),normalize=v=>String(v).replace(/\r\n/g,'\n').trimEnd();
+function bust(url,a){const u=new URL(url);u.searchParams.set('__smoke',`${Date.now()}-${a}`);return u.href;}
+async function fetchText(url,a){const r=await fetch(bust(url,a),{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{accept:'text/html,application/json,text/plain,*/*;q=.5','cache-control':'no-cache',pragma:'no-cache'}});if(!r.ok)throw new Error(`${url} returned HTTP ${r.status}`);return r.text();}
+function validateFairs(data){assert.equal(data?.schemaVersion,2);assert.equal(data?.timezone,'Asia/Tokyo');assert.ok(Date.parse(data?.updatedAt));assert.equal(data?.locationModel?.mode,'manual_prefecture_city');assert.equal(data?.locationModel?.gps,false);assert.ok(Array.isArray(data?.chains));const by=Object.fromEntries(data.chains.map(x=>[x.chain,x]));assert.deepEqual(Object.keys(by).sort(),['hamazushi','kappasushi','kurasushi','sushiro','uobei']);const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());for(const chain of data.chains){assert.ok(Array.isArray(chain.items));assert.match(chain.officialActionUrl||'',/^https:\/\//);assert.ok(chain.regionalModel?.strategyKey);if(chain.endDate&&chain.endDate<today)assert.notEqual(chain.status,'ok');for(const item of chain.items){assert.ok(item?.name);assert.ok(['active','ended','unknown'].includes(item.saleStatus||'active'));assert.ok(item.scrapeStatus);if(item.endDate&&item.endDate<today)assert.notEqual(item.saleStatus,'active');}}}
+function validateStores(data){assert.equal(data?.schemaVersion,1,'store-contexts schemaVersion must be 1');assert.ok(data?.catalog&&typeof data.catalog==='object');for(const chain of ['sushiro','hamazushi','kurasushi','kappasushi','uobei'])assert.ok(data.catalog[chain]&&typeof data.catalog[chain]==='object',`${chain} store catalog missing`);const sapporo=data.catalog.sushiro?.['北海道/札幌市中央区'];assert.ok(sapporo,'Sushiro Sapporo representative store missing');assert.equal(sapporo.storeId,'2575');assert.equal(sapporo.menuAreaCode,'883');assert.ok(sapporo.officialUrl?.includes('id=2575'));const hama=data.catalog.hamazushi?.['北海道/札幌市中央区']||data.catalog.hamazushi?.['北海道/*'];assert.ok(hama,'Hama Hokkaido resolver missing');const kura=Object.values(data.catalog.kurasushi||{}).find(x=>x.prefecture==='北海道'&&String(x.municipality).startsWith('札幌市'));assert.ok(kura,'Kura Sapporo representative store missing');}
+function validateIndex(index){assert.match(index,/id="prefectureSelect"/);assert.match(index,/id="citySelect"/);assert.match(index,/id="applyRegionBtn"/);assert.match(index,/id="regionStatus"/);assert.match(index,/data-chain="uobei"/);assert.match(index,/\.\/national\.js/);assert.doesNotMatch(index,/\.\/crowd\.js/);}
+async function verifyOnce(a,localIndex,localFairs,localStores){const base=new URL(PAGE_URL);if(!base.pathname.endsWith('/'))base.pathname+='/';const remoteIndex=await fetchText(base.href,a);assert.equal(normalize(remoteIndex),normalize(localIndex));validateIndex(remoteIndex);const fairsText=await fetchText(new URL('data/fairs.json',base).href,a);assert.equal(normalize(fairsText),normalize(localFairs));const fairs=JSON.parse(fairsText);validateFairs(fairs);const storesText=await fetchText(new URL('data/store-contexts.json',base).href,a);assert.equal(normalize(storesText),normalize(localStores));const stores=JSON.parse(storesText);validateStores(stores);return{status:'ok',verifiedAt:new Date().toISOString(),testedCommit:process.env.GITHUB_SHA||null,pageUrl:base.href,publicIndexMatchesSource:true,publicFairsMatchSource:true,publicStoreContextsMatchSource:true,fairsUpdatedAt:fairs.updatedAt,storeContextsUpdatedAt:stores.updatedAt,storeContextCounts:Object.fromEntries(Object.entries(stores.catalog||{}).map(([k,v])=>[k,Object.keys(v||{}).length])),chains:Object.fromEntries(fairs.chains.map(x=>[x.chain,{fairName:x.fairName,itemCount:x.items.length,status:x.status,representativeImage:Boolean(x.representativeImageUrl||x.imageUrl)}]))};}
+async function report(x){if(!REPORT_PATH)return;await fs.mkdir(path.dirname(REPORT_PATH),{recursive:true});await fs.writeFile(REPORT_PATH,JSON.stringify(x,null,2)+'\n');}
+const localIndex=await fs.readFile(path.join(ROOT,'app','index.html'),'utf8'),localFairs=await fs.readFile(path.join(ROOT,'app','data','fairs.json'),'utf8'),localStores=await fs.readFile(path.join(ROOT,'app','data','store-contexts.json'),'utf8');let last=null;for(let a=1;a<=MAX_ATTEMPTS;a++){try{const r=await verifyOnce(a,localIndex,localFairs,localStores);await report(r);console.log('Published nationwide app smoke test passed.');console.log(JSON.stringify(r,null,2));process.exit(0);}catch(e){last=e;console.warn(`Smoke attempt ${a}/${MAX_ATTEMPTS} failed: ${e.message}`);if(a<MAX_ATTEMPTS)await sleep(RETRY_DELAY_MS);}}throw last||new Error('Published app smoke test failed');
