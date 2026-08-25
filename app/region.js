@@ -4,37 +4,28 @@ const PREF_CODES={'北海道':'01','青森県':'02','岩手県':'03','宮城県'
 const FALLBACK={'北海道':['札幌市中央区'],'東京都':['新宿区','渋谷区','千代田区'],'愛知県':['豊橋市','豊川市','名古屋市中区'],'大阪府':['大阪市北区','大阪市中央区'],'福岡県':['福岡市博多区'],'沖縄県':['那覇市']};
 const HAMA={hokkaido:['北海道'],tohoku:['青森県','岩手県','宮城県','秋田県','山形県','福島県'],kanto:['茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','長野県','山梨県'],hokuriku:['新潟県','富山県','石川県','福井県'],tokai:['静岡県','愛知県','岐阜県','三重県'],kansai:['滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県'],chugoku:['鳥取県','島根県','岡山県','広島県','山口県'],shikoku:['徳島県','香川県','愛媛県','高知県'],kyushu:['福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県'],okinawa:['沖縄県']};
 const HAMA_LABEL={hokkaido:'北海道',tohoku:'東北',kanto:'関東',hokuriku:'北陸',tokai:'東海',kansai:'関西',chugoku:'中国',shikoku:'四国',kyushu:'九州',okinawa:'沖縄'};
-
-function makeLocation(prefecture,city){return {prefecture,city,prefectureCode:PREF_CODES[prefecture]||''};}
-function saved(){try{const v=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(v?.prefecture&&v?.city)return v;}catch{} return makeLocation('愛知県','豊橋市');}
-function save(v){localStorage.setItem(STORAGE_KEY,JSON.stringify(v));}
+let storeData={catalog:{}};
+const makeLocation=(prefecture,city)=>({prefecture,city,prefectureCode:PREF_CODES[prefecture]||''});
+function saved(){try{const v=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(v?.prefecture&&v?.city)return v;}catch{}return makeLocation('愛知県','豊橋市');}
+const save=v=>localStorage.setItem(STORAGE_KEY,JSON.stringify(v));
 async function municipalities(){try{const r=await fetch(ADDRESS_API,{cache:'force-cache'});if(!r.ok)throw new Error();const d=await r.json();if(!d?.['東京都']?.includes('新宿区')||!d?.['愛知県']?.includes('豊橋市'))throw new Error();return d;}catch{return FALLBACK;}}
+async function loadStoreData(){try{const r=await fetch('./data/store-contexts.json?v=20260825-store',{cache:'no-store'});if(r.ok)storeData=await r.json();}catch{storeData={catalog:{}};}}
 function options(el,values,selected){el.replaceChildren(...values.map(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;o.selected=v===selected;return o;}));}
-
+const cityParent=city=>city.match(/^(.+?市).+?区$/)?.[1]||null;
+function findStore(chain,location){const rows=Object.values(storeData?.catalog?.[chain]||{});const exact=rows.find(x=>x.prefecture===location.prefecture&&x.municipality===location.city);if(exact)return {...exact,match:'same_municipality'};const parent=cityParent(location.city);if(parent){const sameCity=rows.find(x=>x.prefecture===location.prefecture&&(x.municipality===parent||x.municipality?.startsWith(parent)));if(sameCity)return {...sameCity,match:'same_parent_city'};}return null;}
+function hamaRegion(pref){return Object.entries(HAMA).find(([,prefs])=>prefs.includes(pref))?.[0]||null;}
 export function resolveChainContext(chain,location){
- const place=`${location.prefecture} ${location.city}`;
+ const place=`${location.prefecture} ${location.city}`,store=findStore(chain,location);
  if(chain==='hamazushi'){
-   const code=Object.entries(HAMA).find(([,prefs])=>prefs.includes(location.prefecture))?.[0]||null;
-   return {key:'regionCode',value:code,verified:Boolean(code),label:code?`公式メニュー地域：${HAMA_LABEL[code]}`:'公式メニュー地域：確認中',note:`${place}を${code?HAMA_LABEL[code]:'未確認'}地域として扱います。都市型店舗などの個別価格例外は公式店舗情報で確認してください。`};
+   const region=store?.regionCode||hamaRegion(location.prefecture);const regionLabel=store?.regionLabel||HAMA_LABEL[region]||'確認中';
+   return {key:'regionCode',value:region,verified:Boolean(region),storeVerified:Boolean(store),store,officialUrl:store?.officialUrl||`https://maps.hama-sushi.co.jp/jp/address.html?q=${encodeURIComponent(place)}`,label:`公式メニュー地域：${regionLabel}`,note:store?`${store.storeName}を${store.match==='same_municipality'?'同一市区町村':'同一市内'}の代表店舗として確認。${regionLabel}メニュー区分を使用します。`:`${place}は公式の${regionLabel}メニュー区分を使用します。店舗固有の価格例外は公式店舗検索で確認してください。`};
  }
- if(chain==='sushiro') return {key:'representativeStoreId',value:null,verified:false,label:'店舗別メニュー：代表店舗未確定',note:`${place}の店舗IDはまだ自動特定していません。全国フェアを表示し、豊橋の代表店舗価格を${place}の価格とは扱いません。`};
- if(chain==='kurasushi') return {key:'priceTier',value:null,verified:false,label:'価格帯・提供エリア：店舗確認が必要',note:`${place}の価格帯と提供エリアは未確認です。全国公式フェアを表示し、店舗価格は公式で確認してください。`};
- if(chain==='kappasushi') return {key:'menuType',value:null,verified:false,label:'メニュータイプ：店舗確認が必要',note:`${place}のA/B/C/D等の店舗タイプは未確認です。全国公式フェアを表示します。`};
- if(chain==='uobei') return {key:'priceClass',value:null,verified:false,label:'価格区分：店舗確認が必要',note:`${place}の通常・都心型・超都心型区分は未確認です。全国公式フェアを表示します。`};
+ if(chain==='sushiro') return store?{key:'representativeStoreId',value:store.menuAreaCode||store.storeId,verified:Boolean(store.menuAreaCode),storeVerified:true,store,officialUrl:store.officialUrl,label:`代表店舗：${store.storeName}${store.priceTier?`（1皿${store.priceTier}円〜）`:''}`,note:`${store.match==='same_municipality'?'同一市区町村':'同一市内'}の公式店舗を使用${store.menuAreaCode?`。店舗別メニューID ${store.menuAreaCode}`:''}。`}:{key:'representativeStoreId',value:null,verified:false,storeVerified:false,store:null,officialUrl:`https://www.akindo-sushiro.co.jp/shop/?keyword=${encodeURIComponent(place)}`,label:'同一地域の店舗を確認できませんでした',note:'全国フェアは表示しますが、店舗別価格をこの地域の確定価格としては表示しません。'};
+ if(chain==='kurasushi') return store?{key:'priceTier',value:store.priceTier,verified:Boolean(store.priceTier),storeVerified:true,store,officialUrl:store.officialUrl,label:`代表店舗：${store.storeName}${store.priceTier?`（1皿${store.priceTier}円〜）`:''}`,note:`${store.match==='same_municipality'?'同一市区町村':'同一市内'}の公式店舗価格帯を使用。商品提供エリアは全国フェア側の公式条件を優先します。`}:{key:'priceTier',value:null,verified:false,storeVerified:false,store:null,officialUrl:`https://shop.kurasushi.co.jp/?keyword=${encodeURIComponent(place)}`,label:'価格帯：近隣店舗確認が必要',note:'全国公式フェアを表示し、未確認の店舗価格帯は推測しません。'};
+ if(chain==='kappasushi') return store?{key:'menuType',value:store.menuType,verified:Boolean(store.menuType),storeVerified:true,store,officialUrl:store.officialUrl,label:`代表店舗：${store.storeName}（タイプ${store.menuType||'?'}）`,note:`${store.match==='same_municipality'?'同一市区町村':'同一市内'}の公式店舗と公式メニュータイプ一覧を照合しています。`}:{key:'menuType',value:null,verified:false,storeVerified:false,store:null,officialUrl:'https://www.kappasushi.jp/shop2',label:'同一地域の店舗タイプ未確認',note:'店舗がない地域または公式店舗カタログの更新待ちです。全国フェアのみ表示します。'};
+ if(chain==='uobei') return store?{key:'priceClass',value:store.priceClass||null,verified:Boolean(store.priceClass),storeVerified:true,store,officialUrl:store.officialUrl,label:`代表店舗：${store.storeName}${store.priceClass?`（${store.priceClass}）`:''}`,note:store.priceClass?'公式店舗情報から価格区分を確認済みです。':'同一地域の公式店舗は確認済みですが、通常・都心型・超都心型の価格区分は未確認のため推測しません。'}:{key:'priceClass',value:null,verified:false,storeVerified:false,store:null,officialUrl:'https://www.uobei.info/store/',label:'同一地域の店舗・価格区分未確認',note:'全国公式フェアを表示し、価格区分は公式確認できた場合だけ反映します。'};
  return {key:null,value:null,verified:false,label:'地域情報確認中',note:place};
 }
-
 export async function initRegionSelector({onApply}={}){
- const pref=document.querySelector('#prefectureSelect'),city=document.querySelector('#citySelect'),button=document.querySelector('#applyRegionBtn'),status=document.querySelector('#regionStatus'),feedback=document.querySelector('#regionFeedback');
- const data=await municipalities(); const prefs=Object.keys(data).filter(k=>Array.isArray(data[k])&&data[k].length);
- let applied=saved(); if(!data[applied.prefecture]?.includes(applied.city)){applied=makeLocation(prefs[0],data[prefs[0]][0]);save(applied);}
- options(pref,prefs,applied.prefecture); options(city,data[applied.prefecture],applied.city); status.textContent=`${applied.prefecture} ${applied.city}`;
- pref.addEventListener('change',()=>options(city,data[pref.value]||[],(data[pref.value]||[])[0]));
- button.addEventListener('click',async()=>{
-   const pending=makeLocation(pref.value,city.value); button.disabled=true; button.textContent='地域情報を更新中…'; feedback.className='region-feedback working'; feedback.textContent='選択地域を表示へ反映しています…';
-   try{await Promise.resolve(onApply?.(pending));applied=pending;save(applied);status.textContent=`${applied.prefecture} ${applied.city}`;feedback.className='region-feedback success';feedback.textContent=`✓ ${applied.prefecture} ${applied.city}に変更しました`;setTimeout(()=>{if(feedback.classList.contains('success'))feedback.textContent='';},3500);}
-   catch{feedback.className='region-feedback error';feedback.textContent=`地域情報を更新できませんでした。現在は${applied.prefecture} ${applied.city}の情報を表示しています。`;}
-   finally{button.disabled=false;button.textContent='この地域を反映';}
- });
- return applied;
+ await loadStoreData();const pref=document.querySelector('#prefectureSelect'),city=document.querySelector('#citySelect'),button=document.querySelector('#applyRegionBtn'),status=document.querySelector('#regionStatus'),feedback=document.querySelector('#regionFeedback');const data=await municipalities(),prefs=Object.keys(data).filter(k=>Array.isArray(data[k])&&data[k].length);let applied=saved();if(!data[applied.prefecture]?.includes(applied.city)){applied=makeLocation(prefs[0],data[prefs[0]][0]);save(applied);}options(pref,prefs,applied.prefecture);options(city,data[applied.prefecture],applied.city);status.textContent=`${applied.prefecture} ${applied.city}`;pref.addEventListener('change',()=>options(city,data[pref.value]||[],(data[pref.value]||[])[0]));button.addEventListener('click',async()=>{const pending=makeLocation(pref.value,city.value);button.disabled=true;button.textContent='地域情報を更新中…';feedback.className='region-feedback working';feedback.textContent='公式店舗・メニュー区分を選択地域へ切り替えています…';try{await Promise.resolve(onApply?.(pending));applied=pending;save(applied);status.textContent=`${applied.prefecture} ${applied.city}`;feedback.className='region-feedback success';feedback.textContent=`✓ ${applied.prefecture} ${applied.city}に変更しました`;setTimeout(()=>{if(feedback.classList.contains('success'))feedback.textContent='';},3500);}catch{feedback.className='region-feedback error';feedback.textContent=`地域情報を更新できませんでした。現在は${applied.prefecture} ${applied.city}の情報を表示しています。`;}finally{button.disabled=false;button.textContent='この地域を反映';}});return applied;
 }
