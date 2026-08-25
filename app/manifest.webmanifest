@@ -1,13 +1,13 @@
 {
-  "id": "./?app=otoro-v2",
-  "name": "寿司フェア - 回転寿司4社まとめ",
+  "id": "./?app=sushi-fair-8",
+  "name": "寿司フェア - 全国5社＋地元東海3社",
   "short_name": "寿司フェア",
-  "description": "スシロー・はま寿司・くら寿司・かっぱ寿司の期間限定フェアまとめ",
-  "start_url": "./?app=otoro-v2",
+  "description": "地域を選んで全国大手5チェーン＋地元・東海3チェーンのフェア・価格・公式店舗導線を確認",
+  "start_url": "./?app=sushi-fair-8",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0b0d12",
-  "theme_color": "#10131a",
+  "background_color": "#eaf7ff",
+  "theme_color": "#dff4ff",
   "icons": [
     { "src": "./assets/sushi-icon-192-v2.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
     { "src": "./assets/sushi-icon-512-v2.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
