@@ -124,9 +124,10 @@ function renderQuickCompare(all){
   if(!quickNav)return;
   quickNav.innerHTML=all.map(f=>{
     const m=META[f.chain]||{name:f.chain,icon:ICON.kurasushi,color:'#888',soft:'#222'};
-    const items=valid(f),item=representativeItem(f,items),status=f.status==='ok'?(items.length?remaining(f.endDate):'確認中'):'確認中';
+    const items=valid(f),item=representativeItem(f,items),img=visualImage(f),status=f.status==='ok'?(items.length?remaining(f.endDate):'確認中'):'確認中';
     const itemLine=item?`${esc(item.name)}${item.price!=null?` <strong>${esc(priceText(f,item))}</strong>`:''}`:'商品情報を確認中';
-    return `<button type="button" class="quick-chain quick-${f.chain}" data-chain-jump="${esc(f.chain)}" style="--chain-color:${m.color};--chain-soft:${m.soft}" aria-label="${esc(m.name)}の詳細へ移動"><span class="quick-chain-mark">${m.icon}</span><span class="quick-chain-copy"><span class="quick-chain-top"><b>${esc(m.name)}</b><em>${esc(status)}</em></span><span class="quick-fair">${esc(f.fairName||'期間限定メニュー')}</span><small>${itemLine}</small></span></button>`;
+    const shortPeriod=f.endDate?`〜${fmt(f.endDate)}`:f.startDate?`${fmt(f.startDate)}〜`:'期間は公式で確認';
+    return `<button type="button" class="quick-chain quick-${f.chain}" data-chain-jump="${esc(f.chain)}" style="--chain-color:${m.color};--chain-soft:${m.soft}" aria-label="${esc(m.name)}の詳細へ移動"><span class="quick-chain-photo">${img?`<img src="${esc(img)}" alt="${esc(m.name)}の代表メニュー" loading="eager" referrerpolicy="no-referrer" onerror="this.remove()">`:''}<span class="quick-chain-mark">${m.icon}</span></span><span class="quick-chain-copy"><span class="quick-chain-top"><b>${esc(m.name)}</b><em>${esc(status)}</em></span><span class="quick-fair">${esc(f.fairName||'期間限定メニュー')}</span><small>${itemLine}</small><small class="quick-period">${esc(shortPeriod)} ・ ${items.length}品掲載</small></span></button>`;
   }).join('');
 }
 
