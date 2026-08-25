@@ -5,6 +5,7 @@ on:
     branches: ['main']
     paths-ignore:
       - 'scripts/**'
+      - 'package.json'
       - '.github/workflows/update-fairs.yml'
       - '.github/workflows/refresh-crowd*.yml'
       - 'app/data/crowd.json'
