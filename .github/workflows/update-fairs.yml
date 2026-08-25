@@ -26,7 +26,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -39,14 +39,11 @@ jobs:
           node scripts/build-national-fairs.mjs --self-test
           node scripts/fix-national-releases.mjs --self-test
           node scripts/clean-national-products.mjs --self-test
-          node scripts/build-store-contexts-fast.mjs --self-test
-          node scripts/enrich-store-contexts.mjs --self-test
           node scripts/resolve-representative-images.mjs --self-test
-      - name: Refresh nationwide official store catalog
-        if: github.event_name != 'schedule'
+      - name: Use cached nationwide representative-store catalog
         run: |
-          node scripts/build-store-contexts-fast.mjs
-          node scripts/enrich-store-contexts.mjs
+          test -s app/data/store-contexts.json
+          echo "Using previously verified regional representative-store catalog; exhaustive store crawling is not required for daily fair updates."
       - name: Preserve previous published fair snapshot
         run: cp app/data/fairs.json /tmp/previous-fairs.json
       - name: Use stable reference stores for legacy parsers
@@ -69,13 +66,13 @@ jobs:
         run: node scripts/resolve-representative-images.mjs
       - name: Commit updated public data when changed
         run: |
-          if git diff --quiet -- app/data/fairs.json app/data/store-contexts.json; then
-            echo "No public data changes"
+          if git diff --quiet -- app/data/fairs.json; then
+            echo "No public fair-data changes"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add app/data/fairs.json app/data/store-contexts.json
-            git commit -m "Update nationwide sushi fair and store context data"
+            git add app/data/fairs.json
+            git commit -m "Update nationwide sushi fair data"
             git push
           fi
       - uses: actions/configure-pages@v5
