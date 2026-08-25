@@ -9,7 +9,6 @@ on:
       - 'package.json'
       - '.github/workflows/update-fairs.yml'
   schedule:
-    # 06:17 JST every day (21:17 UTC on previous day)
     - cron: '17 21 * * *'
 
 permissions:
@@ -27,65 +26,52 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - run: npm install
-      - name: Validate fair parser rules
+      - name: Validate parser and resolver rules
         run: |
           node scripts/fix-kura.mjs --self-test
           node scripts/build-national-fairs.mjs --self-test
           node scripts/fix-national-releases.mjs --self-test
           node scripts/clean-national-products.mjs --self-test
-
+          node scripts/build-store-contexts.mjs --self-test
+      - name: Refresh nationwide official store catalog
+        if: github.event_name != 'schedule'
+        run: node scripts/build-store-contexts.mjs
       - name: Preserve previous published fair snapshot
         run: cp app/data/fairs.json /tmp/previous-fairs.json
-
-      # The legacy parsers remain as a stable reference-store input while the
-      # nationwide layer is migrated chain by chain. The final output no longer
-      # treats the reference store as nationwide truth.
       - name: Use stable reference stores for legacy parsers
         run: node scripts/configure-shinsakae-stores.mjs
-
       - run: npm run update
       - run: node scripts/apply-store-overrides.mjs
-
       - name: Refresh Kura official fair data when available
         run: node scripts/fix-kura.mjs || echo "Kura supplemental parser failed; nationwide layer will keep fail-closed data"
-
       - name: Clean legacy fair quality flags
         run: node scripts/clean-fair-data.mjs
-
       - name: Build nationwide five-chain fair data
         env:
           PREVIOUS_FAIRS: /tmp/previous-fairs.json
         run: node scripts/build-national-fairs.mjs
-
       - name: Resolve current Kappa and Uobei official releases
         run: node scripts/fix-national-releases.mjs
-
       - name: Clean final nationwide product output
         run: node scripts/clean-national-products.mjs
-
-      - name: Commit updated fair data when changed
+      - name: Commit updated public data when changed
         run: |
-          if git diff --quiet -- app/data/fairs.json; then
-            echo "No fair data changes"
+          if git diff --quiet -- app/data/fairs.json app/data/store-contexts.json; then
+            echo "No public data changes"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add app/data/fairs.json
-            git commit -m "Update nationwide sushi fair data"
+            git add app/data/fairs.json app/data/store-contexts.json
+            git commit -m "Update nationwide sushi fair and store context data"
             git push
           fi
-
-      # A GITHUB_TOKEN-authored data commit does not normally trigger another
-      # workflow. Deploy here so the daily fair refresh reaches GitHub Pages.
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -93,6 +79,5 @@ jobs:
       - name: Deploy refreshed nationwide app
         id: deployment
         uses: actions/deploy-pages@v4
-
       - name: Verify published nationwide app
         run: node scripts/verify-pages.mjs "${{ steps.deployment.outputs.page_url }}"
