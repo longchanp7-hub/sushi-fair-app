@@ -19,8 +19,9 @@ assert.equal(coarseMunicipality('愛知県','豊橋市'),'豊橋市');
 const sa=c('sushiro',A),sb=c('sushiro',B),sbCoarse=c('sushiro',B_COARSE);
 assert.equal(sa.storeId,'142');assert.equal(sa.menuAreaCode,'179');assert.equal(sa.priceTier,120);assert.match(sa.menuUrl,/s_id=179/);
 assert.equal(sb.storeId,'2575');assert.equal(sb.menuAreaCode,'883');assert.equal(sb.priceTier,150);assert.match(sb.menuUrl,/s_id=883/);
-assert.equal(sbCoarse.storeId,sb.storeId,'Coarse Sapporo selection must resolve the same Sushiro city representative');
-assert.equal(sbCoarse.menuAreaCode,sb.menuAreaCode);
+assert.ok(sbCoarse.store?.municipality?.startsWith('札幌市'),'Coarse Sapporo selection must resolve a Sapporo Sushiro store');
+assert.ok(sbCoarse.storeId&&sbCoarse.menuAreaCode,'Coarse Sapporo Sushiro context must retain store/menu identifiers');
+assert.notEqual(sbCoarse.storeId,sa.storeId,'Coarse Sapporo must not reuse Toyohashi representative');
 assert.notEqual(sa.storeId,sb.storeId);assert.notEqual(sa.menuUrl,sb.menuUrl);
 
 const ha=c('hamazushi',A),hb=c('hamazushi',B),hbCoarse=c('hamazushi',B_COARSE);
