@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-25T22:53:28.126Z",
+  "updatedAt": "2026-08-26T02:48:55.855Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -851,7 +851,8 @@
               "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
             }
           ],
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
         }
       ],
       "menuHighlights": [
@@ -859,24 +860,27 @@
           "name": "豊後極み生さば",
           "price": null,
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item"
+          "sourceType": "official_menu_item",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
         },
         {
           "name": "夏の香味生あじ",
           "price": null,
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item"
+          "sourceType": "official_menu_item",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
         },
         {
           "name": "海鮮ねばネバ～ランド",
           "price": null,
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item"
+          "sourceType": "official_menu_item",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
         }
       ],
       "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
       "storeUrl": "https://www.comline.co.jp/shoplist/",
-      "imageUrl": null,
+      "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png",
       "status": "ok",
       "message": null,
       "dataScope": "local_official_menu",
@@ -884,7 +888,7 @@
       "officialActionUrl": "https://www.comline.co.jp/shoplist/",
       "regionalModel": {
         "strategyKey": "exactLocalStore",
-        "label": "選択市区町村の実店舗",
+        "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
       },
       "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。"
@@ -904,19 +908,21 @@
           "priceFrom": 176,
           "note": "税込176円〜",
           "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
-          "sourceType": "official_menu_page"
+          "sourceType": "official_menu_page",
+          "imageUrl": "https://www.634-jp.com/img/pagemaru/top1.webp"
         },
         {
           "name": "釣り魚・国産食材の寿司",
           "priceFrom": null,
           "note": "最新ネタは公式メニュー・店頭で確認",
           "sourceUrl": "https://www.634-jp.com/musashimaru.html",
-          "sourceType": "official_brand_page"
+          "sourceType": "official_brand_page",
+          "imageUrl": "https://www.634-jp.com/img/pagemaru/top1.webp"
         }
       ],
       "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
       "storeUrl": "https://www.634-jp.com/musashimaru-shop.html",
-      "imageUrl": null,
+      "imageUrl": "https://www.634-jp.com/img/pagemaru/top1.webp",
       "status": "warning",
       "message": "期間限定商品の安定したテキスト取得元が確認できないため、商品名は推測せず、公式に確認できるメニュー情報を表示しています。",
       "dataScope": "official_link_only",
@@ -924,7 +930,7 @@
       "officialActionUrl": "https://www.634-jp.com/musashimaru-shop.html",
       "regionalModel": {
         "strategyKey": "exactLocalStore",
-        "label": "選択市区町村の実店舗",
+        "label": "選択市町村の実店舗",
         "priceVariesByLocation": false
       },
       "priceNote": "公式メニューでは店内寿司メニューが税込176円〜。最新ネタ・おすすめは公式メニューまたは店頭でご確認ください。"
@@ -1027,7 +1033,7 @@
           "endDate": "2026-08-31",
           "items": [],
           "sourceUrl": "https://www.nigirinotokubei.com/info/11052/",
-          "imageUrl": null
+          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
         }
       ],
       "menuHighlights": [
@@ -1035,19 +1041,22 @@
           "name": "さんま‥‥‥",
           "price": 407,
           "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-          "sourceType": "official_release_item"
+          "sourceType": "official_release_item",
+          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
         },
         {
           "name": "さんま炙り‥‥‥",
           "price": 451,
           "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-          "sourceType": "official_release_item"
+          "sourceType": "official_release_item",
+          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
         },
         {
           "name": "さんま天‥‥‥",
           "price": 451,
           "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-          "sourceType": "official_release_item"
+          "sourceType": "official_release_item",
+          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
         }
       ],
       "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
@@ -1060,7 +1069,7 @@
       "officialActionUrl": "https://www.nigirinotokubei.com/shop/",
       "regionalModel": {
         "strategyKey": "exactLocalStore",
-        "label": "選択市区町村の実店舗",
+        "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
       },
       "priceNote": "にぎりの徳兵衛公式ページ・公式フェア画像の税込価格です。一部店舗では価格が異なります。",
