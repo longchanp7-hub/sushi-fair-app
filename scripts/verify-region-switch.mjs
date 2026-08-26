@@ -1,28 +1,38 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { resolveChainContextFromCatalog } from '../app/region.js';
+import { coarseMunicipality, resolveChainContextFromCatalog } from '../app/region.js';
 
 const ROOT=path.resolve(new URL('..',import.meta.url).pathname);
 const stores=JSON.parse(await fs.readFile(path.join(ROOT,'app','data','store-contexts.json'),'utf8'));
 const catalog=stores.catalog||{};
 const A={prefecture:'愛知県',city:'豊橋市',prefectureCode:'23'};
 const B={prefecture:'北海道',city:'札幌市中央区',prefectureCode:'01'};
+const B_COARSE={prefecture:'北海道',city:'札幌市',prefectureCode:'01'};
 const c=(chain,loc)=>resolveChainContextFromCatalog(chain,loc,catalog);
 
-const sa=c('sushiro',A),sb=c('sushiro',B);
+assert.equal(coarseMunicipality('北海道','札幌市中央区'),'札幌市');
+assert.equal(coarseMunicipality('愛知県','名古屋市中区'),'名古屋市');
+assert.equal(coarseMunicipality('東京都','新宿区'),'東京23区');
+assert.equal(coarseMunicipality('愛知県','豊橋市'),'豊橋市');
+
+const sa=c('sushiro',A),sb=c('sushiro',B),sbCoarse=c('sushiro',B_COARSE);
 assert.equal(sa.storeId,'142');assert.equal(sa.menuAreaCode,'179');assert.equal(sa.priceTier,120);assert.match(sa.menuUrl,/s_id=179/);
 assert.equal(sb.storeId,'2575');assert.equal(sb.menuAreaCode,'883');assert.equal(sb.priceTier,150);assert.match(sb.menuUrl,/s_id=883/);
+assert.equal(sbCoarse.storeId,sb.storeId,'Coarse Sapporo selection must resolve the same Sushiro city representative');
+assert.equal(sbCoarse.menuAreaCode,sb.menuAreaCode);
 assert.notEqual(sa.storeId,sb.storeId);assert.notEqual(sa.menuUrl,sb.menuUrl);
 
-const ha=c('hamazushi',A),hb=c('hamazushi',B);
+const ha=c('hamazushi',A),hb=c('hamazushi',B),hbCoarse=c('hamazushi',B_COARSE);
 assert.equal(ha.store?.storeId,'4208');assert.equal(ha.regionCode,'tokai');assert.equal(ha.regionLabel,'東海');assert.match(ha.officialUrl,/4208/);
 assert.equal(hb.store?.storeId,'4460');assert.equal(hb.regionCode,'hokkaido');assert.equal(hb.regionLabel,'北海道');assert.match(hb.officialUrl,/4460/);
+assert.equal(hbCoarse.regionCode,'hokkaido');assert.ok(hbCoarse.store?.municipality?.startsWith('札幌市'));
 assert.notEqual(ha.officialUrl,hb.officialUrl);
 
-const ka=c('kurasushi',A),kb=c('kurasushi',B);
+const ka=c('kurasushi',A),kb=c('kurasushi',B),kbCoarse=c('kurasushi',B_COARSE);
 assert.equal(ka.store?.storeId,'609');assert.equal(ka.priceTier,115);assert.match(ka.officialUrl,/609/);
 assert.equal(kb.store?.prefecture,'北海道');assert.match(kb.store?.municipality||'',/^札幌市/);assert.ok(kb.store?.storeId,'Kura Sapporo representative store missing');assert.ok(Number(kb.priceTier)>0,'Kura Sapporo price tier missing');assert.match(kb.officialUrl||'',/^https:\/\/shop\.kurasushi\.co\.jp\/detail\//);
+assert.ok(kbCoarse.store?.municipality?.startsWith('札幌市'),'Coarse Sapporo selection must stay inside Sapporo city');
 assert.notEqual(ka.store.storeId,kb.store.storeId,'Kura must not reuse Toyohashi representative in Sapporo');assert.notEqual(ka.officialUrl,kb.officialUrl);
 
 const pa=c('kappasushi',A),pb=c('kappasushi',B);
@@ -35,4 +45,4 @@ assert.ok(ua.officialUrl&&ub.officialUrl);assert.ok('priceClass' in ua&&'priceCl
 if(ua.store&&ub.store)assert.notEqual(ua.store.storeId||ua.officialUrl,ub.store.storeId||ub.officialUrl,'Uobei representative must change by region');
 else assert.notEqual(ua.priceClass,ub.priceClass,'Uobei approximation must change between Toyohashi urban and Sapporo standard context');
 
-console.log('Toyohashi -> Sapporo five-chain regional switch regression passed.');
+console.log('Toyohashi -> Sapporo five-chain and coarse-city regional switch regression passed.');
