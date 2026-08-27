@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-27T00:50:35.467Z",
+  "updatedAt": "2026-08-27T08:07:31.888Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -107,19 +107,6 @@
           "graceUntil": null
         },
         {
-          "name": "コリコリ軟骨の唐揚げ",
-          "price": 390,
-          "startDate": "2026-08-19",
-          "endDate": "2026-08-30",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
-          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_0890.png",
-          "lastSeenAt": "2026-08-27",
-          "missingSince": null,
-          "graceUntil": null
-        },
-        {
           "name": "おいしーレモンの甘酸っぱパフェ",
           "price": 390,
           "startDate": "2026-08-05",
@@ -170,6 +157,20 @@
           "lastSeenAt": "2026-08-27",
           "missingSince": null,
           "graceUntil": null
+        },
+        {
+          "name": "コリコリ軟骨の唐揚げ",
+          "price": 390,
+          "startDate": "2026-08-19",
+          "endDate": "2026-08-30",
+          "saleStatus": "active",
+          "scrapeStatus": "not_listed_reference_store",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_0890.png",
+          "lastSeenAt": "2026-08-27",
+          "missingSince": null,
+          "graceUntil": null,
+          "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
         },
         {
           "name": "鰹節香る醤油ラーメン",
