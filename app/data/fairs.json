@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-28T05:26:50.174Z",
+  "updatedAt": "2026-08-29T03:11:37.559Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -24,7 +24,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6153.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -37,7 +37,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6158.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -50,7 +50,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/250806_2081_v1.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -63,7 +63,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/240110_2392.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -76,7 +76,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_000262.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -89,7 +89,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_002046V3.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -102,7 +102,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003907.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -115,7 +115,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003909V2.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -128,7 +128,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003923.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -141,7 +141,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_3914.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -154,7 +154,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003910.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null
         },
@@ -167,7 +167,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_0890.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -181,7 +181,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_3922.png",
-          "lastSeenAt": "2026-08-28",
+          "lastSeenAt": "2026-08-29",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -911,7 +911,7 @@
           "note": "税込176円〜",
           "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
           "sourceType": "official_menu_page",
-          "imageUrl": "https://www.634-jp.com/img/pagemaru/top1.webp"
+          "imageUrl": "https://www.634-jp.com/img/ogp/ogp-musashimaru.jpg"
         },
         {
           "name": "釣り魚・国産食材の寿司",
@@ -919,12 +919,12 @@
           "note": "最新ネタは公式メニュー・店頭で確認",
           "sourceUrl": "https://www.634-jp.com/musashimaru.html",
           "sourceType": "official_brand_page",
-          "imageUrl": "https://www.634-jp.com/img/pagemaru/top1.webp"
+          "imageUrl": "https://www.634-jp.com/img/ogp/ogp-musashimaru.jpg"
         }
       ],
       "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
       "storeUrl": "https://www.634-jp.com/musashimaru-shop.html",
-      "imageUrl": "https://www.634-jp.com/img/pagemaru/top1.webp",
+      "imageUrl": "https://www.634-jp.com/img/ogp/ogp-musashimaru.jpg",
       "status": "warning",
       "message": "期間限定商品の安定したテキスト取得元が確認できないため、商品名は推測せず、公式に確認できるメニュー情報を表示しています。",
       "dataScope": "official_link_only",
