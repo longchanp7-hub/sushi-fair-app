@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-30T23:33:11.503Z",
+  "updatedAt": "2026-09-01T00:39:40.249Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -24,7 +24,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6153.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -37,7 +37,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_6158.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -50,7 +50,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/250806_2081_v1.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -63,7 +63,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/240110_2392.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -76,7 +76,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_000262.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -89,7 +89,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_002046V3.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -102,7 +102,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003907.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -115,7 +115,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003909V2.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -128,7 +128,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003923.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -141,7 +141,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_3914.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -154,7 +154,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_003910.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null
         },
@@ -167,7 +167,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_0890.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -181,7 +181,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260819_3922.png",
-          "lastSeenAt": "2026-08-31",
+          "lastSeenAt": "2026-09-01",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -213,13 +213,19 @@
       "endDate": null,
       "items": [
         {
-          "name": "北海道水揚げ秋鮭",
+          "name": "九州産あじのたたき大葉つつみ",
           "price": 110,
           "saleStatus": "active",
           "scrapeStatus": "ok"
         },
         {
-          "name": "かき揚げ握り（富山県産白えび使用）",
+          "name": "九州産あじのたたき大葉つつみ（みそ和え）",
+          "price": 110,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "北海道水揚げほっけの天ぷら握り",
           "price": 110,
           "saleStatus": "active",
           "scrapeStatus": "ok"
@@ -279,7 +285,7 @@
           "scrapeStatus": "ok"
         },
         {
-          "name": "北海道産つぶ貝のわさび和え",
+          "name": "沖縄県産そでいか",
           "price": 176,
           "saleStatus": "active",
           "scrapeStatus": "ok"
@@ -449,7 +455,7 @@
       ],
       "sourceUrl": "https://www.hamazushi.com/menu/",
       "storeUrl": "https://maps.hama-sushi.co.jp/jp/detail/4208.html",
-      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/hokkaidou_mizuage_akijake.png",
+      "imageUrl": "https://www.hamazushi.com/assets/menu/img/fair/kyushusan_aji_no_tatakioobatsutsumi.png",
       "status": "ok",
       "message": null,
       "referenceStoreName": "豊橋新栄店",
@@ -461,16 +467,16 @@
         "label": "地域区分＋都市型価格",
         "priceVariesByLocation": true
       },
-      "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/hokkaidou_mizuage_akijake.png",
+      "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/kyushusan_aji_no_tatakioobatsutsumi.png",
       "representativeImageSource": "official_priority_product_image",
-      "representativeImageProduct": "北海道水揚げ秋鮭",
+      "representativeImageProduct": "厳選まぐろ中とろ",
       "representativeImagePage": "https://www.hamazushi.com/menu/",
       "group": "national"
     },
     {
       "chain": "kurasushi",
       "storeName": "選択地域",
-      "fairName": "最新フェア確認中",
+      "fairName": "開催中イベント",
       "startDate": null,
       "endDate": null,
       "items": [],
@@ -478,10 +484,9 @@
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
       "imageUrl": null,
       "status": "warning",
-      "message": "終了済みフェアは非表示にしました。公式ページの更新を確認中です。",
-      "priceNote": null,
-      "dataScope": "national_official_release",
+      "message": "店舗イベント名を自動取得できませんでした。",
       "referenceStoreName": "豊橋新栄店",
+      "dataScope": "national_fair_with_regional_variation",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://shop.kurasushi.co.jp/",
       "regionalModel": {
@@ -884,132 +889,27 @@
       "chain": "tokubei",
       "group": "local_tokai",
       "storeName": "選択地域",
-      "fairName": "秋の味覚、解禁！北海道産さんまのお寿司を食べ比べ！",
-      "startDate": "2026-08-18",
+      "fairName": "生サーモン・さんま・かつお 秋の味覚祭り",
+      "startDate": "2026-09-01",
       "endDate": "2026-11-03",
-      "items": [
-        {
-          "name": "さんま食べ比べ三貫",
-          "price": 649,
-          "startDate": "2026-08-18",
-          "endDate": "2026-11-03",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-        },
-        {
-          "name": "さんま",
-          "price": 407,
-          "startDate": "2026-08-18",
-          "endDate": "2026-11-03",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-        },
-        {
-          "name": "さんま炙り",
-          "price": 451,
-          "startDate": "2026-08-18",
-          "endDate": "2026-11-03",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-        },
-        {
-          "name": "さんま天",
-          "price": 451,
-          "startDate": "2026-08-18",
-          "endDate": "2026-11-03",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-        }
-      ],
+      "items": [],
       "campaigns": [
         {
-          "fairName": "秋の味覚、解禁！北海道産さんまのお寿司を食べ比べ！",
-          "startDate": "2026-08-18",
+          "fairName": "生サーモン・さんま・かつお 秋の味覚祭り",
+          "startDate": "2026-09-01",
           "endDate": "2026-11-03",
-          "items": [
-            {
-              "name": "さんま食べ比べ三貫",
-              "price": 649,
-              "startDate": "2026-08-18",
-              "endDate": "2026-11-03",
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-            },
-            {
-              "name": "さんま",
-              "price": 407,
-              "startDate": "2026-08-18",
-              "endDate": "2026-11-03",
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-            },
-            {
-              "name": "さんま炙り",
-              "price": 451,
-              "startDate": "2026-08-18",
-              "endDate": "2026-11-03",
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-            },
-            {
-              "name": "さんま天",
-              "price": 451,
-              "startDate": "2026-08-18",
-              "endDate": "2026-11-03",
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.nigirinotokubei.com/info/11195/"
-            }
-          ],
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg",
-          "verified": true
-        },
-        {
-          "fairName": "本まぐろvsキングサーモン「王様対決 夏の陣」",
-          "startDate": "2026-07-17",
-          "endDate": "2026-08-31",
           "items": [],
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11052/",
+          "sourceUrl": "https://www.nigirinotokubei.com/info/11244/",
           "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
         }
       ],
-      "menuHighlights": [
-        {
-          "name": "さんま‥‥‥",
-          "price": 407,
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-          "sourceType": "official_release_item",
-          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
-        },
-        {
-          "name": "さんま炙り‥‥‥",
-          "price": 451,
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-          "sourceType": "official_release_item",
-          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
-        },
-        {
-          "name": "さんま天‥‥‥",
-          "price": 451,
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-          "sourceType": "official_release_item",
-          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
-        }
-      ],
-      "sourceUrl": "https://www.nigirinotokubei.com/info/11195/",
+      "menuHighlights": [],
+      "sourceUrl": "https://www.nigirinotokubei.com/info/11244/",
       "storeUrl": "https://www.nigirinotokubei.com/shop/",
-      "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg",
-      "status": "ok",
-      "message": null,
-      "dataScope": "local_official_brand_release",
+      "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg",
+      "status": "warning",
+      "message": "フェア名・期間は公式から取得しました。個別商品・価格は公式ページで確認してください。",
+      "dataScope": "local_official_release",
       "officialActionLabel": "店舗・予約を公式で確認",
       "officialActionUrl": "https://www.nigirinotokubei.com/shop/",
       "regionalModel": {
@@ -1017,14 +917,7 @@
         "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
       },
-      "priceNote": "にぎりの徳兵衛公式ページ・公式フェア画像の税込価格です。一部店舗では価格が異なります。",
-      "officialReleaseUrl": "https://www.nigirinotokubei.com/info/11195/",
-      "productSourceUrl": "https://www.nigirinotokubei.com/info/11195/",
-      "companyReleaseUrl": "https://origin.digitalpr.jp/r/141163",
-      "representativeImageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg",
-      "representativeImageSource": "official_brand_campaign_image",
-      "representativeImageProduct": "さんま食べ比べ三貫",
-      "representativeImagePage": "https://www.nigirinotokubei.com/info/11195/"
+      "priceNote": "店舗・FC店等により一部メニューやサービスが異なる場合があります。"
     }
   ]
 }
