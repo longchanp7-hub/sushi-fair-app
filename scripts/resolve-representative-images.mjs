@@ -18,7 +18,7 @@ const HERO_PRIORITY = {
 };
 const FOOD_TEXT = /寿司|すし|鮨|まぐろ|鮪|サーモン|さんま|秋刀魚|かつお|鰹|かに|カニ|蟹|えび|海老|ほたて|帆立|いか|たこ|うなぎ|鰻|魚|ネタ|にぎり|軍艦|刺身|料理|メニュー|フェア|祭り|おすすめ|旬|食べ比べ|握り/i;
 const STORE_TEXT = /店内|店舗内|内観|外観|店内写真|店舗写真|店頭|座席|客席|スタッフ|従業員|採用|会社概要|企業情報|アクセス/i;
-const GENERIC_IMAGE_URL = /(?:logo|favicon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|qr[_-]|shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
+const GENERIC_IMAGE_URL = /(?:logo|favicon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|qr[_-]|title_limited|title[-_](?:fair|menu|limited)|limited[-_]?menu|menu[-_]?title|shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
 const FOOD_IMAGE_URL = /(?:wp-content\/uploads|release_image|campaign|fair|menu|neta|sushi|food|product|season|autumn|summer|spring|winter|osusume|recommend|pickup|top[_-]?slider|slide)/i;
 
 async function fetchHtml(url){const r=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{'user-agent':UA,'accept-language':'ja-JP,ja;q=.9','cache-control':'no-cache'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);return await r.text();}
@@ -114,11 +114,12 @@ function trustedItemImage(fair,itemNames){
   return null;
 }
 function trustedExistingProductImage(fair){
+  const representative=fair.representativeImageUrl||'';
+  if(fair.representativeImageSource&&usefulImage(representative,fair.representativeImageProduct||'',fair.fairName||''))return {url:representative,page:fair.representativeImagePage||fair.sourceUrl,product:fair.representativeImageProduct||null};
   const url=fair.imageUrl||'';
   if(!usefulImage(url,fair.fairName||'',fair.fairName||''))return null;
   if(fair.chain==='hamazushi')return {url,page:fair.sourceUrl,product:fair.representativeImageProduct||fair.items?.[0]?.name||null};
   if(fair.chain==='totomaru'&&/(?:top[_-]?slider|summer|season|menu|fair|campaign)/i.test(url))return {url,page:fair.sourceUrl,product:fair.items?.[0]?.name||null};
-  if(fair.representativeImageSource==='official_priority_product_image'&&!genericOrStoreImage(url))return {url,page:fair.representativeImagePage||fair.sourceUrl,product:fair.representativeImageProduct||null};
   return null;
 }
 function fairHints(fair){
@@ -130,7 +131,7 @@ async function main(){
    const fixture='<html><body><img src="title_limited.png" alt="期間限定メニュー"><p>北海道水揚げ秋鮭 110円</p><figure><img src="salmon.png" alt="北海道水揚げ秋鮭"></figure><p>本鮪中とろ 220円</p><figure><img src="tuna.png" alt="本鮪中とろ"></figure></body></html>';
    assert.deepEqual(orderedItemNames('uobei',[{name:'すけそう鱈'},{name:'本鮪中とろ'}]),['本鮪中とろ','すけそう鱈']);
    assert.equal(representativeImage(fixture,'https://example.jp/fair',orderedItemNames('hamazushi',['北海道水揚げ秋鮭','厳選まぐろ中とろ'])),'https://example.jp/salmon.png');
-   assert.equal(usefulImage('https://example.jp/assets/menu/img/title_limited.png'),true);
+   assert.equal(usefulImage('https://example.jp/assets/menu/img/title_limited.png'),false);
    assert.equal(genericOrStoreImage('https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg'),true);
    const tokubeiFixture='<html><head><meta property="og:image" content="/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"></head><body><article><h1>生サーモン・さんま・かつお 秋の味覚祭り</h1><figure><img src="/wp/wp-content/uploads/2026/09/autumn-salmon-sanma.jpg" alt="生サーモン・さんま・かつお 秋の味覚祭り"></figure></article></body></html>';
    assert.equal(representativeImage(tokubeiFixture,'https://www.nigirinotokubei.com/info/11244/',[],['生サーモン・さんま・かつお 秋の味覚祭り']),'https://www.nigirinotokubei.com/wp/wp-content/uploads/2026/09/autumn-salmon-sanma.jpg');
