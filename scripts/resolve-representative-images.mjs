@@ -16,10 +16,11 @@ const HERO_PRIORITY = {
   kappasushi: ['北海道産 ほたて','大とろ塩炙り 柚子のせ','厳選びん長まぐろ'],
   uobei: ['本鮪中とろ','厳選まぐろ三昧','贅沢大生えび','のどぐろ'],
 };
-const FOOD_TEXT = /寿司|すし|鮨|まぐろ|鮪|サーモン|さんま|秋刀魚|かつお|鰹|かに|カニ|蟹|えび|海老|ほたて|帆立|いか|たこ|うなぎ|鰻|魚|ネタ|にぎり|軍艦|刺身|料理|メニュー|フェア|祭り|おすすめ|旬|食べ比べ|握り/i;
+const FOOD_TEXT = /寿司|すし|鮨|まぐろ|鮪|サーモン|さんま|秋刀魚|かつお|鰹|かに|カニ|蟹|えび|海老|ほたて|帆立|いか|たこ|うなぎ|鰻|魚|ネタ|にぎり|軍艦|刺身|料理|調理例|メニュー|フェア|祭り|おすすめ|旬|食べ比べ|握り/i;
 const STORE_TEXT = /店内|店舗内|内観|外観|店内写真|店舗写真|店頭|座席|客席|スタッフ|従業員|採用|会社概要|企業情報|アクセス/i;
-const GENERIC_IMAGE_URL = /(?:logo|favicon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|qr[_-]|title_limited|title[-_](?:fair|menu|limited)|limited[-_]?menu|menu[-_]?title|shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
-const FOOD_IMAGE_URL = /(?:wp-content\/uploads|release_image|campaign|fair|menu|neta|sushi|food|product|season|autumn|summer|spring|winter|osusume|recommend|pickup|top[_-]?slider|slide)/i;
+const GENERIC_IMAGE_URL = /(?:logo|favicon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|qr[_-]|title_limited|title[-_](?:fair|menu|limited)|limited[-_]?menu|menu[-_]?title|shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/img\/mark\d+\.webp|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
+const FOOD_IMAGE_URL = /(?:wp-content\/uploads|release_image|campaign|fair|menu|neta|sushi|food|product|season|autumn|summer|spring|winter|osusume|recommend|pickup|top[_-]?slider|slide|(?:\d+-)?ca[-_])/i;
+const MUSASHIMARU_COOKING = 'https://www.634-jp.com/lovefish.html';
 
 async function fetchHtml(url){const r=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{'user-agent':UA,'accept-language':'ja-JP,ja;q=.9','cache-control':'no-cache'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);return await r.text();}
 function imgSrc($,el,pageUrl){const raw=$(el).attr('src')||$(el).attr('data-src')||$(el).attr('data-lazy-src')||$(el).attr('data-original');return abs(raw,pageUrl);}
@@ -95,6 +96,26 @@ export function representativeImage(html,pageUrl,itemNames=[],fairHints=[]){
  return best?.url||null;
 }
 
+export function sectionImageAfterHeading(html,pageUrl,headingPattern){
+  const $=cheerio.load(html),nodes=$('body *').toArray();
+  const headingIndex=nodes.findIndex(el=>{
+    const text=directText($,el);
+    return text&&text.length<=80&&headingPattern.test(text);
+  });
+  if(headingIndex<0)return null;
+  let best=null;
+  for(let i=headingIndex+1;i<Math.min(nodes.length,headingIndex+120);i+=1){
+    const el=nodes[i],node=$(el);
+    if(i>headingIndex+2&&node.is('h1,h2,h3,h4,h5,h6'))break;
+    if(!node.is('img'))continue;
+    const url=imgSrc($,el,pageUrl),alt=clean(node.attr('alt')||node.attr('title')||''),context=`調理例 ${imageContext($,el)}`;
+    if(!usefulImage(url,alt,context))continue;
+    const score=semanticImageScore($,el,url,alt,context)+(FOOD_IMAGE_URL.test(url||'')?30:0)-(i-headingIndex)*0.2;
+    if(!best||score>best.score)best={url,score};
+  }
+  return best?.url||null;
+}
+
 function pageCandidates(fair){
   const list=[];
   if(fair.officialCampaignUrl)list.push(fair.officialCampaignUrl);
@@ -103,6 +124,7 @@ function pageCandidates(fair){
   for(const highlight of fair.menuHighlights||[])if(highlight?.sourceUrl)list.push(highlight.sourceUrl);
   if(fair.sourceUrl)list.push(fair.sourceUrl);
   if(fair.chain==='kurasushi')list.push('https://www.kurasushi.co.jp/menu/?area=area2');
+  if(fair.chain==='musashimaru')list.push('https://www.634-jp.com/musashimaru.html');
   return [...new Set(list.filter(Boolean))];
 }
 
@@ -123,7 +145,9 @@ function trustedExistingProductImage(fair){
   return null;
 }
 function fairHints(fair){
-  return [fair.fairName,fair.officialCampaignTitle,...(fair.menuHighlights||[]).map(x=>x?.name),...(fair.campaigns||[]).map(x=>x?.fairName)].filter(Boolean);
+  const base=[fair.fairName,fair.officialCampaignTitle,...(fair.menuHighlights||[]).map(x=>x?.name),...(fair.campaigns||[]).map(x=>x?.fairName)].filter(Boolean);
+  if(fair.chain==='musashimaru')base.push('調理例','釣り魚','寿司','国産食材');
+  return base;
 }
 
 async function main(){
@@ -133,10 +157,13 @@ async function main(){
    assert.equal(representativeImage(fixture,'https://example.jp/fair',orderedItemNames('hamazushi',['北海道水揚げ秋鮭','厳選まぐろ中とろ'])),'https://example.jp/salmon.png');
    assert.equal(usefulImage('https://example.jp/assets/menu/img/title_limited.png'),false);
    assert.equal(genericOrStoreImage('https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg'),true);
+   assert.equal(genericOrStoreImage('https://www.634-jp.com/img/mark106.webp?300'),true);
    const tokubeiFixture='<html><head><meta property="og:image" content="/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"></head><body><article><h1>生サーモン・さんま・かつお 秋の味覚祭り</h1><figure><img src="/wp/wp-content/uploads/2026/09/autumn-salmon-sanma.jpg" alt="生サーモン・さんま・かつお 秋の味覚祭り"></figure></article></body></html>';
    assert.equal(representativeImage(tokubeiFixture,'https://www.nigirinotokubei.com/info/11244/',[],['生サーモン・さんま・かつお 秋の味覚祭り']),'https://www.nigirinotokubei.com/wp/wp-content/uploads/2026/09/autumn-salmon-sanma.jpg');
    const kuraFixture='<html><head><meta property="og:image" content="/shared/img/ogp.png"></head><body><article><h1>北海フェア</h1><p>厳選かに軍艦（一貫） 110円</p><figure><img src="/images/kani-gunkan.png" alt="厳選かに軍艦（一貫）"></figure></article></body></html>';
    assert.equal(representativeImage(kuraFixture,'https://www.kurasushi.co.jp/author/008437.html',['厳選かに軍艦（一貫）'],['北海フェア']),'https://www.kurasushi.co.jp/images/kani-gunkan.png');
+   const musashiFixture='<html><body><div><img src="/img/mark106.webp?300"></div><section><h2>調理例</h2><div><img src="/img/30-ca-2-1.webp"></div><div><img src="/img/30-ca-2-2.webp"></div></section></body></html>';
+   assert.equal(sectionImageAfterHeading(musashiFixture,'https://www.634-jp.com/lovefish.html',/調理例|Cooking example/i),'https://www.634-jp.com/img/30-ca-2-1.webp');
    console.log('Representative image self-tests passed.');return;
  }
  const data=JSON.parse(await fs.readFile(OUT,'utf8'));
@@ -144,6 +171,12 @@ async function main(){
    const itemNames=orderedItemNames(fair.chain,fair.items||[]);
    const itemImage=trustedItemImage(fair,itemNames),existing=trustedExistingProductImage(fair);
    let resolved=itemImage?.url||existing?.url||null,resolvedPage=itemImage?.page||existing?.page||null,resolvedProduct=itemImage?.product||existing?.product||null;
+   if(fair.chain==='musashimaru'){
+     try{
+       const cooking=sectionImageAfterHeading(await fetchHtml(MUSASHIMARU_COOKING),MUSASHIMARU_COOKING,/調理例|Cooking example/i);
+       if(cooking){resolved=cooking;resolvedPage=MUSASHIMARU_COOKING;resolvedProduct='釣り魚の調理例';}
+     }catch(e){console.warn(`musashimaru: official cooking-example page failed: ${e.message}`);}
+   }
    if(!resolved){
      for(const pageUrl of pageCandidates(fair)){
        try{
