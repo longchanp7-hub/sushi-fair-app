@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-02T05:19:12.264Z",
+  "updatedAt": "2026-09-02T05:26:39.006Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -992,7 +992,7 @@
       ],
       "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
       "storeUrl": "https://www.634-jp.com/musashimaru-shop.html",
-      "imageUrl": "https://www.634-jp.com/img/mark106.webp?300",
+      "imageUrl": "https://www.634-jp.com/img/30-ca-2-1.webp?300",
       "status": "warning",
       "message": "期間限定商品の安定したテキスト取得元が確認できないため、商品名は推測せず、公式に確認できるメニュー情報を表示しています。",
       "dataScope": "official_link_only",
@@ -1004,10 +1004,10 @@
         "priceVariesByLocation": false
       },
       "priceNote": "公式メニューでは店内寿司メニューが税込176円〜。最新ネタ・おすすめは公式メニューまたは店頭でご確認ください。",
-      "representativeImageUrl": "https://www.634-jp.com/img/mark106.webp?300",
+      "representativeImageUrl": "https://www.634-jp.com/img/30-ca-2-1.webp?300",
       "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "店内寿司メニュー",
-      "representativeImagePage": "https://www.634-jp.com/musashimaru-menu.html"
+      "representativeImageProduct": "釣り魚の調理例",
+      "representativeImagePage": "https://www.634-jp.com/lovefish.html"
     },
     {
       "chain": "tokubei",
