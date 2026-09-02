@@ -1,0 +1,72 @@
+{
+  "status": "ok",
+  "verifiedAt": "2026-09-02T03:27:05.130Z",
+  "testedCommit": "fb20b4a7c6808fc4f31d4746400f70eefca581ec",
+  "pageUrl": "https://longchanp7-hub.github.io/sushi-fair-app/",
+  "verificationMode": "static",
+  "publicStaticMatchesSource": true,
+  "publicDataAtLeastAsFresh": true,
+  "backgroundAssetOk": true,
+  "fairsUpdatedAt": "2026-09-01T23:20:47.667Z",
+  "storeContextsUpdatedAt": "2026-09-01T23:20:33.922Z",
+  "chainCount": 8,
+  "localTokaiReady": true,
+  "chains": {
+    "sushiro": {
+      "fairName": "フェア商品",
+      "itemCount": 17,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "representativeImage": true
+    },
+    "hamazushi": {
+      "fairName": "期間限定メニュー",
+      "itemCount": 40,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "representativeImage": true
+    },
+    "kurasushi": {
+      "fairName": "開催中イベント",
+      "itemCount": 0,
+      "menuHighlightCount": 0,
+      "status": "warning",
+      "representativeImage": false
+    },
+    "kappasushi": {
+      "fairName": "かっぱの百十円満点祭り",
+      "itemCount": 11,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "representativeImage": true
+    },
+    "uobei": {
+      "fairName": "豪華ネタフェア",
+      "itemCount": 11,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "representativeImage": true
+    },
+    "totomaru": {
+      "fairName": "いよいよ夏本番！夏の旬ネタ",
+      "itemCount": 3,
+      "menuHighlightCount": 3,
+      "status": "ok",
+      "representativeImage": true
+    },
+    "musashimaru": {
+      "fairName": "公式メニュー・おすすめ",
+      "itemCount": 0,
+      "menuHighlightCount": 2,
+      "status": "warning",
+      "representativeImage": true
+    },
+    "tokubei": {
+      "fairName": "生サーモン・さんま・かつお 秋の味覚祭り",
+      "itemCount": 0,
+      "menuHighlightCount": 0,
+      "status": "warning",
+      "representativeImage": true
+    }
+  }
+}
