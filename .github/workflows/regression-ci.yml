@@ -25,6 +25,7 @@ jobs:
           node --check app/sw.js
           node --check scripts/update-fairs.mjs
           node --check scripts/verify-pages.mjs
+          node --check scripts/fix-official-fair-discovery.mjs
       - name: Parser and grace self-tests
         run: |
           node scripts/fix-kura.mjs --self-test
@@ -33,6 +34,7 @@ jobs:
           node scripts/clean-national-products.mjs --self-test
           node scripts/resolve-representative-images.mjs --self-test
           node scripts/apply-sushiro-grace.mjs --self-test
+          node scripts/fix-official-fair-discovery.mjs --self-test
           node scripts/update-local-store-contexts.mjs --self-test
           node scripts/update-local-tokai.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
