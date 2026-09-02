@@ -14,7 +14,7 @@ if(!PAGE_URL)throw new Error('Usage: node scripts/verify-pages.mjs <page-url>');
 
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const normalize=v=>String(v).replace(/\r\n/g,'\n').trimEnd();
-const BAD_HERO=/(?:shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
+const BAD_HERO=/(?:shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/img\/mark\d+\.webp|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
 
 function bust(url,a){const u=new URL(url);u.searchParams.set('__smoke',`${Date.now()}-${a}`);return u.href;}
 async function fetchText(url,a){const r=await fetch(bust(url,a),{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{accept:'text/html,application/json,text/plain,*/*;q=.5','cache-control':'no-cache',pragma:'no-cache'}});if(!r.ok)throw new Error(`${url} returned HTTP ${r.status}`);return r.text();}
