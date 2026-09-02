@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-01T23:20:47.667Z",
+  "updatedAt": "2026-09-02T03:27:47.070Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -11,7 +11,7 @@
     {
       "chain": "sushiro",
       "storeName": "選択地域",
-      "fairName": "フェア商品",
+      "fairName": "厳選天然ネタ＆スシローの赤しゃり＆季節のおすすめメニュー",
       "startDate": "2026-09-02",
       "endDate": "2026-09-27",
       "items": [
@@ -258,6 +258,18 @@
       "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "nationalSourceOfTruth": true,
       "referenceStoreOverlayOnly": true,
+      "officialCampaignTitle": "お得に腹一杯！ 『天然まぐろのハラモ1貫』 税込120円～ | おすすめ一覧 | 株式会社あきんどスシロー",
+      "officialCampaignUrl": "https://www.akindo-sushiro.co.jp/campaign/detail.php?id=4508",
+      "fairNameSource": "official_campaign_page",
+      "campaignMatchedItems": [
+        "天然まぐろのハラモ1貫",
+        "北海道産サンマとニシン盛り合わせ",
+        "ほっき貝の刻みわさび軍艦",
+        "青森産 ムラサキいか",
+        "天然3貫盛り(キンキ・本鮪赤身・生エビ)"
+      ],
+      "campaignStartDate": "2026-09-02",
+      "campaignEndDate": "2026-09-13",
       "group": "national"
     },
     {
@@ -531,17 +543,98 @@
     {
       "chain": "kurasushi",
       "storeName": "選択地域",
-      "fairName": "開催中イベント",
-      "startDate": null,
-      "endDate": null,
-      "items": [],
-      "sourceUrl": "https://shop.kurasushi.co.jp/detail/609",
+      "fairName": "北海フェア",
+      "startDate": "2026-09-04",
+      "endDate": "2026-10-01",
+      "items": [
+        {
+          "name": "厳選かに軍艦（一貫）",
+          "price": 110,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        },
+        {
+          "name": "北海道サーモン",
+          "price": 270,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        },
+        {
+          "name": "【北海道産】秋刀魚",
+          "price": 160,
+          "startDate": "2026-09-04",
+          "endDate": "2026-10-01",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        },
+        {
+          "name": "【北海道産】たこ柔らか煮",
+          "price": 180,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        },
+        {
+          "name": "生ずわいがに（一貫）",
+          "price": 350,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        },
+        {
+          "name": "スパイシーサーモンマヨ",
+          "price": 140,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        },
+        {
+          "name": "あぶりチーズドリア風",
+          "price": 120,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        },
+        {
+          "name": "超熟成 金目鯛（一貫）",
+          "price": 110,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-27",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
+          "availabilityNote": "09/04から販売予定"
+        }
+      ],
+      "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": null,
+      "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
       "status": "warning",
-      "message": "店舗イベント名を自動取得できませんでした。",
+      "message": "公式発表済み。09/04開始予定のフェアです。",
       "referenceStoreName": "豊橋新栄店",
-      "dataScope": "national_fair_with_regional_variation",
+      "dataScope": "national_official_release",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://shop.kurasushi.co.jp/",
       "regionalModel": {
@@ -549,6 +642,14 @@
         "label": "店舗価格帯＋提供エリア",
         "priceVariesByLocation": true
       },
+      "officialReleaseUrl": "https://www.kurasushi.co.jp/author/008437.html",
+      "officialCampaignTitle": "カニやサーモン、秋刀魚、タコなど北の海の恵みが集結 「北海」フェア 創業50周年を前に“かに軍艦”を特別価格110円にてご提供 寿司と一緒に楽しめる「月見バーガー」を今年も販売 -9月4日（金）より期間・数量限定で販売-｜プレスリリース｜くら寿司 ホームページ",
+      "representativeImageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
+      "representativeImageSource": "official_release_og",
+      "representativeImageProduct": "厳選かに軍艦（一貫）",
+      "representativeImagePage": "https://www.kurasushi.co.jp/author/008437.html",
+      "campaignPhase": "upcoming",
+      "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
       "group": "national"
     },
     {
