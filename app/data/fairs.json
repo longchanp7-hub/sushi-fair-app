@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-02T03:27:47.070Z",
+  "updatedAt": "2026-09-02T05:19:12.264Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -252,10 +252,6 @@
         "label": "店舗別メニュー・価格",
         "priceVariesByLocation": true
       },
-      "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4006V2.png",
-      "representativeImageSource": "official_priority_product_image",
-      "representativeImageProduct": "天然本鮪7貫盛り",
-      "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "nationalSourceOfTruth": true,
       "referenceStoreOverlayOnly": true,
       "officialCampaignTitle": "お得に腹一杯！ 『天然まぐろのハラモ1貫』 税込120円～ | おすすめ一覧 | 株式会社あきんどスシロー",
@@ -270,7 +266,11 @@
       ],
       "campaignStartDate": "2026-09-02",
       "campaignEndDate": "2026-09-13",
-      "group": "national"
+      "group": "national",
+      "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4006V2.png",
+      "representativeImageSource": "official_food_or_fair_image",
+      "representativeImageProduct": "天然まぐろのハラモ1貫",
+      "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179"
     },
     {
       "chain": "hamazushi",
@@ -534,11 +534,11 @@
         "label": "地域区分＋都市型価格",
         "priceVariesByLocation": true
       },
+      "group": "national",
       "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/kyushusan_aji_no_tatakioobatsutsumi.png",
-      "representativeImageSource": "official_priority_product_image",
-      "representativeImageProduct": "厳選まぐろ中とろ",
-      "representativeImagePage": "https://www.hamazushi.com/menu/",
-      "group": "national"
+      "representativeImageSource": "official_food_or_fair_image",
+      "representativeImageProduct": "九州産あじのたたき大葉つつみ",
+      "representativeImagePage": "https://www.hamazushi.com/menu/"
     },
     {
       "chain": "kurasushi",
@@ -548,91 +548,51 @@
       "endDate": "2026-10-01",
       "items": [
         {
-          "name": "厳選かに軍艦（一貫）",
-          "price": 110,
-          "startDate": "2026-09-04",
-          "endDate": "2026-09-13",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
-        },
-        {
-          "name": "北海道サーモン",
-          "price": 270,
-          "startDate": "2026-09-04",
-          "endDate": "2026-09-13",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
-        },
-        {
           "name": "【北海道産】秋刀魚",
           "price": 160,
           "startDate": "2026-09-04",
           "endDate": "2026-10-01",
           "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
+          "scrapeStatus": "ok"
         },
         {
-          "name": "【北海道産】たこ柔らか煮",
-          "price": 180,
+          "name": "【無添】くら月見バーガー",
+          "price": 450,
           "startDate": "2026-09-04",
-          "endDate": "2026-09-13",
+          "endDate": "2026-10-01",
           "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
+          "scrapeStatus": "ok"
         },
         {
-          "name": "生ずわいがに（一貫）",
+          "name": "夢のふわ雪 とろっと白桃",
+          "price": 440,
+          "startDate": "2026-09-04",
+          "endDate": "2026-10-01",
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
+        },
+        {
+          "name": "ベリーのレアチーズケーキ",
           "price": 350,
           "startDate": "2026-09-04",
-          "endDate": "2026-09-13",
+          "endDate": "2026-10-01",
           "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
+          "scrapeStatus": "ok"
         },
         {
-          "name": "スパイシーサーモンマヨ",
-          "price": 140,
+          "name": "マスカットミルフィーユパフェ",
+          "price": 580,
           "startDate": "2026-09-04",
-          "endDate": "2026-09-13",
+          "endDate": "2026-10-01",
           "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
-        },
-        {
-          "name": "あぶりチーズドリア風",
-          "price": 120,
-          "startDate": "2026-09-04",
-          "endDate": "2026-09-13",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
-        },
-        {
-          "name": "超熟成 金目鯛（一貫）",
-          "price": 110,
-          "startDate": "2026-09-04",
-          "endDate": "2026-09-27",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
-          "availabilityNote": "09/04から販売予定"
+          "scrapeStatus": "ok"
         }
       ],
       "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
       "storeUrl": "https://shop.kurasushi.co.jp/detail/609",
-      "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
-      "status": "warning",
-      "message": "公式発表済み。09/04開始予定のフェアです。",
+      "imageUrl": "https://www.kurasushi.co.jp/upload/1d5ff434526d8f77e29d5ee35c6591f8b81ddfc1.png",
+      "status": "ok",
+      "message": null,
       "referenceStoreName": "豊橋新栄店",
       "dataScope": "national_official_release",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
@@ -644,12 +604,12 @@
       },
       "officialReleaseUrl": "https://www.kurasushi.co.jp/author/008437.html",
       "officialCampaignTitle": "カニやサーモン、秋刀魚、タコなど北の海の恵みが集結 「北海」フェア 創業50周年を前に“かに軍艦”を特別価格110円にてご提供 寿司と一緒に楽しめる「月見バーガー」を今年も販売 -9月4日（金）より期間・数量限定で販売-｜プレスリリース｜くら寿司 ホームページ",
-      "representativeImageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
-      "representativeImageSource": "official_release_og",
-      "representativeImageProduct": "厳選かに軍艦（一貫）",
+      "representativeImageUrl": "https://www.kurasushi.co.jp/upload/1d5ff434526d8f77e29d5ee35c6591f8b81ddfc1.png",
+      "representativeImageSource": "official_food_or_fair_image",
+      "representativeImageProduct": "【北海道産】秋刀魚",
       "representativeImagePage": "https://www.kurasushi.co.jp/author/008437.html",
       "campaignPhase": "upcoming",
-      "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
+      "priceNote": "公式プレスリリース掲載価格です。店舗により価格が異なる場合があります。",
       "group": "national"
     },
     {
@@ -750,7 +710,7 @@
       ],
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
-      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1186/18731-1186-ec6f3073bc6dce02b175b0ee29c8bd41-2438x698.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1186/18731-1186-84f7cc4fa551e144de0a8dc4a76f1c11-749x557.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "status": "ok",
       "message": null,
       "referenceStoreName": "豊橋飯村店",
@@ -764,11 +724,11 @@
       },
       "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html",
       "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。",
+      "group": "national",
       "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1186/18731-1186-84f7cc4fa551e144de0a8dc4a76f1c11-749x557.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
-      "representativeImageSource": "official_priority_product_image",
+      "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "北海道産 ほたて",
-      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html",
-      "group": "national"
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001186.000018731.html"
     },
     {
       "chain": "uobei",
@@ -867,7 +827,7 @@
         }
       ],
       "sourceUrl": "https://www.uobei.info/menu/",
-      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-74ea2fee3b50a5de774856a4a694bfbb-1917x585.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-553cb01bf8d970f46f8aff3c85063c58-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "status": "ok",
       "message": null,
       "referenceStoreName": "選択地域",
@@ -882,7 +842,7 @@
       "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
       "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。",
       "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-553cb01bf8d970f46f8aff3c85063c58-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
-      "representativeImageSource": "official_priority_product_image",
+      "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "本鮪中とろ",
       "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
       "group": "national"
@@ -997,7 +957,11 @@
         "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
       },
-      "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。"
+      "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。",
+      "representativeImageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png",
+      "representativeImageSource": "official_food_or_fair_image",
+      "representativeImageProduct": "豊後極み生さば",
+      "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/"
     },
     {
       "chain": "musashimaru",
@@ -1028,7 +992,7 @@
       ],
       "sourceUrl": "https://www.634-jp.com/musashimaru-menu.html",
       "storeUrl": "https://www.634-jp.com/musashimaru-shop.html",
-      "imageUrl": "https://www.634-jp.com/img/ogp/ogp-musashimaru.jpg",
+      "imageUrl": "https://www.634-jp.com/img/mark106.webp?300",
       "status": "warning",
       "message": "期間限定商品の安定したテキスト取得元が確認できないため、商品名は推測せず、公式に確認できるメニュー情報を表示しています。",
       "dataScope": "official_link_only",
@@ -1039,7 +1003,11 @@
         "label": "選択市町村の実店舗",
         "priceVariesByLocation": false
       },
-      "priceNote": "公式メニューでは店内寿司メニューが税込176円〜。最新ネタ・おすすめは公式メニューまたは店頭でご確認ください。"
+      "priceNote": "公式メニューでは店内寿司メニューが税込176円〜。最新ネタ・おすすめは公式メニューまたは店頭でご確認ください。",
+      "representativeImageUrl": "https://www.634-jp.com/img/mark106.webp?300",
+      "representativeImageSource": "official_food_or_fair_image",
+      "representativeImageProduct": "店内寿司メニュー",
+      "representativeImagePage": "https://www.634-jp.com/musashimaru-menu.html"
     },
     {
       "chain": "tokubei",
@@ -1062,7 +1030,7 @@
       "menuHighlights": [],
       "sourceUrl": "https://www.nigirinotokubei.com/info/11244/",
       "storeUrl": "https://www.nigirinotokubei.com/shop/",
-      "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg",
+      "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/5b5d7db2653d23b8d2c9b5a84f1ea9d6.jpg",
       "status": "warning",
       "message": "フェア名・期間は公式から取得しました。個別商品・価格は公式ページで確認してください。",
       "dataScope": "local_official_release",
@@ -1073,7 +1041,11 @@
         "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
       },
-      "priceNote": "店舗・FC店等により一部メニューやサービスが異なる場合があります。"
+      "priceNote": "店舗・FC店等により一部メニューやサービスが異なる場合があります。",
+      "representativeImageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/5b5d7db2653d23b8d2c9b5a84f1ea9d6.jpg",
+      "representativeImageSource": "official_food_or_fair_image",
+      "representativeImageProduct": "生サーモン・さんま・かつお 秋の味覚祭り",
+      "representativeImagePage": "https://www.nigirinotokubei.com/info/11244/"
     }
   ]
 }
