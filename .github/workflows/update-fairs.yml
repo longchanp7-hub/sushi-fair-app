@@ -41,12 +41,14 @@ jobs:
           node --check app/region.js
           node --check app/sw.js
           node --check scripts/update-fairs.mjs
+          node --check scripts/fix-official-fair-discovery.mjs
           node scripts/fix-kura.mjs --self-test
           node scripts/build-national-fairs.mjs --self-test
           node scripts/fix-national-releases.mjs --self-test
           node scripts/clean-national-products.mjs --self-test
           node scripts/resolve-representative-images.mjs --self-test
           node scripts/apply-sushiro-grace.mjs --self-test
+          node scripts/fix-official-fair-discovery.mjs --self-test
           node scripts/update-local-store-contexts.mjs --self-test
           node scripts/update-local-tokai.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
@@ -81,6 +83,8 @@ jobs:
         env:
           PREVIOUS_FAIRS: /tmp/previous-fairs.json
         run: node scripts/apply-sushiro-grace.mjs
+      - name: Resolve Sushiro campaign identity and Kura announced fair
+        run: node scripts/fix-official-fair-discovery.mjs
       - name: Add local Tokai fair data only
         run: node scripts/update-local-tokai.mjs
       - name: Apply verified current local official releases
@@ -88,7 +92,7 @@ jobs:
       - name: Validate eight-chain public dataset and regional data
         run: |
           node scripts/verify-region-switch.mjs
-          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(',')); const s=d.chains.find(x=>x.chain==='sushiro'); if(!s?.nationalSourceOfTruth||!s?.referenceStoreOverlayOnly) throw new Error('Sushiro source-of-truth flags missing'); for(const i of s.items) if(!('startDate' in i)||!('endDate' in i)||!i.scrapeStatus) throw new Error('Sushiro item metadata missing: '+i.name); const t=d.chains.find(x=>x.chain==='tokubei'); const currentTokubei=t?.startDate==='2026-08-18'&&t?.endDate==='2026-11-03'&&t?.productSourceUrl==='https://www.nigirinotokubei.com/info/11195/'; if(currentTokubei && t.items.find(x=>x.name==='さんま天')?.price!==451) throw new Error('Tokubei brand-official price mismatch'); if(currentTokubei && t.representativeImageUrl!=='https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg') throw new Error('Tokubei campaign image mismatch'); const m=d.chains.find(x=>x.chain==='musashimaru'); if(m?.items?.length) throw new Error('Musashimaru must remain fail-closed until verified products are available');"
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(',')); const s=d.chains.find(x=>x.chain==='sushiro'); if(!s?.nationalSourceOfTruth||!s?.referenceStoreOverlayOnly) throw new Error('Sushiro source-of-truth flags missing'); for(const i of s.items) if(!('startDate' in i)||!('endDate' in i)||!i.scrapeStatus) throw new Error('Sushiro item metadata missing: '+i.name); if(s.items.length && s.fairName==='フェア商品') throw new Error('Sushiro official campaign identity was not resolved'); if(s.items.length && !s.officialCampaignUrl) throw new Error('Sushiro official campaign URL missing'); const t=d.chains.find(x=>x.chain==='tokubei'); const currentTokubei=t?.startDate==='2026-08-18'&&t?.endDate==='2026-11-03'&&t?.productSourceUrl==='https://www.nigirinotokubei.com/info/11195/'; if(currentTokubei && t.items.find(x=>x.name==='さんま天')?.price!==451) throw new Error('Tokubei brand-official price mismatch'); if(currentTokubei && t.representativeImageUrl!=='https://www.nigirinotokubei.com/wp/wp-content/uploads/93916721a52ef0667d19c1a4b1ab12f8.jpg') throw new Error('Tokubei campaign image mismatch'); const m=d.chains.find(x=>x.chain==='musashimaru'); if(m?.items?.length) throw new Error('Musashimaru must remain fail-closed until verified products are available');"
           node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/store-contexts.json','utf8')); for(const id of ['totomaru','musashimaru','tokubei']) if(!d.catalog?.[id]) throw new Error(id+' local store catalog missing');"
       - name: Commit updated public data when changed
         run: |
