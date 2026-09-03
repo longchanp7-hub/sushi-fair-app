@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-02T23:21:05.491Z",
+  "updatedAt": "2026-09-03T23:18:59.827Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -24,7 +24,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4006V2.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -37,20 +37,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4008.png",
-          "lastSeenAt": "2026-09-03",
-          "missingSince": null,
-          "graceUntil": null
-        },
-        {
-          "name": "天然かつおと めかぶネバネバ軍艦",
-          "price": 120,
-          "startDate": "2026-09-02",
-          "endDate": "2026-09-13",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
-          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2815.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -63,7 +50,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4007.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -76,7 +63,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4009.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -89,7 +76,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4004.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -102,7 +89,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4003V2.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -115,7 +102,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_006556.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -128,7 +115,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2557.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -141,7 +128,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2562.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -154,7 +141,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2686.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -167,7 +154,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4002.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -180,7 +167,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_228V2.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -193,7 +180,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4001.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -206,7 +193,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_5006.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
         },
@@ -219,9 +206,23 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_3749.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
+        },
+        {
+          "name": "天然かつおと めかぶネバネバ軍艦",
+          "price": 120,
+          "startDate": "2026-09-02",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "not_listed_reference_store",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2815.png",
+          "lastSeenAt": "2026-09-04",
+          "missingSince": null,
+          "graceUntil": null,
+          "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
         },
         {
           "name": "天然本鮪7貫盛り",
@@ -232,7 +233,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_002046V3.png",
-          "lastSeenAt": "2026-09-03",
+          "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -624,13 +625,19 @@
           "price": null,
           "saleStatus": "active",
           "scrapeStatus": "ok"
+        },
+        {
+          "name": "かっぱのお月見祭り かっぱのお月見祭り",
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok"
         }
       ],
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
       "imageUrl": "https://www.kappasushi.jp/assets/uploads/2026/05/kpsushi26_fair0903_0819_OL.jpg",
-      "status": "warning",
-      "message": "開催中フェア名は取得できていますが、個別商品の自動取得はできていません。公式ページで確認してください。",
+      "status": "ok",
+      "message": null,
       "referenceStoreName": "豊橋飯村店",
       "dataScope": "national_fair_with_regional_variation",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
