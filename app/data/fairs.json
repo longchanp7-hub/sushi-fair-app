@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-03T23:18:59.827Z",
+  "updatedAt": "2026-09-04T11:36:26.994Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -37,19 +37,6 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4008.png",
-          "lastSeenAt": "2026-09-04",
-          "missingSince": null,
-          "graceUntil": null
-        },
-        {
-          "name": "ほっき貝の刻みわさび軍艦",
-          "price": 120,
-          "startDate": "2026-09-02",
-          "endDate": "2026-09-13",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
-          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4007.png",
           "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
@@ -146,19 +133,6 @@
           "graceUntil": null
         },
         {
-          "name": "北の幸3貫盛り(水タコ・サーモン・帆立)",
-          "price": 330,
-          "startDate": "2026-09-02",
-          "endDate": "2026-09-13",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
-          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4002.png",
-          "lastSeenAt": "2026-09-04",
-          "missingSince": null,
-          "graceUntil": null
-        },
-        {
           "name": "日本海産 白ばい貝",
           "price": 360,
           "startDate": "2026-09-02",
@@ -167,19 +141,6 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_228V2.png",
-          "lastSeenAt": "2026-09-04",
-          "missingSince": null,
-          "graceUntil": null
-        },
-        {
-          "name": "天然3貫盛り(キンキ・本鮪赤身・生エビ)",
-          "price": 360,
-          "startDate": "2026-09-02",
-          "endDate": "2026-09-13",
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
-          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4001.png",
           "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
@@ -209,6 +170,48 @@
           "lastSeenAt": "2026-09-04",
           "missingSince": null,
           "graceUntil": null
+        },
+        {
+          "name": "ほっき貝の刻みわさび軍艦",
+          "price": 120,
+          "startDate": "2026-09-02",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "not_listed_reference_store",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4007.png",
+          "lastSeenAt": "2026-09-04",
+          "missingSince": null,
+          "graceUntil": null,
+          "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
+        },
+        {
+          "name": "北の幸3貫盛り(水タコ・サーモン・帆立)",
+          "price": 330,
+          "startDate": "2026-09-02",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "not_listed_reference_store",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4002.png",
+          "lastSeenAt": "2026-09-04",
+          "missingSince": null,
+          "graceUntil": null,
+          "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
+        },
+        {
+          "name": "天然3貫盛り(キンキ・本鮪赤身・生エビ)",
+          "price": 360,
+          "startDate": "2026-09-02",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "not_listed_reference_store",
+          "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+          "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4001.png",
+          "lastSeenAt": "2026-09-04",
+          "missingSince": null,
+          "graceUntil": null,
+          "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
         },
         {
           "name": "天然かつおと めかぶネバネバ軍艦",
@@ -261,9 +264,7 @@
       "campaignMatchedItems": [
         "天然まぐろのハラモ1貫",
         "北海道産サンマとニシン盛り合わせ",
-        "ほっき貝の刻みわさび軍艦",
-        "青森産 ムラサキいか",
-        "天然3貫盛り(キンキ・本鮪赤身・生エビ)"
+        "青森産 ムラサキいか"
       ],
       "campaignStartDate": "2026-09-02",
       "campaignEndDate": "2026-09-13",
@@ -276,8 +277,8 @@
     {
       "chain": "hamazushi",
       "storeName": "選択地域",
-      "fairName": "期間限定メニュー",
-      "startDate": null,
+      "fairName": "はま寿司のにっぽん旨ねた祭り 第2弾",
+      "startDate": "2026-09-01",
       "endDate": null,
       "items": [
         {
@@ -536,6 +537,10 @@
         "priceVariesByLocation": true
       },
       "group": "national",
+      "officialCampaignTitle": "はま寿司のにっぽん旨ねた祭り 第2弾",
+      "officialCampaignUrl": "https://www.hamazushi.com/topics/2026/0831000844.html",
+      "fairNameSource": "official_topic_page",
+      "campaignPhase": "active",
       "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/kyushusan_aji_no_tatakioobatsutsumi.png",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "九州産あじのたたき大葉つつみ",
@@ -546,47 +551,79 @@
       "storeName": "選択地域",
       "fairName": "北海フェア",
       "startDate": "2026-09-04",
-      "endDate": "2026-10-01",
+      "endDate": "2026-09-13",
       "items": [
         {
-          "name": "【北海道産】秋刀魚",
+          "name": "厳選かに軍艦（一貫）",
+          "price": 110,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
+        },
+        {
+          "name": "北海道サーモン",
+          "price": 270,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
+        },
+        {
+          "name": "〖北海道産〗秋刀魚",
           "price": 160,
           "startDate": "2026-09-04",
           "endDate": "2026-10-01",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
         },
         {
-          "name": "【無添】くら月見バーガー",
-          "price": 450,
+          "name": "〖北海道産〗たこ柔らか煮",
+          "price": 180,
           "startDate": "2026-09-04",
-          "endDate": "2026-10-01",
+          "endDate": "2026-09-13",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
         },
         {
-          "name": "夢のふわ雪 とろっと白桃",
-          "price": 440,
-          "startDate": "2026-09-04",
-          "endDate": "2026-10-01",
-          "saleStatus": "active",
-          "scrapeStatus": "ok"
-        },
-        {
-          "name": "ベリーのレアチーズケーキ",
+          "name": "生ずわいがに（一貫）",
           "price": 350,
           "startDate": "2026-09-04",
-          "endDate": "2026-10-01",
+          "endDate": "2026-09-13",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
         },
         {
-          "name": "マスカットミルフィーユパフェ",
-          "price": 580,
+          "name": "スパイシーサーモンマヨ",
+          "price": 140,
           "startDate": "2026-09-04",
-          "endDate": "2026-10-01",
+          "endDate": "2026-09-13",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
+        },
+        {
+          "name": "あぶりチーズドリア風",
+          "price": 120,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-13",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
+        },
+        {
+          "name": "超熟成 金目鯛（一貫）",
+          "price": 110,
+          "startDate": "2026-09-04",
+          "endDate": "2026-09-27",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html"
         }
       ],
       "sourceUrl": "https://www.kurasushi.co.jp/author/008437.html",
@@ -595,7 +632,7 @@
       "status": "ok",
       "message": null,
       "referenceStoreName": "豊橋新栄店",
-      "dataScope": "national_official_release",
+      "dataScope": "national_verified_official_release",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://shop.kurasushi.co.jp/",
       "regionalModel": {
@@ -609,37 +646,358 @@
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "【北海道産】秋刀魚",
       "representativeImagePage": "https://www.kurasushi.co.jp/author/008437.html",
-      "campaignPhase": "upcoming",
-      "priceNote": "公式プレスリリース掲載価格です。店舗により価格が異なる場合があります。",
+      "campaignPhase": "active",
+      "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
       "group": "national"
     },
     {
       "chain": "kappasushi",
       "storeName": "選択地域",
-      "fairName": "かっぱの秋の旨ネタ＆50%増量祭り開催！",
-      "startDate": null,
-      "endDate": null,
+      "fairName": "かっぱの秋の旨ネタ＆50％増量祭り／秋のおすすめ／お月見祭り",
+      "startDate": "2026-09-03",
+      "endDate": "2026-09-30",
       "items": [
         {
-          "name": "かっぱの秋の旨ネタ＆50%増量祭り開催！",
-          "price": null,
+          "name": "大ぶりとろサーモン",
+          "price": 110,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
         },
         {
-          "name": "かっぱのお月見祭り かっぱのお月見祭り",
-          "price": null,
+          "name": "大ぶりとろサーモン 塩炙り",
+          "price": 150,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "北海道産さんま",
+          "price": 190,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "北海道産さんま塩炙り",
+          "price": 190,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "秋の彩りフェアプレート",
+          "price": 590,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "お値段そのまま50％増量 感動コーン",
+          "price": 110,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "お値段そのまま50％増量 えび天にぎり",
+          "price": 150,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "お値段そのまま50％増量 てりやきハンバーグ",
+          "price": 120,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "お値段そのままトッピング50％増量 コク旨醤油ラーメン",
+          "price": 430,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "シャリドーナツ きな粉（3個）",
+          "price": 110,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+        },
+        {
+          "name": "大とろ",
+          "price": 340,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "大とろ塩炙り 柚子のせ",
+          "price": 340,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "贅沢いくらの茶碗蒸し",
+          "price": 430,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "北海道産 ほたて",
+          "price": 240,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "天然メアジ",
+          "price": 240,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "天然メアジ塩炙り",
+          "price": 240,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "醤油漬け焼き風サーモン",
+          "price": 190,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "とろ〆さば",
+          "price": 110,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "3種の貝食べ比べ（つぶ貝・大切り蝦夷あわび・赤貝）",
+          "price": 430,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "合鴨ロース",
+          "price": 120,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "合鴨ロース オニオンマヨ",
+          "price": 150,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "合鴨ロースのトリュフマヨのせ",
+          "price": 190,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "3種のトリュフマヨ寿司食べ比べ",
+          "price": 290,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "合鴨ロースサラダ",
+          "price": 390,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "まいたけ天にぎり",
+          "price": 150,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "まいたけとかつお出汁餡の茶碗蒸し",
+          "price": 340,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "季節の天ぷら盛り合わせ“秋”～天つゆ付き～",
+          "price": 540,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "贅沢 大えび天入りうどん“秋”",
+          "price": 540,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "紅茶ゼリー～バニラアイス添え～",
+          "price": 340,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "紅茶ゼリー～ホイップ添え～",
+          "price": 340,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "秋色プレミアムプリンパフェ 醤油キャラメルアイス仕立て",
+          "price": 490,
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+        },
+        {
+          "name": "月見牛肉いなり",
+          "price": 190,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+        },
+        {
+          "name": "卵黄とろろ軍艦",
+          "price": 150,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+        },
+        {
+          "name": "卵黄納豆軍艦",
+          "price": 150,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+        },
+        {
+          "name": "かっぱのシャリドーナツ きなこ（2個）",
+          "price": 110,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+        },
+        {
+          "name": "かっぱのシャリドーナツ キャラメルシナモン（2個）",
+          "price": 110,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+        },
+        {
+          "name": "ふわもちみたらし団子",
+          "price": 190,
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-30",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
         }
       ],
       "sourceUrl": "https://www.kappasushi.jp/campaign_list/",
       "storeUrl": "https://www.kappasushi.jp/shop/0220",
-      "imageUrl": "https://www.kappasushi.jp/assets/uploads/2026/05/kpsushi26_fair0903_0819_OL.jpg",
+      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1211/18731-1211-91511f5f3a864a4aac62b19c646093ca-2261x1404.png?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "status": "ok",
       "message": null,
       "referenceStoreName": "豊橋飯村店",
-      "dataScope": "national_fair_with_regional_variation",
+      "dataScope": "national_verified_official_campaigns",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://www.kappasushi.jp/shop/",
       "regionalModel": {
@@ -648,105 +1006,487 @@
         "priceVariesByLocation": true
       },
       "group": "national",
-      "representativeImageUrl": "https://www.kappasushi.jp/assets/uploads/2026/05/kpsushi26_fair0903_0819_OL.jpg",
+      "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html",
+      "campaignPhase": "active",
+      "priceNote": "公式発表の税込価格です。一部店舗では価格が異なる場合があります。",
+      "campaigns": [
+        {
+          "fairName": "かっぱの秋の旨ネタ＆お値段そのまま50％増量祭り",
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-16",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html",
+          "items": [
+            {
+              "name": "大ぶりとろサーモン",
+              "price": 110,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "大ぶりとろサーモン 塩炙り",
+              "price": 150,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "北海道産さんま",
+              "price": 190,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "北海道産さんま塩炙り",
+              "price": 190,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "秋の彩りフェアプレート",
+              "price": 590,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "お値段そのまま50％増量 感動コーン",
+              "price": 110,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "お値段そのまま50％増量 えび天にぎり",
+              "price": 150,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "お値段そのまま50％増量 てりやきハンバーグ",
+              "price": 120,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "お値段そのままトッピング50％増量 コク旨醤油ラーメン",
+              "price": 430,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            },
+            {
+              "name": "シャリドーナツ きな粉（3個）",
+              "price": 110,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-16",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+            }
+          ]
+        },
+        {
+          "fairName": "かっぱの秋のおすすめ",
+          "startDate": "2026-09-03",
+          "endDate": null,
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html",
+          "items": [
+            {
+              "name": "大とろ",
+              "price": 340,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "大とろ塩炙り 柚子のせ",
+              "price": 340,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "贅沢いくらの茶碗蒸し",
+              "price": 430,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "北海道産 ほたて",
+              "price": 240,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "天然メアジ",
+              "price": 240,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "天然メアジ塩炙り",
+              "price": 240,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "醤油漬け焼き風サーモン",
+              "price": 190,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "とろ〆さば",
+              "price": 110,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "3種の貝食べ比べ（つぶ貝・大切り蝦夷あわび・赤貝）",
+              "price": 430,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "合鴨ロース",
+              "price": 120,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "合鴨ロース オニオンマヨ",
+              "price": 150,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "合鴨ロースのトリュフマヨのせ",
+              "price": 190,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "3種のトリュフマヨ寿司食べ比べ",
+              "price": 290,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "合鴨ロースサラダ",
+              "price": 390,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "まいたけ天にぎり",
+              "price": 150,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "まいたけとかつお出汁餡の茶碗蒸し",
+              "price": 340,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "季節の天ぷら盛り合わせ“秋”～天つゆ付き～",
+              "price": 540,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "贅沢 大えび天入りうどん“秋”",
+              "price": 540,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "紅茶ゼリー～バニラアイス添え～",
+              "price": 340,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "紅茶ゼリー～ホイップ添え～",
+              "price": 340,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            },
+            {
+              "name": "秋色プレミアムプリンパフェ 醤油キャラメルアイス仕立て",
+              "price": 490,
+              "startDate": "2026-09-03",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
+            }
+          ]
+        },
+        {
+          "fairName": "かっぱのお月見祭り",
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-30",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html",
+          "items": [
+            {
+              "name": "月見牛肉いなり",
+              "price": 190,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-30",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+            },
+            {
+              "name": "卵黄とろろ軍艦",
+              "price": 150,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-30",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+            },
+            {
+              "name": "卵黄納豆軍艦",
+              "price": 150,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-30",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+            },
+            {
+              "name": "かっぱのシャリドーナツ きなこ（2個）",
+              "price": 110,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-30",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+            },
+            {
+              "name": "かっぱのシャリドーナツ キャラメルシナモン（2個）",
+              "price": 110,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-30",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+            },
+            {
+              "name": "ふわもちみたらし団子",
+              "price": 190,
+              "startDate": "2026-09-03",
+              "endDate": "2026-09-30",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
+            }
+          ]
+        }
+      ],
+      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1211/18731-1211-91511f5f3a864a4aac62b19c646093ca-2261x1404.png?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "かっぱの秋の旨ネタ＆50%増量祭り開催！",
-      "representativeImagePage": "https://www.kappasushi.jp/campaign_list/"
+      "representativeImageProduct": "北海道産 ほたて",
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
     },
     {
       "chain": "uobei",
       "storeName": "選択地域",
-      "fairName": "豪華ネタフェア",
-      "startDate": "2026-08-04",
+      "fairName": "秋の味覚フェア",
+      "startDate": "2026-08-25",
       "endDate": null,
       "items": [
         {
-          "name": "すけそう鱈",
+          "name": "赤魚",
           "price": 110,
-          "startDate": "2026-08-04",
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "えんがわぐんかん",
+          "name": "かつおたたき",
           "price": 110,
-          "startDate": "2026-08-04",
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "たこわさぐんかん",
+          "name": "こういかげそ",
           "price": 132,
-          "startDate": "2026-08-04",
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "贅沢大生えび",
+          "name": "瀬戸内産茹で牡蠣",
           "price": 198,
-          "startDate": "2026-08-04",
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "岩手県産やりいか",
+          "name": "紅鮭すじこ",
           "price": 198,
-          "startDate": "2026-08-04",
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "のどぐろ",
+          "name": "うにいかぐんかん",
           "price": 198,
-          "startDate": "2026-08-04",
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "たらば蟹はかま",
-          "price": 198,
-          "startDate": "2026-08-04",
+          "name": "プレミアム蒸しえび",
+          "price": 308,
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "北海道産ほたて",
-          "price": 231,
-          "startDate": "2026-08-04",
+          "name": "とろびん長はらも",
+          "price": 165,
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "本鮪中とろ",
-          "price": 220,
-          "startDate": "2026-08-04",
+          "name": "本鮪大とろ",
+          "price": 308,
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "厳選まぐろ三昧",
-          "price": 363,
-          "startDate": "2026-08-04",
+          "name": "お得！まぐろ三昧",
+          "price": 451,
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         },
         {
-          "name": "焼き豚にぎり",
-          "price": 220,
-          "startDate": "2026-08-04",
+          "name": "混ぜて食べるマスカットパフェ",
+          "price": 418,
+          "startDate": "2026-08-25",
           "endDate": null,
           "saleStatus": "active",
-          "scrapeStatus": "ok"
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
+        },
+        {
+          "name": "苺のクランブルタルト",
+          "price": 264,
+          "startDate": "2026-08-25",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
         }
       ],
       "sourceUrl": "https://www.uobei.info/menu/",
@@ -754,7 +1494,7 @@
       "status": "ok",
       "message": null,
       "referenceStoreName": "選択地域",
-      "dataScope": "national_official_release",
+      "dataScope": "national_verified_official_release",
       "officialActionLabel": "混雑・順番待ち・予約を公式で確認",
       "officialActionUrl": "https://www.uobei.info/",
       "regionalModel": {
@@ -762,45 +1502,40 @@
         "label": "通常／都心型／超都心型",
         "priceVariesByLocation": true
       },
-      "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
-      "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。",
+      "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html",
+      "priceNote": "公式発表の税込価格です。地域・店舗により価格が異なる場合があります。",
       "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-553cb01bf8d970f46f8aff3c85063c58-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "本鮪中とろ",
       "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
-      "group": "national"
+      "group": "national",
+      "campaignPhase": "active"
     },
     {
       "chain": "totomaru",
       "group": "local_tokai",
       "storeName": "選択地域",
-      "fairName": "いよいよ夏本番！夏の旬ネタ",
+      "fairName": "天然南まぐろフェア開催開催中！",
       "startDate": null,
       "endDate": null,
       "items": [
         {
-          "name": "豊後極み生さば",
+          "name": "カツオわら焼きパフォーマンス",
           "price": null,
-          "startDate": null,
-          "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
         },
         {
-          "name": "夏の香味生あじ",
+          "name": "マグロ解体ショー",
           "price": null,
-          "startDate": null,
-          "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
         },
         {
-          "name": "海鮮ねばネバ～ランド",
+          "name": "@426unxts",
           "price": null,
-          "startDate": null,
-          "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
@@ -808,68 +1543,70 @@
       ],
       "campaigns": [
         {
-          "fairName": "いよいよ夏本番！夏の旬ネタ",
+          "fairName": "天然南まぐろフェア開催開催中！",
+          "startDate": null,
+          "endDate": null,
+          "items": [],
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+        },
+        {
+          "fairName": "旬のおすすめ",
           "startDate": null,
           "endDate": null,
           "items": [
             {
-              "name": "豊後極み生さば",
+              "name": "カツオわら焼きパフォーマンス",
               "price": null,
-              "startDate": null,
-              "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
               "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
             },
             {
-              "name": "夏の香味生あじ",
+              "name": "マグロ解体ショー",
               "price": null,
-              "startDate": null,
-              "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
               "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
             },
             {
-              "name": "海鮮ねばネバ～ランド",
+              "name": "@426unxts",
               "price": null,
-              "startDate": null,
-              "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
               "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
             }
           ],
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
+          "imageUrl": null
         }
       ],
       "menuHighlights": [
         {
-          "name": "豊後極み生さば",
+          "name": "カツオわら焼きパフォーマンス",
           "price": null,
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
           "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
         },
         {
-          "name": "夏の香味生あじ",
+          "name": "マグロ解体ショー",
           "price": null,
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
           "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
         },
         {
-          "name": "海鮮ねばネバ～ランド",
+          "name": "@426unxts",
           "price": null,
           "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
           "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png"
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
         }
       ],
       "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
       "storeUrl": "https://www.comline.co.jp/shoplist/",
-      "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png",
+      "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
       "status": "ok",
       "message": null,
       "dataScope": "local_official_menu",
@@ -881,9 +1618,9 @@
         "priceVariesByLocation": true
       },
       "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。",
-      "representativeImageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260710_1400-700_summer-menu.png",
+      "representativeImageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
       "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "豊後極み生さば",
+      "representativeImageProduct": "カツオわら焼きパフォーマンス",
       "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/"
     },
     {
@@ -939,24 +1676,441 @@
       "fairName": "生サーモン・さんま・かつお 秋の味覚祭り",
       "startDate": "2026-09-01",
       "endDate": "2026-11-03",
-      "items": [],
+      "items": [
+        {
+          "name": "秋の特選五貫盛り",
+          "price": 1155,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "生サーモン食べ比べ三昧",
+          "price": 649,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "生サーモン",
+          "price": 407,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "生サーモン味噌炙り",
+          "price": 451,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "生サーモンごまぽん漬け",
+          "price": 451,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "さんま食べ比べ三昧",
+          "price": 649,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "さんま",
+          "price": 407,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "さんま炙り",
+          "price": 451,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "さんま天",
+          "price": 451,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "かつおのたたき ぬたのせ",
+          "price": 407,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "土佐巻き",
+          "price": 407,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "姫丼 漬けかつお",
+          "price": 407,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "さばガリロール",
+          "price": 341,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "焼き鯖の押し寿司",
+          "price": 451,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "まいたけ天",
+          "price": 253,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "揚げなす肉みそのせ",
+          "price": 253,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "サーモン塩麹軍艦",
+          "price": 198,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "大紋（おおもん）はた",
+          "price": 649,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "あまごの姿揚げ",
+          "price": 539,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "秋の茶碗蒸し",
+          "price": 429,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "秋の天ぷら盛り合わせ",
+          "price": 649,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "鮭と舞茸のあんかけだし巻き玉子",
+          "price": 605,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        },
+        {
+          "name": "鮭豚汁（しゃけとんじる）",
+          "price": 407,
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-03",
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+        }
+      ],
       "campaigns": [
         {
           "fairName": "生サーモン・さんま・かつお 秋の味覚祭り",
           "startDate": "2026-09-01",
           "endDate": "2026-11-03",
-          "items": [],
+          "items": [
+            {
+              "name": "秋の特選五貫盛り",
+              "price": 1155,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "生サーモン食べ比べ三昧",
+              "price": 649,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "生サーモン",
+              "price": 407,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "生サーモン味噌炙り",
+              "price": 451,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "生サーモンごまぽん漬け",
+              "price": 451,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "さんま食べ比べ三昧",
+              "price": 649,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "さんま",
+              "price": 407,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "さんま炙り",
+              "price": 451,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "さんま天",
+              "price": 451,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "かつおのたたき ぬたのせ",
+              "price": 407,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "土佐巻き",
+              "price": 407,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "姫丼 漬けかつお",
+              "price": 407,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "さばガリロール",
+              "price": 341,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "焼き鯖の押し寿司",
+              "price": 451,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "まいたけ天",
+              "price": 253,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "揚げなす肉みそのせ",
+              "price": 253,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "サーモン塩麹軍艦",
+              "price": 198,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "大紋（おおもん）はた",
+              "price": 649,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "あまごの姿揚げ",
+              "price": 539,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "秋の茶碗蒸し",
+              "price": 429,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "秋の天ぷら盛り合わせ",
+              "price": 649,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "鮭と舞茸のあんかけだし巻き玉子",
+              "price": 605,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            },
+            {
+              "name": "鮭豚汁（しゃけとんじる）",
+              "price": 407,
+              "startDate": "2026-09-01",
+              "endDate": "2026-11-03",
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827"
+            }
+          ],
           "sourceUrl": "https://www.nigirinotokubei.com/info/11244/",
-          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"
+          "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg",
+          "verified": true
         }
       ],
       "menuHighlights": [],
       "sourceUrl": "https://www.nigirinotokubei.com/info/11244/",
       "storeUrl": "https://www.nigirinotokubei.com/shop/",
       "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/5b5d7db2653d23b8d2c9b5a84f1ea9d6.jpg",
-      "status": "warning",
-      "message": "フェア名・期間は公式から取得しました。個別商品・価格は公式ページで確認してください。",
-      "dataScope": "local_official_release",
+      "status": "ok",
+      "message": null,
+      "dataScope": "local_verified_official_campaign",
       "officialActionLabel": "店舗・予約を公式で確認",
       "officialActionUrl": "https://www.nigirinotokubei.com/shop/",
       "regionalModel": {
@@ -964,10 +2118,13 @@
         "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
       },
-      "priceNote": "店舗・FC店等により一部メニューやサービスが異なる場合があります。",
+      "priceNote": "にぎりの徳兵衛公式・運営会社公式発表の税込価格です。一部店舗では価格が異なります。",
+      "officialReleaseUrl": "https://www.nigirinotokubei.com/info/11244/",
+      "productSourceUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827",
+      "companyReleaseUrl": "https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827",
       "representativeImageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/5b5d7db2653d23b8d2c9b5a84f1ea9d6.jpg",
       "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "生サーモン・さんま・かつお 秋の味覚祭り",
+      "representativeImageProduct": "秋の特選五貫盛り",
       "representativeImagePage": "https://www.nigirinotokubei.com/info/11244/"
     }
   ]
