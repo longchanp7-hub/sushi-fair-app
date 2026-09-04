@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-04T11:36:26.994Z",
+  "updatedAt": "2026-09-04T11:52:17.176Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -1490,7 +1490,7 @@
         }
       ],
       "sourceUrl": "https://www.uobei.info/menu/",
-      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-553cb01bf8d970f46f8aff3c85063c58-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/243/20954-243-f4d244da98b9421a28f5fbd4f82cf5d1-600x600.png",
       "status": "ok",
       "message": null,
       "referenceStoreName": "選択地域",
@@ -1504,10 +1504,10 @@
       },
       "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html",
       "priceNote": "公式発表の税込価格です。地域・店舗により価格が異なる場合があります。",
-      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/240/20954-240-553cb01bf8d970f46f8aff3c85063c58-600x600.png?width=1950&height=1350&quality=85&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
+      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/243/20954-243-f4d244da98b9421a28f5fbd4f82cf5d1-600x600.png",
       "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "本鮪中とろ",
-      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000240.000020954.html",
+      "representativeImageProduct": "本鮪大とろ",
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html",
       "group": "national",
       "campaignPhase": "active"
     },
