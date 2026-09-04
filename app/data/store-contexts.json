@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-04T11:51:19.598Z",
+  "updatedAt": "2026-09-04T23:03:48.508Z",
   "policy": "Official store directories only. Exact municipality is preferred; ordinance-city fallback may use another ward in the same city. Unknown price/menu classes remain null.",
   "catalog": {
     "sushiro": {
