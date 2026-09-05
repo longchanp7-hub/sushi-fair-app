@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-04T23:04:09.915Z",
+  "updatedAt": "2026-09-05T22:57:37.948Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -24,7 +24,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4006V2.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -37,7 +37,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4008.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -50,7 +50,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4009.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -63,7 +63,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4004.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -76,7 +76,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4003V2.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -89,7 +89,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_006556.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -102,7 +102,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2557.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -115,7 +115,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2562.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -128,7 +128,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2686.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -141,7 +141,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_228V2.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -154,7 +154,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_5006.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -167,7 +167,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_3749.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null
         },
@@ -180,7 +180,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4007.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -194,7 +194,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4002.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -208,7 +208,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4001.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -222,7 +222,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2815.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -236,7 +236,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_002046V3.png",
-          "lastSeenAt": "2026-09-05",
+          "lastSeenAt": "2026-09-06",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -1515,113 +1515,25 @@
       "chain": "totomaru",
       "group": "local_tokai",
       "storeName": "選択地域",
-      "fairName": "天然南まぐろフェア開催開催中！",
+      "fairName": "季節のおすすめ",
       "startDate": null,
       "endDate": null,
-      "items": [
-        {
-          "name": "カツオわら焼きパフォーマンス",
-          "price": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-        },
-        {
-          "name": "マグロ解体ショー",
-          "price": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-        },
-        {
-          "name": "@426unxts",
-          "price": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-        }
-      ],
-      "campaigns": [
-        {
-          "fairName": "天然南まぐろフェア開催開催中！",
-          "startDate": null,
-          "endDate": null,
-          "items": [],
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
-        },
-        {
-          "fairName": "旬のおすすめ",
-          "startDate": null,
-          "endDate": null,
-          "items": [
-            {
-              "name": "カツオわら焼きパフォーマンス",
-              "price": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-            },
-            {
-              "name": "マグロ解体ショー",
-              "price": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-            },
-            {
-              "name": "@426unxts",
-              "price": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-            }
-          ],
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "imageUrl": null
-        }
-      ],
-      "menuHighlights": [
-        {
-          "name": "カツオわら焼きパフォーマンス",
-          "price": null,
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
-        },
-        {
-          "name": "マグロ解体ショー",
-          "price": null,
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
-        },
-        {
-          "name": "@426unxts",
-          "price": null,
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
-        }
-      ],
+      "items": [],
+      "campaigns": [],
+      "menuHighlights": [],
       "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
       "storeUrl": "https://www.comline.co.jp/shoplist/",
-      "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
-      "status": "ok",
-      "message": null,
-      "dataScope": "local_official_menu",
+      "imageUrl": null,
+      "status": "warning",
+      "message": "公式サイトの自動取得に失敗したため、推測データは表示していません。",
+      "dataScope": "official_link_only",
       "officialActionLabel": "店舗・順番待ちを公式で確認",
       "officialActionUrl": "https://www.comline.co.jp/shoplist/",
       "regionalModel": {
         "strategyKey": "exactLocalStore",
         "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
-      },
-      "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。",
-      "representativeImageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
-      "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "カツオわら焼きパフォーマンス",
-      "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/"
+      }
     },
     {
       "chain": "musashimaru",
