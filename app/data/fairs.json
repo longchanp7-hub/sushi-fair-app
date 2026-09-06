@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-06T06:03:45.643Z",
+  "updatedAt": "2026-09-06T06:34:01.304Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -272,7 +272,9 @@
       "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4006V2.png",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "天然まぐろのハラモ1貫",
-      "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179"
+      "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:34:01.391Z"
     },
     {
       "chain": "hamazushi",
@@ -544,7 +546,9 @@
       "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/kyushusan_aji_no_tatakioobatsutsumi.png",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "九州産あじのたたき大葉つつみ",
-      "representativeImagePage": "https://www.hamazushi.com/menu/"
+      "representativeImagePage": "https://www.hamazushi.com/menu/",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
     },
     {
       "chain": "kurasushi",
@@ -648,14 +652,16 @@
       "representativeImagePage": "https://www.kurasushi.co.jp/author/008437.html",
       "campaignPhase": "active",
       "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
-      "group": "national"
+      "group": "national",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
     },
     {
       "chain": "kappasushi",
       "storeName": "選択地域",
-      "fairName": "かっぱの秋の旨ネタ＆50％増量祭り／秋のおすすめ／お月見祭り",
+      "fairName": "かっぱの秋の旨ネタ＆お値段そのまま50％増量祭り／かっぱの秋のおすすめ／かっぱのお月見祭り",
       "startDate": "2026-09-03",
-      "endDate": "2026-09-30",
+      "endDate": null,
       "items": [
         {
           "name": "大ぶりとろサーモン",
@@ -1106,7 +1112,8 @@
               "scrapeStatus": "ok",
               "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
             }
-          ]
+          ],
+          "campaignPhase": "active"
         },
         {
           "fairName": "かっぱの秋のおすすめ",
@@ -1303,7 +1310,8 @@
               "scrapeStatus": "ok",
               "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001213.000018731.html"
             }
-          ]
+          ],
+          "campaignPhase": "active"
         },
         {
           "fairName": "かっぱのお月見祭り",
@@ -1365,13 +1373,16 @@
               "scrapeStatus": "ok",
               "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001214.000018731.html"
             }
-          ]
+          ],
+          "campaignPhase": "active"
         }
       ],
       "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1211/18731-1211-91511f5f3a864a4aac62b19c646093ca-2261x1404.png?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "北海道産 ほたて",
-      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html"
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
     },
     {
       "chain": "uobei",
@@ -1509,7 +1520,9 @@
       "representativeImageProduct": "本鮪大とろ",
       "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html",
       "group": "national",
-      "campaignPhase": "active"
+      "campaignPhase": "active",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
     },
     {
       "chain": "totomaru",
@@ -1607,8 +1620,8 @@
       "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
       "storeUrl": "https://www.comline.co.jp/shoplist/",
       "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
-      "status": "ok",
-      "message": null,
+      "status": "warning",
+      "message": "今回の更新候補を品質ゲートで隔離し、前回確認済みデータを表示しています（suspicious_item_name）。",
       "dataScope": "local_official_menu",
       "officialActionLabel": "店舗・順番待ちを公式で確認",
       "officialActionUrl": "https://www.comline.co.jp/shoplist/",
@@ -1621,7 +1634,12 @@
       "representativeImageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "カツオわら焼きパフォーマンス",
-      "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/"
+      "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/",
+      "qualityState": "last_known_good",
+      "qualityCheckedAt": "2026-09-06T06:34:01.392Z",
+      "qualityIssues": [
+        "suspicious_item_name"
+      ]
     },
     {
       "chain": "musashimaru",
@@ -1667,7 +1685,9 @@
       "representativeImageUrl": "https://www.634-jp.com/img/30-ca-2-1.webp?300",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "釣り魚の調理例",
-      "representativeImagePage": "https://www.634-jp.com/lovefish.html"
+      "representativeImagePage": "https://www.634-jp.com/lovefish.html",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
     },
     {
       "chain": "tokubei",
@@ -2101,7 +2121,8 @@
           ],
           "sourceUrl": "https://www.nigirinotokubei.com/info/11244/",
           "imageUrl": "https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg",
-          "verified": true
+          "verified": true,
+          "campaignPhase": "active"
         }
       ],
       "menuHighlights": [],
@@ -2125,7 +2146,29 @@
       "representativeImageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/5b5d7db2653d23b8d2c9b5a84f1ea9d6.jpg",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "秋の特選五貫盛り",
-      "representativeImagePage": "https://www.nigirinotokubei.com/info/11244/"
+      "representativeImagePage": "https://www.nigirinotokubei.com/info/11244/",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:34:01.393Z"
     }
-  ]
+  ],
+  "qualityGate": {
+    "version": 1,
+    "checkedAt": "2026-09-06T06:34:01.393Z",
+    "fallbackChains": [
+      "totomaru"
+    ],
+    "quarantined": [
+      {
+        "chain": "totomaru",
+        "issues": [
+          {
+            "code": "suspicious_item_name",
+            "severity": "error",
+            "message": "non-product text detected: @426unxts"
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  }
 }
