@@ -1,17 +1,19 @@
 {
   "name": "sushi-fair-app",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "update": "node scripts/update-fairs.mjs",
     "refresh-local": "node scripts/update-local-tokai.mjs",
-    "verify-local": "node scripts/update-local-tokai.mjs --self-test"
+    "verify-local": "node scripts/update-local-tokai.mjs --self-test",
+    "quality-gate": "node scripts/quality-gate.mjs --self-test",
+    "normalize-campaigns": "node scripts/normalize-campaigns.mjs --self-test"
   },
   "dependencies": {
     "cheerio": "^1.0.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }
