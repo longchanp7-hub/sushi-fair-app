@@ -11,6 +11,7 @@ on:
       - 'app/data/crowd.json'
       - 'app/data/fairs.json'
       - 'app/data/store-contexts.json'
+      - 'app/data/store-contexts-fallback.json'
   workflow_dispatch:
 
 permissions:

@@ -1,24 +1,60 @@
 const STORAGE_KEY='sushiFairLocationV3';
 const ADDRESS_API='https://geolonia.github.io/japanese-addresses/api/ja.json';
 const STORE_DATA_URL='./data/store-contexts.json';
+const STORE_FALLBACK_DATA_URL='./data/store-contexts-fallback.json';
 const PREF_CODES={'北海道':'01','青森県':'02','岩手県':'03','宮城県':'04','秋田県':'05','山形県':'06','福島県':'07','茨城県':'08','栃木県':'09','群馬県':'10','埼玉県':'11','千葉県':'12','東京都':'13','神奈川県':'14','新潟県':'15','富山県':'16','石川県':'17','福井県':'18','山梨県':'19','長野県':'20','岐阜県':'21','静岡県':'22','愛知県':'23','三重県':'24','滋賀県':'25','京都府':'26','大阪府':'27','兵庫県':'28','奈良県':'29','和歌山県':'30','鳥取県':'31','島根県':'32','岡山県':'33','広島県':'34','山口県':'35','徳島県':'36','香川県':'37','愛媛県':'38','高知県':'39','福岡県':'40','佐賀県':'41','長崎県':'42','熊本県':'43','大分県':'44','宮崎県':'45','鹿児島県':'46','沖縄県':'47'};
-const FALLBACK={'北海道':['札幌市'],'東京都':['東京23区','八王子市','町田市'],'愛知県':['豊橋市','豊川市','蒲郡市','名古屋市'],'大阪府':['大阪市','堺市'],'福岡県':['福岡市','北九州市'],'沖縄県':['那覇市']};
+const PREF_CAPITALS={'北海道':'札幌市','青森県':'青森市','岩手県':'盛岡市','宮城県':'仙台市','秋田県':'秋田市','山形県':'山形市','福島県':'福島市','茨城県':'水戸市','栃木県':'宇都宮市','群馬県':'前橋市','埼玉県':'さいたま市','千葉県':'千葉市','東京都':'東京23区','神奈川県':'横浜市','新潟県':'新潟市','富山県':'富山市','石川県':'金沢市','福井県':'福井市','山梨県':'甲府市','長野県':'長野市','岐阜県':'岐阜市','静岡県':'静岡市','愛知県':'名古屋市','三重県':'津市','滋賀県':'大津市','京都府':'京都市','大阪府':'大阪市','兵庫県':'神戸市','奈良県':'奈良市','和歌山県':'和歌山市','鳥取県':'鳥取市','島根県':'松江市','岡山県':'岡山市','広島県':'広島市','山口県':'山口市','徳島県':'徳島市','香川県':'高松市','愛媛県':'松山市','高知県':'高知市','福岡県':'福岡市','佐賀県':'佐賀市','長崎県':'長崎市','熊本県':'熊本市','大分県':'大分市','宮崎県':'宮崎市','鹿児島県':'鹿児島市','沖縄県':'那覇市'};
+const FALLBACK_EXTRA={'北海道':['札幌市','旭川市'],'東京都':['東京23区','八王子市','町田市'],'愛知県':['豊橋市','豊川市','蒲郡市','名古屋市'],'静岡県':['静岡市','浜松市','湖西市'],'大阪府':['大阪市','堺市'],'福岡県':['福岡市','北九州市'],'沖縄県':['那覇市']};
 const HAMA={hokkaido:['北海道'],tohoku:['青森県','岩手県','宮城県','秋田県','山形県','福島県'],kanto:['茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','長野県','山梨県'],hokuriku:['新潟県','富山県','石川県','福井県'],tokai:['静岡県','愛知県','岐阜県','三重県'],kansai:['滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県'],chugoku:['鳥取県','島根県','岡山県','広島県','山口県'],shikoku:['徳島県','香川県','愛媛県','高知県'],kyushu:['福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県'],okinawa:['沖縄県']};
 const HAMA_LABEL={hokkaido:'北海道',tohoku:'東北',kanto:'関東',hokuriku:'北陸',tokai:'東海',kansai:'関西',chugoku:'中国',shikoku:'四国',kyushu:'九州',okinawa:'沖縄'};
 const UOBEI_URBAN_PREFS=new Set(['東京都','大阪府','神奈川県','愛知県','福岡県','兵庫県','京都府']);
 const LOCAL_CHAINS=new Set(['totomaru','musashimaru','tokubei']);
 const LOCAL_STORE_URLS={totomaru:'https://www.comline.co.jp/shoplist/',musashimaru:'https://www.634-jp.com/musashimaru-shop.html',tokubei:'https://www.nigirinotokubei.com/shop/'};
-let storeData={catalog:{}};
+const BUILTIN_LOCAL_CATALOG={
+  totomaru:{
+    '愛知県/豊橋市':{chain:'totomaru',prefecture:'愛知県',municipality:'豊橋市',storeName:'魚魚丸 豊橋西岩田店',address:'愛知県豊橋市西岩田6丁目17-2',officialUrl:'https://www.comline.co.jp/shoplist/',verified:true,source:'official_store_directory_seed'},
+    '愛知県/豊川市':{chain:'totomaru',prefecture:'愛知県',municipality:'豊川市',storeName:'魚魚丸 豊川店',address:'愛知県豊川市牛久保町城下45-1',officialUrl:'https://www.comline.co.jp/shoplist/',verified:true,source:'official_store_directory_seed'},
+    '静岡県/浜松市中央区':{chain:'totomaru',prefecture:'静岡県',municipality:'浜松市中央区',storeName:'魚魚丸 浜松森田店',address:'静岡県浜松市中央区森田町101',officialUrl:'https://www.comline.co.jp/shoplist/',verified:true,source:'official_store_directory_seed'}
+  },
+  musashimaru:{
+    '愛知県/豊橋市':{chain:'musashimaru',prefecture:'愛知県',municipality:'豊橋市',storeName:'武蔵丸 豊橋藤沢本店',address:'愛知県豊橋市藤沢町114',officialUrl:'https://www.634-jp.com/musashimaru-shop.html',verified:true,source:'official_store_directory_seed'},
+    '愛知県/豊川市':{chain:'musashimaru',prefecture:'愛知県',municipality:'豊川市',storeName:'武蔵丸 豊川本店',address:'愛知県豊川市馬場町御堂前74',officialUrl:'https://www.634-jp.com/musashimaru-shop.html',verified:true,source:'official_store_directory_seed'},
+    '愛知県/蒲郡市':{chain:'musashimaru',prefecture:'愛知県',municipality:'蒲郡市',storeName:'武蔵丸 蒲郡店',address:'愛知県蒲郡市三谷北通4-84-4',officialUrl:'https://www.634-jp.com/musashimaru-shop.html',verified:true,source:'official_store_directory_seed'},
+    '静岡県/湖西市':{chain:'musashimaru',prefecture:'静岡県',municipality:'湖西市',storeName:'武蔵丸 湖西店',address:'静岡県湖西市新居町中之郷4007-1',officialUrl:'https://www.634-jp.com/musashimaru-shop.html',verified:true,source:'official_store_directory_seed'}
+  },
+  tokubei:{
+    '愛知県/岡崎市':{chain:'tokubei',prefecture:'愛知県',municipality:'岡崎市',storeName:'にぎりの徳兵衛 岡崎欠町店',address:'愛知県岡崎市欠町字石ケ崎下夕通3-1',officialUrl:'https://www.nigirinotokubei.com/shop/',verified:true,source:'official_store_directory_seed'},
+    '愛知県/豊田市':{chain:'tokubei',prefecture:'愛知県',municipality:'豊田市',storeName:'にぎりの徳兵衛 豊田挙母店',address:'愛知県豊田市挙母町4丁目54-1',officialUrl:'https://www.nigirinotokubei.com/shop/',verified:true,source:'official_store_directory_seed'},
+    '静岡県/浜松市中央区':{chain:'tokubei',prefecture:'静岡県',municipality:'浜松市中央区',storeName:'にぎりの徳兵衛 西塚店',address:'静岡県浜松市中央区神立町122-1',officialUrl:'https://www.nigirinotokubei.com/shop/',verified:true,source:'official_store_directory_seed'}
+  }
+};
+let storeData={catalog:BUILTIN_LOCAL_CATALOG};
 
 const makeLocation=(prefecture,city)=>({prefecture,city,prefectureCode:PREF_CODES[prefecture]||''});
 const cityParent=city=>city.match(/^(.+?市).+?区$/)?.[1]||null;
 const isTokyoWard=city=>/^[^市町村]+区$/.test(String(city||''));
 export function coarseMunicipality(prefecture,city){const parent=cityParent(city);if(parent)return parent;if(prefecture==='東京都'&&isTokyoWard(city))return '東京23区';return city;}
-function saved(){try{const v=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(v?.prefecture&&v?.city)return makeLocation(v.prefecture,coarseMunicipality(v.prefecture,v.city));}catch{}return makeLocation('愛知県','豊橋市');}
-const save=v=>localStorage.setItem(STORAGE_KEY,JSON.stringify(v));
+function storageGet(){try{return localStorage.getItem(STORAGE_KEY);}catch{return null;}}
+function storageSet(v){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(v));return true;}catch{return false;}}
+function saved(){try{const v=JSON.parse(storageGet()||'null');if(v?.prefecture&&v?.city)return makeLocation(v.prefecture,coarseMunicipality(v.prefecture,v.city));}catch{}return makeLocation('愛知県','豊橋市');}
+const save=v=>storageSet(v);
 function coarsenMunicipalities(raw){return Object.fromEntries(Object.entries(raw||{}).map(([pref,values])=>[pref,[...new Set((Array.isArray(values)?values:[]).map(city=>coarseMunicipality(pref,city)).filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'ja'))]));}
-async function municipalities(){try{const r=await fetch(ADDRESS_API,{cache:'force-cache'});if(!r.ok)throw new Error();const d=await r.json();if(!d?.['東京都']?.includes('新宿区')||!d?.['愛知県']?.includes('豊橋市'))throw new Error();return coarsenMunicipalities(d);}catch{return FALLBACK;}}
-async function loadStoreData(){try{const r=await fetch(`${STORE_DATA_URL}?v=${Date.now()}`,{cache:'no-store'});if(r.ok)storeData=await r.json();}catch{storeData={catalog:{}};}}
+export function municipalityFallbackData(catalog={}){
+  const out=Object.fromEntries(Object.keys(PREF_CODES).map(pref=>[pref,[PREF_CAPITALS[pref]]]));
+  for(const [pref,values] of Object.entries(FALLBACK_EXTRA))for(const city of values)if(!out[pref].includes(city))out[pref].push(city);
+  for(const chainRows of Object.values(catalog||{}))for(const row of Object.values(chainRows||{})){const pref=row?.prefecture,city=coarseMunicipality(pref,row?.municipality);if(pref&&city&&out[pref]&&!out[pref].includes(city))out[pref].push(city);}
+  for(const pref of Object.keys(out))out[pref]=[...new Set(out[pref].filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'ja'));
+  return out;
+}
+async function municipalities(){try{const r=await fetch(ADDRESS_API,{cache:'force-cache'});if(!r.ok)throw new Error();const d=await r.json();if(!d?.['東京都']?.includes('新宿区')||!d?.['愛知県']?.includes('豊橋市'))throw new Error();return coarsenMunicipalities(d);}catch{return municipalityFallbackData(storeData.catalog||{});}}
+function validStoreData(value){return Boolean(value?.catalog&&typeof value.catalog==='object');}
+async function fetchStoreData(url){const r=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);const value=await r.json();if(!validStoreData(value))throw new Error('invalid store catalog');return value;}
+async function loadStoreData(){
+  try{storeData=await fetchStoreData(STORE_DATA_URL);return;}
+  catch{}
+  try{storeData=await fetchStoreData(STORE_FALLBACK_DATA_URL);return;}
+  catch{storeData={schemaVersion:1,catalog:BUILTIN_LOCAL_CATALOG,source:'built_in_verified_seed'};}
+}
 function options(el,values,selected){el.replaceChildren(...values.map(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;o.selected=v===selected;return o;}));}
 const rowsFor=(catalog,chain,prefecture)=>Object.values(catalog?.[chain]||{}).filter(x=>x?.prefecture===prefecture);
 
