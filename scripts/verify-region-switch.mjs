@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { coarseMunicipality, resolveChainContextFromCatalog } from '../app/region.js';
+import { coarseMunicipality, municipalityFallbackData, resolveChainContextFromCatalog } from '../app/region.js';
 
 const ROOT=path.resolve(new URL('..',import.meta.url).pathname);
 const stores=JSON.parse(await fs.readFile(path.join(ROOT,'app','data','store-contexts.json'),'utf8'));
@@ -15,6 +15,13 @@ assert.equal(coarseMunicipality('北海道','札幌市中央区'),'札幌市');
 assert.equal(coarseMunicipality('愛知県','名古屋市中区'),'名古屋市');
 assert.equal(coarseMunicipality('東京都','新宿区'),'東京23区');
 assert.equal(coarseMunicipality('愛知県','豊橋市'),'豊橋市');
+
+const fallback=municipalityFallbackData(catalog);
+assert.equal(Object.keys(fallback).length,47,'Address API fallback must expose all 47 prefectures');
+for(const [pref,cities] of Object.entries(fallback))assert.ok(Array.isArray(cities)&&cities.length>=1,`${pref} fallback municipality missing`);
+assert.ok(fallback['愛知県'].includes('豊橋市'),'Aichi fallback must retain Toyohashi');
+assert.ok(fallback['北海道'].includes('札幌市'),'Hokkaido fallback must retain Sapporo');
+assert.ok(fallback['東京都'].includes('東京23区'),'Tokyo fallback must retain Tokyo 23 wards');
 
 const sa=c('sushiro',A),sb=c('sushiro',B),sbCoarse=c('sushiro',B_COARSE);
 assert.equal(sa.storeId,'142');assert.equal(sa.menuAreaCode,'179');assert.equal(sa.priceTier,120);assert.match(sa.menuUrl,/s_id=179/);
@@ -46,4 +53,10 @@ assert.ok(ua.officialUrl&&ub.officialUrl);assert.ok('priceClass' in ua&&'priceCl
 if(ua.store&&ub.store)assert.notEqual(ua.store.storeId||ua.officialUrl,ub.store.storeId||ub.officialUrl,'Uobei representative must change by region');
 else assert.notEqual(ua.priceClass,ub.priceClass,'Uobei approximation must change between Toyohashi urban and Sapporo standard context');
 
-console.log('Toyohashi -> Sapporo five-chain and coarse-city regional switch regression passed.');
+const fallbackCatalog=JSON.parse(await fs.readFile(path.join(ROOT,'app','data','store-contexts-fallback.json'),'utf8')).catalog||{};
+const ft=resolveChainContextFromCatalog('totomaru',A,fallbackCatalog),fm=resolveChainContextFromCatalog('musashimaru',A,fallbackCatalog);
+assert.equal(ft.availableInSelectedArea,true,'Totomaru fallback catalog must preserve Toyohashi store');
+assert.equal(fm.availableInSelectedArea,true,'Musashimaru fallback catalog must preserve Toyohashi store');
+assert.match(ft.store?.storeName||'',/魚魚丸/);assert.match(fm.store?.storeName||'',/武蔵丸/);
+
+console.log('Toyohashi -> Sapporo five-chain, 47-prefecture fallback and local-store resilience regression passed.');
