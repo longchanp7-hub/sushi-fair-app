@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import * as cheerio from 'cheerio';
 import { source } from './source-registry.mjs';
 
@@ -70,6 +71,13 @@ export async function buildTotomaruCurrent(homeHtml,newsHtml=null){
   };
 }
 
+export async function refreshTotomaruCurrent(data){
+  let newsHtml=null;const homeHtml=await get(HOME);try{newsHtml=await get(NEWS,2);}catch{}
+  const current=await buildTotomaruCurrent(homeHtml,newsHtml);
+  data.chains=(data.chains||[]).map(c=>c.chain==='totomaru'?current:c);
+  return current;
+}
+
 function selfTest(){
   const home=`<h2>おすすめ商品</h2><div><a href="/products/detail/a"><strong>中とろ醤油炙り</strong></a><span>￥496</span></div><section><a href="/news/detail/x">2026/09/04 フェア告知 〖9月4日(金)～〗天然南まぐろフェア開催！！</a></section>`;
   const cs=fairCandidates(home,HOME);assert.equal(cs[0].fairName,'天然南まぐろフェア');assert.equal(cs[0].startDate,'2026-09-04');const ps=products(home,HOME);assert.equal(ps[0].priceFrom,496);assert.match(ps[0].sourceUrl,/\/products\/detail\/a$/);assert.deepEqual(dates('9月4日（金）～9月17日（木）',2026),{startDate:'2026-09-04',endDate:'2026-09-17'});console.log('Totomaru current official-site self-tests passed.');
@@ -77,7 +85,7 @@ function selfTest(){
 
 async function main(){
   if(process.argv.includes('--self-test'))return selfTest();
-  const data=JSON.parse(await fs.readFile(FAIR_PATH,'utf8'));let newsHtml=null;const homeHtml=await get(HOME);try{newsHtml=await get(NEWS,2);}catch{}
-  const current=await buildTotomaruCurrent(homeHtml,newsHtml);data.chains=(data.chains||[]).map(c=>c.chain==='totomaru'?current:c);data.updatedAt=new Date().toISOString();await fs.writeFile(FAIR_PATH,`${JSON.stringify(data,null,2)}\n`);console.log(`Applied current Totomaru official source: ${current.fairName} (${current.startDate||'?'} - ${current.endDate||'open'}) / ${current.menuHighlights.length} menu highlights`);
+  const data=JSON.parse(await fs.readFile(FAIR_PATH,'utf8'));const current=await refreshTotomaruCurrent(data);data.updatedAt=new Date().toISOString();await fs.writeFile(FAIR_PATH,`${JSON.stringify(data,null,2)}\n`);console.log(`Applied current Totomaru official source: ${current.fairName} (${current.startDate||'?'} - ${current.endDate||'open'}) / ${current.menuHighlights.length} menu highlights`);
 }
-await main();
+const direct=Boolean(process.argv[1])&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href;
+if(direct)await main();
