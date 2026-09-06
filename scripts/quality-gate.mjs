@@ -4,7 +4,7 @@ import { CHAIN_IDS, sourceHostAllowed } from './source-registry.mjs';
 
 const NATIONAL = new Set(['sushiro','hamazushi','kurasushi','kappasushi','uobei']);
 const GENERIC_FAIR = /^(?:フェア商品|期間限定メニュー|期間限定キャンペーン|開催中イベント|最新フェア確認中|季節のおすすめ|公式メニュー・おすすめ|取得エラー)$/;
-const SUSPICIOUS_ITEM = /(?:^@|@[A-Za-z0-9_]{3,}|https?:\/\/|開催.*開催|公式アカウント|LINE公式)/i;
+const SUSPICIOUS_ITEM = /(?:^@|@[A-Za-z0-9_]{3,}|https?:\/\/|開催.*開催|公式アカウント|LINE公式|解体ショー|パフォーマンス)/i;
 const todayKey = () => new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const clean = v => String(v ?? '').replace(/\s+/g,' ').trim();
 const norm = v => clean(v).replace(/[「」『』【】（）()\s・:：,，.。!！?？/／\\-]/g,'').toLowerCase();
@@ -16,16 +16,9 @@ function args(argv=process.argv.slice(2)) {
 }
 function issue(code,severity,message){return{code,severity,message};}
 function activeItems(chain,today){return (chain?.items||[]).filter(x=>x?.saleStatus!=='ended'&&(!x?.endDate||x.endDate>=today));}
+function credibleActiveItems(chain,today){return activeItems(chain,today).filter(x=>!(SUSPICIOUS_ITEM.test(clean(x?.name))&&x?.price==null));}
 function activeCampaigns(chain,today){return (chain?.campaigns||[]).filter(x=>(!x?.startDate||x.startDate<=today)&&(!x?.endDate||x.endDate>=today));}
 function sameCampaign(a,b){return norm(a?.fairName)&&norm(a?.fairName)===norm(b?.fairName);}
-function usableLkg(chain,today){
-  if(!chain)return false;
-  if(chain.endDate&&chain.endDate<today)return false;
-  if(activeItems(chain,today).length)return true;
-  if((chain.menuHighlights||[]).length)return true;
-  if(activeCampaigns(chain,today).length)return true;
-  return !NATIONAL.has(chain.chain)&&chain.status==='warning'&&Boolean(chain.sourceUrl);
-}
 function sanitize(chain,today){
   const copy=structuredClone(chain);
   copy.items=(copy.items||[]).map(item=>item?.endDate&&item.endDate<today?{...item,saleStatus:'ended'}:item);
@@ -48,13 +41,24 @@ export function inspectChain(candidate,previous,today=todayKey()){
     if(SUSPICIOUS_ITEM.test(clean(item?.name))&&item?.price==null)issues.push(issue('suspicious_item_name','error',`non-product text detected: ${item.name}`));
     if(item?.sourceUrl&&/^https:\/\//.test(item.sourceUrl)&&!sourceHostAllowed(item.sourceUrl))issues.push(issue('unregistered_item_source','warning',`item source host is not in registry: ${item.sourceUrl}`));
   }
-  const nowItems=activeItems(candidate,today),oldItems=activeItems(previous,today);
-  if(previous&&oldItems.length>0&&nowItems.length===0&&(!candidate.endDate||candidate.endDate>=today))issues.push(issue('active_items_dropped_to_zero','error',`active items dropped from ${oldItems.length} to 0`));
+  const nowItems=credibleActiveItems(candidate,today),oldItems=credibleActiveItems(previous,today);
+  if(previous&&oldItems.length>0&&nowItems.length===0&&(!candidate.endDate||candidate.endDate>=today)&&!(candidate.menuHighlights||[]).length)issues.push(issue('active_items_dropped_to_zero','error',`credible active items dropped from ${oldItems.length} to 0`));
   if(previous&&oldItems.length>=5&&sameCampaign(candidate,previous)&&nowItems.length<Math.ceil(oldItems.length*0.25))issues.push(issue('same_campaign_large_drop','error',`same campaign item count dropped ${oldItems.length} -> ${nowItems.length}`));
   if(previous&&!GENERIC_FAIR.test(clean(previous.fairName))&&GENERIC_FAIR.test(clean(candidate.fairName))&&usableLkg(previous,today))issues.push(issue('regressed_to_generic_fair','error',`fair name regressed to generic label: ${candidate.fairName}`));
   if(candidate.chain==='musashimaru'&&!nowItems.length&&(candidate.menuHighlights||[]).length<2)issues.push(issue('musashimaru_no_verified_menu','error','Musashimaru requires verified menu highlights when product rows are fail-closed'));
-  if(candidate.chain==='totomaru'&&!nowItems.length&&!(candidate.menuHighlights||[]).length)issues.push(issue('totomaru_no_menu_signal','error','Totomaru has neither product rows nor verified menu highlights'));
+  if(candidate.chain==='totomaru'&&!nowItems.length&&!(candidate.menuHighlights||[]).length)issues.push(issue('totomaru_no_menu_signal','error','Totomaru has neither credible product rows nor verified menu highlights'));
   return issues;
+}
+
+function usableLkg(chain,today){
+  if(!chain)return false;
+  if(chain.endDate&&chain.endDate<today)return false;
+  const intrinsicErrors=inspectChain(chain,null,today).filter(x=>x.severity==='error');
+  if(intrinsicErrors.length)return false;
+  if(credibleActiveItems(chain,today).length)return true;
+  if((chain.menuHighlights||[]).length)return true;
+  if(activeCampaigns(chain,today).length)return true;
+  return !NATIONAL.has(chain.chain)&&chain.status==='warning'&&Boolean(chain.sourceUrl);
 }
 
 export function promoteCandidate(candidate,previous,today=todayKey()){
@@ -70,13 +74,13 @@ export function promoteCandidate(candidate,previous,today=todayKey()){
     warnings.push(...findings.filter(x=>x.severity==='warning').map(x=>({chain:id,...x})));
     if(errors.length){
       quarantined.push({chain:id,issues:errors});
-      if(!usableLkg(old,today))throw new Error(`Quality gate blocked ${id}: ${errors.map(x=>x.code).join(', ')}; no usable last-known-good row`);
+      if(!usableLkg(old,today))throw new Error(`Quality gate blocked ${id}: ${errors.map(x=>x.code).join(', ')}; previous row is absent, expired, or also invalid`);
       const fallback=sanitize(old,today);
       fallback.status='warning';
       fallback.qualityState='last_known_good';
       fallback.qualityCheckedAt=new Date().toISOString();
       fallback.qualityIssues=errors.map(x=>x.code);
-      fallback.message=`今回の更新候補を品質ゲートで隔離し、前回確認済みデータを表示しています（${errors.map(x=>x.code).join(', ')}）。`;
+      fallback.message=`今回の更新候補を品質ゲートで隔離し、検証済みの前回データを表示しています（${errors.map(x=>x.code).join(', ')}）。`;
       selected.push(fallback);fallbackChains.push(id);
     }else{
       const ok=sanitize(row,today);
@@ -86,7 +90,7 @@ export function promoteCandidate(candidate,previous,today=todayKey()){
       selected.push(ok);
     }
   }
-  const out={...candidate,chains:selected,qualityGate:{version:1,checkedAt:new Date().toISOString(),fallbackChains,quarantined,warnings}};
+  const out={...candidate,chains:selected,qualityGate:{version:2,checkedAt:new Date().toISOString(),fallbackChains,quarantined,warnings}};
   return {data:out,report:out.qualityGate};
 }
 
@@ -102,6 +106,9 @@ function selfTest(){
   assert.equal(promoted.data.chains.find(x=>x.chain==='uobei').qualityState,'last_known_good');
   const bad=structuredClone(candidate);bad.chains.find(x=>x.chain==='uobei').items=[{name:'@official_account',price:null,saleStatus:'active',scrapeStatus:'ok'}];
   const again=promoteCandidate(bad,previous,'2026-09-06');assert.ok(again.report.fallbackChains.includes('uobei'));
+  const badPrevious=structuredClone(previous);const bt=badPrevious.chains.find(x=>x.chain==='totomaru');bt.items=[{name:'@426unxts',price:null,saleStatus:'active',scrapeStatus:'ok'}];bt.menuHighlights=[];
+  const badCandidate=structuredClone(candidate);const ct=badCandidate.chains.find(x=>x.chain==='totomaru');ct.items=[{name:'マグロ解体ショー',price:null,saleStatus:'active',scrapeStatus:'ok'}];ct.menuHighlights=[];
+  assert.throws(()=>promoteCandidate(badCandidate,badPrevious,'2026-09-06'),/previous row is absent, expired, or also invalid/);
   console.log('Quality gate self-tests passed.');
 }
 
