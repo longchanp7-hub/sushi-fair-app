@@ -5,6 +5,7 @@ import * as cheerio from 'cheerio';
 
 const ROOT=path.resolve(new URL('..',import.meta.url).pathname);
 const STORE_PATH=path.join(ROOT,'app','data','store-contexts.json');
+const FALLBACK_STORE_PATH=path.join(ROOT,'app','data','store-contexts-fallback.json');
 const FIXTURE_DIR=path.join(ROOT,'scripts','fixtures');
 const UA='Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 Chrome/138 Safari/537.36';
 const SOURCES={totomaru:'https://www.comline.co.jp/shoplist/',musashimaru:'https://www.634-jp.com/musashimaru-shop.html',tokubei:'https://www.nigirinotokubei.com/shop/'};
@@ -248,6 +249,7 @@ function health(chain,rows,existing){
 }
 
 function warn(chain,message){console.warn(`::warning title=Local store parser::${chain} ${message}`);}
+function fallbackSnapshot(data){return {schemaVersion:1,updatedAt:data.updatedAt,policy:'Verified local Tokai fallback snapshot. Used only when the live public store catalog cannot be loaded; exact municipality/ordinance-city match only, no distant same-prefecture fallback.',catalog:Object.fromEntries(Object.keys(SOURCES).map(chain=>[chain,data.catalog?.[chain]||{}]))};}
 
 async function main(){
   const data=JSON.parse(await fs.readFile(STORE_PATH,'utf8'));data.catalog||={};
@@ -278,6 +280,7 @@ async function main(){
   data.updatedAt=new Date().toISOString();
   data.localTokaiPolicy='Local Tokai store catalogs use chain-specific official-directory parsers. Healthy live results rebuild each chain so closures/moves can be reflected; parser/fetch anomalies retain verified cache/seeds. Exact municipality (or ward within the same ordinance city) only; no same-prefecture distant fallback.';
   await fs.writeFile(STORE_PATH,JSON.stringify(data,null,2)+'\n');
+  await fs.writeFile(FALLBACK_STORE_PATH,JSON.stringify(fallbackSnapshot(data),null,2)+'\n');
 }
 
 async function selfTest(){
@@ -305,6 +308,9 @@ async function selfTest(){
   const stale={'愛知県/豊橋市':{chain:'totomaru',prefecture:'愛知県',municipality:'豊橋市',storeName:'魚魚丸 閉店済み店',address:'愛知県豊橋市旧町1',officialUrl:SOURCES.totomaru,verified:true,source:'official_store_directory'}};
   const rebuilt=representatives(stale,toto);assert.notEqual(rebuilt['愛知県/豊橋市']?.storeName,'魚魚丸 閉店済み店','Healthy rebuild must remove stale representative');
   const retained=fallbackChain(stale,'totomaru');assert.equal(retained['愛知県/豊橋市']?.storeName,'魚魚丸 閉店済み店','Failure fallback must retain verified cache');
+  const snap=fallbackSnapshot({updatedAt:'2026-09-06T00:00:00.000Z',catalog:{totomaru:rebuilt,musashimaru:representatives({},musa),tokubei:representatives({},toku),sushiro:{ignored:{}}}});
+  assert.deepEqual(Object.keys(snap.catalog).sort(),['musashimaru','tokubei','totomaru']);
+  assert.ok(snap.catalog.totomaru['愛知県/豊橋市']);
   console.log('Local Tokai chain-specific store parser self-tests passed.');
 }
 
