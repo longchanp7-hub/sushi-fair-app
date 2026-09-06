@@ -11,13 +11,20 @@ permissions:
 jobs:
   regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - run: npm install
+          node-version: '24'
+      - name: Install dependencies reproducibly
+        run: |
+          if [[ -f package-lock.json ]]; then
+            npm ci --ignore-scripts --no-audit --no-fund
+          else
+            npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+            npm ci --ignore-scripts --no-audit --no-fund
+          fi
       - name: Syntax checks
         run: |
           node --check app/national.js
@@ -26,7 +33,10 @@ jobs:
           node --check scripts/update-fairs.mjs
           node --check scripts/verify-pages.mjs
           node --check scripts/fix-official-fair-discovery.mjs
-      - name: Parser and grace self-tests
+          node --check scripts/source-registry.mjs
+          node --check scripts/quality-gate.mjs
+          node --check scripts/normalize-campaigns.mjs
+      - name: Parser, campaign and quality self-tests
         run: |
           node scripts/fix-kura.mjs --self-test
           node scripts/build-national-fairs.mjs --self-test
@@ -38,6 +48,8 @@ jobs:
           node scripts/update-local-store-contexts.mjs --self-test
           node scripts/update-local-tokai.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
+          node scripts/normalize-campaigns.mjs --self-test
+          node scripts/quality-gate.mjs --self-test
       - name: Regional switch regression
         run: |
           node scripts/ensure-region-contexts.mjs
