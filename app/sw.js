@@ -1,4 +1,5 @@
-const CACHE='sushi-fair-v20260906-resilience1';
+const CACHE_PREFIX='sushi-fair-v';
+const CACHE='sushi-fair-v20260906-quality2';
 const STATIC=[
   './',
   './index.html',
@@ -18,19 +19,25 @@ const STATIC=[
 const DATA_PATHS=['/data/fairs.json','/data/store-contexts.json','/data/store-contexts-fallback.json'];
 const isData=url=>DATA_PATHS.some(path=>url.pathname.endsWith(path));
 const isSameOrigin=request=>new URL(request.url).origin===self.location.origin;
+const cacheKey=request=>{
+  const url=new URL(request.url);
+  if(isData(url))url.search='';
+  return url.href;
+};
 
 async function networkFirst(request,{timeoutMs=8000}={}){
   const cache=await caches.open(CACHE);
+  const key=cacheKey(request);
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),timeoutMs);
   try{
     const response=await fetch(request,{cache:'no-store',signal:controller.signal});
-    if(response.ok){if(isSameOrigin(request))await cache.put(request,response.clone());return response;}
-    const cached=await cache.match(request,{ignoreSearch:true});
+    if(response.ok){if(isSameOrigin(request))await cache.put(key,response.clone());return response;}
+    const cached=await cache.match(key);
     if(cached)return cached;
     return response;
   }catch(error){
-    const cached=await cache.match(request,{ignoreSearch:true});
+    const cached=await cache.match(key);
     if(cached)return cached;
     throw error;
   }finally{clearTimeout(timer);}
@@ -43,7 +50,7 @@ self.addEventListener('install',event=>{
 self.addEventListener('activate',event=>{
   event.waitUntil((async()=>{
     const keys=await caches.keys();
-    await Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)));
+    await Promise.all(keys.filter(key=>key.startsWith(CACHE_PREFIX)&&key!==CACHE).map(key=>caches.delete(key)));
     await self.clients.claim();
   })());
 });
