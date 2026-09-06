@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { refreshTotomaruCurrent } from './fix-totomaru-current.mjs';
 
 const ROOT=path.resolve(new URL('..',import.meta.url).pathname);
 const FAIR_PATH=path.join(ROOT,'app','data','fairs.json');
@@ -54,6 +55,12 @@ function selfTest(){
 async function main(){
   if(process.argv.includes('--self-test'))return selfTest();
   const data=JSON.parse(await fs.readFile(FAIR_PATH,'utf8'));
+  try{
+    const toto=await refreshTotomaruCurrent(data);
+    console.log(`Refreshed Totomaru from current official site: ${toto.fairName} / ${toto.menuHighlights.length} verified menu highlights`);
+  }catch(error){
+    console.warn(`::warning title=Totomaru current source::Current official-site refresh failed; quality gate will decide whether verified LKG is usable: ${error.message}`);
+  }
   normalizeConcurrentCampaigns(data);
   data.updatedAt=new Date().toISOString();
   await fs.writeFile(FAIR_PATH,`${JSON.stringify(data,null,2)}\n`);

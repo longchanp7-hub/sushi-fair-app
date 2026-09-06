@@ -34,9 +34,12 @@ export const OFFICIAL_SOURCES = Object.freeze({
     currentHero: 'https://prcdn.freetls.fastly.net/release_image/20954/243/20954-243-f4d244da98b9421a28f5fbd4f82cf5d1-600x600.png',
   },
   totomaru: {
-    menu: 'https://www.comline.co.jp/totomaru/menu/',
-    stores: 'https://www.comline.co.jp/shoplist/',
-    newsRoot: 'https://totomaru.ec-design.co.jp/news/',
+    home: 'https://totomaru.ec-design.co.jp/',
+    news: 'https://totomaru.ec-design.co.jp/news',
+    products: 'https://totomaru.ec-design.co.jp/products',
+    shops: 'https://totomaru.ec-design.co.jp/shops',
+    legacyMenu: 'https://www.comline.co.jp/totomaru/menu/',
+    legacyStores: 'https://www.comline.co.jp/shoplist/',
   },
   musashimaru: {
     menu: 'https://www.634-jp.com/musashimaru-menu.html',
@@ -57,7 +60,7 @@ export const ALLOWED_SOURCE_HOSTS = Object.freeze(new Set([
   'www.kurasushi.co.jp','shop.kurasushi.co.jp',
   'www.kappasushi.jp','prtimes.jp','prcdn.freetls.fastly.net',
   'www.uobei.info',
-  'www.comline.co.jp','totomaru.ec-design.co.jp',
+  'www.comline.co.jp','totomaru.ec-design.co.jp','cos.ec-design.co.jp',
   'www.634-jp.com',
   'www.nigirinotokubei.com','www.atom-corp.co.jp','origin.digitalpr.jp',
 ]));

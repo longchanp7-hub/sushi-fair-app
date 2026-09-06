@@ -36,6 +36,7 @@ jobs:
           node --check scripts/source-registry.mjs
           node --check scripts/quality-gate.mjs
           node --check scripts/normalize-campaigns.mjs
+          node --check scripts/fix-totomaru-current.mjs
       - name: Parser, campaign and quality self-tests
         run: |
           node scripts/fix-kura.mjs --self-test
@@ -47,6 +48,7 @@ jobs:
           node scripts/fix-official-fair-discovery.mjs --self-test
           node scripts/update-local-store-contexts.mjs --self-test
           node scripts/update-local-tokai.mjs --self-test
+          node scripts/fix-totomaru-current.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
           node scripts/normalize-campaigns.mjs --self-test
           node scripts/quality-gate.mjs --self-test
