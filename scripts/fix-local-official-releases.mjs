@@ -25,11 +25,11 @@ const item = (name, price, start, end, sourceUrl) => ({ name, price, startDate:s
 const byChain = data => Object.fromEntries((data?.chains || []).map(c => [c.chain, c]));
 const itemsFrom = (rows, start, end, sourceUrl) => rows.map(([name, price]) => item(name, price, start, end, sourceUrl));
 const clean = v => String(v ?? '').replace(/\s+/g,' ').trim();
-const sparse = fair => !Array.isArray(fair?.items) || fair.items.length < 3;
+const missingItems = fair => !Array.isArray(fair?.items) || fair.items.length === 0;
 const hasSource = (fair,url) => [fair?.sourceUrl,fair?.officialReleaseUrl,...(fair?.campaigns||[]).map(c=>c?.sourceUrl)].includes(url);
-const shouldApplyKappa = fair => sparse(fair) || /(?:期間限定|キャンペーン|秋の旨ネタ|50％増量|秋のおすすめ|お月見)/.test(clean(fair?.fairName)) || hasSource(fair,S.kMain) || hasSource(fair,S.kAutumn) || hasSource(fair,S.kMoon);
-const shouldApplyUobei = fair => sparse(fair) || /(?:豪華ネタフェア|秋の味覚フェア|期間限定|フェア商品)/.test(clean(fair?.fairName)) || hasSource(fair,S.uobei) || /000000240\.000020954/.test(String(fair?.officialReleaseUrl||''));
-const shouldApplyKura = fair => sparse(fair) || /(?:北海フェア|開催中イベント|最新フェア確認中|期間限定)/.test(clean(fair?.fairName)) || hasSource(fair,S.kura);
+const shouldApplyKappa = fair => missingItems(fair) || /(?:期間限定|キャンペーン|秋の旨ネタ|50％増量|秋のおすすめ|お月見)/.test(clean(fair?.fairName)) || hasSource(fair,S.kMain) || hasSource(fair,S.kAutumn) || hasSource(fair,S.kMoon);
+const shouldApplyUobei = fair => missingItems(fair) || /(?:豪華ネタフェア|秋の味覚フェア|期間限定|フェア商品)/.test(clean(fair?.fairName)) || hasSource(fair,S.uobei) || /000000240\.000020954/.test(String(fair?.officialReleaseUrl||''));
+const shouldApplyKura = fair => missingItems(fair) || /(?:北海フェア|開催中イベント|最新フェア確認中|期間限定)/.test(clean(fair?.fairName)) || hasSource(fair,S.kura);
 
 const K_MAIN = [
   ['大ぶりとろサーモン',110],['大ぶりとろサーモン 塩炙り',150],['北海道産さんま',190],['北海道産さんま塩炙り',190],
