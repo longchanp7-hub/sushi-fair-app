@@ -3,16 +3,15 @@ name: Deploy Pages
 on:
   push:
     branches: ['main']
-    paths-ignore:
-      - 'scripts/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/update-fairs.yml'
-      - '.github/workflows/refresh-crowd*.yml'
-      - 'app/data/crowd.json'
-      - 'app/data/fairs.json'
-      - 'app/data/store-contexts.json'
-      - 'app/data/store-contexts-fallback.json'
+    paths:
+      - 'app/index.html'
+      - 'app/national.js'
+      - 'app/region.js'
+      - 'app/sw.js'
+      - 'app/*.css'
+      - 'app/manifest.webmanifest'
+      - 'app/assets/**'
+      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
