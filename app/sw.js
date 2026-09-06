@@ -1,4 +1,4 @@
-const CACHE='sushi-fair-v20260826-dark1';
+const CACHE='sushi-fair-v20260906-resilience1';
 const STATIC=[
   './',
   './index.html',
@@ -10,11 +10,12 @@ const STATIC=[
   './local-tokai.css',
   './suruga-theme.css',
   './manifest.webmanifest',
+  './data/store-contexts-fallback.json',
   './assets/sushi-icon-192-v2.png',
   './assets/sushi-icon-512-v2.png',
   './assets/suruga-bay-fuji-bg.webp'
 ];
-const DATA_PATHS=['/data/fairs.json','/data/store-contexts.json'];
+const DATA_PATHS=['/data/fairs.json','/data/store-contexts.json','/data/store-contexts-fallback.json'];
 const isData=url=>DATA_PATHS.some(path=>url.pathname.endsWith(path));
 const isSameOrigin=request=>new URL(request.url).origin===self.location.origin;
 
@@ -24,7 +25,9 @@ async function networkFirst(request,{timeoutMs=8000}={}){
   const timer=setTimeout(()=>controller.abort(),timeoutMs);
   try{
     const response=await fetch(request,{cache:'no-store',signal:controller.signal});
-    if(response.ok&&isSameOrigin(request))await cache.put(request,response.clone());
+    if(response.ok){if(isSameOrigin(request))await cache.put(request,response.clone());return response;}
+    const cached=await cache.match(request,{ignoreSearch:true});
+    if(cached)return cached;
     return response;
   }catch(error){
     const cached=await cache.match(request,{ignoreSearch:true});
