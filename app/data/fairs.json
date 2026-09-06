@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-06T06:34:01.304Z",
+  "updatedAt": "2026-09-06T06:41:31.587Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -274,7 +274,7 @@
       "representativeImageProduct": "天然まぐろのハラモ1貫",
       "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-06T06:34:01.391Z"
+      "qualityCheckedAt": "2026-09-06T06:41:31.673Z"
     },
     {
       "chain": "hamazushi",
@@ -548,7 +548,7 @@
       "representativeImageProduct": "九州産あじのたたき大葉つつみ",
       "representativeImagePage": "https://www.hamazushi.com/menu/",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
+      "qualityCheckedAt": "2026-09-06T06:41:31.673Z"
     },
     {
       "chain": "kurasushi",
@@ -654,7 +654,7 @@
       "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
       "group": "national",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
+      "qualityCheckedAt": "2026-09-06T06:41:31.673Z"
     },
     {
       "chain": "kappasushi",
@@ -1382,7 +1382,7 @@
       "representativeImageProduct": "北海道産 ほたて",
       "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
+      "qualityCheckedAt": "2026-09-06T06:41:31.674Z"
     },
     {
       "chain": "uobei",
@@ -1522,124 +1522,86 @@
       "group": "national",
       "campaignPhase": "active",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
+      "qualityCheckedAt": "2026-09-06T06:41:31.674Z"
     },
     {
       "chain": "totomaru",
       "group": "local_tokai",
       "storeName": "選択地域",
-      "fairName": "天然南まぐろフェア開催開催中！",
-      "startDate": null,
+      "fairName": "天然南まぐろフェア",
+      "startDate": "2026-09-04",
       "endDate": null,
-      "items": [
-        {
-          "name": "カツオわら焼きパフォーマンス",
-          "price": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-        },
-        {
-          "name": "マグロ解体ショー",
-          "price": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-        },
-        {
-          "name": "@426unxts",
-          "price": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-        }
-      ],
+      "items": [],
       "campaigns": [
         {
-          "fairName": "天然南まぐろフェア開催開催中！",
-          "startDate": null,
+          "fairName": "天然南まぐろフェア",
+          "startDate": "2026-09-04",
           "endDate": null,
           "items": [],
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
-        },
-        {
-          "fairName": "旬のおすすめ",
-          "startDate": null,
-          "endDate": null,
-          "items": [
-            {
-              "name": "カツオわら焼きパフォーマンス",
-              "price": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-            },
-            {
-              "name": "マグロ解体ショー",
-              "price": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-            },
-            {
-              "name": "@426unxts",
-              "price": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
-            }
-          ],
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "imageUrl": null
+          "sourceUrl": "https://totomaru.ec-design.co.jp/news/detail/07516629-4406-4398-a9ec-6178b4978d59",
+          "imageUrl": null,
+          "verified": true,
+          "campaignPhase": "active"
         }
       ],
       "menuHighlights": [
         {
-          "name": "カツオわら焼きパフォーマンス",
-          "price": null,
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+          "name": "【さび抜】中とろ醤油炙り",
+          "priceFrom": 496,
+          "sourceUrl": "https://totomaru.ec-design.co.jp/products/detail/b2f87794-60e1-4b22-989a-240a3adcdc42",
+          "sourceType": "official_current_product"
         },
         {
-          "name": "マグロ解体ショー",
-          "price": null,
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+          "name": "【さび抜】小粋な３貫",
+          "priceFrom": 691,
+          "sourceUrl": "https://totomaru.ec-design.co.jp/products/detail/1023e344-6c7f-45ee-8596-5f716bc5bb5e",
+          "sourceType": "official_current_product"
         },
         {
-          "name": "@426unxts",
-          "price": null,
-          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-          "sourceType": "official_menu_item",
-          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+          "name": "【さび抜】はも",
+          "priceFrom": 421,
+          "sourceUrl": "https://totomaru.ec-design.co.jp/products/detail/d7056ffa-bc1f-4020-a492-c1834e22e51c",
+          "sourceType": "official_current_product"
+        },
+        {
+          "name": "【さび抜】光物三昧",
+          "priceFrom": 421,
+          "sourceUrl": "https://totomaru.ec-design.co.jp/products/detail/08334bfd-e68f-4ab3-b391-4e3dd60f6606",
+          "sourceType": "official_current_product"
+        },
+        {
+          "name": "小粋な３貫",
+          "priceFrom": 691,
+          "sourceUrl": "https://totomaru.ec-design.co.jp/products/detail/f0f9fa2f-90b5-4ffd-95e7-d5df2b7a3d98",
+          "sourceType": "official_current_product"
+        },
+        {
+          "name": "【さび抜】上赤身",
+          "priceFrom": 421,
+          "sourceUrl": "https://totomaru.ec-design.co.jp/products/detail/16f9a923-4208-4f42-95f8-a3d443df0483",
+          "sourceType": "official_current_product"
         }
       ],
-      "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
-      "storeUrl": "https://www.comline.co.jp/shoplist/",
-      "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
-      "status": "warning",
-      "message": "今回の更新候補を品質ゲートで隔離し、前回確認済みデータを表示しています（suspicious_item_name）。",
-      "dataScope": "local_official_menu",
+      "sourceUrl": "https://totomaru.ec-design.co.jp/news/detail/07516629-4406-4398-a9ec-6178b4978d59",
+      "storeUrl": "https://totomaru.ec-design.co.jp/shops",
+      "imageUrl": "https://cos.ec-design.co.jp/ec-design-totomaru-prd/news/07516629-4406-4398-a9ec-6178b4978d59/745fbc99-b94c-4704-a51f-a74d6e2d8f83.png?20260902171216",
+      "status": "ok",
+      "message": "フェア名・期間は魚魚丸の現行公式告知から取得し、商品欄は推測せず公式サイトのおすすめ商品を別枠表示しています。",
+      "dataScope": "local_current_official_news",
       "officialActionLabel": "店舗・順番待ちを公式で確認",
-      "officialActionUrl": "https://www.comline.co.jp/shoplist/",
+      "officialActionUrl": "https://totomaru.ec-design.co.jp/shops",
       "regionalModel": {
         "strategyKey": "exactLocalStore",
-        "label": "選択市町村の実店舗",
+        "label": "選択市区町村の実店舗",
         "priceVariesByLocation": true
       },
       "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。",
-      "representativeImageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
+      "representativeImageUrl": "https://cos.ec-design.co.jp/ec-design-totomaru-prd/news/07516629-4406-4398-a9ec-6178b4978d59/745fbc99-b94c-4704-a51f-a74d6e2d8f83.png?20260902171216",
       "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "カツオわら焼きパフォーマンス",
-      "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/",
-      "qualityState": "last_known_good",
-      "qualityCheckedAt": "2026-09-06T06:34:01.392Z",
-      "qualityIssues": [
-        "suspicious_item_name"
-      ]
+      "representativeImageProduct": "【さび抜】中とろ醤油炙り",
+      "representativeImagePage": "https://totomaru.ec-design.co.jp/news/detail/07516629-4406-4398-a9ec-6178b4978d59",
+      "qualityState": "verified",
+      "qualityCheckedAt": "2026-09-06T06:41:31.675Z"
     },
     {
       "chain": "musashimaru",
@@ -1687,7 +1649,7 @@
       "representativeImageProduct": "釣り魚の調理例",
       "representativeImagePage": "https://www.634-jp.com/lovefish.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-06T06:34:01.392Z"
+      "qualityCheckedAt": "2026-09-06T06:41:31.675Z"
     },
     {
       "chain": "tokubei",
@@ -2148,27 +2110,14 @@
       "representativeImageProduct": "秋の特選五貫盛り",
       "representativeImagePage": "https://www.nigirinotokubei.com/info/11244/",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-06T06:34:01.393Z"
+      "qualityCheckedAt": "2026-09-06T06:41:31.675Z"
     }
   ],
   "qualityGate": {
-    "version": 1,
-    "checkedAt": "2026-09-06T06:34:01.393Z",
-    "fallbackChains": [
-      "totomaru"
-    ],
-    "quarantined": [
-      {
-        "chain": "totomaru",
-        "issues": [
-          {
-            "code": "suspicious_item_name",
-            "severity": "error",
-            "message": "non-product text detected: @426unxts"
-          }
-        ]
-      }
-    ],
+    "version": 2,
+    "checkedAt": "2026-09-06T06:41:31.675Z",
+    "fallbackChains": [],
+    "quarantined": [],
     "warnings": []
   }
 }
