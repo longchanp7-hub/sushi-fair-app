@@ -1,19 +1,20 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { source } from './source-registry.mjs';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const FAIR_PATH = path.join(ROOT, 'app', 'data', 'fairs.json');
 const S = {
-  hama: 'https://www.hamazushi.com/topics/2026/0831000844.html',
-  kMain: 'https://prtimes.jp/main/html/rd/p/000001211.000018731.html',
-  kAutumn: 'https://prtimes.jp/main/html/rd/p/000001213.000018731.html',
-  kMoon: 'https://prtimes.jp/main/html/rd/p/000001214.000018731.html',
-  uobei: 'https://prtimes.jp/main/html/rd/p/000000243.000020954.html',
-  uobeiHero: 'https://prcdn.freetls.fastly.net/release_image/20954/243/20954-243-f4d244da98b9421a28f5fbd4f82cf5d1-600x600.png',
-  kura: 'https://www.kurasushi.co.jp/author/008437.html',
-  toku: 'https://www.nigirinotokubei.com/info/11244/',
-  tokuCompany: 'https://www.atom-corp.co.jp/fair/fair.php?fair_no=3827',
+  hama: source('hamazushi','currentTopic'),
+  kMain: source('kappasushi','currentMain'),
+  kAutumn: source('kappasushi','currentAutumn'),
+  kMoon: source('kappasushi','currentMoon'),
+  uobei: source('uobei','currentRelease'),
+  uobeiHero: source('uobei','currentHero'),
+  kura: source('kurasushi','currentRelease'),
+  toku: source('tokubei','currentRelease'),
+  tokuCompany: source('tokubei','currentCompanyRelease'),
 };
 const jstToday = (now = new Date()) => {
   const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone:'Asia/Tokyo', year:'numeric', month:'2-digit', day:'2-digit' }).formatToParts(now).map(x => [x.type, x.value]));
@@ -22,7 +23,13 @@ const jstToday = (now = new Date()) => {
 const active = (today, start, end = null) => today >= start && (!end || today <= end);
 const item = (name, price, start, end, sourceUrl) => ({ name, price, startDate:start, endDate:end, saleStatus:'active', scrapeStatus:'ok', sourceUrl });
 const byChain = data => Object.fromEntries((data?.chains || []).map(c => [c.chain, c]));
-const itemsFrom = (rows, start, end, source) => rows.map(([name, price]) => item(name, price, start, end, source));
+const itemsFrom = (rows, start, end, sourceUrl) => rows.map(([name, price]) => item(name, price, start, end, sourceUrl));
+const clean = v => String(v ?? '').replace(/\s+/g,' ').trim();
+const missingItems = fair => !Array.isArray(fair?.items) || fair.items.length === 0;
+const hasSource = (fair,url) => [fair?.sourceUrl,fair?.officialReleaseUrl,...(fair?.campaigns||[]).map(c=>c?.sourceUrl)].includes(url);
+const shouldApplyKappa = fair => missingItems(fair) || /(?:期間限定|キャンペーン|秋の旨ネタ|50％増量|秋のおすすめ|お月見)/.test(clean(fair?.fairName)) || hasSource(fair,S.kMain) || hasSource(fair,S.kAutumn) || hasSource(fair,S.kMoon);
+const shouldApplyUobei = fair => missingItems(fair) || /(?:豪華ネタフェア|秋の味覚フェア|期間限定|フェア商品)/.test(clean(fair?.fairName)) || hasSource(fair,S.uobei) || /000000240\.000020954/.test(String(fair?.officialReleaseUrl||''));
+const shouldApplyKura = fair => missingItems(fair) || /(?:北海フェア|開催中イベント|最新フェア確認中|期間限定)/.test(clean(fair?.fairName)) || hasSource(fair,S.kura);
 
 const K_MAIN = [
   ['大ぶりとろサーモン',110],['大ぶりとろサーモン 塩炙り',150],['北海道産さんま',190],['北海道産さんま塩炙り',190],
@@ -62,16 +69,16 @@ export function applyVerifiedCurrentOfficialCampaigns(data, today = jstToday()) 
     Object.assign(c.hamazushi, { fairName:'はま寿司のにっぽん旨ねた祭り 第2弾', startDate:'2026-09-01', endDate:null, officialCampaignTitle:'はま寿司のにっぽん旨ねた祭り 第2弾', officialCampaignUrl:S.hama, fairNameSource:'official_topic_page', status:'ok', message:null, campaignPhase:'active' });
     changed.push('hamazushi');
   }
-  if (c.kappasushi && active(today, '2026-09-03', '2026-09-30')) {
+  if (c.kappasushi && active(today, '2026-09-03', '2026-09-30') && shouldApplyKappa(c.kappasushi)) {
     const main = itemsFrom(K_MAIN,'2026-09-03','2026-09-16',S.kMain), autumn = itemsFrom(K_AUTUMN,'2026-09-03',null,S.kAutumn), moon = itemsFrom(K_MOON,'2026-09-03','2026-09-30',S.kMoon);
-    Object.assign(c.kappasushi, { fairName:'かっぱの秋の旨ネタ＆50％増量祭り／秋のおすすめ／お月見祭り', startDate:'2026-09-03', endDate:'2026-09-30', items:[...main,...autumn,...moon], sourceUrl:'https://www.kappasushi.jp/campaign_list/', officialReleaseUrl:S.kMain, status:'ok', message:null, campaignPhase:'active', dataScope:'national_verified_official_campaigns', priceNote:'公式発表の税込価格です。一部店舗では価格が異なる場合があります。', campaigns:[{fairName:'かっぱの秋の旨ネタ＆お値段そのまま50％増量祭り',startDate:'2026-09-03',endDate:'2026-09-16',sourceUrl:S.kMain,items:main},{fairName:'かっぱの秋のおすすめ',startDate:'2026-09-03',endDate:null,sourceUrl:S.kAutumn,items:autumn},{fairName:'かっぱのお月見祭り',startDate:'2026-09-03',endDate:'2026-09-30',sourceUrl:S.kMoon,items:moon}] });
+    Object.assign(c.kappasushi, { fairName:'かっぱの秋の旨ネタ＆50％増量祭り／秋のおすすめ／お月見祭り', startDate:'2026-09-03', endDate:'2026-09-30', items:[...main,...autumn,...moon], sourceUrl:source('kappasushi','campaigns'), officialReleaseUrl:S.kMain, status:'ok', message:null, campaignPhase:'active', dataScope:'national_verified_official_campaigns', priceNote:'公式発表の税込価格です。一部店舗では価格が異なる場合があります。', campaigns:[{fairName:'かっぱの秋の旨ネタ＆お値段そのまま50％増量祭り',startDate:'2026-09-03',endDate:'2026-09-16',sourceUrl:S.kMain,items:main},{fairName:'かっぱの秋のおすすめ',startDate:'2026-09-03',endDate:null,sourceUrl:S.kAutumn,items:autumn},{fairName:'かっぱのお月見祭り',startDate:'2026-09-03',endDate:'2026-09-30',sourceUrl:S.kMoon,items:moon}] });
     changed.push('kappasushi');
   }
-  if (c.uobei && active(today, '2026-08-25', '2026-09-30')) {
-    Object.assign(c.uobei, { fairName:'秋の味覚フェア', startDate:'2026-08-25', endDate:null, items:itemsFrom(UOBEI,'2026-08-25',null,S.uobei), sourceUrl:'https://www.uobei.info/menu/', officialReleaseUrl:S.uobei, status:'ok', message:null, campaignPhase:'active', dataScope:'national_verified_official_release', priceNote:'公式発表の税込価格です。地域・店舗により価格が異なる場合があります。', imageUrl:S.uobeiHero, representativeImageUrl:S.uobeiHero, representativeImageSource:'official_food_or_fair_image', representativeImageProduct:'本鮪大とろ', representativeImagePage:S.uobei });
+  if (c.uobei && active(today, '2026-08-25', '2026-09-30') && shouldApplyUobei(c.uobei)) {
+    Object.assign(c.uobei, { fairName:'秋の味覚フェア', startDate:'2026-08-25', endDate:null, items:itemsFrom(UOBEI,'2026-08-25',null,S.uobei), sourceUrl:source('uobei','menu'), officialReleaseUrl:S.uobei, status:'ok', message:null, campaignPhase:'active', dataScope:'national_verified_official_release', priceNote:'公式発表の税込価格です。地域・店舗により価格が異なる場合があります。', imageUrl:S.uobeiHero, representativeImageUrl:S.uobeiHero, representativeImageSource:'official_food_or_fair_image', representativeImageProduct:'本鮪大とろ', representativeImagePage:S.uobei });
     changed.push('uobei');
   }
-  if (c.kurasushi && active(today, '2026-09-04', '2026-09-13')) {
+  if (c.kurasushi && active(today, '2026-09-04', '2026-09-13') && shouldApplyKura(c.kurasushi)) {
     Object.assign(c.kurasushi, { fairName:'北海フェア', startDate:'2026-09-04', endDate:'2026-09-13', items:KURA.map(([n,p,e]) => item(n,p,'2026-09-04',e,S.kura)), sourceUrl:S.kura, officialReleaseUrl:S.kura, status:'ok', message:null, campaignPhase:'active', dataScope:'national_verified_official_release', priceNote:'くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。' });
     changed.push('kurasushi');
   }
@@ -105,6 +112,8 @@ function selfTest() {
   validate(data,'2026-09-04');
   assert.equal(byChain(data).tokubei.items.find(x => x.name === '鮭豚汁（しゃけとんじる）')?.price,407);
   assert.equal(byChain(data).kappasushi.items.find(x => x.name === '月見牛肉いなり')?.price,190);
+  const newer={chains:[{chain:'uobei',fairName:'次の公式フェア',items:[{name:'新商品',price:220}],officialReleaseUrl:'https://prtimes.jp/main/html/rd/p/000000999.000020954.html'}]};
+  assert.deepEqual(applyVerifiedCurrentOfficialCampaigns(newer,'2026-09-20'),[],'dated override must not replace a newer healthy fair');
   console.log('Verified current official campaign override self-tests passed.');
 }
 

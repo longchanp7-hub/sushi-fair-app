@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'scripts/**'
       - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/update-fairs.yml'
       - '.github/workflows/refresh-crowd*.yml'
       - 'app/data/crowd.json'
@@ -33,6 +34,17 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Pre-deploy local quality checks
+        run: |
+          node --check app/national.js
+          node --check app/region.js
+          node --check app/sw.js
+          node --check scripts/verify-pages.mjs
+          node --check scripts/quality-gate.mjs
+          node scripts/quality-gate.mjs --candidate app/data/fairs.json --previous app/data/fairs.json --check-only
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
