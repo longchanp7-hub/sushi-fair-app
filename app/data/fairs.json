@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-05T22:57:37.948Z",
+  "updatedAt": "2026-09-06T06:03:45.643Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -1515,25 +1515,113 @@
       "chain": "totomaru",
       "group": "local_tokai",
       "storeName": "選択地域",
-      "fairName": "季節のおすすめ",
+      "fairName": "天然南まぐろフェア開催開催中！",
       "startDate": null,
       "endDate": null,
-      "items": [],
-      "campaigns": [],
-      "menuHighlights": [],
+      "items": [
+        {
+          "name": "カツオわら焼きパフォーマンス",
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+        },
+        {
+          "name": "マグロ解体ショー",
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+        },
+        {
+          "name": "@426unxts",
+          "price": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+        }
+      ],
+      "campaigns": [
+        {
+          "fairName": "天然南まぐろフェア開催開催中！",
+          "startDate": null,
+          "endDate": null,
+          "items": [],
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+        },
+        {
+          "fairName": "旬のおすすめ",
+          "startDate": null,
+          "endDate": null,
+          "items": [
+            {
+              "name": "カツオわら焼きパフォーマンス",
+              "price": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+            },
+            {
+              "name": "マグロ解体ショー",
+              "price": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+            },
+            {
+              "name": "@426unxts",
+              "price": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.comline.co.jp/totomaru/menu/"
+            }
+          ],
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "imageUrl": null
+        }
+      ],
+      "menuHighlights": [
+        {
+          "name": "カツオわら焼きパフォーマンス",
+          "price": null,
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "sourceType": "official_menu_item",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+        },
+        {
+          "name": "マグロ解体ショー",
+          "price": null,
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "sourceType": "official_menu_item",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+        },
+        {
+          "name": "@426unxts",
+          "price": null,
+          "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
+          "sourceType": "official_menu_item",
+          "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png"
+        }
+      ],
       "sourceUrl": "https://www.comline.co.jp/totomaru/menu/",
       "storeUrl": "https://www.comline.co.jp/shoplist/",
-      "imageUrl": null,
-      "status": "warning",
-      "message": "公式サイトの自動取得に失敗したため、推測データは表示していません。",
-      "dataScope": "official_link_only",
+      "imageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
+      "status": "ok",
+      "message": null,
+      "dataScope": "local_official_menu",
       "officialActionLabel": "店舗・順番待ちを公式で確認",
       "officialActionUrl": "https://www.comline.co.jp/shoplist/",
       "regionalModel": {
         "strategyKey": "exactLocalStore",
         "label": "選択市町村の実店舗",
         "priceVariesByLocation": true
-      }
+      },
+      "priceNote": "店舗・入荷状況により取扱いが異なる場合があります。",
+      "representativeImageUrl": "https://www.comline.co.jp/totomaru/img/top_slider/20260904_1400-700_tennen-minami-maguro.png",
+      "representativeImageSource": "official_food_or_fair_image",
+      "representativeImageProduct": "カツオわら焼きパフォーマンス",
+      "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/"
     },
     {
       "chain": "musashimaru",
