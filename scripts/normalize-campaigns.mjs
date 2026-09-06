@@ -14,6 +14,7 @@ export function normalizeConcurrentCampaigns(data,today=todayKey()){
   for(const chain of data.chains||[]){
     if(!Array.isArray(chain.campaigns)||!chain.campaigns.length)continue;
     chain.campaigns=chain.campaigns.map(c=>({...c,campaignPhase:phase(c,today),items:(c.items||[]).map(item=>item?.endDate&&item.endDate<today?{...item,saleStatus:'ended'}:item)}));
+    if(chain.chain!=='kappasushi')continue;
     const active=chain.campaigns.filter(c=>c.campaignPhase==='active');
     const upcoming=chain.campaigns.filter(c=>c.campaignPhase==='upcoming'&&c.startDate&&dayDistance(c.startDate,today)<=14).sort((a,b)=>String(a.startDate).localeCompare(String(b.startDate)));
     const selected=active.length?active:(upcoming.length?[upcoming[0]]:[]);
@@ -56,6 +57,6 @@ async function main(){
   normalizeConcurrentCampaigns(data);
   data.updatedAt=new Date().toISOString();
   await fs.writeFile(FAIR_PATH,`${JSON.stringify(data,null,2)}\n`);
-  console.log('Normalized concurrent campaign phases and active items.');
+  console.log('Normalized campaign phases; Kappa top-level data follows only active/current campaigns.');
 }
 await main();
