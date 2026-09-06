@@ -1,0 +1,89 @@
+{
+  "status": "ok",
+  "verifiedAt": "2026-09-06T06:44:31.651Z",
+  "testedCommit": "e493c5ade657caf5587f78fb2a9792cf3d802de7",
+  "pageUrl": "https://longchanp7-hub.github.io/sushi-fair-app/",
+  "verificationMode": "static",
+  "publicStaticMatchesSource": true,
+  "publicDataAtLeastAsFresh": true,
+  "backgroundAssetOk": true,
+  "storeFallbackReady": true,
+  "fairsUpdatedAt": "2026-09-06T06:41:31.587Z",
+  "storeContextsUpdatedAt": "2026-09-06T06:41:06.164Z",
+  "chainCount": 8,
+  "localTokaiReady": true,
+  "chains": {
+    "sushiro": {
+      "fairName": "厳選天然ネタ＆スシローの赤しゃり＆季節のおすすめメニュー",
+      "itemCount": 17,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4006V2.png"
+    },
+    "hamazushi": {
+      "fairName": "はま寿司のにっぽん旨ねた祭り 第2弾",
+      "itemCount": 40,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://www.hamazushi.com/assets/menu/img/fair/kyushusan_aji_no_tatakioobatsutsumi.png"
+    },
+    "kurasushi": {
+      "fairName": "北海フェア",
+      "itemCount": 8,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://www.kurasushi.co.jp/upload/1d5ff434526d8f77e29d5ee35c6591f8b81ddfc1.png"
+    },
+    "kappasushi": {
+      "fairName": "かっぱの秋の旨ネタ＆お値段そのまま50％増量祭り／かっぱの秋のおすすめ／かっぱのお月見祭り",
+      "itemCount": 37,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/18731/1211/18731-1211-91511f5f3a864a4aac62b19c646093ca-2261x1404.png?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff"
+    },
+    "uobei": {
+      "fairName": "秋の味覚フェア",
+      "itemCount": 12,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/243/20954-243-f4d244da98b9421a28f5fbd4f82cf5d1-600x600.png"
+    },
+    "totomaru": {
+      "fairName": "天然南まぐろフェア",
+      "itemCount": 0,
+      "menuHighlightCount": 6,
+      "status": "ok",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://cos.ec-design.co.jp/ec-design-totomaru-prd/news/07516629-4406-4398-a9ec-6178b4978d59/745fbc99-b94c-4704-a51f-a74d6e2d8f83.png?20260902171216"
+    },
+    "musashimaru": {
+      "fairName": "公式メニュー・おすすめ",
+      "itemCount": 0,
+      "menuHighlightCount": 2,
+      "status": "warning",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://www.634-jp.com/img/30-ca-2-1.webp?300"
+    },
+    "tokubei": {
+      "fairName": "生サーモン・さんま・かつお 秋の味覚祭り",
+      "itemCount": 23,
+      "menuHighlightCount": 0,
+      "status": "ok",
+      "qualityState": "verified",
+      "representativeImage": true,
+      "representativeImageUrl": "https://www.nigirinotokubei.com/wp/wp-content/uploads/5b5d7db2653d23b8d2c9b5a84f1ea9d6.jpg"
+    }
+  }
+}
