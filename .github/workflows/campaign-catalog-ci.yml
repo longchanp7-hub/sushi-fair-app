@@ -11,6 +11,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: campaign-catalog-ci-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   catalog:
     runs-on: ubuntu-latest
@@ -23,6 +26,8 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Campaign regression tests
         run: node --test scripts/test-campaign-catalog.mjs
+      - name: Read-only source diagnostics
+        run: node scripts/probe-campaign-sources.mjs
       - name: Collect live official announcements in isolated PR workspace
         run: |
           node scripts/campaign-catalog.mjs --report /tmp/campaign-coverage.json
