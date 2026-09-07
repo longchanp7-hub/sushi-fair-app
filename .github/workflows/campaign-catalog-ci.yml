@@ -3,11 +3,13 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'scripts/campaign-catalog.mjs'
-      - 'scripts/test-campaign-catalog.mjs'
+      - 'scripts/*campaign*.mjs'
       - 'scripts/source-registry.mjs'
       - 'app/campaign-catalog.js'
+      - 'app/national.js'
+      - 'app/sw.js'
       - '.github/workflows/campaign-catalog-ci.yml'
+      - '.github/workflows/update-fairs.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,13 +27,12 @@ jobs:
           node-version: '24'
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Campaign regression tests
-        run: node --test scripts/test-campaign-catalog.mjs
-      - name: Read-only source diagnostics
-        run: node scripts/probe-campaign-sources.mjs
+        run: node --experimental-vm-modules --test scripts/test-campaign-catalog.mjs scripts/test-campaign-integration.mjs
       - name: Collect live official announcements in isolated PR workspace
         run: |
           node scripts/campaign-catalog.mjs --report /tmp/campaign-coverage.json
           node scripts/campaign-catalog.mjs --verify --report /tmp/campaign-coverage.json
+          node scripts/verify-campaign-publication.mjs --local --inventory /tmp/campaign-coverage.json
       - name: Save integration evidence
         if: always()
         uses: actions/upload-artifact@v4
