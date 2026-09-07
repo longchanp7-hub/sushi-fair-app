@@ -1,17 +1,8 @@
 name: Deploy Pages
 
+# Automatic UI and data changes are handled together by update-fairs.yml.
+# This manual-only path is for deliberately re-publishing the already checked main snapshot.
 on:
-  push:
-    branches: ['main']
-    paths:
-      - 'app/index.html'
-      - 'app/national.js'
-      - 'app/region.js'
-      - 'app/sw.js'
-      - 'app/*.css'
-      - 'app/manifest.webmanifest'
-      - 'app/assets/**'
-      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -26,6 +17,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -44,6 +36,7 @@ jobs:
           node --check scripts/verify-pages.mjs
           node --check scripts/quality-gate.mjs
           node scripts/quality-gate.mjs --candidate app/data/fairs.json --previous app/data/fairs.json --check-only
+          node scripts/verify-campaign-publication.mjs --local
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -60,22 +53,27 @@ jobs:
           SMOKE_REPORT_PATH: /tmp/pages-smoke.json
           VERIFY_DATA_MODE: static
         run: node scripts/verify-pages.mjs "$PAGE_URL"
+      - name: Verify published campaign payload
+        id: catalog
+        if: steps.smoke.outcome == 'success'
+        continue-on-error: true
+        run: node scripts/verify-campaign-publication.mjs --url "${{ steps.deployment.outputs.page_url }}" --report /tmp/campaign-publication.json
       - name: Publish latest verification report to pages-live
         id: health
-        if: steps.smoke.outcome == 'success'
+        if: steps.smoke.outcome == 'success' && steps.catalog.outcome == 'success'
         continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
           test -s /tmp/pages-smoke.json
+          test -s /tmp/campaign-publication.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin +main:refs/remotes/origin/main
-          git reset --hard refs/remotes/origin/main
           mkdir -p diagnostics
           cp /tmp/pages-smoke.json diagnostics/pages-smoke.json
-          git add diagnostics/pages-smoke.json
-          git commit -m "Latest Pages smoke report"
+          cp /tmp/campaign-publication.json diagnostics/campaign-publication.json
+          git add diagnostics/pages-smoke.json diagnostics/campaign-publication.json
+          git commit -m "Latest checked Pages publication reports"
           for attempt in 1 2 3; do
             remote_sha=$(git ls-remote --heads origin pages-live | awk '{print $1}')
             if [[ -n "$remote_sha" ]]; then
@@ -92,14 +90,15 @@ jobs:
           script: |
             const deploymentOutcome = '${{ steps.deployment.outcome }}';
             const smokeOutcome = '${{ steps.smoke.outcome }}';
+            const catalogOutcome = '${{ steps.catalog.outcome }}';
             const healthOutcome = '${{ steps.health.outcome }}';
-            const success = deploymentOutcome === 'success' && smokeOutcome === 'success' && healthOutcome === 'success';
+            const success = [deploymentOutcome, smokeOutcome, catalogOutcome, healthOutcome].every(x => x === 'success');
             const params = { owner: context.repo.owner, repo: context.repo.repo, sha: context.sha,
               state: success ? 'success' : 'failure', context: 'pages-smoke',
-              description: success ? 'Published nationwide app verified' : `Deploy=${deploymentOutcome}, smoke=${smokeOutcome}, report=${healthOutcome}` };
+              description: success ? 'Published app and campaign inventory verified' : `Deploy=${deploymentOutcome}, smoke=${smokeOutcome}, catalog=${catalogOutcome}` };
             const pageUrl = '${{ steps.deployment.outputs.page_url }}';
             if (pageUrl) params.target_url = pageUrl;
             await github.rest.repos.createCommitStatus(params);
       - name: Fail when publication verification failed
-        if: always() && (steps.smoke.outcome == 'failure' || steps.health.outcome == 'failure')
+        if: always() && (steps.smoke.outcome == 'failure' || steps.catalog.outcome == 'failure' || steps.health.outcome == 'failure')
         run: exit 1

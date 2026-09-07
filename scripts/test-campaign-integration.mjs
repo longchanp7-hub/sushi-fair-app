@@ -1,0 +1,36 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import vm from 'node:vm';
+import {discoverIndex,entryExclusion,releaseNeedsConfirmation,parseDetail} from './campaign-catalog.mjs';
+import {validateCatalog} from './verify-campaign-publication.mjs';
+const date='2026-09-07';
+const url='https://prtimes.jp/main/html/rd/p/000001212.000018731.html';
+const record={id:'kappasushi-toro',fairName:'トロの日',sourceUrl:url,startDate:'2026-09-16',endDate:'2026-09-16',category:'fair',items:[{name:'大とろ尽くし包み',price:390,priceType:'from',sourceUrl:url}],itemStatus:'parsed'};
+const proof=(rows)=>({state:'complete',attemptedAt:'2026-09-07T00:00:00Z',indices:[{status:'ok'}],expectedUrls:rows.map(x=>x.sourceUrl),expectedIds:rows.map(x=>x.id),failures:[]});
+const dataset=()=>({updatedAt:'2026-09-07T00:00:00Z',chains:[{chain:'kappasushi',fairName:'秋のおすすめ',status:'ok',items:[{name:'現在の大とろ',price:340}],campaignCatalog:[structuredClone(record)],campaignCoverage:proof([record])},{chain:'tokubei',group:'local_tokai',fairName:'秋の味覚祭り',status:'ok',items:[],campaignCatalog:[],campaignCoverage:proof([])}]});
+test('RDF takes one timestamp instead of concatenating dc:date and date',()=>{const rss=`<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><item rdf:about="${url}"><title>9月16日限定 トロの日</title><link>${url}</link><dc:date>2026-09-02T11:00:00+09:00</dc:date><date>2026-09-02</date></item></rdf:RDF>`;const links=discoverIndex(rss,'https://prtimes.jp/companyrdf.php?company_id=18731','kappasushi');assert.equal(links.length,1);assert.equal(links[0].publishedAt,'2026-09-02T11:00:00+09:00');assert.equal(links[0].endDate,'2026-09-16');});
+test('archive scope does not use publication time as sale start or hide an explicitly current long campaign',()=>{const e={fairName:'フェア',sourceUrl:url,publishedAt:'2025-01-01T00:00:00Z',endDate:null};assert.equal(entryExclusion(e,[],date),'feed_older_than_90_days');assert.equal(entryExclusion({...e,endDate:'2026-12-31'},[],date),null);assert.equal(entryExclusion({...e,fromOfficialList:true},[],date),null);});
+test('old open-ended release is unconfirmed, not assumed active forever or declared ended',()=>{const e={sourceUrl:url,publishedAt:'2026-07-10T00:00:00Z',fairName:'トロの日',indexText:'2026年7月16日から'};const range={startDate:'2026-07-16',endDate:null};assert.equal(releaseNeedsConfirmation(e,range,date),true);const r=parseDetail('<article><h1>かっぱ寿司 トロの日</h1><p>2026年7月16日から</p></article>',e,'kappasushi',date);assert.equal(r.excludedReason,'current_status_unconfirmed');});
+test('future announcement and explicit ongoing period survive old publication dates',()=>{const e={sourceUrl:url,publishedAt:'2026-01-01T00:00:00Z'};assert.equal(releaseNeedsConfirmation(e,{startDate:'2026-09-16',endDate:null},date),false);assert.equal(releaseNeedsConfirmation(e,{startDate:'2026-01-01',endDate:'2026-12-31'},date),false);});
+test('full year in a campaign title is not removed with the entire campaign name',()=>{const r=parseDetail('<article><h1>2026年9月16日限定 かっぱ寿司 トロの日</h1></article>',{sourceUrl:url,fairName:'トロの日',indexText:''},'kappasushi',date);assert.equal(r.fairName,'トロの日');assert.equal(r.startDate,'2026-09-16');});
+test('different current banners sharing menu2 remain distinct announcements',()=>{const links=discoverIndex('<a href="/menu2#cat_menu"><img alt="秋のフェア">2026.9.3〜9.16</a><a href="/menu2#cat_menu"><img alt="秋のおすすめ">2026.9.3〜</a>','https://www.kappasushi.jp/campaign_list/','kappasushi');assert.equal(links.length,2);assert.notEqual(links[0].identity,links[1].identity);const rows=links.map(e=>parseDetail('<main>かっぱ寿司 すべてのメニュー<p>他フェアの寿司 税込110円</p></main>',e,'kappasushi',date));assert.equal(rows[0].items.length,0);assert.notEqual(rows[0].id,rows[1].id);});
+test('four one-day products keep tax-inclusive prices and price floors',()=>{const html='<article><h1>かっぱ寿司 トロの日</h1><p>販売日：2026年9月16日（水）限定</p><p>店内飲食限定</p><p>店内切付 ほおばる贅沢！大とろ尽くし包み いくらのせ<br>一貫355円（税込390円）～</p><p>贅沢大とろ小丼～生・焦がし醤油炙り・とろぶつ～<br>900円（税込990円）</p><p>店内切付 大とろ<br>一貫173円（税込190円）～</p><p>店内切付/直火炙り 大とろ塩炙り 柚子のせ<br>一貫173円（税込190円）～</p></article>';const r=parseDetail(html,{sourceUrl:url,fairName:'トロの日',indexText:'',indexUrl:'https://prtimes.jp/companyrdf.php?company_id=18731'},'kappasushi',date);assert.deepEqual(r.items.map(x=>x.price),[390,990,190,190]);assert.deepEqual(r.items.map(x=>x.priceType),['from','listed','from','from']);assert.match(r.scopeNote,/店内飲食限定/);});
+test('final verifier rejects downstream price corruption and missing distinct announcements',()=>{const d=dataset();assert.ok(validateCatalog(d));d.chains[0].campaignCatalog[0].items[0].price=-1;assert.throws(()=>validateCatalog(d),/price/);const d2=dataset();d2.chains[0].campaignCatalog=[];assert.throws(()=>validateCatalog(d2),/announcement missing/);});
+test('all source failures must not be relabeled complete',()=>{const d=dataset();d.chains[0].campaignCoverage.indices[0].status='failed';assert.throws(()=>validateCatalog(d),/source failure/);});
+test('real national.js renders announced campaigns, keeps cards on HTTP failure and rolls the day correctly',async()=>{
+ const dom=new Map(),listeners=new Map(),timers=[];
+ const node=id=>{if(!dom.has(id))dom.set(id,{innerHTML:'',textContent:'',disabled:false,classList:{toggle(){}},addEventListener:(event,fn)=>listeners.set(`${id}:${event}`,fn)});return dom.get(id);};
+ let current='2026-09-15T03:00:00Z',failed=false;
+ class Clock extends Date{constructor(...args){super(...(args.length?args:[current]));}static now(){return Date.parse(current);}}
+ const document={hidden:false,querySelector:node,querySelectorAll:()=>[],addEventListener:(event,fn)=>listeners.set(`document:${event}`,fn)};
+ const context=vm.createContext({document,console,Date:Clock,Intl,URL,setInterval:fn=>{timers.push(fn);return 1;},fetch:async()=>({ok:!failed,status:failed?503:200,json:async()=>dataset()})});
+ const national=new vm.SourceTextModule(await fs.readFile(new URL('../app/national.js',import.meta.url),'utf8'),{context});
+ const catalog=new vm.SourceTextModule(await fs.readFile(new URL('../app/campaign-catalog.js',import.meta.url),'utf8'),{context});
+ const region=new vm.SyntheticModule(['initRegionSelector','resolveChainContext'],function(){this.setExport('initRegionSelector',async()=>({prefecture:'愛知県',city:'豊橋市'}));this.setExport('resolveChainContext',()=>({availableInSelectedArea:true,storeVerified:false,verified:false,label:'公式確認',note:''}));},{context});
+ await national.link(specifier=>specifier.includes('campaign-catalog')?catalog:region);await national.evaluate();
+ assert.match(node('#cardsNational').innerHTML,/近日開始/);assert.match(node('#cardsNational').innerHTML,/390円〜/);assert.match(node('#cardsNational').innerHTML,/340円/);
+ failed=true;await listeners.get('#refreshBtn:click')();assert.match(node('#cardsNational').innerHTML,/トロの日/);assert.match(node('#updatedAt').textContent,/更新失敗/);
+ current='2026-09-16T03:00:00Z';timers[0]();assert.doesNotMatch(node('#cardsNational').innerHTML,/近日開始/);assert.match(node('#cardsNational').innerHTML,/当日限定/);
+ current='2026-09-17T03:00:00Z';timers[0]();assert.doesNotMatch(node('#cardsNational').innerHTML,/トロの日/);assert.match(node('#cardsNational').innerHTML,/340円/);
+});

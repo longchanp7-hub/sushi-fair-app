@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: regression-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   regression:
     runs-on: ubuntu-latest
@@ -18,18 +22,13 @@ jobs:
         with:
           node-version: '24'
       - name: Install dependencies reproducibly
-        run: |
-          if [[ -f package-lock.json ]]; then
-            npm ci --ignore-scripts --no-audit --no-fund
-          else
-            npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-            npm ci --ignore-scripts --no-audit --no-fund
-          fi
+        run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Syntax checks
         run: |
           node --check app/national.js
           node --check app/region.js
           node --check app/sw.js
+          node --check app/campaign-catalog.js
           node --check scripts/update-fairs.mjs
           node --check scripts/verify-pages.mjs
           node --check scripts/fix-official-fair-discovery.mjs
@@ -37,6 +36,8 @@ jobs:
           node --check scripts/quality-gate.mjs
           node --check scripts/normalize-campaigns.mjs
           node --check scripts/fix-totomaru-current.mjs
+          node --check scripts/campaign-catalog.mjs
+          node --check scripts/verify-campaign-publication.mjs
       - name: Parser, campaign and quality self-tests
         run: |
           node scripts/fix-kura.mjs --self-test
@@ -52,6 +53,8 @@ jobs:
           node scripts/fix-local-official-releases.mjs --self-test
           node scripts/normalize-campaigns.mjs --self-test
           node scripts/quality-gate.mjs --self-test
+      - name: Announcement coverage and frontend regression
+        run: node --experimental-vm-modules --test scripts/test-campaign-catalog.mjs scripts/test-campaign-integration.mjs
       - name: Regional switch regression
         run: |
           node scripts/ensure-region-contexts.mjs

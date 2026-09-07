@@ -1,0 +1,44 @@
+name: Campaign catalog integration
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/*campaign*.mjs'
+      - 'scripts/source-registry.mjs'
+      - 'app/campaign-catalog.js'
+      - 'app/national.js'
+      - 'app/sw.js'
+      - '.github/workflows/campaign-catalog-ci.yml'
+      - '.github/workflows/update-fairs.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: campaign-catalog-ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Campaign regression tests
+        run: node --experimental-vm-modules --test scripts/test-campaign-catalog.mjs scripts/test-campaign-integration.mjs
+      - name: Collect live official announcements in isolated PR workspace
+        run: |
+          node scripts/campaign-catalog.mjs --report /tmp/campaign-coverage.json
+          node scripts/campaign-catalog.mjs --verify --report /tmp/campaign-coverage.json
+          node scripts/verify-campaign-publication.mjs --local --inventory /tmp/campaign-coverage.json
+      - name: Save integration app and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: campaign-catalog-integration
+          path: |
+            /tmp/campaign-coverage.json
+            app/
+          retention-days: 7
