@@ -11,7 +11,7 @@ export const SOURCES = {
 };
 const ROOT=fileURLToPath(new URL('..',import.meta.url)),FAIR=path.join(ROOT,'app/data/fairs.json');
 const clean=v=>String(v??'').normalize('NFKC').replace(/\s+/g,' ').trim();
-const DAY=86400000,HORIZON=45,LOOKBACK=90,MAX_DETAILS=120;
+const DAY=86400000,HORIZON=45,LOOKBACK=90,MAX_DETAILS=240;
 const eligible=/フェア|祭り|まつり|キャンペーン|トロの日|ランチ|スイーツ|パスポート|優待|お徳なセット|周年祭|おせち|期間限定|増量|おすすめ|食べ放題/;
 const irrelevant=/訂正|お詫び|休止|休業|偽|なりすまし|テレビ|放送|採用|募集|決算|株主|業績|会社説明/;
 const key=u=>createHash('sha256').update(u).digest('hex').slice(0,20);
@@ -93,7 +93,6 @@ export function parseDetail(html,entry,chain,today=catalogToday()){
  if((!eligible.test(title)&&!entry.fromOfficialList)||irrelevant.test(title))return {excludedReason:'not_food_campaign',title};
  if(phase==='ended')return {excludedReason:'ended',title,...range};
  if(range.startDate&&new Date(range.startDate)-new Date(today)>HORIZON*DAY)return {excludedReason:'beyond_45_day_horizon',title,...range};
- // A common menu page does not prove that every menu product belongs to a banner's campaign.
  const sharedMenu=new URL(entry.sourceUrl).pathname==='/menu2';
  const items=sharedMenu?[]:parseProducts(lines,entry.sourceUrl,range).map(x=>({...x,saleStatus:campaignPhase(x,today)}));
  const note=cat==='takeout'?'お持ち帰り向け。店内飲食の価格・フェアとは別扱いです。':cat==='lunch'?'平日限定ランチ。提供時間・対象店舗は公式告知で確認してください。':cat==='benefit'?'優待・配布条件があります。年齢条件、配布期間と利用期間を公式告知で確認してください。':cat==='store_limited'?'対象店舗限定の告知です。選択店舗での実施を保証しません。':cat==='preorder'?'予約商品の告知です。申込期限と受取・販売日は公式で確認してください。':/店内飲食限定/.test(lines.join(' '))?'店内飲食限定。店舗により価格・取扱いが異なり、数量限定・売り切れの場合があります。':'対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。';
@@ -146,7 +145,7 @@ export async function main(argv=process.argv.slice(2)){
   const result=await collectChain(id,previous.chains?.find(x=>x.chain===id)?.campaignCatalog||[],value('--today')||catalogToday());
   chain.campaignCatalog=result.rows;chain.campaignCoverage=result.coverage;inventory[id]=result.coverage;
   if(result.coverage.state!=='complete')console.warn(`::warning::${id} announcement coverage is partial; do not claim completeness`);
-  console.log(JSON.stringify({chain:id,coverage:result.coverage.state,indices:result.coverage.indices,failures:result.coverage.failures,campaigns:result.rows.map(x=>({id:x.id,title:x.fairName,start:x.startDate,end:x.endDate,url:x.sourceUrl,items:x.items}))}));
+  console.log(JSON.stringify({chain:id,coverage:result.coverage.state,indices:result.coverage.indices,failures:result.coverage.failures,campaigns:result.rows.map(x=>({id:x.id,title:x.fairName,start:x.startDate,end:x.endDate,url:x.sourceUrl,itemCount:x.items.length,items:/トロの日/.test(x.fairName)?x.items:undefined}))}));
  }
  verifyCoverage(data,inventory);await fs.writeFile(report,JSON.stringify(inventory,null,2)+'\n');await fs.writeFile(file,JSON.stringify(data,null,2)+'\n');
 }
