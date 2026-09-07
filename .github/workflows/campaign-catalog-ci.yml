@@ -33,12 +33,12 @@ jobs:
           node scripts/campaign-catalog.mjs --report /tmp/campaign-coverage.json
           node scripts/campaign-catalog.mjs --verify --report /tmp/campaign-coverage.json
           node scripts/verify-campaign-publication.mjs --local --inventory /tmp/campaign-coverage.json
-      - name: Save integration evidence
+      - name: Save integration app and evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: campaign-catalog-integration
           path: |
             /tmp/campaign-coverage.json
-            app/data/fairs.json
+            app/
           retention-days: 7
