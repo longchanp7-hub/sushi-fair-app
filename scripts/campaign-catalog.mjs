@@ -11,7 +11,7 @@ export const SOURCES = {
 };
 const ROOT=fileURLToPath(new URL('..',import.meta.url)),FAIR=path.join(ROOT,'app/data/fairs.json');
 const clean=v=>String(v??'').normalize('NFKC').replace(/\s+/g,' ').trim();
-const DAY=86400000,HORIZON=45,LOOKBACK=90,MAX_DETAILS=240;
+const DAY=86400000,HORIZON=45,LOOKBACK=90,RECENT_OPEN_RELEASE=14,MAX_DETAILS=240;
 const eligible=/フェア|祭り|まつり|キャンペーン|トロの日|ランチ|スイーツ|パスポート|優待|お徳なセット|周年祭|おせち|期間限定|増量|おすすめ|食べ放題/;
 const irrelevant=/訂正|お詫び|休止|休業|偽|なりすまし|テレビ|放送|採用|募集|決算|株主|業績|会社説明/;
 const key=u=>createHash('sha256').update(u).digest('hex').slice(0,20);
@@ -31,7 +31,7 @@ export function parseDates(value,year=Number(catalogToday().slice(0,4))){
  if(m)return {startDate:null,endDate:iso(+(m[1]||year),+m[2],+m[3])};
  return {startDate:null,endDate:null};
 }
-function titleOnly(v){return clean(v).replace(/^20\d{2}[./年]\d{1,2}[./月]\d{1,2}日?\s*更新\s*/,'').replace(/20\d{2}年\d{1,2}月\d{1,2}日.*$/,'').replace(/\s*[|｜].*$/,'').replace(/^予告\s*/,'').trim();}
+function titleOnly(v){return clean(v).replace(/^20\d{2}[./年]\d{1,2}[./月]\d{1,2}日?\s*更新\s*/,'').replace(/\s*[|｜].*$/,'').replace(/^予告\s*/,'').trim();}
 function category(t){return /お持ち帰り|持ち帰り|テイクアウト/.test(t)?'takeout':/ランチ/.test(t)?'lunch':/スイーツ|ゼリー|アイス|アサイー/.test(t)?'dessert':/パスポート|優待/.test(t)?'benefit':/おせち|予約/.test(t)?'preorder':/店舗限定|店[】〗\]]|周年祭/.test(t)?'store_limited':/フェア|祭り|トロの日|増量/.test(t)?'fair':'other';}
 function textLines($,root){const el=root.clone();el.find('script,style,nav,header,footer').remove();el.find('br').replaceWith('\n');el.find('p,div,li,dt,dd,h1,h2,h3,h4,tr').append('\n');return el.text().split(/\n+/).map(clean).filter(Boolean);}
 export function discoverIndex(html,indexUrl,chain){
@@ -45,7 +45,7 @@ export function discoverIndex(html,indexUrl,chain){
   const e={sourceUrl,identity,fairName,indexText:clean(text),indexUrl,...parseDates(text,year),...extra};
   const old=found.get(identity);if(!old||e.indexText.length>old.indexText.length)found.set(identity,e);
  }
- if(isFeed){$('item').each((_,el)=>{const n=$(el),title=n.find('title').text(),publishedAt=n.children().filter((_,c)=>/^(?:dc:date|pubDate|date)$/.test(c.name||'')).text();add(n.find('link').text()||n.attr('rdf:about'),title,`${title} ${n.find('description').text()}`,{publishedAt});});return [...found.values()];}
+ if(isFeed){$('item').each((_,el)=>{const n=$(el),title=n.find('title').text(),publishedAt=n.children().filter((_,c)=>/^(?:dc:date|pubDate|date)$/.test(c.name||'')).first().text();add(n.find('link').text()||n.attr('rdf:about'),title,`${title} ${n.find('description').text()}`,{publishedAt});});return [...found.values()];}
  $('header,footer,nav,script,style').remove();
  $('a[href]').each((_,a)=>{
   const node=$(a),parent=node.closest('li'),alt=clean(node.find('img').map((_,i)=>$(i).attr('alt')||'').get().join(' '));
@@ -63,6 +63,11 @@ export function entryExclusion(e,previous=[],today=catalogToday()){
  if(!e.fromOfficialList&&Number.isFinite(published)&&Date.parse(today)-published>LOOKBACK*DAY&&!knownCurrent&&!(e.endDate&&e.endDate>=today))return 'feed_older_than_90_days';
  return null;
 }
+export function releaseNeedsConfirmation(entry,range,today=catalogToday()){
+ if(new URL(entry.sourceUrl).hostname!=='prtimes.jp'||entry.fromOfficialList||range.endDate||campaignPhase(range,today)==='upcoming')return false;
+ const anchors=[Date.parse(entry.publishedAt),Date.parse(range.startDate)].filter(Number.isFinite);
+ return anchors.length>0&&Date.parse(today)-Math.max(...anchors)>RECENT_OPEN_RELEASE*DAY;
+}
 export function parseProducts(lines,sourceUrl,range){
  const out=[];
  for(let i=0;i<lines.length;i++)for(const text of [lines[i],`${lines[i]} ${lines[i+1]||''}`]){
@@ -71,7 +76,7 @@ export function parseProducts(lines,sourceUrl,range){
   const before=text.slice(0,p.index).replace(/^[・●■◆◇\s]+/,''),quotes=[...before.matchAll(/[『「]([^』」]+)[』」]/g)];
   let name=quotes.at(-1)?.[1]||before.replace(/\s*[（(]?\s*[\d,]+円.*$/,'').replace(/\s*(?:一|二|三|\d+)貫\s*$/,'').replace(/[（(\s]+$/,'');
   name=clean(name).replace(/^(?:店内切付(?:\/直火炙り)?|直火炙り)\s*/,'').replace(/[.．・]{2,}$/,'').trim();
-  if(!name||name.length>65||/[。]|税込|販売|提供|購入|価格|通常|全店|プレス/.test(name))continue;
+  if(!name||name.length>65||/[。]|税込|販売|提供|購入|価格|通常|全店|プレス/.test(name)||/^(?:トロの日|.+キャンペーン|.+祭り)$/.test(name))continue;
   const price=Number((p[1]||p[2]).replace(/,/g,''));if(!(price>0&&price<100000))continue;
   const suffix=text.slice(p.index+p[0].length,p.index+p[0].length+5);
   out.push({name,price,priceType:/^[）)\s]*[～〜~]/.test(suffix)?'from':'listed',...range,sourceUrl,saleStatus:campaignPhase(range),scrapeStatus:'ok'});break;
@@ -93,6 +98,8 @@ export function parseDetail(html,entry,chain,today=catalogToday()){
  if((!eligible.test(title)&&!entry.fromOfficialList)||irrelevant.test(title))return {excludedReason:'not_food_campaign',title};
  if(phase==='ended')return {excludedReason:'ended',title,...range};
  if(range.startDate&&new Date(range.startDate)-new Date(today)>HORIZON*DAY)return {excludedReason:'beyond_45_day_horizon',title,...range};
+ // Not 'ended': this older release simply cannot establish present availability by itself.
+ if(releaseNeedsConfirmation(entry,range,today))return {excludedReason:'current_status_unconfirmed',title,...range};
  const sharedMenu=new URL(entry.sourceUrl).pathname==='/menu2';
  const items=sharedMenu?[]:parseProducts(lines,entry.sourceUrl,range).map(x=>({...x,saleStatus:campaignPhase(x,today)}));
  const note=cat==='takeout'?'お持ち帰り向け。店内飲食の価格・フェアとは別扱いです。':cat==='lunch'?'平日限定ランチ。提供時間・対象店舗は公式告知で確認してください。':cat==='benefit'?'優待・配布条件があります。年齢条件、配布期間と利用期間を公式告知で確認してください。':cat==='store_limited'?'対象店舗限定の告知です。選択店舗での実施を保証しません。':cat==='preorder'?'予約商品の告知です。申込期限と受取・販売日は公式で確認してください。':/店内飲食限定/.test(lines.join(' '))?'店内飲食限定。店舗により価格・取扱いが異なり、数量限定・売り切れの場合があります。':'対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。';
@@ -119,7 +126,7 @@ export async function collectChain(chain,previous=[],today=catalogToday(),fetche
  });
  if(failures.length)for(const old of previous)if(freshPrevious(old,now)&&campaignPhase(old,today)!=='ended'&&!rows.some(x=>x.id===old.id)&&!inventory.some(x=>canonical(x.sourceUrl)===canonical(old.sourceUrl)&&x.excludedReason))rows.push({...old,retainedFromPrevious:true});
  rows.sort((a,b)=>String(a.startDate||'').localeCompare(String(b.startDate||''))||a.id.localeCompare(b.id));
- const coverage={version:1,state:failures.length||inventory.some(x=>x.unresolved)?'partial':'complete',attemptedAt,indices:indexResults,expectedUrls:[...new Set(inventory.filter(x=>x.expected).map(x=>x.sourceUrl))].sort(),expectedIds:inventory.filter(x=>x.expected).map(x=>x.id).sort(),failures,inventory:inventory.sort((a,b)=>a.sourceUrl.localeCompare(b.sourceUrl)),horizonDays:HORIZON,feedLookbackDays:LOOKBACK};
+ const coverage={version:1,state:failures.length||inventory.some(x=>x.unresolved)?'partial':'complete',attemptedAt,indices:indexResults,expectedUrls:[...new Set(inventory.filter(x=>x.expected).map(x=>x.sourceUrl))].sort(),expectedIds:inventory.filter(x=>x.expected).map(x=>x.id).sort(),failures,inventory:inventory.sort((a,b)=>a.sourceUrl.localeCompare(b.sourceUrl)),horizonDays:HORIZON,feedLookbackDays:LOOKBACK,openEndedReleaseReviewAfterDays:RECENT_OPEN_RELEASE,unconfirmedUrls:inventory.filter(x=>x.excludedReason==='current_status_unconfirmed').map(x=>x.sourceUrl)};
  return {rows,coverage};
 }
 export function verifyCoverage(data,inventory){
@@ -145,7 +152,7 @@ export async function main(argv=process.argv.slice(2)){
   const result=await collectChain(id,previous.chains?.find(x=>x.chain===id)?.campaignCatalog||[],value('--today')||catalogToday());
   chain.campaignCatalog=result.rows;chain.campaignCoverage=result.coverage;inventory[id]=result.coverage;
   if(result.coverage.state!=='complete')console.warn(`::warning::${id} announcement coverage is partial; do not claim completeness`);
-  console.log(JSON.stringify({chain:id,coverage:result.coverage.state,indices:result.coverage.indices,failures:result.coverage.failures,campaigns:result.rows.map(x=>({id:x.id,title:x.fairName,start:x.startDate,end:x.endDate,url:x.sourceUrl,itemCount:x.items.length,items:/トロの日/.test(x.fairName)?x.items:undefined}))}));
+  console.log(JSON.stringify({chain:id,coverage:result.coverage.state,indices:result.coverage.indices,failures:result.coverage.failures,unconfirmed:result.coverage.unconfirmedUrls.length,campaigns:result.rows.map(x=>({id:x.id,title:x.fairName,start:x.startDate,end:x.endDate,url:x.sourceUrl,itemCount:x.items.length,items:/トロの日/.test(x.fairName)?x.items:undefined}))}));
  }
  verifyCoverage(data,inventory);await fs.writeFile(report,JSON.stringify(inventory,null,2)+'\n');await fs.writeFile(file,JSON.stringify(data,null,2)+'\n');
 }
