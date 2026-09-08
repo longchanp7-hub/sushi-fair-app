@@ -12,7 +12,7 @@ export const OFFICIAL_SOURCES = Object.freeze({
     menu: 'https://www.hamazushi.com/menu/',
     topics: 'https://www.hamazushi.com/topics/',
     stores: 'https://maps.hama-sushi.co.jp/jp/index.html',
-    currentTopic: 'https://www.hamazushi.com/topics/2026/0831000844.html',
+    currentTopic: 'https://www.hamazushi.com/topics/2026/0907000856.html',
   },
   kurasushi: {
     releases: 'https://www.kurasushi.co.jp/author/2026.html',
