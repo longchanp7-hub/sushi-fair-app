@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-08T23:25:57.525Z",
+  "updatedAt": "2026-09-09T23:18:52.215Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -24,7 +24,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4006V2.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -37,7 +37,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4008.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -50,7 +50,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4009.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -63,7 +63,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4004.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -76,7 +76,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4003V2.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -89,7 +89,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_006556.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -102,7 +102,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2557.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -115,7 +115,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_228V2.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null
         },
@@ -128,7 +128,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2686.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -142,7 +142,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_5006.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -156,7 +156,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_3749.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -170,7 +170,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2562.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -184,7 +184,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4007.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -198,7 +198,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4002.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -212,7 +212,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_4001.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -226,7 +226,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260902_2815.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -240,7 +240,7 @@
           "scrapeStatus": "not_listed_reference_store",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_002046V3.png",
-          "lastSeenAt": "2026-09-09",
+          "lastSeenAt": "2026-09-10",
           "missingSince": null,
           "graceUntil": null,
           "availabilityNote": "代表店舗で今回未掲載ですが、公式販売期間内のため全国フェア候補として保持しています。"
@@ -278,7 +278,7 @@
       "representativeImageProduct": "天然まぐろのハラモ1貫",
       "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.592Z"
+      "qualityCheckedAt": "2026-09-09T23:18:52.294Z"
     },
     {
       "chain": "hamazushi",
@@ -529,7 +529,7 @@
       },
       "group": "national",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.592Z"
+      "qualityCheckedAt": "2026-09-09T23:18:52.295Z"
     },
     {
       "chain": "kurasushi",
@@ -635,7 +635,7 @@
       "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
       "group": "national",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.592Z"
+      "qualityCheckedAt": "2026-09-09T23:18:52.295Z"
     },
     {
       "chain": "kappasushi",
@@ -1363,7 +1363,7 @@
       "representativeImageProduct": "北海道産 ほたて",
       "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001211.000018731.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.592Z",
+      "qualityCheckedAt": "2026-09-09T23:18:52.295Z",
       "campaignCatalog": [
         {
           "id": "kappasushi-04ba5cf946884ddf51fb",
@@ -1378,7 +1378,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:00.744Z"
+          "lastConfirmedAt": "2026-09-09T23:18:55.536Z"
         },
         {
           "id": "kappasushi-374e8dafeb25ca73ad7c",
@@ -1393,7 +1393,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:02.251Z"
+          "lastConfirmedAt": "2026-09-09T23:18:57.921Z"
         },
         {
           "id": "kappasushi-3e33a8e3fafc0251c6c4",
@@ -1408,7 +1408,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:03.739Z"
+          "lastConfirmedAt": "2026-09-09T23:18:58.994Z"
         },
         {
           "id": "kappasushi-5e6eaad542793c43e07f",
@@ -1423,7 +1423,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:02.535Z"
+          "lastConfirmedAt": "2026-09-09T23:18:58.145Z"
         },
         {
           "id": "kappasushi-6b8617392dbc02067d7c",
@@ -1438,7 +1438,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:01.708Z"
+          "lastConfirmedAt": "2026-09-09T23:18:57.253Z"
         },
         {
           "id": "kappasushi-7d464d684500c2aaf497",
@@ -1453,7 +1453,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:01.885Z"
+          "lastConfirmedAt": "2026-09-09T23:18:57.248Z"
         },
         {
           "id": "kappasushi-7e367fdb0f8907d38fe9",
@@ -1468,7 +1468,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:01.331Z"
+          "lastConfirmedAt": "2026-09-09T23:18:56.979Z"
         },
         {
           "id": "kappasushi-9965ef00c0b5dab1f1bb",
@@ -1483,7 +1483,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:03.153Z"
+          "lastConfirmedAt": "2026-09-09T23:18:58.222Z"
         },
         {
           "id": "kappasushi-9c638583bf896bf93f4e",
@@ -1498,7 +1498,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:01.642Z"
+          "lastConfirmedAt": "2026-09-09T23:18:56.500Z"
         },
         {
           "id": "kappasushi-be35672cc952a1c93368",
@@ -1564,7 +1564,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:03.186Z"
+          "lastConfirmedAt": "2026-09-09T23:18:58.295Z"
         },
         {
           "id": "kappasushi-c855177a1e36589bf4b0",
@@ -1579,7 +1579,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:01.711Z"
+          "lastConfirmedAt": "2026-09-09T23:18:57.320Z"
         },
         {
           "id": "kappasushi-ff3e3432719ebdd89f26",
@@ -1594,22 +1594,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:02.823Z"
-        },
-        {
-          "id": "kappasushi-b9af5cb27c79e194adab",
-          "fairName": "銀座 篝〜かがり〜監修 濃厚鶏白湯ラーメン",
-          "sourceUrl": "https://www.kappasushi.jp/cp/ginzakagari",
-          "indexUrl": "https://www.kappasushi.jp/campaign_list/",
-          "startDate": "2026-07-23",
-          "endDate": "2026-09-09",
-          "campaignPhase": "active",
-          "category": "other",
-          "scopeNote": "対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。",
-          "items": [],
-          "itemStatus": "unavailable",
-          "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:02.445Z"
+          "lastConfirmedAt": "2026-09-09T23:18:58.959Z"
         },
         {
           "id": "kappasushi-14aeab949d4ceda7f609",
@@ -1624,7 +1609,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:05.421Z"
+          "lastConfirmedAt": "2026-09-09T23:19:01.584Z"
         },
         {
           "id": "kappasushi-024787760158aaeed994",
@@ -1639,7 +1624,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:05.058Z"
+          "lastConfirmedAt": "2026-09-09T23:19:01.094Z"
         },
         {
           "id": "kappasushi-27f412b79696784bf3c5",
@@ -1685,7 +1670,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:04.894Z"
+          "lastConfirmedAt": "2026-09-09T23:19:00.948Z"
         },
         {
           "id": "kappasushi-8931d014e8ec6900a4fa",
@@ -1700,7 +1685,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:02.526Z"
+          "lastConfirmedAt": "2026-09-09T23:18:57.708Z"
         },
         {
           "id": "kappasushi-aad52e8e2df4592b8770",
@@ -1715,7 +1700,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:03.091Z"
+          "lastConfirmedAt": "2026-09-09T23:18:58.893Z"
         },
         {
           "id": "kappasushi-4b95e316b257d0c9fb73",
@@ -1730,7 +1715,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:03.979Z"
+          "lastConfirmedAt": "2026-09-09T23:18:59.741Z"
         },
         {
           "id": "kappasushi-14cae4b820a7d8f4c488",
@@ -1745,7 +1730,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:25:59.881Z"
+          "lastConfirmedAt": "2026-09-09T23:18:55.257Z"
         },
         {
           "id": "kappasushi-15a104850a8aab74a7aa",
@@ -1821,7 +1806,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:03.526Z"
+          "lastConfirmedAt": "2026-09-09T23:18:59.377Z"
         },
         {
           "id": "kappasushi-22f73274cea263d6967f",
@@ -1836,7 +1821,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:25:59.686Z"
+          "lastConfirmedAt": "2026-09-09T23:18:54.858Z"
         },
         {
           "id": "kappasushi-3846f4b90c5541282355",
@@ -1851,7 +1836,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:00.073Z"
+          "lastConfirmedAt": "2026-09-09T23:18:54.908Z"
         },
         {
           "id": "kappasushi-455661e014751b44b857",
@@ -2077,7 +2062,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:03.933Z"
+          "lastConfirmedAt": "2026-09-09T23:18:59.470Z"
         },
         {
           "id": "kappasushi-725a7cce488cfd1ea531",
@@ -2123,7 +2108,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:04.361Z"
+          "lastConfirmedAt": "2026-09-09T23:19:00.089Z"
         },
         {
           "id": "kappasushi-8704239b71e8d9c27109",
@@ -2138,7 +2123,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:00.727Z"
+          "lastConfirmedAt": "2026-09-09T23:18:55.968Z"
         },
         {
           "id": "kappasushi-a8bfe565d2f6dcc2ccf4",
@@ -2244,7 +2229,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:04.283Z"
+          "lastConfirmedAt": "2026-09-09T23:19:00.059Z"
         },
         {
           "id": "kappasushi-b8ba1d38d6e292c29806",
@@ -2370,7 +2355,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:03.754Z"
+          "lastConfirmedAt": "2026-09-09T23:18:59.445Z"
         },
         {
           "id": "kappasushi-ca068667c53c5687088d",
@@ -2426,7 +2411,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:04.103Z"
+          "lastConfirmedAt": "2026-09-09T23:18:59.579Z"
         },
         {
           "id": "kappasushi-ce029b045a48e17acbcb",
@@ -2441,7 +2426,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:00.396Z"
+          "lastConfirmedAt": "2026-09-09T23:18:56.007Z"
         },
         {
           "id": "kappasushi-db8ab68bad1db49b552d",
@@ -2456,7 +2441,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:25:59.802Z"
+          "lastConfirmedAt": "2026-09-09T23:18:55.017Z"
         },
         {
           "id": "kappasushi-e0bf297027a1637090bf",
@@ -2502,7 +2487,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:04.217Z"
+          "lastConfirmedAt": "2026-09-09T23:19:00.003Z"
         },
         {
           "id": "kappasushi-e9a74ab31bd6bda22829",
@@ -2517,7 +2502,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:01.432Z"
+          "lastConfirmedAt": "2026-09-09T23:18:56.597Z"
         },
         {
           "id": "kappasushi-ed9ed0edec6d228025a1",
@@ -2532,7 +2517,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:01.082Z"
+          "lastConfirmedAt": "2026-09-09T23:18:56.265Z"
         },
         {
           "id": "kappasushi-efd559cf6f82521589bb",
@@ -2628,7 +2613,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:04.549Z"
+          "lastConfirmedAt": "2026-09-09T23:19:00.277Z"
         },
         {
           "id": "kappasushi-f1904aa4c224f59e4d51",
@@ -2664,7 +2649,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:04.400Z"
+          "lastConfirmedAt": "2026-09-09T23:19:00.351Z"
         },
         {
           "id": "kappasushi-f6d6189993839bc194f5",
@@ -2679,7 +2664,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:01.023Z"
+          "lastConfirmedAt": "2026-09-09T23:18:55.832Z"
         },
         {
           "id": "kappasushi-ff0426b93f929dfdf0e3",
@@ -2694,7 +2679,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:25:59.429Z"
+          "lastConfirmedAt": "2026-09-09T23:18:54.223Z"
         },
         {
           "id": "kappasushi-4dd784f17d8c023221d1",
@@ -2750,18 +2735,54 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:03.715Z"
+          "lastConfirmedAt": "2026-09-09T23:18:59.564Z"
+        },
+        {
+          "id": "kappasushi-9f0ab8bd553ffe314816",
+          "fairName": "お友達やご家族を誘って食べ放題にチャレンジ!韓国発の大人気キャラクター「MOMOREI」がかっぱ寿司の食べ放題とコラボ描き下ろし缶バッジをおひとり様につき1つプレゼント",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001216.000018731.html",
+          "indexUrl": "https://prtimes.jp/companyrdf.php?company_id=18731",
+          "startDate": "2026-10-01",
+          "endDate": null,
+          "campaignPhase": "upcoming",
+          "category": "other",
+          "scopeNote": "対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。",
+          "items": [
+            {
+              "name": "小学生:",
+              "price": 1990,
+              "priceType": "listed",
+              "startDate": "2026-10-01",
+              "endDate": null,
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001216.000018731.html",
+              "saleStatus": "upcoming",
+              "scrapeStatus": "ok"
+            },
+            {
+              "name": "※シャリを残された場合、一貫につき",
+              "price": 33,
+              "priceType": "listed",
+              "startDate": "2026-10-01",
+              "endDate": null,
+              "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001216.000018731.html",
+              "saleStatus": "upcoming",
+              "scrapeStatus": "ok"
+            }
+          ],
+          "itemStatus": "parsed",
+          "metadataStatus": "parsed",
+          "lastConfirmedAt": "2026-09-09T23:18:59.036Z"
         }
       ],
       "campaignCoverage": {
         "version": 1,
         "state": "complete",
-        "attemptedAt": "2026-09-08T23:25:57.733Z",
+        "attemptedAt": "2026-09-09T23:18:52.490Z",
         "indices": [
           {
             "url": "https://www.kappasushi.jp/campaign_list/",
             "status": "ok",
-            "count": 25
+            "count": 24
           },
           {
             "url": "https://prtimes.jp/companyrdf.php?company_id=18731",
@@ -2784,6 +2805,7 @@
           "https://prtimes.jp/main/html/rd/p/000001212.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001213.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001214.000018731.html",
+          "https://prtimes.jp/main/html/rd/p/000001216.000018731.html",
           "https://www.kappasushi.jp/202609/autumn-takeout",
           "https://www.kappasushi.jp/2027/osechi",
           "https://www.kappasushi.jp/autumn2026/fuwamochi",
@@ -2795,7 +2817,6 @@
           "https://www.kappasushi.jp/cp/202608/swimmer",
           "https://www.kappasushi.jp/cp/20260916/acai",
           "https://www.kappasushi.jp/cp/birthdaywari",
-          "https://www.kappasushi.jp/cp/ginzakagari",
           "https://www.kappasushi.jp/cp/gochisushi",
           "https://www.kappasushi.jp/cp/kappa-no-tabeho",
           "https://www.kappasushi.jp/cp/maitake",
@@ -2831,10 +2852,10 @@
           "kappasushi-8931d014e8ec6900a4fa",
           "kappasushi-9965ef00c0b5dab1f1bb",
           "kappasushi-9c638583bf896bf93f4e",
+          "kappasushi-9f0ab8bd553ffe314816",
           "kappasushi-a8bfe565d2f6dcc2ccf4",
           "kappasushi-aad52e8e2df4592b8770",
           "kappasushi-b8ba1d38d6e292c29806",
-          "kappasushi-b9af5cb27c79e194adab",
           "kappasushi-be35672cc952a1c93368",
           "kappasushi-c855177a1e36589bf4b0",
           "kappasushi-ca068667c53c5687088d",
@@ -2851,39 +2872,6 @@
         ],
         "failures": [],
         "inventory": [
-          {
-            "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000956.000018731.html",
-            "identity": "https://prtimes.jp/main/html/rd/p/000000956.000018731.html",
-            "fairName": "職人が出張、目の前で握る本格出張回転寿司や国産 生本まぐろ解体ショーなどが人気の「どこでもかっぱ寿司」が11/13(木)~ 一部リニューアル!",
-            "indexText": "職人が出張、目の前で握る本格出張回転寿司や国産 生本まぐろ解体ショーなどが人気の「どこでもかっぱ寿司」が11/13(木)~ 一部リニューアル! [カッパ・クリエイト株式会社] コロワイドグループのかっぱ寿司(カッパ・クリエイト(株) 本社:神奈川県横浜市、代表取締役社長:山角豪)は、2025年11月13日(木)より出張回転寿司をはじめとする「どこでもかっぱ寿司」のサービスを一部リ...",
-            "indexUrl": "https://prtimes.jp/companyrdf.php?company_id=18731",
-            "startDate": "2025-11-13",
-            "endDate": null,
-            "publishedAt": "2025-10-28T12:00:03+09:00",
-            "excludedReason": "feed_older_than_90_days"
-          },
-          {
-            "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000957.000018731.html",
-            "identity": "https://prtimes.jp/main/html/rd/p/000000957.000018731.html",
-            "fairName": "100店舗以上で、平日午前10時30分から開店【かっぱ寿司】11月4日(火)~一部店舗で営業時間拡大 おにぎりと味噌汁のセットや平日限定価格のうどんで、遅めの朝ごはんやブランチ利用にも、もっと便利に!",
-            "indexText": "100店舗以上で、平日午前10時30分から開店【かっぱ寿司】11月4日(火)~一部店舗で営業時間拡大 おにぎりと味噌汁のセットや平日限定価格のうどんで、遅めの朝ごはんやブランチ利用にも、もっと便利に! [カッパ・クリエイト株式会社] [画像: https://prtimes.jp/i/18731/957/resize/d18731-957-b5300c1768fa17b8688c-0.jpg ] コロワイドグループのかっぱ寿司(カッパ・クリエイト(株)本社:神奈川県横浜市、代表取締役社長:山角 豪)は、2025...",
-            "indexUrl": "https://prtimes.jp/companyrdf.php?company_id=18731",
-            "startDate": "2025-11-04",
-            "endDate": null,
-            "publishedAt": "2025-10-29T11:00:04+09:00",
-            "excludedReason": "feed_older_than_90_days"
-          },
-          {
-            "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000958.000018731.html",
-            "identity": "https://prtimes.jp/main/html/rd/p/000000958.000018731.html",
-            "fairName": "食べ放題メニュー『旬ネタ!期間限定5貫セット茶碗蒸し付き』が「大切りびん長はらも」や「みなみ鮪赤身」を含む新ラインアップで11月6日(木)~登場!期間内、ネタの旨みを引き立てる“赤酢シャリ”でご提供!",
-            "indexText": "食べ放題メニュー『旬ネタ!期間限定5貫セット茶碗蒸し付き』が「大切りびん長はらも」や「みなみ鮪赤身」を含む新ラインアップで11月6日(木)~登場!期間内、ネタの旨みを引き立てる“赤酢シャリ”でご提供! [カッパ・クリエイト株式会社] コロワイドグループのかっぱ寿司(カッパ・クリエイト(株) 本社:神奈川県横浜市、代表取締役社長:山角豪)は、12月3日(水)まで計154店舗で継続中の食べ放題サービス「かっぱの食べホー」について、食べ放題メ...",
-            "indexUrl": "https://prtimes.jp/companyrdf.php?company_id=18731",
-            "startDate": "2025-11-06",
-            "endDate": null,
-            "publishedAt": "2025-10-31T11:00:03+09:00",
-            "excludedReason": "feed_older_than_90_days"
-          },
           {
             "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000959.000018731.html",
             "identity": "https://prtimes.jp/main/html/rd/p/000000959.000018731.html",
@@ -4411,8 +4399,7 @@
             "startDate": "2026-06-11",
             "endDate": null,
             "publishedAt": "2026-06-11T11:00:02+09:00",
-            "excludedReason": "current_status_unconfirmed",
-            "title": "【かっぱ寿司】父の日にもおすすめ!夏限定“大切り”まぐろ・サーモン・蝦夷あわびを盛り込んだ、旨みと食感を贅沢に楽しめる期間限定お持ち帰り『夏のごちそう11種セット』が新登場!"
+            "excludedReason": "feed_older_than_90_days"
           },
           {
             "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001142.000018731.html",
@@ -4423,8 +4410,7 @@
             "startDate": "2026-06-11",
             "endDate": null,
             "publishedAt": "2026-06-11T14:00:12+09:00",
-            "excludedReason": "current_status_unconfirmed",
-            "title": "日常を離れた“ご褒美ネタ”の「ごち寿司」シリーズに、中とろ・大切り蝦夷あわび・赤えびうにのせの三貫セットや一本釣りかつお、天然旬(とき)あじ等の厳選ネタ食べ比べの五貫セットが期間限定で登場"
+            "excludedReason": "feed_older_than_90_days"
           },
           {
             "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001143.000018731.html",
@@ -5021,6 +5007,36 @@
             "id": "kappasushi-15a104850a8aab74a7aa"
           },
           {
+            "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001216.000018731.html",
+            "fairName": "お友達やご家族を誘って食べ放題にチャレンジ!韓国発の大人気キャラクター「MOMOREI」がかっぱ寿司の食べ放題とコラボ描き下ろし缶バッジをおひとり様につき1つプレゼント",
+            "expected": true,
+            "id": "kappasushi-9f0ab8bd553ffe314816"
+          },
+          {
+            "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001217.000018731.html",
+            "identity": "https://prtimes.jp/main/html/rd/p/000001217.000018731.html",
+            "fairName": "韓国市場売上No.1韓国のソウルフード「辛ラーメン」が、かっぱ寿司に登場!かっぱ寿司×「辛ラーメン」活〆真鯛のアラ出汁を合わせた「鯛スープの海鮮 辛ラーメン」シリーズ3種が新登場",
+            "indexText": "韓国市場売上No.1韓国のソウルフード「辛ラーメン」が、かっぱ寿司に登場!かっぱ寿司×「辛ラーメン」活〆真鯛のアラ出汁を合わせた「鯛スープの海鮮 辛ラーメン」シリーズ3種が新登場 [カッパ・クリエイト株式会社] コロワイドグループのかっぱ寿司(カッパ・クリエイト(株) 本社:神奈川県横浜市、代表取締役社長:山角 豪)は、2026年9月17日(木)より、韓国の人気ラーメンブランド「辛ラーメン」とコラボレーションした「...",
+            "indexUrl": "https://prtimes.jp/companyrdf.php?company_id=18731",
+            "startDate": "2026-09-17",
+            "endDate": null,
+            "publishedAt": "2026-09-09T14:00:02+09:00",
+            "excludedReason": "not_food_campaign",
+            "title": "韓国市場売上No.1韓国のソウルフード「辛ラーメン」が、かっぱ寿司に登場!かっぱ寿司×「辛ラーメン」活〆真鯛のアラ出汁を合わせた「鯛スープの海鮮 辛ラーメン」シリーズ3種が新登場"
+          },
+          {
+            "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001218.000018731.html",
+            "identity": "https://prtimes.jp/main/html/rd/p/000001218.000018731.html",
+            "fairName": "【本日から】 お持ち帰りWEB予約限定!早めのご予約で税込400円OFF!シルバーウィークのお集まりや秋の行楽に!かっぱ寿司「シルバーウィーク早割」",
+            "indexText": "【本日から】 お持ち帰りWEB予約限定!早めのご予約で税込400円OFF!シルバーウィークのお集まりや秋の行楽に!かっぱ寿司「シルバーウィーク早割」 [カッパ・クリエイト株式会社] &nbsp; コロワイドグループのかっぱ寿司(カッパ・クリエイト株式会社/本社:神奈川県横浜市/代表取締役社長:山角 豪)は、シルバーウィークのお集まりや秋の行楽シーンに向けて、かっぱ寿司アプリ会員を対象...",
+            "indexUrl": "https://prtimes.jp/companyrdf.php?company_id=18731",
+            "startDate": null,
+            "endDate": null,
+            "publishedAt": "2026-09-09T11:00:02+09:00",
+            "excludedReason": "not_food_campaign",
+            "title": "【本日から】 お持ち帰りWEB予約限定!早めのご予約で税込400円OFF!シルバーウィークのお集まりや秋の行楽に!かっぱ寿司「シルバーウィーク早割」"
+          },
+          {
             "sourceUrl": "https://www.kappasushi.jp/202609/autumn-takeout",
             "fairName": "ご予約承り中!秋の彩り11種セット",
             "expected": true,
@@ -5085,12 +5101,6 @@
             "fairName": "土日祝限定 食べ放題 お誕生日割!",
             "expected": true,
             "id": "kappasushi-ff3e3432719ebdd89f26"
-          },
-          {
-            "sourceUrl": "https://www.kappasushi.jp/cp/ginzakagari",
-            "fairName": "銀座 篝〜かがり〜監修 濃厚鶏白湯ラーメン",
-            "expected": true,
-            "id": "kappasushi-b9af5cb27c79e194adab"
           },
           {
             "sourceUrl": "https://www.kappasushi.jp/cp/gochisushi",
@@ -5175,8 +5185,6 @@
         "feedLookbackDays": 90,
         "openEndedReleaseReviewAfterDays": 14,
         "unconfirmedUrls": [
-          "https://prtimes.jp/main/html/rd/p/000001141.000018731.html",
-          "https://prtimes.jp/main/html/rd/p/000001142.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001146.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001148.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001155.000018731.html",
@@ -5325,7 +5333,7 @@
       "group": "national",
       "campaignPhase": "active",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.593Z"
+      "qualityCheckedAt": "2026-09-09T23:18:52.295Z"
     },
     {
       "chain": "totomaru",
@@ -5404,7 +5412,7 @@
       "representativeImageProduct": "【さび抜】中とろ醤油炙り",
       "representativeImagePage": "https://totomaru.ec-design.co.jp/news/detail/07516629-4406-4398-a9ec-6178b4978d59",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.593Z"
+      "qualityCheckedAt": "2026-09-09T23:18:52.295Z"
     },
     {
       "chain": "musashimaru",
@@ -5452,7 +5460,7 @@
       "representativeImageProduct": "釣り魚の調理例",
       "representativeImagePage": "https://www.634-jp.com/lovefish.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.593Z"
+      "qualityCheckedAt": "2026-09-09T23:18:52.295Z"
     },
     {
       "chain": "tokubei",
@@ -5913,7 +5921,7 @@
       "representativeImageProduct": "秋の特選五貫盛り",
       "representativeImagePage": "https://www.nigirinotokubei.com/info/11244/",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-08T23:25:57.593Z",
+      "qualityCheckedAt": "2026-09-09T23:18:52.296Z",
       "campaignCatalog": [
         {
           "id": "tokubei-1b9cc2cec8aaa94a277b",
@@ -5928,7 +5936,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-09-08T23:26:10.425Z"
+          "lastConfirmedAt": "2026-09-09T23:19:12.526Z"
         },
         {
           "id": "tokubei-16e8a6c9d39fd2ea2eab",
@@ -5943,7 +5951,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:09.295Z"
+          "lastConfirmedAt": "2026-09-09T23:19:10.599Z"
         },
         {
           "id": "tokubei-1799940ad28e0c3a725d",
@@ -5958,7 +5966,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:09.390Z"
+          "lastConfirmedAt": "2026-09-09T23:19:10.884Z"
         },
         {
           "id": "tokubei-65380d0b84d09954d46c",
@@ -5973,7 +5981,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:09.483Z"
+          "lastConfirmedAt": "2026-09-09T23:19:12.158Z"
         },
         {
           "id": "tokubei-ed7015972d70351fe859",
@@ -5988,7 +5996,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:11.540Z"
+          "lastConfirmedAt": "2026-09-09T23:19:12.408Z"
         },
         {
           "id": "tokubei-b3b481ed4a86de95eb0b",
@@ -6014,11 +6022,11 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:10.592Z"
+          "lastConfirmedAt": "2026-09-09T23:19:09.910Z"
         },
         {
           "id": "tokubei-d3d0b74fee1d0a995285",
-          "fairName": "シルバーウィーク限定!60歳からの特別ご優待「シニアパスポート」無料進呈!",
+          "fairName": "!シルバーウィーク限定!60歳からの特別ご優待「シニアパスポート」無料進呈!",
           "sourceUrl": "https://www.nigirinotokubei.com/info/11217",
           "indexUrl": "https://www.nigirinotokubei.com/",
           "startDate": "2026-09-18",
@@ -6029,13 +6037,13 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-09-08T23:26:10.329Z"
+          "lastConfirmedAt": "2026-09-09T23:19:10.324Z"
         }
       ],
       "campaignCoverage": {
         "version": 1,
         "state": "complete",
-        "attemptedAt": "2026-09-08T23:26:06.727Z",
+        "attemptedAt": "2026-09-09T23:19:03.751Z",
         "indices": [
           {
             "url": "https://www.nigirinotokubei.com/",
@@ -6106,7 +6114,7 @@
           },
           {
             "sourceUrl": "https://www.nigirinotokubei.com/info/11217",
-            "fairName": "シルバーウィーク限定!60歳からの特別ご優待「シニアパスポート」無料進呈!",
+            "fairName": "!シルバーウィーク限定!60歳からの特別ご優待「シニアパスポート」無料進呈!",
             "expected": true,
             "id": "tokubei-d3d0b74fee1d0a995285"
           },
@@ -6144,7 +6152,7 @@
   ],
   "qualityGate": {
     "version": 2,
-    "checkedAt": "2026-09-08T23:25:57.593Z",
+    "checkedAt": "2026-09-09T23:18:52.296Z",
     "fallbackChains": [],
     "quarantined": [],
     "warnings": []
