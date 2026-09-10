@@ -4,6 +4,8 @@ import {parseDates,discoverIndex,parseDetail,collectChain,verifyCoverage,SOURCES
 import {campaignPhase,canonicalCampaignUrl,renderCampaignCatalog,visibleCampaigns} from '../app/campaign-catalog.js';
 const today='2026-09-07';
 const toro='https://prtimes.jp/main/html/rd/p/000001212.000018731.html';
+const spicy='https://prtimes.jp/main/html/rd/p/000001217.000018731.html';
+const early='https://prtimes.jp/main/html/rd/p/000001218.000018731.html';
 const release='<article><h1>かっぱ寿司「トロの日」</h1><p>2026年9月16日（水）限定、かっぱ寿司全店にて</p><p>『ほおばる贅沢！大とろ尽くし包み いくらのせ』</p><p>一貫355円（税込390円）〜</p></article>';
 const entry={sourceUrl:toro,indexUrl:SOURCES.kappasushi.indices[1],fairName:'トロの日',indexText:'2026年9月16日（水）限定'};
 const tororow=()=>parseDetail(release,entry,'kappasushi',today);
@@ -11,10 +13,28 @@ test('one day and Unicode dates; publication date is not sale date',()=>{
  assert.deepEqual(parseDates('2026年9月16日（水）限定',2026),{startDate:'2026-09-16',endDate:'2026-09-16'});
  assert.deepEqual(parseDates('２０２６年９月１８日（金）～１０月４日（日）',2026),{startDate:'2026-09-18',endDate:'2026-10-04'});
  assert.deepEqual(parseDates('2026.09.01更新 秋ランチ2026年9月1日（火）～11月2日（月）',2026),{startDate:'2026-09-01',endDate:'2026-11-02'});
+ assert.deepEqual(parseDates('2026年9月9日（水）から9月16日（水）まで',2026),{startDate:'2026-09-09',endDate:'2026-09-16'});
  assert.deepEqual(parseDates('2026.09.02更新',2026),{startDate:null,endDate:null});
  assert.deepEqual(parseDates('2026年12月25日～1月4日',2026),{startDate:'2026-12-25',endDate:'2027-01-04'});
 });
 test('future release and minimum tax-inclusive price survive',()=>{const r=tororow();assert.equal(r.campaignPhase,'upcoming');assert.equal(r.items[0].price,390);assert.equal(r.items[0].priceType,'from');assert.equal(r.startDate,r.endDate);});
+test('Kappa food releases without generic campaign words are retained',()=>{
+ const title='韓国市場売上No.1韓国のソウルフード「辛ラーメン」が、かっぱ寿司に登場！かっぱ寿司×「辛ラーメン」活〆真鯛のアラ出汁を合わせた「鯛スープの海鮮 辛ラーメン」シリーズ3種が新登場';
+ const html=`<article><h1>${title}</h1><p>販売期間：2026年9月17日（木）～2026年12月9日（水）予定</p><p>販売店舗：かっぱ寿司全店</p><p>『鯛スープの海鮮 辛ラーメン』</p><p>391円（税込430円）</p><p>『鯛スープの海鮮 辛ラーメン 追いシャリセット』</p><p>491円（税込540円）</p><p>『鯛スープの海鮮 辛ラーメン 味変セット』</p><p>628円（税込690円）</p></article>`;
+ const r=parseDetail(html,{sourceUrl:spicy,indexUrl:SOURCES.kappasushi.indices[1],fairName:title,indexText:title,publishedAt:'2026-09-09T14:00:02+09:00'},'kappasushi','2026-09-11');
+ assert.equal(r.campaignPhase,'upcoming');assert.equal(r.category,'other');assert.equal(r.startDate,'2026-09-17');assert.equal(r.endDate,'2026-12-09');assert.deepEqual(r.items.map(x=>x.price),[430,540,690]);
+});
+test('Kappa takeout early-bird release keeps reservation period and conditions separate from main fair',()=>{
+ const title='【本日から】 お持ち帰りWEB予約限定！早めのご予約で税込400円OFF！シルバーウィークのお集まりや秋の行楽に！かっぱ寿司「シルバーウィーク早割」';
+ const html=`<article><h1>${title}</h1><p>■ご予約受付期間：2026年9月9日（水）～9月16日（水）</p><p>■対象お受け取り期間：2026年9月19日（土）～9月23日（水・祝）</p><p>かっぱ寿司アプリ会員を対象に、お持ち帰りWEB予約税込3,000円以上のご注文で税込400円OFFクーポンをご利用いただけます。</p></article>`;
+ const r=parseDetail(html,{sourceUrl:early,indexUrl:SOURCES.kappasushi.indices[1],fairName:title,indexText:title,publishedAt:'2026-09-09T11:00:02+09:00'},'kappasushi','2026-09-11');
+ assert.equal(r.category,'takeout');assert.equal(r.campaignPhase,'active');assert.equal(r.startDate,'2026-09-09');assert.equal(r.endDate,'2026-09-16');assert.equal(r.items.length,0);assert.match(r.scopeNote,/アプリ会員対象/);assert.match(r.scopeNote,/3,000円以上/);assert.match(r.scopeNote,/400円OFF/);assert.match(r.scopeNote,/2026-09-19〜2026-09-23/);
+});
+test('generic app feature announcement is still excluded despite new-arrival wording',()=>{
+ const title='かっぱ寿司公式アプリに新機能が登場';
+ const r=parseDetail(`<article><h1>${title}</h1><p>かっぱ寿司公式アプリをアップデートしました。</p></article>`,{sourceUrl:'https://prtimes.jp/main/html/rd/p/000001219.000018731.html',fairName:title,indexText:title,publishedAt:'2026-09-10T10:00:00+09:00'},'kappasushi','2026-09-11');
+ assert.equal(r.excludedReason,'not_food_campaign');
+});
 test('day before / same day / following day',()=>{const r=tororow();assert.equal(campaignPhase(r,'2026-09-15'),'upcoming');assert.equal(campaignPhase(r,'2026-09-16'),'active');assert.equal(campaignPhase(r,'2026-09-17'),'ended');});
 test('ended release not silently reclassified active',()=>{assert.equal(parseDetail(release,entry,'kappasushi','2026-09-17').excludedReason,'ended');});
 test('index includes concurrent desserts, lunch, takeout and benefits',()=>{
