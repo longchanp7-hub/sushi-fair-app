@@ -24,11 +24,11 @@ test('Kappa food releases without generic campaign words are retained',()=>{
  const r=parseDetail(html,{sourceUrl:spicy,indexUrl:SOURCES.kappasushi.indices[1],fairName:title,indexText:title,publishedAt:'2026-09-09T14:00:02+09:00'},'kappasushi','2026-09-11');
  assert.equal(r.campaignPhase,'upcoming');assert.equal(r.category,'other');assert.equal(r.startDate,'2026-09-17');assert.equal(r.endDate,'2026-12-09');assert.deepEqual(r.items.map(x=>x.price),[430,540,690]);
 });
-test('Kappa takeout early-bird release keeps reservation period and conditions separate from main fair',()=>{
+test('Kappa takeout early-bird release keeps reservation and pickup periods distinct and excludes discounts from items',()=>{
  const title='【本日から】 お持ち帰りWEB予約限定！早めのご予約で税込400円OFF！シルバーウィークのお集まりや秋の行楽に！かっぱ寿司「シルバーウィーク早割」';
- const html=`<article><h1>${title}</h1><p>■ご予約受付期間：2026年9月9日（水）～9月16日（水）</p><p>■対象お受け取り期間：2026年9月19日（土）～9月23日（水・祝）</p><p>かっぱ寿司アプリ会員を対象に、お持ち帰りWEB予約税込3,000円以上のご注文で税込400円OFFクーポンをご利用いただけます。</p></article>`;
+ const html=`<article><h1>${title}</h1><p>2026年9月9日（水）から9月16日（水）までの期間中、かっぱ寿司アプリ会員のお客様を対象に、お持ち帰りWEB予約で税込3,000円以上ご予約いただいたお客様がご利用いただける税込400円OFFクーポンをご用意しました。対象商品のお受け取り期間は、2026年9月19日（土）から9月23日（水・祝）までです。</p><p>■ご予約受付期間：2026年9月9日（水）～9月16日（水）</p><p>■対象お受け取り期間：2026年9月19日（土）～9月23日（水・祝）</p><p>■実施店舗：かっぱ寿司全店（一部改装中・休業中店舗は除く）</p><p>※税込400円分の値引き額がレシートに表記されます。</p></article>`;
  const r=parseDetail(html,{sourceUrl:early,indexUrl:SOURCES.kappasushi.indices[1],fairName:title,indexText:title,publishedAt:'2026-09-09T11:00:02+09:00'},'kappasushi','2026-09-11');
- assert.equal(r.category,'takeout');assert.equal(r.campaignPhase,'active');assert.equal(r.startDate,'2026-09-09');assert.equal(r.endDate,'2026-09-16');assert.equal(r.items.length,0);assert.match(r.scopeNote,/アプリ会員対象/);assert.match(r.scopeNote,/3,000円以上/);assert.match(r.scopeNote,/400円OFF/);assert.match(r.scopeNote,/2026-09-19〜2026-09-23/);
+ assert.equal(r.category,'takeout');assert.equal(r.campaignPhase,'active');assert.equal(r.startDate,'2026-09-09');assert.equal(r.endDate,'2026-09-16');assert.equal(r.items.length,0);assert.match(r.scopeNote,/アプリ会員対象/);assert.match(r.scopeNote,/3,000円以上/);assert.match(r.scopeNote,/400円OFF/);assert.match(r.scopeNote,/2026-09-19〜2026-09-23/);assert.match(r.scopeNote,/改装中・休業中/);
 });
 test('generic app feature announcement is still excluded despite new-arrival wording',()=>{
  const title='かっぱ寿司公式アプリに新機能が登場';
