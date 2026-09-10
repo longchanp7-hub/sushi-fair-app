@@ -14,12 +14,16 @@ const clean=v=>String(v??'').normalize('NFKC').replace(/\s+/g,' ').trim();
 const DAY=86400000,HORIZON=45,LOOKBACK=90,RECENT_OPEN_RELEASE=14,MAX_DETAILS=240;
 const eligible=/フェア|祭り|まつり|キャンペーン|トロの日|ランチ|スイーツ|パスポート|優待|お徳なセット|周年祭|おせち|期間限定|増量|おすすめ|食べ放題/;
 const irrelevant=/訂正|お詫び|休止|休業|偽|なりすまし|テレビ|放送|採用|募集|決算|株主|業績|会社説明/;
+const campaignAction=/販売|提供|発売|実施|予約受付|ご予約|注文|クーポン|割引|OFF|オフ|新登場|登場|コラボ/;
+const transactionEvidence=/販売期間|販売店舗|実施店舗|予約受付期間|(?:お受け取り|受け取り|受取).*期間|税込\s*[\d,]+\s*円|[\d,]+\s*円\s*[（(]税込|お持ち帰りWEB予約|クーポン/;
 const key=u=>createHash('sha256').update(u).digest('hex').slice(0,20);
 function iso(y,m,d){const v=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const parsed=new Date(v+'T00:00:00Z');return Number.isFinite(+parsed)&&parsed.toISOString().slice(0,10)===v?v:null;}
 export function parseDates(value,year=Number(catalogToday().slice(0,4))){
  const s=clean(value).replace(/20\d{2}[./年]\d{1,2}[./月]\d{1,2}日?\s*更新/g,'');
  const date='(?:(20\\d{2})[年./]\\s*)?(\\d{1,2})[月./]\\s*(\\d{1,2})日?',weekday='(?:\\s*[（(][^）)]{1,8}[）)])?';
  let m=s.match(new RegExp(date+weekday+'\\s*[～〜~−–—-]\\s*'+date));
+ if(m){const y=+(m[1]||year),ey=+(m[4]||(+m[5]<+m[2]?y+1:y));return {startDate:iso(y,+m[2],+m[3]),endDate:iso(ey,+m[5],+m[6])};}
+ m=s.match(new RegExp(date+weekday+'\\s*(?:から|より)\\s*'+date+weekday+'\\s*まで'));
  if(m){const y=+(m[1]||year),ey=+(m[4]||(+m[5]<+m[2]?y+1:y));return {startDate:iso(y,+m[2],+m[3]),endDate:iso(ey,+m[5],+m[6])};}
  m=s.match(new RegExp(date+weekday+'\\s*(?:限定|のみ|一日|1日限定)'));
  if(m){const d=iso(+(m[1]||year),+m[2],+m[3]);return {startDate:d,endDate:d};}
@@ -34,6 +38,16 @@ export function parseDates(value,year=Number(catalogToday().slice(0,4))){
 function titleOnly(v){return clean(v).replace(/^20\d{2}[./年]\d{1,2}[./月]\d{1,2}日?\s*更新\s*/,'').replace(/\s*[|｜].*$/,'').replace(/^予告\s*/,'').trim();}
 function category(t){return /お持ち帰り|持ち帰り|テイクアウト/.test(t)?'takeout':/ランチ/.test(t)?'lunch':/スイーツ|ゼリー|アイス|アサイー/.test(t)?'dessert':/パスポート|優待/.test(t)?'benefit':/おせち|予約/.test(t)?'preorder':/店舗限定|店[】〗\]]|周年祭/.test(t)?'store_limited':/フェア|祭り|トロの日|増量/.test(t)?'fair':'other';}
 function textLines($,root){const el=root.clone();el.find('script,style,nav,header,footer').remove();el.find('br').replaceWith('\n');el.find('p,div,li,dt,dd,h1,h2,h3,h4,tr').append('\n');return el.text().split(/\n+/).map(clean).filter(Boolean);}
+function hasCampaignEvidence(title,lines){const text=clean([title,...lines].join(' '));return campaignAction.test(text)&&transactionEvidence.test(text);}
+function takeoutScopeNote(lines,year){
+ const text=lines.join(' '),notes=['お持ち帰り向け。店内飲食の価格・フェアとは別扱いです。'];
+ if(/アプリ会員/.test(text))notes.push('アプリ会員対象。');
+ const minimum=text.match(/税込\s*([\d,]+)\s*円以上/),discount=text.match(/税込\s*([\d,]+)\s*円\s*(?:OFF|オフ)/i);
+ if(minimum&&discount)notes.push(`税込${Number(minimum[1].replace(/,/g,'')).toLocaleString('ja-JP')}円以上のWEB予約で税込${Number(discount[1].replace(/,/g,'')).toLocaleString('ja-JP')}円OFF。`);
+ const pickup=lines.find(l=>/(?:お受け取り|受け取り|受取).*期間/.test(l));
+ if(pickup){const r=parseDates(pickup,year);if(r.startDate&&r.endDate)notes.push(`受取対象 ${r.startDate}〜${r.endDate}。`);}
+ return notes.join(' ');
+}
 export function discoverIndex(html,indexUrl,chain){
  const found=new Map(),isFeed=/<(?:rss\b|rdf:RDF)/i.test(html),$=cheerio.load(html,isFeed?{xmlMode:true}:{});
  function add(href,title,text,extra={}){
@@ -89,20 +103,21 @@ export function parseDetail(html,entry,chain,today=catalogToday()){
  let title=titleOnly(entry.fromOfficialList?entry.fairName:heading&&eligible.test(heading)?heading:meta&&eligible.test(meta)?meta:entry.fairName);
  if(/トロの日/.test(title))title='トロの日';
  const year=Number(String(entry.publishedAt||entry.indexText||meta).match(/20\d{2}/)?.[0]||today.slice(0,4));
- const periods=lines.filter(l=>/(?:販売日|開催日|(?:販売|開催|実施|提供|配布)期間)/.test(l));
+ const periods=lines.filter(l=>/(?:販売日|開催日|予約受付期間|(?:販売|開催|実施|提供|配布|予約|受取|受け取り|お受け取り)期間)/.test(l));
  let range={startDate:entry.startDate||null,endDate:entry.endDate||null};
  const texts=entry.fromOfficialList?[entry.indexText,...periods,`${heading} ${meta}`]:[...periods,entry.indexText,`${heading} ${meta}`,...lines.slice(0,45)];
  for(const text of texts){const r=parseDates(text,year);if(r.startDate||r.endDate){range=r;break;}}
- if(chain==='kappasushi'&&!/かっぱ寿司|カッパ・クリエイト/.test(lines.join(' ')+' '+meta))throw new Error('Wrong brand in release');
- const cat=category(title),phase=campaignPhase(range,today);
- if((!eligible.test(title)&&!entry.fromOfficialList)||irrelevant.test(title))return {excludedReason:'not_food_campaign',title};
+ const body=lines.join(' ');
+ if(chain==='kappasushi'&&!/かっぱ寿司|カッパ・クリエイト/.test(body+' '+meta))throw new Error('Wrong brand in release');
+ const cat=category(title),phase=campaignPhase(range,today),campaignLike=eligible.test(title)||hasCampaignEvidence(title,lines);
+ if((!campaignLike&&!entry.fromOfficialList)||irrelevant.test(title))return {excludedReason:'not_food_campaign',title};
  if(phase==='ended')return {excludedReason:'ended',title,...range};
  if(range.startDate&&new Date(range.startDate)-new Date(today)>HORIZON*DAY)return {excludedReason:'beyond_45_day_horizon',title,...range};
  // Not 'ended': this older release simply cannot establish present availability by itself.
  if(releaseNeedsConfirmation(entry,range,today))return {excludedReason:'current_status_unconfirmed',title,...range};
  const sharedMenu=new URL(entry.sourceUrl).pathname==='/menu2';
  const items=sharedMenu?[]:parseProducts(lines,entry.sourceUrl,range).map(x=>({...x,saleStatus:campaignPhase(x,today)}));
- const note=cat==='takeout'?'お持ち帰り向け。店内飲食の価格・フェアとは別扱いです。':cat==='lunch'?'平日限定ランチ。提供時間・対象店舗は公式告知で確認してください。':cat==='benefit'?'優待・配布条件があります。年齢条件、配布期間と利用期間を公式告知で確認してください。':cat==='store_limited'?'対象店舗限定の告知です。選択店舗での実施を保証しません。':cat==='preorder'?'予約商品の告知です。申込期限と受取・販売日は公式で確認してください。':/店内飲食限定/.test(lines.join(' '))?'店内飲食限定。店舗により価格・取扱いが異なり、数量限定・売り切れの場合があります。':'対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。';
+ const note=cat==='takeout'?takeoutScopeNote(lines,year):cat==='lunch'?'平日限定ランチ。提供時間・対象店舗は公式告知で確認してください。':cat==='benefit'?'優待・配布条件があります。年齢条件、配布期間と利用期間を公式告知で確認してください。':cat==='store_limited'?'対象店舗限定の告知です。選択店舗での実施を保証しません。':cat==='preorder'?'予約商品の告知です。申込期限と受取・販売日は公式で確認してください。':/店内飲食限定/.test(body)?'店内飲食限定。店舗により価格・取扱いが異なり、数量限定・売り切れの場合があります。':'対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。';
  return {id:`${chain}-${key(entry.identity||entry.sourceUrl)}`,fairName:title,sourceUrl:entry.sourceUrl,indexUrl:entry.indexUrl,...range,campaignPhase:phase,category:cat,scopeNote:note,items,itemStatus:items.length?'parsed':'unavailable',metadataStatus:range.startDate?'parsed':'partial',lastConfirmedAt:new Date().toISOString()};
 }
 async function get(url){let last;for(let attempt=0;attempt<2;attempt++){try{const r=await fetch(url,{signal:AbortSignal.timeout(16000),headers:{'user-agent':'Mozilla/5.0 SushiFairOfficialCatalog/1.0','accept-language':'ja-JP','cache-control':'no-cache'}});if(!r.ok){const e=new Error(`HTTP ${r.status}`);e.retryable=r.status>=500||r.status===429;throw e;}return await r.text();}catch(e){last=e;if(e.retryable===false)break;if(!attempt)await new Promise(r=>setTimeout(r,800));}}throw last;}
