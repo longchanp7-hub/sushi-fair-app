@@ -85,7 +85,7 @@ export function releaseNeedsConfirmation(entry,range,today=catalogToday()){
 export function parseProducts(lines,sourceUrl,range){
  const out=[];
  for(let i=0;i<lines.length;i++)for(const text of [lines[i],`${lines[i]} ${lines[i+1]||''}`]){
-  if(text.length>250||/販売期間|販売店舗|対象店舗|合計|割引|クーポン|以上|お買い上げ/.test(text))continue;
+  if(text.length>250||/販売期間|販売店舗|対象店舗|合計|割引|クーポン|以上|お買い上げ|OFF|オフ|早割/.test(text))continue;
   const p=text.match(/(?:税込\s*([\d,]+)\s*円|([\d,]+)\s*円\s*[（(]税込[）)])/);if(!p)continue;
   const before=text.slice(0,p.index).replace(/^[・●■◆◇\s]+/,''),quotes=[...before.matchAll(/[『「]([^』」]+)[』」]/g)];
   let name=quotes.at(-1)?.[1]||before.replace(/\s*[（(]?\s*[\d,]+円.*$/,'').replace(/\s*(?:一|二|三|\d+)貫\s*$/,'').replace(/[（(\s]+$/,'');
