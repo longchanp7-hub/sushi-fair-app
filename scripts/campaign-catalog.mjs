@@ -39,13 +39,18 @@ function titleOnly(v){return clean(v).replace(/^20\d{2}[./年]\d{1,2}[./月]\d{1
 function category(t){return /お持ち帰り|持ち帰り|テイクアウト/.test(t)?'takeout':/ランチ/.test(t)?'lunch':/スイーツ|ゼリー|アイス|アサイー/.test(t)?'dessert':/パスポート|優待/.test(t)?'benefit':/おせち|予約/.test(t)?'preorder':/店舗限定|店[】〗\]]|周年祭/.test(t)?'store_limited':/フェア|祭り|トロの日|増量/.test(t)?'fair':'other';}
 function textLines($,root){const el=root.clone();el.find('script,style,nav,header,footer').remove();el.find('br').replaceWith('\n');el.find('p,div,li,dt,dd,h1,h2,h3,h4,tr').append('\n');return el.text().split(/\n+/).map(clean).filter(Boolean);}
 function hasCampaignEvidence(title,lines){const text=clean([title,...lines].join(' '));return campaignAction.test(text)&&transactionEvidence.test(text);}
+function labeledPickupRange(lines,year){
+ const marker=/(?:対象商品(?:の)?|対象)?(?:お受け取り|受け取り|受取)(?:対象)?期間/;
+ for(const line of lines){const m=line.match(marker);if(!m)continue;const r=parseDates(line.slice((m.index||0)+m[0].length),year);if(r.startDate||r.endDate)return r;}
+ return {startDate:null,endDate:null};
+}
 function takeoutScopeNote(lines,year){
  const text=lines.join(' '),notes=['お持ち帰り向け。店内飲食の価格・フェアとは別扱いです。'];
  if(/アプリ会員/.test(text))notes.push('アプリ会員対象。');
  const minimum=text.match(/税込\s*([\d,]+)\s*円以上/),discount=text.match(/税込\s*([\d,]+)\s*円\s*(?:OFF|オフ)/i);
  if(minimum&&discount)notes.push(`税込${Number(minimum[1].replace(/,/g,'')).toLocaleString('ja-JP')}円以上のWEB予約で税込${Number(discount[1].replace(/,/g,'')).toLocaleString('ja-JP')}円OFF。`);
- const pickup=lines.find(l=>/(?:お受け取り|受け取り|受取).*期間/.test(l));
- if(pickup){const r=parseDates(pickup,year);if(r.startDate&&r.endDate)notes.push(`受取対象 ${r.startDate}〜${r.endDate}。`);}
+ const pickup=labeledPickupRange(lines,year);if(pickup.startDate&&pickup.endDate)notes.push(`受取対象 ${pickup.startDate}〜${pickup.endDate}。`);
+ if(/一部改装中|一部改装|休業中店舗/.test(text))notes.push('一部改装中・休業中店舗を除きます。');
  return notes.join(' ');
 }
 export function discoverIndex(html,indexUrl,chain){
@@ -85,12 +90,12 @@ export function releaseNeedsConfirmation(entry,range,today=catalogToday()){
 export function parseProducts(lines,sourceUrl,range){
  const out=[];
  for(let i=0;i<lines.length;i++)for(const text of [lines[i],`${lines[i]} ${lines[i+1]||''}`]){
-  if(text.length>250||/販売期間|販売店舗|対象店舗|合計|割引|クーポン|以上|お買い上げ|OFF|オフ|早割/.test(text))continue;
+  if(text.length>250||/販売期間|販売店舗|対象店舗|合計|割引|クーポン|以上|お買い上げ|OFF|オフ|早割|値引|円引|還元|ポイント/.test(text))continue;
   const p=text.match(/(?:税込\s*([\d,]+)\s*円|([\d,]+)\s*円\s*[（(]税込[）)])/);if(!p)continue;
   const before=text.slice(0,p.index).replace(/^[・●■◆◇\s]+/,''),quotes=[...before.matchAll(/[『「]([^』」]+)[』」]/g)];
   let name=quotes.at(-1)?.[1]||before.replace(/\s*[（(]?\s*[\d,]+円.*$/,'').replace(/\s*(?:一|二|三|\d+)貫\s*$/,'').replace(/[（(\s]+$/,'');
   name=clean(name).replace(/^(?:店内切付(?:\/直火炙り)?|直火炙り)\s*/,'').replace(/[.．・]{2,}$/,'').trim();
-  if(!name||name.length>65||/[。]|税込|販売|提供|購入|価格|通常|全店|プレス/.test(name)||/^(?:トロの日|.+キャンペーン|.+祭り)$/.test(name))continue;
+  if(!name||name.length>65||/^[※*＊・●■◆◇\-―ー]+$/.test(name)||/[。]|税込|販売|提供|購入|価格|通常|全店|プレス/.test(name)||/^(?:トロの日|.+キャンペーン|.+祭り)$/.test(name))continue;
   const price=Number((p[1]||p[2]).replace(/,/g,''));if(!(price>0&&price<100000))continue;
   const suffix=text.slice(p.index+p[0].length,p.index+p[0].length+5);
   out.push({name,price,priceType:/^[）)\s]*[～〜~]/.test(suffix)?'from':'listed',...range,sourceUrl,saleStatus:campaignPhase(range),scrapeStatus:'ok'});break;
