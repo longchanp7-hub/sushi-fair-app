@@ -25,6 +25,15 @@ function sanitize(chain,today){
   if(copy.endDate&&copy.endDate<today){copy.status='warning';copy.campaignPhase='ended';}
   return copy;
 }
+function temporalNormalizationFindings(chain,today){
+  const findings=[];
+  if(!chain||typeof chain!=='object')return findings;
+  if(chain.endDate&&chain.endDate<today&&chain.status==='ok')findings.push(issue('expired_chain_normalized','warning','expired chain state was normalized before quality validation'));
+  for(const item of chain.items||[]){
+    if(item?.endDate&&item.endDate<today&&item.saleStatus==='active')findings.push(issue('expired_item_normalized','warning',`${item.name||'item'} was normalized from active to ended`));
+  }
+  return findings;
+}
 
 export function inspectChain(candidate,previous,today=todayKey()){
   const issues=[];
@@ -68,14 +77,16 @@ export function promoteCandidate(candidate,previous,today=todayKey()){
   const p=Object.fromEntries((previous?.chains||[]).map(x=>[x.chain,x]));
   const selected=[];const fallbackChains=[];const quarantined=[];const warnings=[];
   for(const id of CHAIN_IDS){
-    const row=c[id],old=p[id];
-    const findings=inspectChain(row,old,today);
+    const rawRow=c[id],rawOld=p[id];
+    const row=rawRow&&typeof rawRow==='object'?sanitize(rawRow,today):rawRow;
+    const old=rawOld&&typeof rawOld==='object'?sanitize(rawOld,today):rawOld;
+    const findings=[...temporalNormalizationFindings(rawRow,today),...inspectChain(row,old,today)];
     const errors=findings.filter(x=>x.severity==='error');
     warnings.push(...findings.filter(x=>x.severity==='warning').map(x=>({chain:id,...x})));
     if(errors.length){
       quarantined.push({chain:id,issues:errors});
       if(!usableLkg(old,today))throw new Error(`Quality gate blocked ${id}: ${errors.map(x=>x.code).join(', ')}; previous row is absent, expired, or also invalid`);
-      const fallback=sanitize(old,today);
+      const fallback=structuredClone(old);
       fallback.status='warning';
       fallback.qualityState='last_known_good';
       fallback.qualityCheckedAt=new Date().toISOString();
@@ -83,7 +94,7 @@ export function promoteCandidate(candidate,previous,today=todayKey()){
       fallback.message=`今回の更新候補を品質ゲートで隔離し、検証済みの前回データを表示しています（${errors.map(x=>x.code).join(', ')}）。`;
       selected.push(fallback);fallbackChains.push(id);
     }else{
-      const ok=sanitize(row,today);
+      const ok=structuredClone(row);
       ok.qualityState=findings.length?'verified_with_warnings':'verified';
       ok.qualityCheckedAt=new Date().toISOString();
       if(findings.length)ok.qualityIssues=findings.map(x=>x.code);else delete ok.qualityIssues;
@@ -109,6 +120,15 @@ function selfTest(){
   const badPrevious=structuredClone(previous);const bt=badPrevious.chains.find(x=>x.chain==='totomaru');bt.items=[{name:'@426unxts',price:null,saleStatus:'active',scrapeStatus:'ok'}];bt.menuHighlights=[];
   const badCandidate=structuredClone(candidate);const ct=badCandidate.chains.find(x=>x.chain==='totomaru');ct.items=[{name:'マグロ解体ショー',price:null,saleStatus:'active',scrapeStatus:'ok'}];ct.menuHighlights=[];
   assert.throws(()=>promoteCandidate(badCandidate,badPrevious,'2026-09-06'),/previous row is absent, expired, or also invalid/);
+  const rolloverPrevious=structuredClone(previous);const rp=rolloverPrevious.chains.find(x=>x.chain==='kurasushi');rp.endDate='2026-09-05';rp.items[0].endDate='2026-09-05';rp.items[0].saleStatus='active';rp.status='ok';
+  const rolloverCandidate=structuredClone(rolloverPrevious);
+  const rolled=promoteCandidate(rolloverCandidate,rolloverPrevious,'2026-09-06');
+  const rolledKura=rolled.data.chains.find(x=>x.chain==='kurasushi');
+  assert.ok(!rolled.report.fallbackChains.includes('kurasushi'));
+  assert.equal(rolledKura.items[0].saleStatus,'ended');
+  assert.equal(rolledKura.campaignPhase,'ended');
+  assert.equal(rolledKura.status,'warning');
+  assert.ok(rolled.report.warnings.some(x=>x.chain==='kurasushi'&&x.code==='expired_item_normalized'));
   console.log('Quality gate self-tests passed.');
 }
 
