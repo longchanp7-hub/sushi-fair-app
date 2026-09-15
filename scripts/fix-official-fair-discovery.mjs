@@ -184,7 +184,7 @@ function parseKuraRelease(html, sourceUrl, today = jstTodayKey()) {
     if (!Number.isFinite(price) || price <= 0) continue;
     items.push({
       name:clean(match[1]), price, ...range,
-      saleStatus:range.startDate > today ? 'active' : 'active',
+      saleStatus:range.endDate && range.endDate < today ? 'ended' : 'active',
       scrapeStatus:'ok', sourceUrl,
       availabilityNote:range.startDate > today ? `${range.startDate.slice(5).replace('-', '/')}から販売予定` : undefined,
     });
@@ -277,6 +277,8 @@ function runSelfTests() {
   assert.deepEqual(kura.items.map(item => [item.name,item.price]), [['厳選かに軍艦（一貫）',110],['北海道サーモン',270],['〖北海道産〗秋刀魚',160]]);
   assert.equal(kura.endDate, '2026-10-01');
   assert.equal(kuraCandidateRank(kura, '2026-09-02'), 102);
+  const kuraAfterPartialEnd = parseKuraRelease(kuraFixture, 'https://www.kurasushi.co.jp/author/008437.html', '2026-09-15');
+  assert.deepEqual(kuraAfterPartialEnd.items.map(item => [item.name,item.saleStatus]), [['厳選かに軍艦（一貫）','ended'],['北海道サーモン','ended'],['〖北海道産〗秋刀魚','active']]);
   console.log('Official fair discovery self-tests passed.');
 }
 
