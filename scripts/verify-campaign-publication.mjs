@@ -2,10 +2,20 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {canonicalCampaignUrl,renderCampaignCatalog,visibleCampaigns} from '../app/campaign-catalog.js';
+import {canonicalCampaignUrl,renderCampaignCatalog,visibleCampaigns,visibleConcurrentCampaigns} from '../app/campaign-catalog.js';
 const ROOT=fileURLToPath(new URL('..',import.meta.url));
 export const TARGETS=['kappasushi','tokubei'];
+export const CONCURRENT_TARGETS=['sushiro','kurasushi'];
 const validDate=v=>v===null||v===undefined||(typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&Number.isFinite(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v);
+function validateItems(id,row){
+ assert.ok(Array.isArray(row.items),`${id}: items must be an array`);
+ for(const item of row.items){
+  assert.ok(typeof item.name==='string'&&item.name.trim()&&!/^@|https?:\/\//.test(item.name),`${id}: invalid product name`);
+  assert.ok(item.price==null||Number.isFinite(item.price)&&item.price>0,`${id}: invalid product price`);
+  assert.ok(canonicalCampaignUrl(item.sourceUrl),`${id}: missing product source`);
+  assert.ok(validDate(item.startDate)&&validDate(item.endDate),`${id}: invalid product date`);
+ }
+}
 export function validateCatalog(data,inventory=null){
  const result={};
  for(const id of TARGETS){
@@ -21,13 +31,8 @@ export function validateCatalog(data,inventory=null){
    assert.ok(canonicalCampaignUrl(row.sourceUrl),`${id}: unsafe source URL`);
    assert.ok(validDate(row.startDate)&&validDate(row.endDate),`${id}: invalid date`);
    assert.ok(!row.startDate||!row.endDate||row.startDate<=row.endDate,`${id}: reversed dates`);
-   assert.ok(Array.isArray(row.items),`${id}: items must be an array`);
+   validateItems(id,row);
    assert.ok(['parsed','unavailable'].includes(row.itemStatus),`${id}: item extraction state missing`);
-   for(const item of row.items){
-    assert.ok(typeof item.name==='string'&&item.name.trim()&&!/^@|https?:\/\//.test(item.name),`${id}: invalid product name`);
-    assert.ok(item.price==null||Number.isFinite(item.price)&&item.price>0,`${id}: invalid product price`);
-    assert.ok(canonicalCampaignUrl(item.sourceUrl),`${id}: missing product source`);
-   }
    ids.add(row.id);urls.add(canonicalCampaignUrl(row.sourceUrl));
   }
   for(const expected of proof.expectedIds||[])assert.ok(ids.has(expected),`${id}: published announcement missing: ${expected}`);
@@ -42,17 +47,43 @@ export function validateCatalog(data,inventory=null){
  }
  return result;
 }
-const payload=data=>data.chains.filter(x=>TARGETS.includes(x.chain)).map(x=>({chain:x.chain,campaignCatalog:x.campaignCatalog,campaignCoverage:x.campaignCoverage}));
+export function validateConcurrentCampaigns(data){
+ const result={};
+ for(const id of CONCURRENT_TARGETS){
+  const c=data.chains?.find(x=>x.chain===id);
+  assert.ok(c,`${id}: chain missing`);
+  assert.ok(Array.isArray(c.campaigns),`${id}: official concurrent campaign payload missing`);
+  const ids=new Set();
+  for(const row of c.campaigns){
+   assert.ok(row.id&&row.fairName&&!ids.has(row.id),`${id}: missing or duplicate concurrent campaign ID`);
+   assert.ok(canonicalCampaignUrl(row.sourceUrl),`${id}: unsafe concurrent campaign URL`);
+   assert.ok(validDate(row.startDate)&&validDate(row.endDate),`${id}: invalid concurrent campaign date`);
+   assert.ok(!row.startDate||!row.endDate||row.startDate<=row.endDate,`${id}: reversed concurrent campaign dates`);
+   validateItems(id,row);
+   assert.ok(['parsed','unavailable'].includes(row.itemStatus),`${id}: concurrent item extraction state missing`);
+   ids.add(row.id);
+  }
+  const visible=visibleConcurrentCampaigns(c),html=renderCampaignCatalog(c);
+  for(const row of visible)assert.ok(html.includes(`data-concurrent-campaign-id="${row.id}"`),`${id}: concurrent campaign not rendered: ${row.id}`);
+  result[id]={campaigns:c.campaigns.length,visible:visible.length,items:c.campaigns.reduce((n,x)=>n+x.items.length,0)};
+ }
+ return result;
+}
+const payload=data=>data.chains.filter(x=>TARGETS.includes(x.chain)||CONCURRENT_TARGETS.includes(x.chain)).map(x=>({
+ chain:x.chain,
+ ...(TARGETS.includes(x.chain)?{campaignCatalog:x.campaignCatalog,campaignCoverage:x.campaignCoverage}:{}),
+ ...(CONCURRENT_TARGETS.includes(x.chain)?{campaigns:x.campaigns}:{}),
+}));
 export async function main(argv=process.argv.slice(2)){
  const value=flag=>{const i=argv.indexOf(flag);return i<0?null:argv[i+1];};
  const app=path.join(ROOT,'app'),local=JSON.parse(await fs.readFile(path.join(app,'data/fairs.json'),'utf8'));
  const inventoryPath=value('--inventory'),inventory=inventoryPath?JSON.parse(await fs.readFile(inventoryPath,'utf8')):null;
- const localResult=validateCatalog(local,inventory);
+ const localResult=validateCatalog(local,inventory),localConcurrent=validateConcurrentCampaigns(local);
  const assetNames=['national.js','campaign-catalog.js','sw.js'];
  const localAssets=Object.fromEntries(await Promise.all(assetNames.map(async name=>[name,await fs.readFile(path.join(app,name),'utf8')])));
  assert.match(localAssets['national.js'],/renderCampaignCatalog\(f\)/,'Main card renderer is not connected');
  assert.match(localAssets['sw.js'],/campaign-catalog\.js\?v=20260907/,'Offline campaign module not precached');
- if(argv.includes('--local')){console.log(JSON.stringify({localValidated:true,chains:localResult},null,2));return;}
+ if(argv.includes('--local')){console.log(JSON.stringify({localValidated:true,chains:localResult,concurrent:localConcurrent},null,2));return;}
  const input=value('--url');if(!input)throw new Error('--url or --local required');
  const base=new URL(input);assert.equal(base.protocol,'https:');if(!base.pathname.endsWith('/'))base.pathname+='/';
  async function text(name,attempt){const u=new URL(name,base);u.searchParams.set('__catalog_verify',`${Date.now()}-${attempt}`);const r=await fetch(u,{signal:AbortSignal.timeout(15000),headers:{'cache-control':'no-cache'}});if(!r.ok){const e=new Error(`${name} HTTP ${r.status}`);e.retryable=[404,408,429].includes(r.status)||r.status>=500;throw e;}return r.text();}
@@ -61,9 +92,9 @@ export async function main(argv=process.argv.slice(2)){
   try{
    const remote=JSON.parse(await text('data/fairs.json',attempt));
    // A stale Pages edge may be serving the old release; retry only until exact expected bytes arrive.
-   if(JSON.stringify(payload(remote))!==JSON.stringify(payload(local))){const e=new Error('Pages catalog does not yet match this publication');e.retryable=true;throw e;}
+   if(JSON.stringify(payload(remote))!==JSON.stringify(payload(local))){const e=new Error('Pages campaign payload does not yet match this publication');e.retryable=true;throw e;}
    for(const name of assetNames){if(await text(name,attempt)!==localAssets[name]){const e=new Error(`${name} has not propagated to Pages`);e.retryable=true;throw e;}}
-   const result={verifiedAt:new Date().toISOString(),testedCommit:process.env.GITHUB_SHA||null,pageUrl:base.href,exactCatalogMatches:true,rendererAssetsMatch:true,chains:validateCatalog(remote,inventory)};
+   const result={verifiedAt:new Date().toISOString(),testedCommit:process.env.GITHUB_SHA||null,pageUrl:base.href,exactCatalogMatches:true,concurrentPayloadMatches:true,rendererAssetsMatch:true,chains:validateCatalog(remote,inventory),concurrent:validateConcurrentCampaigns(remote)};
    if(value('--report'))await fs.writeFile(value('--report'),JSON.stringify(result,null,2)+'\n');
    console.log(JSON.stringify(result,null,2));return;
   }catch(e){last=e;console.warn(`Catalog verification ${attempt}: ${e.message}`);if(e.code==='ERR_ASSERTION'||e.retryable===false||attempt===6)throw e;await new Promise(r=>setTimeout(r,5000));}
