@@ -21,7 +21,13 @@ function activeCampaigns(chain,today){return (chain?.campaigns||[]).filter(x=>(!
 function sameCampaign(a,b){return norm(a?.fairName)&&norm(a?.fairName)===norm(b?.fairName);}
 function sanitize(chain,today){
   const copy=structuredClone(chain);
-  copy.items=(copy.items||[]).map(item=>item?.endDate&&item.endDate<today?{...item,saleStatus:'ended'}:item);
+  copy.items=(copy.items||[]).map(item=>{
+    const normalized={...item};
+    if(!Object.prototype.hasOwnProperty.call(normalized,'startDate'))normalized.startDate=null;
+    if(!Object.prototype.hasOwnProperty.call(normalized,'endDate'))normalized.endDate=null;
+    if(normalized.endDate&&normalized.endDate<today)normalized.saleStatus='ended';
+    return normalized;
+  });
   if(copy.endDate&&copy.endDate<today){copy.status='warning';copy.campaignPhase='ended';}
   return copy;
 }
@@ -129,6 +135,13 @@ function selfTest(){
   assert.equal(rolledKura.campaignPhase,'ended');
   assert.equal(rolledKura.status,'warning');
   assert.ok(rolled.report.warnings.some(x=>x.chain==='kurasushi'&&x.code==='expired_item_normalized'));
+  const metadataCandidate=structuredClone(previous);const si=metadataCandidate.chains.find(x=>x.chain==='sushiro').items[0];delete si.startDate;delete si.endDate;
+  const metadataPromoted=promoteCandidate(metadataCandidate,previous,'2026-09-06');
+  const normalizedItem=metadataPromoted.data.chains.find(x=>x.chain==='sushiro').items[0];
+  assert.ok(Object.prototype.hasOwnProperty.call(normalizedItem,'startDate'));
+  assert.ok(Object.prototype.hasOwnProperty.call(normalizedItem,'endDate'));
+  assert.equal(normalizedItem.startDate,null);
+  assert.equal(normalizedItem.endDate,null);
   console.log('Quality gate self-tests passed.');
 }
 
