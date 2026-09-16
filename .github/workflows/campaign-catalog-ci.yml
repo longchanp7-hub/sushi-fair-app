@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/*campaign*.mjs'
+      - 'scripts/fix-official-fair-discovery.mjs'
       - 'scripts/source-registry.mjs'
       - 'app/campaign-catalog.js'
       - 'app/national.js'
@@ -30,6 +31,7 @@ jobs:
         run: node --experimental-vm-modules --test scripts/test-campaign-catalog.mjs scripts/test-campaign-integration.mjs
       - name: Collect live official announcements in isolated PR workspace
         run: |
+          node scripts/fix-official-fair-discovery.mjs
           node scripts/campaign-catalog.mjs --report /tmp/campaign-coverage.json
           node scripts/campaign-catalog.mjs --verify --report /tmp/campaign-coverage.json
           node scripts/verify-campaign-publication.mjs --local --inventory /tmp/campaign-coverage.json
