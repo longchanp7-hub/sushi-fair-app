@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-20T04:56:50.323Z",
+  "updatedAt": "2026-09-20T18:57:03.379Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -4803,121 +4803,112 @@
     {
       "chain": "uobei",
       "storeName": "選択地域",
-      "fairName": "秋の味覚フェア",
-      "startDate": "2026-08-25",
+      "fairName": "北海道フェア",
+      "startDate": "2026-09-18",
       "endDate": null,
       "items": [
         {
-          "name": "赤魚",
+          "name": "さんま天ぷらにぎり",
           "price": 110,
-          "startDate": "2026-08-25",
+          "startDate": "2026-09-18",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
         },
         {
-          "name": "かつおたたき",
-          "price": 110,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "こういかげそ",
-          "price": 132,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "瀬戸内産茹で牡蠣",
-          "price": 198,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "紅鮭すじこ",
-          "price": 198,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "うにいかぐんかん",
-          "price": 198,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "プレミアム蒸しえび",
-          "price": 308,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "とろびん長はらも",
+          "name": "水たこ松前漬けぐんかん",
           "price": 165,
-          "startDate": "2026-08-25",
+          "startDate": "2026-09-18",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
         },
         {
-          "name": "本鮪大とろ",
-          "price": 308,
-          "startDate": "2026-08-25",
+          "name": "北海道産ほたて",
+          "price": 231,
+          "startDate": "2026-09-18",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
         },
         {
-          "name": "お得！まぐろ三昧",
-          "price": 451,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "混ぜて食べるマスカットパフェ",
-          "price": 418,
-          "startDate": "2026-08-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
-        },
-        {
-          "name": "苺のクランブルタルト",
+          "name": "北海道産大ずわいがに海苔包み",
           "price": 264,
-          "startDate": "2026-08-25",
+          "startDate": "2026-09-18",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html"
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
+        },
+        {
+          "name": "北海道産さんま",
+          "price": 297,
+          "startDate": "2026-09-18",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
+        },
+        {
+          "name": "生大ずわいがに",
+          "price": 352,
+          "startDate": "2026-09-18",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
+        },
+        {
+          "name": "あぶらかれい",
+          "price": 110,
+          "startDate": "2026-09-18",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
+        },
+        {
+          "name": "えんがわぐんかん",
+          "price": 110,
+          "startDate": "2026-09-18",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
+        },
+        {
+          "name": "金目鯛",
+          "price": 132,
+          "startDate": "2026-09-18",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
+        },
+        {
+          "name": "まるごとこういか",
+          "price": 165,
+          "startDate": "2026-09-18",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
+        },
+        {
+          "name": "月見つくね",
+          "price": 165,
+          "startDate": "2026-09-18",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html"
         }
       ],
       "sourceUrl": "https://www.uobei.info/menu/",
-      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/243/20954-243-f4d244da98b9421a28f5fbd4f82cf5d1-600x600.png",
+      "imageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/246/20954-246-e4587c00fd32e34822b5eb3aac5dcdc2-2996x1458.jpg",
       "status": "ok",
       "message": null,
       "referenceStoreName": "選択地域",
@@ -4929,16 +4920,16 @@
         "label": "通常／都心型／超都心型",
         "priceVariesByLocation": true
       },
-      "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html",
-      "priceNote": "公式発表の税込価格です。地域・店舗により価格が異なる場合があります。",
-      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/243/20954-243-f4d244da98b9421a28f5fbd4f82cf5d1-600x600.png",
-      "representativeImageSource": "official_food_or_fair_image",
-      "representativeImageProduct": "本鮪大とろ",
-      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000243.000020954.html",
+      "officialReleaseUrl": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html",
+      "priceNote": "公式発表の掲載価格です。地域・店舗により価格や取扱いが異なる場合があります。",
+      "representativeImageUrl": "https://prcdn.freetls.fastly.net/release_image/20954/246/20954-246-e4587c00fd32e34822b5eb3aac5dcdc2-2996x1458.jpg",
+      "representativeImageSource": "official_fair_image",
+      "representativeImageProduct": "北海道フェア",
+      "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000000246.000020954.html",
       "group": "national",
       "campaignPhase": "active",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-09-20T04:56:50.408Z"
+      "qualityCheckedAt": "2026-09-20T18:57:03.375Z"
     },
     {
       "chain": "totomaru",
