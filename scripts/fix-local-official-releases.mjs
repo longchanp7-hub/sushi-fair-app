@@ -26,7 +26,10 @@ const byChain = data => Object.fromEntries((data?.chains || []).map(c => [c.chai
 const itemsFrom = (rows, start, end, sourceUrl) => rows.map(([name, price]) => item(name, price, start, end, sourceUrl));
 const clean = v => String(v ?? '').replace(/\s+/g,' ').trim();
 const missingItems = fair => !Array.isArray(fair?.items) || fair.items.length === 0;
-const hasSource = (fair,url) => [fair?.sourceUrl,fair?.officialReleaseUrl,...(fair?.campaigns||[]).map(c=>c?.sourceUrl)].includes(url);
+const canonicalSource = v => String(v ?? '').replace(/\/+$/,'');
+const hasSource = (fair,url) => [fair?.sourceUrl,fair?.officialReleaseUrl,...(fair?.campaigns||[]).map(c=>c?.sourceUrl)].some(v=>canonicalSource(v)===canonicalSource(url));
+const TOKUBEI_SIDE_NOTICE=/(?:お持ち帰り|持ち帰り|テイクアウト|ランチ|スイーツ|デザート|シニア|優待|パスポート|アプリ|ポイント|クーポン)/;
+const shouldApplyTokubei = fair => /生サーモン.*さんま.*かつお|秋の味覚祭り/.test(clean(fair?.fairName)) || (missingItems(fair) && TOKUBEI_SIDE_NOTICE.test(clean(fair?.fairName)) && hasSource(fair,S.toku));
 const shouldApplyKappa = fair => missingItems(fair) || /(?:期間限定|キャンペーン|秋の旨ネタ|50％増量|秋のおすすめ|お月見)/.test(clean(fair?.fairName)) || hasSource(fair,S.kMain) || hasSource(fair,S.kAutumn) || hasSource(fair,S.kMoon);
 const shouldApplyUobei = fair => missingItems(fair) || /(?:豪華ネタフェア|秋の味覚フェア|期間限定|フェア商品)/.test(clean(fair?.fairName)) || hasSource(fair,S.uobei) || /000000240\.000020954/.test(String(fair?.officialReleaseUrl||''));
 const shouldApplyKura = fair => missingItems(fair) || /(?:北海フェア|開催中イベント|最新フェア確認中|期間限定)/.test(clean(fair?.fairName)) || hasSource(fair,S.kura);
@@ -82,7 +85,7 @@ export function applyVerifiedCurrentOfficialCampaigns(data, today = jstToday()) 
     Object.assign(c.kurasushi, { fairName:'北海フェア', startDate:'2026-09-04', endDate:'2026-09-13', items:KURA.map(([n,p,e]) => item(n,p,'2026-09-04',e,S.kura)), sourceUrl:S.kura, officialReleaseUrl:S.kura, status:'ok', message:null, campaignPhase:'active', dataScope:'national_verified_official_release', priceNote:'くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。' });
     changed.push('kurasushi');
   }
-  if (c.tokubei && active(today, '2026-09-01', '2026-11-03') && /生サーモン.*さんま.*かつお|秋の味覚祭り/.test(c.tokubei.fairName || '')) {
+  if (c.tokubei && active(today, '2026-09-01', '2026-11-03') && shouldApplyTokubei(c.tokubei)) {
     const items = itemsFrom(TOKU,'2026-09-01','2026-11-03',S.tokuCompany);
     Object.assign(c.tokubei, { fairName:'生サーモン・さんま・かつお 秋の味覚祭り', startDate:'2026-09-01', endDate:'2026-11-03', items, status:'ok', message:null, dataScope:'local_verified_official_campaign', officialReleaseUrl:S.toku, productSourceUrl:S.tokuCompany, companyReleaseUrl:S.tokuCompany, priceNote:'にぎりの徳兵衛公式・運営会社公式発表の税込価格です。一部店舗では価格が異なります。' });
     c.tokubei.campaigns = [{ fairName:c.tokubei.fairName, startDate:c.tokubei.startDate, endDate:c.tokubei.endDate, items, sourceUrl:S.toku, imageUrl:c.tokubei.imageUrl || c.tokubei.representativeImageUrl || null, verified:true }, ...(Array.isArray(c.tokubei.campaigns) ? c.tokubei.campaigns.filter(x => x?.sourceUrl !== S.toku) : [])];
@@ -114,6 +117,11 @@ function selfTest() {
   assert.equal(byChain(data).kappasushi.items.find(x => x.name === '月見牛肉いなり')?.price,190);
   const newer={chains:[{chain:'uobei',fairName:'次の公式フェア',items:[{name:'新商品',price:220}],officialReleaseUrl:'https://prtimes.jp/main/html/rd/p/000000999.000020954.html'}]};
   assert.deepEqual(applyVerifiedCurrentOfficialCampaigns(newer,'2026-09-20'),[],'dated override must not replace a newer healthy fair');
+  const side={chains:[{chain:'tokubei',fairName:'2大特典で超お得！秋のお持ち帰りすし祭り',items:[],campaigns:[{sourceUrl:'https://www.nigirinotokubei.com/info/11244'}]}]};
+  assert.deepEqual(applyVerifiedCurrentOfficialCampaigns(side,'2026-09-20'),['tokubei'],'side notice must not displace the verified in-store food fair');
+  assert.equal(byChain(side).tokubei.items.length,23);
+  const newerTokubei={chains:[{chain:'tokubei',fairName:'次の旬フェア',items:[{name:'新商品',price:220}],campaigns:[{sourceUrl:S.toku}]}]};
+  assert.deepEqual(applyVerifiedCurrentOfficialCampaigns(newerTokubei,'2026-09-20'),[],'verified override must not replace a healthy newer Tokubei food fair');
   console.log('Verified current official campaign override self-tests passed.');
 }
 
