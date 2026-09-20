@@ -18,7 +18,7 @@ const HERO_PRIORITY = {
 };
 const FOOD_TEXT = /寿司|すし|鮨|まぐろ|鮪|サーモン|さんま|秋刀魚|かつお|鰹|かに|カニ|蟹|えび|海老|ほたて|帆立|いか|たこ|うなぎ|鰻|魚|ネタ|にぎり|軍艦|刺身|料理|調理例|メニュー|フェア|祭り|おすすめ|旬|食べ比べ|握り/i;
 const STORE_TEXT = /店内|店舗内|内観|外観|店内写真|店舗写真|店頭|座席|客席|スタッフ|従業員|採用|会社概要|企業情報|アクセス/i;
-const GENERIC_IMAGE_URL = /(?:logo|favicon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|qr[_-]|title_limited|title[-_](?:fair|menu|limited)|limited[-_]?menu|menu[-_]?title|shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/img\/mark\d+\.webp|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
+const GENERIC_IMAGE_URL = /(?:logo|favicon|sprite|avatar|company|profile|header|footer|arrow|button|blank|loading|qr[_-]|title_limited|title[-_](?:fair|menu|limited)|limited[-_]?menu|menu[-_]?title|shared\/img\/ogp\.png|og_images_hs\.png|\/img\/ogp\/|ogp[-_.]|\/img\/mark\d+\.webp|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i;
 const FOOD_IMAGE_URL = /(?:wp-content\/uploads|release_image|campaign|fair|menu|neta|sushi|food|product|season|autumn|summer|spring|winter|osusume|recommend|pickup|top[_-]?slider|slide|(?:\d+-)?ca[-_])/i;
 const MUSASHIMARU_COOKING = 'https://www.634-jp.com/lovefish.html';
 
@@ -156,10 +156,13 @@ async function main(){
    assert.deepEqual(orderedItemNames('uobei',[{name:'すけそう鱈'},{name:'本鮪中とろ'}]),['本鮪中とろ','すけそう鱈']);
    assert.equal(representativeImage(fixture,'https://example.jp/fair',orderedItemNames('hamazushi',['北海道水揚げ秋鮭','厳選まぐろ中とろ'])),'https://example.jp/salmon.png');
    assert.equal(usefulImage('https://example.jp/assets/menu/img/title_limited.png'),false);
+   assert.equal(genericOrStoreImage('https://www.hama-sushi.co.jp/assets/common/img/og_images_hs.png'),true);
    assert.equal(genericOrStoreImage('https://www.nigirinotokubei.com/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg'),true);
    assert.equal(genericOrStoreImage('https://www.634-jp.com/img/mark106.webp?300'),true);
    const tokubeiFixture='<html><head><meta property="og:image" content="/wp/wp-content/themes/tokubei.com/img/info/sp/mainimg.jpg"></head><body><article><h1>生サーモン・さんま・かつお 秋の味覚祭り</h1><figure><img src="/wp/wp-content/uploads/2026/09/autumn-salmon-sanma.jpg" alt="生サーモン・さんま・かつお 秋の味覚祭り"></figure></article></body></html>';
    assert.equal(representativeImage(tokubeiFixture,'https://www.nigirinotokubei.com/info/11244/',[],['生サーモン・さんま・かつお 秋の味覚祭り']),'https://www.nigirinotokubei.com/wp/wp-content/uploads/2026/09/autumn-salmon-sanma.jpg');
+   const hamaFixture='<html><head><meta property="og:image" content="/assets/common/img/og_images_hs.png"></head><body><article><h1>はま寿司の中とろ100円と大漁！旨ねた祭り</h1><figure><img src="/assets/topics/2026/nakatoro-fair.jpg" alt="はま寿司の中とろ100円と大漁！旨ねた祭り ポスター"></figure></article></body></html>';
+   assert.equal(representativeImage(hamaFixture,'https://www.hamazushi.com/topics/2026/0907000856.html',['厳選まぐろ中とろ'],['はま寿司の中とろ100円と大漁！旨ねた祭り']),'https://www.hamazushi.com/assets/topics/2026/nakatoro-fair.jpg');
    const kuraFixture='<html><head><meta property="og:image" content="/shared/img/ogp.png"></head><body><article><h1>北海フェア</h1><p>厳選かに軍艦（一貫） 110円</p><figure><img src="/images/kani-gunkan.png" alt="厳選かに軍艦（一貫）"></figure></article></body></html>';
    assert.equal(representativeImage(kuraFixture,'https://www.kurasushi.co.jp/author/008437.html',['厳選かに軍艦（一貫）'],['北海フェア']),'https://www.kurasushi.co.jp/images/kani-gunkan.png');
    const musashiFixture='<html><body><div><img src="/img/mark106.webp?300"></div><section><h2>調理例</h2><div><img src="/img/30-ca-2-1.webp"></div><div><img src="/img/30-ca-2-2.webp"></div></section></body></html>';
