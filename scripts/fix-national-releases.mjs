@@ -18,7 +18,7 @@ const SOURCES = {
   uobei: {
     companyId: '20954',
     companySuffix: '000020954',
-    verifiedCurrentUrl: 'https://prtimes.jp/main/html/rd/p/000000240.000020954.html',
+    verifiedCurrentUrl: 'https://prtimes.jp/main/html/rd/p/000000246.000020954.html',
     officialFairUrl: 'https://www.uobei.info/menu/',
     fallbackFairName: '魚べい期間限定フェア',
   },
@@ -224,7 +224,12 @@ function discoverReleaseUrls(indexHtml, config, indexUrl) {
   // Current exact release is a verified official-company fallback. It prevents a
   // presentation-only change on the company archive from making an active fair disappear.
   urls.push(config.verifiedCurrentUrl);
-  return [...new Set(urls)];
+
+  // PR TIMESの会社アーカイブは表示順が必ずしも最新順とは限らない。
+  // 終了日未定（「なくなり次第終了」）の旧フェアがactiveのまま残るため、
+  // 同一企業内ではリリース連番の大きいものから評価して最新フェアを優先する。
+  const releaseNumber = (url) => Number(String(url).match(/\/p\/(\d+)\./)?.[1] || 0);
+  return [...new Set(urls)].sort((a, b) => releaseNumber(b) - releaseNumber(a));
 }
 
 async function findCurrentRelease(chain, today = jstTodayKey()) {
@@ -324,6 +329,14 @@ function runSelfTests() {
     { name:'・対象商品：「うなぎ（一貫）」', price:110 },
   ]});
   assert.equal(cleaned.items.length, 1);
+
+  const uobeiReleaseUrls = discoverReleaseUrls(`
+    <a href="/main/html/rd/p/000000240.000020954.html">old</a>
+    <a href="/main/html/rd/p/000000246.000020954.html">latest</a>
+    <a href="/main/html/rd/p/000000243.000020954.html">middle</a>
+  `, SOURCES.uobei, 'https://prtimes.jp/main/html/searchrlp/company_id/20954');
+  assert.match(uobeiReleaseUrls[0], /000000246\.000020954\.html$/);
+
   console.log('National release fix self-tests passed.');
 }
 
