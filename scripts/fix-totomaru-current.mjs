@@ -17,7 +17,7 @@ const iso=(y,m,d)=>`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0'
 const yearNow=()=>Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',year:'numeric'}).format(new Date()));
 
 async function get(url,attempts=3){let last;for(let i=1;i<=attempts;i+=1){try{const r=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(18000),headers:{'user-agent':UA,'accept-language':'ja-JP,ja;q=.9','cache-control':'no-cache'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);return await r.text();}catch(e){last=e;if(i<attempts)await new Promise(r=>setTimeout(r,700*i));}}throw last;}
-function fairName(text){const s=clean(text);const m=s.match(/([ぁ-んァ-ヶ一-龥A-Za-z0-9・＆&ー]+(?:フェア|祭り))/);return clean(m?.[1]||'');}
+function fairName(text){const s=clean(text);const seasonal=s.match(/((?:魚魚丸(?:の)?)?(?:春|夏|秋|冬)(?:の)?メニュー)/);if(seasonal)return clean(seasonal[1]);const m=s.match(/([ぁ-んァ-ヶ一-龥A-Za-z0-9・＆&ー]+(?:フェア|祭り))/);return clean(m?.[1]||'');}
 function dates(text,year=yearNow()){
   const s=clean(text);
   let m=s.match(/(20\d{2})[年/.]\s*(\d{1,2})[月/.]\s*(\d{1,2})日?\s*[～〜~\-–—]\s*(?:(20\d{2})[年/.]\s*)?(\d{1,2})[月/.]\s*(\d{1,2})日?/);
@@ -80,7 +80,7 @@ export async function refreshTotomaruCurrent(data){
 
 function selfTest(){
   const home=`<h2>おすすめ商品</h2><div><a href="/products/detail/a"><strong>中とろ醤油炙り</strong></a><span>￥496</span></div><section><a href="/news/detail/x">2026/09/04 フェア告知 〖9月4日(金)～〗天然南まぐろフェア開催！！</a></section>`;
-  const cs=fairCandidates(home,HOME);assert.equal(cs[0].fairName,'天然南まぐろフェア');assert.equal(cs[0].startDate,'2026-09-04');const ps=products(home,HOME);assert.equal(ps[0].priceFrom,496);assert.match(ps[0].sourceUrl,/\/products\/detail\/a$/);assert.deepEqual(dates('9月4日（金）～9月17日（木）',2026),{startDate:'2026-09-04',endDate:'2026-09-17'});console.log('Totomaru current official-site self-tests passed.');
+  const cs=fairCandidates(home,HOME);assert.equal(cs[0].fairName,'天然南まぐろフェア');assert.equal(cs[0].startDate,'2026-09-04');const ps=products(home,HOME);assert.equal(ps[0].priceFrom,496);assert.match(ps[0].sourceUrl,/\/products\/detail\/a$/);assert.deepEqual(dates('9月4日（金）～9月17日（木）',2026),{startDate:'2026-09-04',endDate:'2026-09-17'});const autumn=fairCandidates('<a href="/news/detail/autumn">2026/09/18 フェア告知 9/18㊎～魚魚丸の秋メニューが登場！！（店内飲食）</a>',HOME);assert.equal(autumn[0].fairName,'魚魚丸の秋メニュー');assert.equal(autumn[0].startDate,'2026-09-18');console.log('Totomaru current official-site self-tests passed.');
 }
 
 async function main(){
