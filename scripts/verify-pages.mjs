@@ -76,7 +76,7 @@ function validateStores(data){
   assert.equal(data?.schemaVersion,1);
   assert.ok(data?.catalog&&typeof data.catalog==='object');
   for(const chain of [...NATIONAL,...LOCAL])assert.ok(data.catalog[chain]&&typeof data.catalog[chain]==='object',`${chain} store catalog missing`);
-  const chrome=/(?:条件を絞り込む|リスト表示|マップ表示|ALL RIGHTS RESERVED|プライバシーポリシー|\\d+件の店舗があります)/i;
+  const chrome=/(?:条件を絞り込む|リスト表示|マップ表示|ALL RIGHTS RESERVED|プライバシーポリシー|\d+件の店舗があります)/i;
   for(const [chain,rows] of Object.entries(data.catalog)){
     for(const [key,row] of Object.entries(rows||{})){
       assert.equal(key,`${row?.prefecture||''}/${row?.municipality||''}`,`${chain} store key mismatch: ${key}`);
@@ -90,7 +90,7 @@ function validateStores(data){
         const url=new URL(row.officialUrl);
         assert.equal(url.hostname,'www.akindo-sushiro.co.jp');
         assert.equal(url.pathname,'/shop/detail.php',`Sushiro non-store URL leaked: ${row.officialUrl}`);
-        assert.match(url.searchParams.get('id')||'',/^\\d+$/);
+        assert.match(url.searchParams.get('id')||'',/^\d+$/);
         if(row.storeId)assert.equal(url.searchParams.get('id'),String(row.storeId),`Sushiro storeId/url mismatch: ${key}`);
       }
     }
