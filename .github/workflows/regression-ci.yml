@@ -38,6 +38,8 @@ jobs:
           node --check scripts/fix-totomaru-current.mjs
           node --check scripts/campaign-catalog.mjs
           node --check scripts/verify-campaign-publication.mjs
+          node --check scripts/build-store-contexts.mjs
+          node --check scripts/validate-store-contexts.mjs
       - name: Parser, campaign and quality self-tests
         run: |
           node scripts/fix-kura.mjs --self-test
@@ -48,6 +50,8 @@ jobs:
           node scripts/apply-sushiro-grace.mjs --self-test
           node scripts/fix-official-fair-discovery.mjs --self-test
           node scripts/update-local-store-contexts.mjs --self-test
+          node scripts/build-store-contexts.mjs --self-test
+          node scripts/validate-store-contexts.mjs --self-test
           node scripts/update-local-tokai.mjs --self-test
           node scripts/fix-totomaru-current.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
@@ -58,4 +62,5 @@ jobs:
       - name: Regional switch regression
         run: |
           node scripts/ensure-region-contexts.mjs
+          node scripts/validate-store-contexts.mjs
           node scripts/verify-region-switch.mjs
