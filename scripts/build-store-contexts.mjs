@@ -25,11 +25,13 @@ function bestCardText($,el,pref){ let cur=$(el); for(let n=0;n<7;n++){ const t=c
 function extractAddress(pref,text){ const t=clean(text); const i=t.indexOf(pref); if(i<0)return null; let s=t.slice(i); const stops=['電話','TEL','営業時間','営業中','営業終了','LINE','お席予約','デジロー','Google']; let end=s.length; for(const x of stops){const j=s.indexOf(x,pref.length);if(j>0)end=Math.min(end,j);} return clean(s.slice(0,end)); }
 function key(pref,city){return `${pref}/${city}`;}
 function put(map,store){ if(!store?.prefecture||!store?.municipality)return; const k=key(store.prefecture,store.municipality); if(!map[k])map[k]=store; }
+function isSushiroStoreDetailUrl(value){try{const u=new URL(value);return u.protocol==='https:'&&u.hostname==='www.akindo-sushiro.co.jp'&&u.pathname==='/shop/detail.php'&&/^\d+$/.test(u.searchParams.get('id')||'');}catch{return false;}}
+function safeSushiroName(value){const name=clean(value).replace(/\s+\d+(?:\.\d+)?km.*$/,'');return name&&name!=='お店'&&name.length<=100?name:null;}
 
 async function buildSushiro(){
   const list=[];
   const pages=await mapLimit(PREFS.map((pref,i)=>({pref,no:i+1})),6,async({pref,no})=>({pref,html:await fetchText(`https://www.akindo-sushiro.co.jp/shop/?pref=${no}`)}));
-  for(const result of pages){ if(!result||result.error)continue; const {$dummy,...x}=result; const $=cheerio.load(x.html); $('a[href*="detail.php?id="]').each((_,el)=>{ const href=abs($(el).attr('href'),'https://www.akindo-sushiro.co.jp/shop/'); const name=clean($(el).text()).replace(/\s+\d+(?:\.\d+)?km.*$/,''); const card=bestCardText($,el,x.pref); const address=extractAddress(x.pref,card); const city=municipality(x.pref,address||card); const id=href?.match(/[?&]id=(\d+)/)?.[1]; if(href&&id&&city&&name&&!list.some(s=>s.storeId===id))list.push({chain:'sushiro',prefecture:x.pref,municipality:city,storeName:name,storeId:id,address,officialUrl:href,source:'official_store_directory'}); }); }
+  for(const result of pages){ if(!result||result.error)continue; const {$dummy,...x}=result; const $=cheerio.load(x.html); $('a[href]').each((_,el)=>{ const href=abs($(el).attr('href'),'https://www.akindo-sushiro.co.jp/shop/'); if(!isSushiroStoreDetailUrl(href))return; const name=safeSushiroName($(el).text()); if(!name)return; const card=bestCardText($,el,x.pref); const address=extractAddress(x.pref,card); const city=municipality(x.pref,address||card); const id=new URL(href).searchParams.get('id'); if(id&&city&&address&&address.length<=240&&!list.some(s=>s.storeId===id))list.push({chain:'sushiro',prefecture:x.pref,municipality:city,storeName:name,storeId:id,address,officialUrl:href,source:'official_store_directory'}); }); }
   const reps={}; for(const s of list)put(reps,s);
   const repList=Object.values(reps);
   const detailed=await mapLimit(repList,8,async s=>{ const html=await fetchText(s.officialUrl,1); const $=cheerio.load(html); const text=clean($.text()); const priceTier=Number(text.match(/一皿\s*(\d+)円/)?.[1]||0)||null; const menuUrl=abs($('a[href*="/menu/menu_detail/"]').first().attr('href'),s.officialUrl); const menuAreaCode=menuUrl?.match(/[?&]s_id=(\d+)/)?.[1]||null; return {...s,priceTier,menuAreaCode,menuUrl,verified:true}; });
@@ -73,7 +75,7 @@ function seedKnown(){return [
 function mergeChain(catalog,chain,rows){catalog[chain]??={};for(const r of rows||[]){if(!r?.prefecture||!r?.municipality)continue;catalog[chain][key(r.prefecture,r.municipality)]=r;}}
 
 async function main(){
-  if(process.argv.includes('--self-test')){console.log(municipality('北海道','北海道札幌市中央区南一条西3-3')==='札幌市中央区'?'Store context self-tests passed.':'fail');return;}
+  if(process.argv.includes('--self-test')){assert.equal(municipality('北海道','北海道札幌市中央区南一条西3-3'),'札幌市中央区');assert.equal(isSushiroStoreDetailUrl('https://www.akindo-sushiro.co.jp/shop/detail.php?id=142'),true);assert.equal(isSushiroStoreDetailUrl('https://www.akindo-sushiro.co.jp/campaign/detail.php?id=726'),false);assert.equal(safeSushiroName('お店'),null);console.log('Store context self-tests passed.');return;}
   let previous={};try{previous=JSON.parse(await fs.readFile(OUT,'utf8'));}catch{}
   const catalog=structuredClone(previous.catalog||{}); mergeChain(catalog,'hamazushi',seedHama()); for(const s of seedKnown())mergeChain(catalog,s.chain,[s]);
   const builders=[['sushiro',buildSushiro],['kurasushi',buildKura],['kappasushi',buildKappa],['uobei',buildUobei]];
