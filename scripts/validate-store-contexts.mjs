@@ -34,9 +34,10 @@ export function inspectStoreRow(chain,key,row){
   if(PAGE_CHROME.test([key,municipality,name,address].join(' ')))reasons.push('page_chrome_leak');
   if(url&&!/^https:\/\//.test(url))reasons.push('non_https_official_url');
   if(chain==='sushiro'){
-    if(!sushiroStoreUrl(url))reasons.push('sushiro_non_store_url');
+    const validStoreUrl=sushiroStoreUrl(url);
+    if(!validStoreUrl)reasons.push('sushiro_non_store_url');
     const id=String(row.storeId||'');
-    if(id&&new URL(url).searchParams.get('id')!==id)reasons.push('sushiro_store_id_url_mismatch');
+    if(id&&validStoreUrl&&new URL(url).searchParams.get('id')!==id)reasons.push('sushiro_store_id_url_mismatch');
   }
   return [...new Set(reasons)];
 }
@@ -99,6 +100,7 @@ function selfTest(){
   const reasons=inspectStoreRow('sushiro','青森県/岩手県 宮城県 条件を絞り込む',bad);
   for(const code of ['generic_store_name','page_chrome_leak','sushiro_non_store_url'])assert.ok(reasons.includes(code),code);
   const mismatch={...good,storeId:'999'};assert.ok(inspectStoreRow('sushiro','愛知県/豊橋市',mismatch).includes('sushiro_store_id_url_mismatch'));
+  const malformed={...good,officialUrl:'not-a-url'};assert.ok(inspectStoreRow('sushiro','愛知県/豊橋市',malformed).includes('sushiro_non_store_url'));
   console.log('Store context validator self-tests passed.');
 }
 
