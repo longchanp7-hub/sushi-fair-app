@@ -72,7 +72,36 @@ function validateFairs(data){
 
 function findExact(catalog,chain,prefecture,municipality){return Object.values(catalog?.[chain]||{}).find(x=>x.prefecture===prefecture&&x.municipality===municipality)||null;}
 function findCity(catalog,chain,prefecture,cityPrefix){return Object.values(catalog?.[chain]||{}).find(x=>x.prefecture===prefecture&&String(x.municipality||'').startsWith(cityPrefix))||null;}
-function validateStores(data){assert.equal(data?.schemaVersion,1);assert.ok(data?.catalog&&typeof data.catalog==='object');for(const chain of [...NATIONAL,...LOCAL])assert.ok(data.catalog[chain]&&typeof data.catalog[chain]==='object',`${chain} store catalog missing`);const ss=findExact(data.catalog,'sushiro','北海道','札幌市中央区'),ts=findExact(data.catalog,'sushiro','愛知県','豊橋市');assert.equal(ss?.storeId,'2575');assert.equal(ss?.menuAreaCode,'883');assert.equal(ts?.storeId,'142');assert.equal(ts?.menuAreaCode,'179');assert.notEqual(ss.menuUrl,ts.menuUrl);const hh=findExact(data.catalog,'hamazushi','北海道','札幌市中央区'),th=findExact(data.catalog,'hamazushi','愛知県','豊橋市');assert.equal(hh?.storeId,'4460');assert.equal(hh?.regionCode,'hokkaido');assert.equal(th?.storeId,'4208');assert.equal(th?.regionCode,'tokai');const sk=findCity(data.catalog,'kurasushi','北海道','札幌市'),tk=findExact(data.catalog,'kurasushi','愛知県','豊橋市');assert.ok(sk&&tk);assert.notEqual(sk.officialUrl,tk.officialUrl);assert.ok(findExact(data.catalog,'musashimaru','愛知県','豊橋市'));assert.ok(findExact(data.catalog,'totomaru','愛知県','豊橋市'));}
+function validateStores(data){
+  assert.equal(data?.schemaVersion,1);
+  assert.ok(data?.catalog&&typeof data.catalog==='object');
+  for(const chain of [...NATIONAL,...LOCAL])assert.ok(data.catalog[chain]&&typeof data.catalog[chain]==='object',`${chain} store catalog missing`);
+  const chrome=/(?:条件を絞り込む|リスト表示|マップ表示|ALL RIGHTS RESERVED|プライバシーポリシー|\\d+件の店舗があります)/i;
+  for(const [chain,rows] of Object.entries(data.catalog)){
+    for(const [key,row] of Object.entries(rows||{})){
+      assert.equal(key,`${row?.prefecture||''}/${row?.municipality||''}`,`${chain} store key mismatch: ${key}`);
+      const fields=[key,row?.municipality,row?.storeName,row?.address].map(x=>String(x||'')).join(' ');
+      assert.ok(!chrome.test(fields),`${chain} store page chrome leaked into catalog: ${key}`);
+      assert.ok(String(row?.municipality||'').length<=60,`${chain} municipality too long: ${key}`);
+      assert.ok(String(row?.storeName||'').length<=100,`${chain} storeName too long: ${key}`);
+      assert.ok(String(row?.address||'').length<=240,`${chain} address too long: ${key}`);
+      assert.notEqual(row?.storeName,'お店',`${chain} generic store name leaked: ${key}`);
+      if(chain==='sushiro'){
+        const url=new URL(row.officialUrl);
+        assert.equal(url.hostname,'www.akindo-sushiro.co.jp');
+        assert.equal(url.pathname,'/shop/detail.php',`Sushiro non-store URL leaked: ${row.officialUrl}`);
+        assert.match(url.searchParams.get('id')||'',/^\\d+$/);
+        if(row.storeId)assert.equal(url.searchParams.get('id'),String(row.storeId),`Sushiro storeId/url mismatch: ${key}`);
+      }
+    }
+  }
+  const ss=findExact(data.catalog,'sushiro','北海道','札幌市中央区'),ts=findExact(data.catalog,'sushiro','愛知県','豊橋市');
+  assert.equal(ss?.storeId,'2575');assert.equal(ss?.menuAreaCode,'883');assert.equal(ts?.storeId,'142');assert.equal(ts?.menuAreaCode,'179');assert.notEqual(ss.menuUrl,ts.menuUrl);
+  const hh=findExact(data.catalog,'hamazushi','北海道','札幌市中央区'),th=findExact(data.catalog,'hamazushi','愛知県','豊橋市');
+  assert.equal(hh?.storeId,'4460');assert.equal(hh?.regionCode,'hokkaido');assert.equal(th?.storeId,'4208');assert.equal(th?.regionCode,'tokai');
+  const sk=findCity(data.catalog,'kurasushi','北海道','札幌市'),tk=findExact(data.catalog,'kurasushi','愛知県','豊橋市');assert.ok(sk&&tk);assert.notEqual(sk.officialUrl,tk.officialUrl);
+  assert.ok(findExact(data.catalog,'musashimaru','愛知県','豊橋市'));assert.ok(findExact(data.catalog,'totomaru','愛知県','豊橋市'));
+}
 function validateFallbackStores(data){assert.equal(data?.schemaVersion,1);assert.ok(data?.catalog&&typeof data.catalog==='object');for(const chain of LOCAL)assert.ok(data.catalog[chain]&&typeof data.catalog[chain]==='object',`${chain} fallback store catalog missing`);assert.ok(findExact(data.catalog,'totomaru','愛知県','豊橋市'),'Totomaru Toyohashi fallback missing');assert.ok(findExact(data.catalog,'musashimaru','愛知県','豊橋市'),'Musashimaru Toyohashi fallback missing');}
 function validateIndex(index){const version=index.match(/name="app-version" content="([^"]+)"/)?.[1];assert.ok(version,'app-version missing');assert.match(index,/class="app-scene"/);assert.match(index,/suruga-theme\.css/);assert.match(index,/local-tokai\.css/);assert.match(index,/id="prefectureSelect"/);assert.match(index,/id="citySelect"/);assert.match(index,/id="applyRegionBtn"/);assert.match(index,/id="regionStatus"/);assert.match(index,/id="chainQuickNavNational"/);assert.match(index,/id="chainQuickNavLocal"/);assert.match(index,/id="cardsNational"/);assert.match(index,/id="cardsLocal"/);assert.match(index,/serviceWorker\.register/);assert.ok(index.includes(`national.js?v=${version}`),'national.js version must match app-version');assert.ok(index.includes(`sw.js?v=${version}`),'service-worker version must match app-version');for(const id of ['uobei','totomaru','musashimaru','tokubei'])assert.match(index,new RegExp(`data-chain="${id}"`));assert.doesNotMatch(index,/id="todayHighlights"/);}
 function validateNational(source){assert.match(source,/national fair|全国フェア/i);assert.match(source,/regionalPrice/);assert.match(source,/not_listed_reference_store/);assert.match(source,/menuHighlights/);assert.match(source,/メニュー：/);assert.match(source,/availableInSelectedArea/);assert.match(source,/地域メニューを公式で確認/);assert.match(source,/fairPhase/);assert.match(source,/開始予定/);assert.match(source,/表示中データを維持/);assert.match(source,/if\(f\?\.endDate&&f\.endDate<today\)return \[\]/);}
