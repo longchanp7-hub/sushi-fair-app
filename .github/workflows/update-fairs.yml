@@ -50,6 +50,8 @@ jobs:
           node --check scripts/source-registry.mjs
           node --check scripts/quality-gate.mjs
           node --check scripts/normalize-campaigns.mjs
+          node --check scripts/build-store-contexts.mjs
+          node --check scripts/validate-store-contexts.mjs
           node scripts/fix-kura.mjs --self-test
           node scripts/build-national-fairs.mjs --self-test
           node scripts/fix-national-releases.mjs --self-test
@@ -58,6 +60,8 @@ jobs:
           node scripts/apply-sushiro-grace.mjs --self-test
           node scripts/fix-official-fair-discovery.mjs --self-test
           node scripts/update-local-store-contexts.mjs --self-test
+          node scripts/build-store-contexts.mjs --self-test
+          node scripts/validate-store-contexts.mjs --self-test
           node scripts/update-local-tokai.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
           node scripts/normalize-campaigns.mjs --self-test
@@ -69,6 +73,10 @@ jobs:
         run: node scripts/ensure-region-contexts.mjs
       - name: Refresh local Tokai store catalogs independently
         run: node scripts/update-local-store-contexts.mjs
+      - name: Repair and validate store catalog integrity
+        run: |
+          node scripts/validate-store-contexts.mjs --repair
+          node scripts/validate-store-contexts.mjs
       - name: Verify Toyohashi to Sapporo regional switching
         run: node scripts/verify-region-switch.mjs
       - name: Use stable reference stores for legacy parsers
@@ -121,6 +129,7 @@ jobs:
           node scripts/verify-campaign-publication.mjs --local --inventory /tmp/campaign-coverage.json
       - name: Validate eight-chain public dataset and regional data
         run: |
+          node scripts/validate-store-contexts.mjs
           node scripts/verify-region-switch.mjs
           node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/fairs.json','utf8')); const ids=d.chains.map(x=>x.chain).sort(); const need=['hamazushi','kappasushi','kurasushi','musashimaru','sushiro','tokubei','totomaru','uobei'].sort(); if(JSON.stringify(ids)!==JSON.stringify(need)) throw new Error('Expected 8 chains: '+ids.join(',')); if(!d.qualityGate) throw new Error('Quality gate metadata missing'); for(const c of d.chains) if(!c.qualityState) throw new Error('Quality state missing for '+c.chain); const s=d.chains.find(x=>x.chain==='sushiro'); if(!s?.nationalSourceOfTruth||!s?.referenceStoreOverlayOnly) throw new Error('Sushiro source-of-truth flags missing'); for(const i of s.items) if(!('startDate' in i)||!('endDate' in i)||!i.scrapeStatus) throw new Error('Sushiro item metadata missing: '+i.name); if(s.items.length && s.fairName==='フェア商品') throw new Error('Sushiro official campaign identity was not resolved'); if(s.items.length && !s.officialCampaignUrl) throw new Error('Sushiro official campaign URL missing'); const m=d.chains.find(x=>x.chain==='musashimaru'); if(m?.items?.length) throw new Error('Musashimaru must remain fail-closed until verified products are available'); const bad=/(?:shared\/img\/ogp\.png|\/img\/ogp\/|ogp[-_.]|\/img\/mark\d+\.webp|\/themes\/[^/]+\/img\/info\/(?:sp\/)?mainimg\.(?:jpe?g|png|webp)|\/recruit\/|\/staff\/|\/company\/)/i; for(const c of d.chains){const hero=c.representativeImageUrl||c.imageUrl||''; if(hero&&bad.test(hero)) throw new Error('Generic/store hero image leaked for '+c.chain+': '+hero);}"
           node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('./app/data/store-contexts.json','utf8')); for(const id of ['totomaru','musashimaru','tokubei']) if(!d.catalog?.[id]) throw new Error(id+' local store catalog missing'); const f=JSON.parse(fs.readFileSync('./app/data/store-contexts-fallback.json','utf8')); for(const id of ['totomaru','musashimaru','tokubei']) if(!f.catalog?.[id]) throw new Error(id+' fallback local store catalog missing'); if(!f.catalog.totomaru['愛知県/豊橋市']) throw new Error('Totomaru Toyohashi fallback missing'); if(!f.catalog.musashimaru['愛知県/豊橋市']) throw new Error('Musashimaru Toyohashi fallback missing');"
