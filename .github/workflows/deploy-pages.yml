@@ -35,7 +35,10 @@ jobs:
           node --check app/sw.js
           node --check scripts/verify-pages.mjs
           node --check scripts/quality-gate.mjs
+          node --check scripts/validate-store-contexts.mjs
           node scripts/quality-gate.mjs --candidate app/data/fairs.json --previous app/data/fairs.json --check-only
+          node scripts/validate-store-contexts.mjs
+          node scripts/verify-region-switch.mjs
           node scripts/verify-campaign-publication.mjs --local
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
