@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
+import { isCampaignAnnouncement } from '../app/campaign-catalog.js';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const OUT = path.join(ROOT, 'app', 'data', 'fairs.json');
@@ -79,6 +80,7 @@ function cleanKappa(chain) {
   const seen = new Set();
   const items = [];
   for (const item of chain.items || []) {
+    if (isCampaignAnnouncement(chain.chain, item)) continue;
     const name = cleanKappaName(item?.name || '');
     if (!name) continue;
     const key = `${normalized(name)}|${item.price ?? ''}`;
@@ -203,3 +205,4 @@ function runSelfTests() {
 
 if (process.argv.includes('--self-test')) runSelfTests();
 else await main();
+

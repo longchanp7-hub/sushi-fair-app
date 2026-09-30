@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { isCampaignAnnouncement } from '../app/campaign-catalog.js';
 import fs from 'node:fs/promises';
 import { CHAIN_IDS, sourceHostAllowed } from './source-registry.mjs';
 
@@ -21,7 +22,7 @@ function activeCampaigns(chain,today){return (chain?.campaigns||[]).filter(x=>(!
 function sameCampaign(a,b){return norm(a?.fairName)&&norm(a?.fairName)===norm(b?.fairName);}
 function sanitize(chain,today){
   const copy=structuredClone(chain);
-  copy.items=(copy.items||[]).map(item=>{
+  copy.items=(copy.items||[]).filter(item=>!isCampaignAnnouncement(copy.chain,item)).map(item=>{
     const normalized={...item};
     if(!Object.prototype.hasOwnProperty.call(normalized,'startDate'))normalized.startDate=null;
     if(!Object.prototype.hasOwnProperty.call(normalized,'endDate'))normalized.endDate=null;
@@ -116,6 +117,9 @@ function selfTest(){
   const previous={schemaVersion:2,timezone:'Asia/Tokyo',chains:CHAIN_IDS.map(base)};
   previous.chains.find(x=>x.chain==='musashimaru').items=[];previous.chains.find(x=>x.chain==='musashimaru').menuHighlights=[{name:'店内寿司',priceFrom:176},{name:'国産食材'}];
   previous.chains.find(x=>x.chain==='totomaru').menuHighlights=[{name:'旬ネタ'}];
+  const banners=structuredClone(previous);banners.chains.find(x=>x.chain==='kappasushi').items=[{name:'かっぱの韓国旨辛祭り開催！',price:null},{name:'かっぱのお月見祭り かっぱのお月見祭り',price:null}];
+  const cleanBanners=structuredClone(banners);cleanBanners.chains.find(x=>x.chain==='kappasushi').items=[];
+  const bannerResult=promoteCandidate(cleanBanners,banners,'2026-09-06');assert.equal(bannerResult.data.chains.find(x=>x.chain==='kappasushi').items.length,0);assert.ok(!bannerResult.report.fallbackChains.includes('kappasushi'));
   const candidate=structuredClone(previous);
   const u=candidate.chains.find(x=>x.chain==='uobei');u.items=[];u.status='warning';u.message='parser returned zero';
   const promoted=promoteCandidate(candidate,previous,'2026-09-06');
@@ -160,3 +164,4 @@ async function main(){
 }
 
 await main();
+

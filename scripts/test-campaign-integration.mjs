@@ -8,7 +8,7 @@ const date='2026-09-07';
 const url='https://prtimes.jp/main/html/rd/p/000001212.000018731.html';
 const record={id:'kappasushi-toro',fairName:'トロの日',sourceUrl:url,startDate:'2026-09-16',endDate:'2026-09-16',category:'fair',items:[{name:'大とろ尽くし包み',price:390,priceType:'from',sourceUrl:url}],itemStatus:'parsed'};
 const proof=(rows)=>({state:'complete',attemptedAt:'2026-09-07T00:00:00Z',indices:[{status:'ok'}],expectedUrls:rows.map(x=>x.sourceUrl),expectedIds:rows.map(x=>x.id),failures:[]});
-const dataset=()=>({updatedAt:'2026-09-07T00:00:00Z',chains:[{chain:'kappasushi',fairName:'秋のおすすめ',status:'ok',items:[{name:'現在の大とろ',price:340}],campaignCatalog:[structuredClone(record)],campaignCoverage:proof([record])},{chain:'tokubei',group:'local_tokai',fairName:'秋の味覚祭り',status:'ok',items:[],campaignCatalog:[],campaignCoverage:proof([])}]});
+const dataset=()=>({updatedAt:'2026-09-07T00:00:00Z',chains:[{chain:'kappasushi',fairName:'秋のおすすめ',status:'ok',items:[{name:'現在の大とろ',price:340},{name:'かっぱの韓国旨辛祭り開催！',price:null},{name:'かっぱのお月見祭り かっぱのお月見祭り',price:null}],campaignCatalog:[structuredClone(record)],campaignCoverage:proof([record])},{chain:'tokubei',group:'local_tokai',fairName:'秋の味覚祭り',status:'ok',items:[],campaignCatalog:[],campaignCoverage:proof([])}]});
 test('RDF takes one timestamp instead of concatenating dc:date and date',()=>{const rss=`<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><item rdf:about="${url}"><title>9月16日限定 トロの日</title><link>${url}</link><dc:date>2026-09-02T11:00:00+09:00</dc:date><date>2026-09-02</date></item></rdf:RDF>`;const links=discoverIndex(rss,'https://prtimes.jp/companyrdf.php?company_id=18731','kappasushi');assert.equal(links.length,1);assert.equal(links[0].publishedAt,'2026-09-02T11:00:00+09:00');assert.equal(links[0].endDate,'2026-09-16');});
 test('archive scope does not use publication time as sale start or hide an explicitly current long campaign',()=>{const e={fairName:'フェア',sourceUrl:url,publishedAt:'2025-01-01T00:00:00Z',endDate:null};assert.equal(entryExclusion(e,[],date),'feed_older_than_90_days');assert.equal(entryExclusion({...e,endDate:'2026-12-31'},[],date),null);assert.equal(entryExclusion({...e,fromOfficialList:true},[],date),null);});
 test('old open-ended release is unconfirmed, not assumed active forever or declared ended',()=>{const e={sourceUrl:url,publishedAt:'2026-07-10T00:00:00Z',fairName:'トロの日',indexText:'2026年7月16日から'};const range={startDate:'2026-07-16',endDate:null};assert.equal(releaseNeedsConfirmation(e,range,date),true);const r=parseDetail('<article><h1>かっぱ寿司 トロの日</h1><p>2026年7月16日から</p></article>',e,'kappasushi',date);assert.equal(r.excludedReason,'current_status_unconfirmed');});
@@ -32,7 +32,19 @@ test('real national.js renders announced campaigns, keeps cards on HTTP failure 
  const region=new vm.SyntheticModule(['initRegionSelector','resolveChainContext'],function(){this.setExport('initRegionSelector',async()=>({prefecture:'愛知県',city:'豊橋市'}));this.setExport('resolveChainContext',()=>({availableInSelectedArea:true,storeVerified:false,verified:false,label:'公式確認',note:''}));},{context});
  await national.link(specifier=>specifier.includes('campaign-catalog')?catalog:region);await national.evaluate();
  assert.match(node('#cardsNational').innerHTML,/近日開始/);assert.match(node('#cardsNational').innerHTML,/390円〜/);assert.match(node('#cardsNational').innerHTML,/340円/);
+ assert.doesNotMatch(node('#cardsNational').innerHTML,/韓国旨辛祭り|お月見祭り/);assert.match(node('#cardsNational').innerHTML,/1品/);
  failed=true;await listeners.get('#refreshBtn:click')();assert.match(node('#cardsNational').innerHTML,/トロの日/);assert.match(node('#updatedAt').textContent,/更新失敗/);
  current='2026-09-16T03:00:00Z';timers[0]();assert.doesNotMatch(node('#cardsNational').innerHTML,/近日開始/);assert.match(node('#cardsNational').innerHTML,/当日限定/);
  current='2026-09-17T03:00:00Z';timers[0]();assert.doesNotMatch(node('#cardsNational').innerHTML,/トロの日/);assert.match(node('#cardsNational').innerHTML,/340円/);
+});
+
+
+test('Kappa campaign banners are not counted as products, while real products survive',async()=>{
+ const {isCampaignAnnouncement,campaignBannerTitle}=await import('../app/campaign-catalog.js');
+ for(const name of ['かっぱの韓国旨辛祭り開催！','かっぱのお月見祭り かっぱのお月見祭り'])assert.equal(isCampaignAnnouncement('kappasushi',{name,price:null}),true);
+ for(const item of [{name:'北海道産さんま',price:null},{name:'月見牛肉いなり',price:190},{name:'韓国フェアプレート',price:590}])assert.equal(isCampaignAnnouncement('kappasushi',item),false);
+ assert.equal(isCampaignAnnouncement('sushiro',{name:'限定フェア',price:null}),false);
+ assert.equal(campaignBannerTitle('かっぱのお月見祭り','かっぱのお月見祭り'),'かっぱのお月見祭り');
+ assert.equal(campaignBannerTitle('  ','韓国旨辛祭り'),'韓国旨辛祭り');
+ assert.equal(campaignBannerTitle('2026.9.17〜10.1','韓国旨辛祭り'),'2026.9.17〜10.1 韓国旨辛祭り');
 });

@@ -1,5 +1,5 @@
 const CACHE_PREFIX='sushi-fair-v';
-const CACHE='sushi-fair-v20260920-split-hero1';
+const CACHE='sushi-fair-v20260930-campaign-products1';
 const STATIC=[
   './',
   './index.html',
@@ -65,3 +65,4 @@ self.addEventListener('fetch',event=>{
   if(event.request.mode==='navigate'){event.respondWith(networkFirst(event.request,{timeoutMs:8000}).catch(()=>caches.match('./index.html')));return;}
   if(['script','style','manifest','image','font'].includes(event.request.destination)){event.respondWith(networkFirst(event.request,{timeoutMs:8000}));}
 });
+

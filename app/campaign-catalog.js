@@ -1,5 +1,21 @@
 // Shared pure model: recompute phases at rendering time, including the JST date boundary.
 export const CATALOG_VERSION = 2;
+// Legacy Kappa snapshots used campaign banners as product rows. Do not guess
+// prices or discard genuine unpriced products: only reject announcement titles.
+export function isCampaignAnnouncement(chain, item) {
+  if (chain !== 'kappasushi') return false;
+  if (item?.kind === 'campaign') return true;
+  if (item?.price != null) return false;
+  const name = String(item?.name || '').replace(/\s+/g, ' ').trim();
+  return /(?:祭り|フェア|キャンペーン)(?:開催(?:中|決定)?)?[!！。\s]*$/.test(name);
+}
+export function campaignBannerTitle(text, alt = '') {
+  const title = String(text || '').replace(/\s+/g, ' ').trim();
+  const imageTitle = String(alt || '').replace(/\s+/g, ' ').trim();
+  if (!title || !imageTitle || title.includes(imageTitle)) return title || imageTitle;
+  if (imageTitle.includes(title)) return imageTitle;
+  return `${title} ${imageTitle}`;
+}
 export const catalogToday = (date = new Date()) => new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(date);
 export function campaignPhase(c, today = catalogToday()) {
   if (c.endDate && c.endDate < today) return 'ended';
@@ -55,3 +71,4 @@ export function renderCampaignCatalog(chain, today = catalogToday()) {
   const catalogHtml=(Array.isArray(chain.campaignCatalog)||coverage)?`<div class="independent-campaign-catalog"><h3>公式の関連キャンペーン</h3>${warning}${next.length?`<h4>近日開始 · ${next.length}件</h4>${next.map(c=>renderCard(c,today)).join('')}`:''}${active.length?`<details class="catalog-current-group"><summary>開催期間内・期間要確認 · ${active.length}件を見る</summary>${active.map(c=>renderCard(c,today)).join('')}</details>`:''}${!rows.length?'<p>掲載できる告知は未確認です。</p>':''}${unconfirmed?`<p><small>過去の告知${unconfirmed}件は現在の実施を確認できず、開催中には掲載していません。販売終了と断定したものではありません。</small></p>`:''}<small>一覧照合は対象範囲の告知収録確認です。商品・価格の完全取得や店舗在庫を保証するものではありません。</small></div>`:'';
   return `<section class="campaign-catalog" aria-label="開催中・開始予定の公式告知">${concurrentHtml}${catalogHtml}</section>`;
 }
+

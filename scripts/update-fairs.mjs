@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
+import { campaignBannerTitle } from '../app/campaign-catalog.js';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const OUT = path.join(ROOT, 'app', 'data', 'fairs.json');
@@ -325,7 +326,7 @@ async function scrapeKappasushi() {
   const $ = cheerio.load(html);
   const campaigns = [];
   $('a').each((_, element) => {
-    const text = clean(`${$(element).text()} ${$(element).find('img').map((__, img) => $(img).attr('alt') || '').get().join(' ')}`);
+    const text = campaignBannerTitle($(element).text(), $(element).find('img').map((__, img) => $(img).attr('alt') || '').get().join(' '));
     if (!text || !/(とろの日|祭り|フェア|うに|いくら|まぐろ|寿司|夏のおすすめ)/.test(text)) return;
     if (/食べ放題|ランチ|ポイント|割引|プレゼント|商品券|デリバリー|アプリ会員/.test(text)) return;
     const dateRange = parseDotRange(text);
@@ -341,7 +342,9 @@ async function scrapeKappasushi() {
   return {
     chain: 'kappasushi', storeName: store.name, fairName: primary?.name || '期間限定キャンペーン',
     startDate: primary?.startDate || null, endDate: primary?.endDate || null,
-    items: unique.map(({ name, price }) => ({ name, price })), sourceUrl: primary?.href || store.sourceUrl,
+    // Campaign-list links are announcements, never individual products.
+    // Detailed official-release parsers and campaignCatalog supply product data.
+    items: [], sourceUrl: primary?.href || store.sourceUrl,
     storeUrl: store.storeUrl, imageUrl: primary?.imageUrl || firstUsefulImage($, $('body'), store.sourceUrl),
     status: unique.length ? 'ok' : 'warning', message: unique.length ? null : '開催中キャンペーンの自動抽出結果が0件でした。',
   };
@@ -383,3 +386,4 @@ const output = { updatedAt: new Date().toISOString(), timezone: 'Asia/Tokyo', ch
 await fs.writeFile(OUT, `${JSON.stringify(output, null, 2)}\n`);
 console.log(`Updated ${OUT}`);
 for (const chain of chains) console.log(`${chain.chain}: ${chain.items.length} items (${chain.status})`);
+
