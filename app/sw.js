@@ -1,5 +1,5 @@
 const CACHE_PREFIX='sushi-fair-v';
-const CACHE='sushi-fair-v20260930-campaign-products1';
+const CACHE='sushi-fair-v20260930-campaign-products2';
 const STATIC=[
   './',
   './index.html',
