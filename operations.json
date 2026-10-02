@@ -1,0 +1,21 @@
+{
+  "name": "寿司フェア",
+  "ai": false,
+  "publicUrl": "https://longchanp7-hub.github.io/sushi-fair-app/",
+  "checks": [
+    {
+      "path": "",
+      "contains": "寿司フェア情報"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "json": true,
+      "key": "name"
+    },
+    {
+      "path": "data/fairs.json",
+      "json": true,
+      "key": "chains"
+    }
+  ]
+}

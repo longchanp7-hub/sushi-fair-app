@@ -28,3 +28,5 @@ GitHub Actionsで公式公開情報を毎日更新し、更新後の `app/` をG
 ## 料金
 
 サーバー側DB・有料APIは使用していません。
+
+AIを使わない日次運用と変更方法: [OPERATIONS.md](OPERATIONS.md)
