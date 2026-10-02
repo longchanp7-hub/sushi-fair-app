@@ -47,7 +47,7 @@ export function validateCatalog(data,inventory=null){
  }
  return result;
 }
-export function validateConcurrentCampaigns(data){
+export function validateConcurrentCampaigns(data, today){
  const result={};
  for(const id of CONCURRENT_TARGETS){
   const c=data.chains?.find(x=>x.chain===id);
@@ -63,7 +63,7 @@ export function validateConcurrentCampaigns(data){
    assert.ok(['parsed','unavailable'].includes(row.itemStatus),`${id}: concurrent item extraction state missing`);
    ids.add(row.id);
   }
-  const visible=visibleConcurrentCampaigns(c),html=renderCampaignCatalog(c);
+  const visible=visibleConcurrentCampaigns(c,today),html=renderCampaignCatalog(c,today);
   for(const row of visible)assert.ok(html.includes(`data-concurrent-campaign-id="${row.id}"`),`${id}: concurrent campaign not rendered: ${row.id}`);
   result[id]={campaigns:c.campaigns.length,visible:visible.length,items:c.campaigns.reduce((n,x)=>n+x.items.length,0)};
  }
