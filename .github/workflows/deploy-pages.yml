@@ -88,7 +88,7 @@ jobs:
       - name: Record publication verification status
         if: always()
         continue-on-error: true
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const deploymentOutcome = '${{ steps.deployment.outcome }}';
