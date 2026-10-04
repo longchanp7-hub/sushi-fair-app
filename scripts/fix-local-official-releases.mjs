@@ -16,6 +16,7 @@ const S = {
   toku: source('tokubei','currentRelease'),
   tokuCompany: source('tokubei','currentCompanyRelease'),
 };
+const TOKU_FUKUI_ALLERGEN = 'https://www.nigirinotokubei.com/wp/wp-content/uploads/ec7231a09e0761eb446950a1b6ecb1ec.pdf';
 const jstToday = (now = new Date()) => {
   const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone:'Asia/Tokyo', year:'numeric', month:'2-digit', day:'2-digit' }).formatToParts(now).map(x => [x.type, x.value]));
   return `${p.year}-${p.month}-${p.day}`;
@@ -29,6 +30,7 @@ const missingItems = fair => !Array.isArray(fair?.items) || fair.items.length ==
 const canonicalSource = v => String(v ?? '').replace(/\/+$/,'');
 const hasSource = (fair,url) => [fair?.sourceUrl,fair?.officialReleaseUrl,...(fair?.campaigns||[]).map(c=>c?.sourceUrl)].some(v=>canonicalSource(v)===canonicalSource(url));
 const TOKUBEI_SIDE_NOTICE=/(?:お持ち帰り|持ち帰り|テイクアウト|ランチ|スイーツ|デザート|シニア|優待|パスポート|アプリ|ポイント|クーポン)/;
+const shouldApplyTokubeiFukui = fair => /うまいんやざー|福井祭り|福井県の食材/.test(clean(fair?.fairName)) || (missingItems(fair) && (fair?.campaigns||[]).some(x=>/うまいんやざー|福井祭り|福井県の食材/.test(clean(x?.fairName))));
 const shouldApplyTokubei = fair => /生サーモン.*さんま.*かつお|秋の味覚祭り/.test(clean(fair?.fairName)) || (missingItems(fair) && TOKUBEI_SIDE_NOTICE.test(clean(fair?.fairName)) && hasSource(fair,S.toku));
 const shouldApplyKappa = fair => missingItems(fair) || /(?:期間限定|キャンペーン|秋の旨ネタ|50％増量|秋のおすすめ|お月見)/.test(clean(fair?.fairName)) || hasSource(fair,S.kMain) || hasSource(fair,S.kAutumn) || hasSource(fair,S.kMoon);
 const shouldApplyUobei = fair => missingItems(fair) || /(?:豪華ネタフェア|秋の味覚フェア|期間限定|フェア商品)/.test(clean(fair?.fairName)) || hasSource(fair,S.uobei) || /000000240\.000020954/.test(String(fair?.officialReleaseUrl||''));
@@ -59,6 +61,10 @@ const KURA = [
   ['〖北海道産〗たこ柔らか煮',180,'2026-09-13'],['生ずわいがに（一貫）',350,'2026-09-13'],['スパイシーサーモンマヨ',140,'2026-09-13'],
   ['あぶりチーズドリア風',120,'2026-09-13'],['超熟成 金目鯛（一貫）',110,'2026-09-27'],
 ];
+const TOKU_FUKUI = [
+  ['福井甘えび',null],['がさえび（越前えび）',null],['さばのへしこ',null],['たらの子軍艦',null],
+  ['赤ばい貝',null],['ふくい名水サーモン®',null],['うまいんやざー五貫盛り',null],['おろしそば(冷)',null],
+];
 const TOKU = [
   ['秋の特選五貫盛り',1155],['生サーモン食べ比べ三昧',649],['生サーモン',407],['生サーモン味噌炙り',451],['生サーモンごまぽん漬け',451],
   ['さんま食べ比べ三昧',649],['さんま',407],['さんま炙り',451],['さんま天',451],['かつおのたたき ぬたのせ',407],['土佐巻き',407],['姫丼 漬けかつお',407],
@@ -85,7 +91,13 @@ export function applyVerifiedCurrentOfficialCampaigns(data, today = jstToday()) 
     Object.assign(c.kurasushi, { fairName:'北海フェア', startDate:'2026-09-04', endDate:'2026-09-13', items:KURA.map(([n,p,e]) => item(n,p,'2026-09-04',e,S.kura)), sourceUrl:S.kura, officialReleaseUrl:S.kura, status:'ok', message:null, campaignPhase:'active', dataScope:'national_verified_official_release', priceNote:'くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。' });
     changed.push('kurasushi');
   }
-  if (c.tokubei && active(today, '2026-09-01', '2026-11-03') && shouldApplyTokubei(c.tokubei)) {
+  if (c.tokubei && active(today, '2026-10-01', '2026-11-01') && shouldApplyTokubeiFukui(c.tokubei)) {
+    const items = itemsFrom(TOKU_FUKUI,'2026-10-01','2026-11-01',TOKU_FUKUI_ALLERGEN);
+    const release = c.tokubei.sourceUrl || source('tokubei','info');
+    Object.assign(c.tokubei, { fairName:'うまいんやざー福井祭り', startDate:'2026-10-01', endDate:'2026-11-01', items, status:'ok', message:null, dataScope:'local_verified_official_campaign', officialReleaseUrl:release, productSourceUrl:TOKU_FUKUI_ALLERGEN, priceNote:'公式アレルギー一覧で商品名を確認済みです。価格は当該資料にないため表示せず、公式ページ・店舗で確認してください。' });
+    c.tokubei.campaigns = [{ fairName:c.tokubei.fairName, startDate:c.tokubei.startDate, endDate:c.tokubei.endDate, items, sourceUrl:release, imageUrl:c.tokubei.imageUrl || c.tokubei.representativeImageUrl || null, verified:true }, ...(Array.isArray(c.tokubei.campaigns) ? c.tokubei.campaigns.filter(x => !/うまいんやざー|福井祭り/.test(clean(x?.fairName))) : [])];
+    changed.push('tokubei');
+  } else if (c.tokubei && active(today, '2026-09-01', '2026-11-03') && shouldApplyTokubei(c.tokubei)) {
     const items = itemsFrom(TOKU,'2026-09-01','2026-11-03',S.tokuCompany);
     Object.assign(c.tokubei, { fairName:'生サーモン・さんま・かつお 秋の味覚祭り', startDate:'2026-09-01', endDate:'2026-11-03', items, status:'ok', message:null, dataScope:'local_verified_official_campaign', officialReleaseUrl:S.toku, productSourceUrl:S.tokuCompany, companyReleaseUrl:S.tokuCompany, priceNote:'にぎりの徳兵衛公式・運営会社公式発表の税込価格です。一部店舗では価格が異なります。' });
     c.tokubei.campaigns = [{ fairName:c.tokubei.fairName, startDate:c.tokubei.startDate, endDate:c.tokubei.endDate, items, sourceUrl:S.toku, imageUrl:c.tokubei.imageUrl || c.tokubei.representativeImageUrl || null, verified:true }, ...(Array.isArray(c.tokubei.campaigns) ? c.tokubei.campaigns.filter(x => x?.sourceUrl !== S.toku) : [])];
@@ -120,6 +132,11 @@ function selfTest() {
   const side={chains:[{chain:'tokubei',fairName:'2大特典で超お得！秋のお持ち帰りすし祭り',items:[],campaigns:[{sourceUrl:'https://www.nigirinotokubei.com/info/11244'}]}]};
   assert.deepEqual(applyVerifiedCurrentOfficialCampaigns(side,'2026-09-20'),['tokubei'],'side notice must not displace the verified in-store food fair');
   assert.equal(byChain(side).tokubei.items.length,23);
+  const fukui={chains:[{chain:'tokubei',fairName:'創業の地「福井県の食材」を食べて応援！「うまいんやざー福井祭り」',items:[],sourceUrl:'https://www.nigirinotokubei.com/info/'}]};
+  assert.deepEqual(applyVerifiedCurrentOfficialCampaigns(fukui,'2026-10-05'),['tokubei'],'current Fukui fair must be populated from the verified official allergen list');
+  assert.equal(byChain(fukui).tokubei.items.length,8);
+  assert.equal(byChain(fukui).tokubei.items.find(x=>x.name==='福井甘えび')?.price,null);
+  assert.equal(byChain(fukui).tokubei.productSourceUrl,TOKU_FUKUI_ALLERGEN);
   const newerTokubei={chains:[{chain:'tokubei',fairName:'次の旬フェア',items:[{name:'新商品',price:220}],campaigns:[{sourceUrl:S.toku}]}]};
   assert.deepEqual(applyVerifiedCurrentOfficialCampaigns(newerTokubei,'2026-09-20'),[],'verified override must not replace a healthy newer Tokubei food fair');
   console.log('Verified current official campaign override self-tests passed.');
