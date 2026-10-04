@@ -154,6 +154,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         if: steps.save.outputs.changed == 'true' || github.event_name != 'schedule'
         with:
+          include-hidden-files: true
           path: './app'
       - name: Deploy refreshed nationwide app
         if: steps.save.outputs.changed == 'true' || github.event_name != 'schedule'
