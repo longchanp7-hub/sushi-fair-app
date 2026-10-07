@@ -69,6 +69,7 @@ function sushiroCategory(title) {
   if (/SUSHIRO\s*Cafe|スシローカフェ|スイーツ|デザート|パフェ|アイス|まぜまぜ/i.test(title)) return 'dessert';
   if (/お持ち帰り|持ち帰り|テイクアウト/.test(title)) return 'takeout';
   if (/ポイント|スタンプ|優待|クーポン|お食事券/.test(title)) return 'benefit';
+  if (/コラボ|コラボレーション|キャンペーン/.test(title)) return 'other';
   if (/こども|お子さま|キッズ|じぶんでつくロー/.test(title)) return 'other';
   return 'fair';
 }
@@ -110,28 +111,46 @@ function parseSushiroProducts(html, sourceUrl) {
   return uniqItems(out);
 }
 
-function parseSushiroDetail(html, sourceUrl) {
+function sushiroStartDate(title, body, today = jstTodayKey()) {
+  const source = `${title} ${body.slice(0, 1200)}`;
+  const full = source.match(/(20\d{2})\s*年\s*(\d{1,2})\s*[月\/]\s*(\d{1,2})\s*日?[^。！？]{0,20}(?:～|〜|から|より|開始)/);
+  if (full) return isoDate(Number(full[1]), Number(full[2]), Number(full[3]));
+  const short = source.match(/(\d{1,2})\s*[月\/]\s*(\d{1,2})\s*日?(?:\s*[（(][^）)]*[）)])?[^。！？]{0,20}(?:～|〜|から|より|開始)/);
+  if (!short) return null;
+  const year = Number(today.slice(0, 4));
+  return isoDate(year, Number(short[1]), Number(short[2]));
+}
+
+function parseSushiroDetail(html, sourceUrl, today = jstTodayKey()) {
   const $ = cheerio.load(html);
   const title = clean($('meta[property="og:title"]').attr('content') || $('h1').first().text()).replace(/\s*\|.*$/, '');
   if (!title) return null;
+  const body = clean($('body').text());
   const items = parseSushiroProducts(html, sourceUrl);
-  if (!items.length) return null;
   const imageUrl = absoluteUrl($('meta[property="og:image"]').attr('content') || $('meta[name="twitter:image"]').attr('content'), sourceUrl);
   const category = sushiroCategory(title);
+  const startDate = sushiroStartDate(title, body, today);
+  const imageOnlyCollaboration = !items.length && /コラボ|コラボレーション/.test(title) && Boolean(startDate);
+  if (!items.length && !imageOnlyCollaboration) return null;
+  const campaignPhase = startDate && startDate > today ? 'upcoming' : 'active';
   return {
     id:sushiroCampaignId(sourceUrl),
     fairName:title,
     officialCampaignTitle:title,
     officialCampaignUrl:sourceUrl,
     sourceUrl,
-    startDate:null,
+    startDate,
     endDate:null,
-    campaignPhase:'active',
+    campaignPhase,
     category,
     items,
-    itemStatus:'parsed',
+    itemStatus:items.length ? 'parsed' : 'unavailable',
     imageUrl,
-    scopeNote:category === 'fair' ? 'スシロー公式「おすすめ」掲載中の商品です。店舗により価格・取扱いが異なる場合があります。' : 'スシロー公式「おすすめ」掲載中の関連商品です。主フェア商品とは分けて表示します。',
+    scopeNote:category === 'fair'
+      ? 'スシロー公式「おすすめ」掲載中の商品です。店舗により価格・取扱いが異なる場合があります。'
+      : items.length
+        ? 'スシロー公式「おすすめ」掲載中の関連商品です。主フェア商品とは分けて表示します。'
+        : 'スシロー公式「おすすめ」掲載中のコラボ告知です。商品・価格は画像掲載のため一覧未取得として主フェアと分離表示します。',
     lastConfirmedAt:new Date().toISOString(),
   };
 }
@@ -148,7 +167,7 @@ async function discoverSushiro(chain, today = jstTodayKey()) {
   const candidates = [];
   for (let offset = 0; offset < unique.length; offset += 4) {
     const batch = await Promise.all(unique.slice(offset, offset + 4).map(async url => {
-      try { return parseSushiroDetail(await fetchHtml(url, 1), url); }
+      try { return parseSushiroDetail(await fetchHtml(url, 1), url, today); }
       catch { return null; }
     }));
     candidates.push(...batch.filter(Boolean));
@@ -338,6 +357,16 @@ function runSelfTests() {
   assert.equal(sushiro.category, 'fair');
   assert.deepEqual(sushiro.items.map(item => [item.name,item.price]), [['国産 さんま',180],['秋の山海の幸 天ぷら盛り',430]]);
   assert.equal(sushiro.startDate, null, 'X campaign dates must not be reused as food sale dates');
+
+  const pomFixture = `<!doctype html><html><head><meta property="og:title" content="スシロー × ポムポムプリン コラボ『スシローでポムロー』 10/7(水)～"><meta property="og:image" content="/pom.jpg"></head><body>
+    <h1>スシロー × ポムポムプリン コラボ『スシローでポムロー』 10/7(水)～</h1><img src="/product1.jpg"><img src="/product2.jpg">
+  </body></html>`;
+  const pom = parseSushiroDetail(pomFixture, 'https://www.akindo-sushiro.co.jp/campaign/detail.php?id=4450', '2026-10-07');
+  assert.equal(pom.category, 'other');
+  assert.equal(pom.startDate, '2026-10-07');
+  assert.equal(pom.campaignPhase, 'active');
+  assert.equal(pom.itemStatus, 'unavailable');
+  assert.equal(pom.items.length, 0);
 
   const kuraFixture = `<!doctype html><html><head><meta property="og:title" content="カニやサーモンが集結 「北海」フェア -9月4日（金）より期間限定で販売-"><meta property="og:image" content="/fair.png"></head><body>
   <p>2026.09.01</p><h1>カニやサーモンが集結 「北海」フェア -9月4日（金）より期間限定で販売-</h1>

@@ -9,10 +9,10 @@ export const OFFICIAL_SOURCES = Object.freeze({
     stores: 'https://www.akindo-sushiro.co.jp/shop/',
   },
   hamazushi: {
-    menu: 'https://www.hamazushi.com/menu/',
-    topics: 'https://www.hamazushi.com/topics/',
+    menu: 'https://www.hama-sushi.co.jp/menu/',
+    topics: 'https://www.hama-sushi.co.jp/topics/',
     stores: 'https://maps.hama-sushi.co.jp/jp/index.html',
-    currentTopic: 'https://www.hamazushi.com/topics/2026/0907000856.html',
+    currentTopic: 'https://www.hama-sushi.co.jp/topics/2026/0924000859.html',
   },
   kurasushi: {
     releases: 'https://www.kurasushi.co.jp/author/2026.html',
@@ -56,7 +56,7 @@ export const OFFICIAL_SOURCES = Object.freeze({
 
 export const ALLOWED_SOURCE_HOSTS = Object.freeze(new Set([
   'www.akindo-sushiro.co.jp','cmsimage.akindo-sushiro.co.jp',
-  'www.hamazushi.com','maps.hama-sushi.co.jp',
+  'www.hama-sushi.co.jp','www.hamazushi.com','maps.hama-sushi.co.jp',
   'www.kurasushi.co.jp','shop.kurasushi.co.jp',
   'www.kappasushi.jp','prtimes.jp','prcdn.freetls.fastly.net',
   'www.uobei.info',

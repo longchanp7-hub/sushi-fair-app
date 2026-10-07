@@ -16,7 +16,7 @@ const STORES = {
   },
   hamazushi: {
     name: '豊橋新栄周辺',
-    sourceUrl: 'https://www.hamazushi.com/menu/',
+    sourceUrl: 'https://www.hama-sushi.co.jp/menu/',
     storeUrl: 'https://maps.hama-sushi.co.jp/jp/index.html',
   },
   kurasushi: {

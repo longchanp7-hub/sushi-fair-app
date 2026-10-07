@@ -158,6 +158,17 @@ function namesBeforePrice(line) {
   return [];
 }
 
+function quotedPricePairs(line) {
+  const pairs = [];
+  const pattern = /[「『]([^」』]{2,70})[」』][^「『]{0,90}?([0-9,]+)\s*円\s*[（(]\s*税込\s*([0-9,]+)\s*円\s*[）)]/g;
+  for (const match of String(line).matchAll(pattern)) {
+    const name = acceptableProductName(match[1]);
+    const price = Number(match[3].replace(/,/g, ''));
+    if (name && Number.isFinite(price) && price > 0) pairs.push({ name, price });
+  }
+  return pairs;
+}
+
 function addItem(target, seen, {
   name, price, sourceUrl, startDate, endDate, today, note = null,
 }) {
@@ -197,8 +208,13 @@ function parseItems(html, sourceUrl, startDate, today = jstTodayKey()) {
       ? 'お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。'
       : null;
 
+    const quotedPairs = quotedPricePairs(line);
+    for (const pair of quotedPairs) {
+      addItem(items, seen, { ...pair, sourceUrl, startDate, endDate, today, note });
+    }
+
     const sameLinePrice = taxIncludedPrice(line);
-    if (sameLinePrice) {
+    if (sameLinePrice && !quotedPairs.length) {
       for (const name of namesBeforePrice(line)) {
         addItem(items, seen, { name, price: sameLinePrice, sourceUrl, startDate, endDate, today, note });
       }
@@ -228,7 +244,10 @@ export function parseTopic(html, sourceUrl, today = jstTodayKey()) {
   if (!/はま寿司/.test(`${title} ${body.slice(0, 3000)}`)) return null;
 
   const fairName = fairNameFrom(title, body);
-  if (!fairName) return null;
+  const isSupplemental = !fairName
+    && /期間限定/.test(`${title} ${body.slice(0, 1200)}`)
+    && /販売|登場|提供/.test(`${title} ${body.slice(0, 1200)}`);
+  if (!fairName && !isSupplemental) return null;
   if (/お持ち帰り|テイクアウト|福袋|おせち|TVCM|CM公開|Xキャンペーン|フォロー&リポスト|クーポン|ご優待/.test(title)) return null;
 
   const startDate = parseStartDate(`${title} ${body.slice(0, 3500)}`, today);
@@ -245,8 +264,9 @@ export function parseTopic(html, sourceUrl, today = jstTodayKey()) {
     sourceUrl,
   );
   return {
-    fairName,
-    officialCampaignTitle: fairName,
+    kind:isSupplemental ? 'supplemental' : 'fair',
+    fairName:fairName || title.replace(/\s*\|.*$/, ''),
+    officialCampaignTitle:fairName || title.replace(/\s*\|.*$/, ''),
     sourceUrl,
     startDate,
     endDate: null,
@@ -276,7 +296,7 @@ export function discoverTopicLinks(html, baseUrl, year = Number(jstTodayKey().sl
     add(node.attr('href'), label);
   });
 
-  const rawPattern = new RegExp(`(?:https?:\\/\\/www\\.hamazushi\\.com)?\\/topics\\/${year}\\/\\d+\\.html`, 'g');
+  const rawPattern = new RegExp(`(?:https?:\\/\\/(?:www\\.hama-sushi\\.co\\.jp|www\\.hamazushi\\.com))?\\/topics\\/${year}\\/\\d+\\.html`, 'g');
   for (const match of String(html).matchAll(rawPattern)) add(match[0], '');
 
   return [...found.entries()]
@@ -286,6 +306,7 @@ export function discoverTopicLinks(html, baseUrl, year = Number(jstTodayKey().sl
 
 export function selectCurrent(candidates, today = jstTodayKey()) {
   const viable = candidates.filter(candidate => {
+    if (candidate?.kind === 'supplemental') return false;
     if (!candidate?.startDate) return false;
     const phase = campaignPhase(candidate, today);
     return phase === 'active' || (phase === 'upcoming' && dayDistance(candidate.startDate, today) <= MAX_UPCOMING_DAYS);
@@ -299,6 +320,17 @@ export function selectCurrent(candidates, today = jstTodayKey()) {
       : String(a.startDate).localeCompare(String(b.startDate));
   });
   return viable[0] || null;
+}
+
+function selectSupplementals(candidates, today = jstTodayKey()) {
+  return candidates
+    .filter(candidate => candidate?.kind === 'supplemental' && candidate.startDate)
+    .filter(candidate => {
+      const phase = campaignPhase(candidate, today);
+      return phase === 'active' || (phase === 'upcoming' && dayDistance(candidate.startDate, today) <= MAX_UPCOMING_DAYS);
+    })
+    .sort((a, b) => String(b.startDate).localeCompare(String(a.startDate)))
+    .slice(0, 6);
 }
 
 async function discoverCurrentTopic(today = jstTodayKey()) {
@@ -324,31 +356,61 @@ async function discoverCurrentTopic(today = jstTodayKey()) {
       console.warn(`Hamazushi topic skipped (${url}): ${error.message}`);
     }
   }
-  return selectCurrent(candidates, today);
+  return { main:selectCurrent(candidates, today), supplemental:selectSupplementals(candidates, today) };
 }
 
-function applyTopic(chain, topic) {
-  const upcoming = topic.campaignPhase === 'upcoming';
+function hamazushiCampaignRow(topic) {
+  const id = String(topic.sourceUrl).match(/\/topics\/\d{4}\/(\d+)\.html/)?.[1] || normalize(topic.sourceUrl).slice(-24);
+  return {
+    id:`hamazushi-${id}`,
+    fairName:topic.fairName,
+    officialCampaignTitle:topic.officialCampaignTitle,
+    officialCampaignUrl:topic.sourceUrl,
+    sourceUrl:topic.sourceUrl,
+    startDate:topic.startDate,
+    endDate:topic.endDate,
+    campaignPhase:topic.campaignPhase,
+    category:topic.kind === 'supplemental' ? 'other' : 'fair',
+    items:topic.items.map(item => ({ ...item })),
+    itemStatus:topic.items.length ? 'parsed' : 'unavailable',
+    imageUrl:topic.imageUrl || null,
+    scopeNote:topic.kind === 'supplemental'
+      ? 'はま寿司公式トピックス掲載の期間限定商品です。主フェアと分離して掲載します。'
+      : 'はま寿司公式トピックス掲載のフェアです。店舗により価格・取扱いが異なる場合があります。',
+    lastConfirmedAt:new Date().toISOString(),
+  };
+}
+
+function applyTopic(chain, topic, supplemental = []) {
+  const main = topic || null;
+  const upcoming = main?.campaignPhase === 'upcoming';
+  const itemMap = new Map((main?.items || chain.items || []).map(item => [normalize(item.name), item]));
+  for (const extra of supplemental) for (const item of extra.items || []) itemMap.set(normalize(item.name), item);
+  const items = [...itemMap.values()];
+  const campaigns = [main, ...supplemental].filter(Boolean).map(hamazushiCampaignRow);
   return {
     ...chain,
-    fairName: topic.fairName,
-    startDate: topic.startDate,
-    endDate: topic.endDate,
-    items: topic.items,
+    ...(main ? {
+      fairName:main.fairName,
+      startDate:main.startDate,
+      endDate:main.endDate,
+      officialCampaignTitle:main.officialCampaignTitle,
+      officialCampaignUrl:main.sourceUrl,
+      fairNameSource:'official_topic_page',
+      campaignPhase:main.campaignPhase,
+      imageUrl:main.imageUrl || chain.imageUrl || null,
+      representativeImageUrl:main.imageUrl || chain.representativeImageUrl || chain.imageUrl || null,
+      representativeImageSource:main.imageUrl ? 'official_topic_og' : (chain.representativeImageSource || 'official_food_or_fair_image'),
+      representativeImageProduct:main.items[0]?.name || chain.representativeImageProduct || null,
+      representativeImagePage:main.sourceUrl,
+    } : {}),
+    items,
+    campaigns,
     sourceUrl: MENU,
-    officialCampaignTitle: topic.officialCampaignTitle,
-    officialCampaignUrl: topic.sourceUrl,
-    fairNameSource: 'official_topic_page',
-    campaignPhase: topic.campaignPhase,
-    imageUrl: topic.imageUrl || chain.imageUrl || null,
-    representativeImageUrl: topic.imageUrl || chain.representativeImageUrl || chain.imageUrl || null,
-    representativeImageSource: topic.imageUrl ? 'official_topic_og' : (chain.representativeImageSource || 'official_food_or_fair_image'),
-    representativeImageProduct: topic.items[0]?.name || chain.representativeImageProduct || null,
-    representativeImagePage: topic.sourceUrl,
-    dataScope: 'national_official_topic',
-    status: upcoming ? 'warning' : 'ok',
-    message: upcoming ? `公式発表済み。${topic.startDate.slice(5).replace('-', '/')}開始予定のフェアです。` : null,
-    priceNote: 'はま寿司公式トピックス掲載の税込価格です。店舗により価格・取扱い・販売条件が異なる場合があります。',
+    dataScope:'national_official_topic',
+    status:upcoming ? 'warning' : 'ok',
+    message:upcoming ? `公式発表済み。${main.startDate.slice(5).replace('-', '/')}開始予定のフェアです。` : null,
+    priceNote:'はま寿司公式トピックス掲載の税込価格です。店舗により価格・取扱い・販売条件が異なる場合があります。',
   };
 }
 
@@ -365,7 +427,7 @@ function runSelfTests() {
     <p>●宮城県産さんま 160円（税込176円）</p>
     <p>●アカイカ 大分県産かぼすおろし 160円（税込176円） ※お持ち帰り不可</p>
   </body></html>`;
-  const parsed = parseTopic(fixture, 'https://www.hamazushi.com/topics/2026/0907000856.html', '2026-09-09');
+  const parsed = parseTopic(fixture, 'https://www.hama-sushi.co.jp/topics/2026/0907000856.html', '2026-09-09');
   assert.equal(parsed.fairName, 'はま寿司の中とろ100円と大漁！旨ねた祭り');
   assert.equal(parsed.startDate, '2026-09-08');
   assert.equal(parsed.campaignPhase, 'active');
@@ -386,6 +448,23 @@ function runSelfTests() {
     { startDate: '2026-09-08', endDate: null },
   ], '2026-09-09');
   assert.equal(selected.startDate, '2026-09-08');
+
+  const supplementalFixture = `<!doctype html><html><head><meta property="og:title" content="はま寿司に期間限定商品が登場！"></head><body>
+    <p>株式会社はま寿司は、10月6日（火）より、期間限定商品を全国の店舗で販売します。</p>
+    <p>今回は、「大切り 直火焼きびんちょう（大葉にんにく風味）」を100円（税込110円）でご提供します。</p>
+    <p>「北海道水揚げ にしん」が120円（税込132円）で登場します。さらに、「北海道産つぶ貝のキムチ和え軍艦」を160円（税込176円）で販売します。</p>
+  </body></html>`;
+  const extra = parseTopic(supplementalFixture, 'https://www.hama-sushi.co.jp/topics/2026/1005000864.html', '2026-10-07');
+  assert.equal(extra.kind, 'supplemental');
+  assert.equal(extra.startDate, '2026-10-06');
+  assert.deepEqual(extra.items.map(item => [item.name,item.price]), [
+    ['大切り 直火焼きびんちょう（大葉にんにく風味）',110],
+    ['北海道水揚げ にしん',132],
+    ['北海道産つぶ貝のキムチ和え軍艦',176],
+  ]);
+  const merged = applyTopic({items:[]}, parsed, [extra]);
+  assert.ok(merged.items.some(item => item.name === '北海道産つぶ貝のキムチ和え軍艦'));
+  assert.equal(merged.campaigns.at(-1).category, 'other');
   console.log('Hamazushi current-topic self-tests passed.');
 }
 
@@ -396,8 +475,8 @@ async function main() {
   if (index < 0) throw new Error('Hamazushi chain row missing');
 
   try {
-    const topic = await discoverCurrentTopic();
-    if (!topic) {
+    const discovered = await discoverCurrentTopic();
+    if (!discovered.main && !discovered.supplemental.length) {
       data.chains[index] = {
         ...data.chains[index],
         status: 'warning',
@@ -405,8 +484,8 @@ async function main() {
       };
       console.warn('::warning title=Hamazushi official topic::No current/upcoming official fair topic could be verified');
     } else {
-      data.chains[index] = applyTopic(data.chains[index], topic);
-      console.log(`Hamazushi official topic: ${topic.fairName} (${topic.startDate}, ${topic.items.length} items)`);
+      data.chains[index] = applyTopic(data.chains[index], discovered.main, discovered.supplemental);
+      console.log(`Hamazushi official topic: ${discovered.main?.fairName || 'current fair retained'} (${discovered.main?.startDate || 'n/a'}, ${data.chains[index].items.length} merged items, ${discovered.supplemental.length} supplemental announcements)`);
     }
   } catch (error) {
     data.chains[index] = {

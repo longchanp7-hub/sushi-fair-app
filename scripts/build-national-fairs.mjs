@@ -22,7 +22,7 @@ const ACTION_URLS = {
 
 const FAIR_URLS = {
   sushiro: 'https://www.akindo-sushiro.co.jp/campaign/',
-  hamazushi: 'https://www.hamazushi.com/menu/',
+  hamazushi: 'https://www.hama-sushi.co.jp/menu/',
   kurasushi: 'https://www.kurasushi.co.jp/menu/',
   kappasushi: 'https://www.kappasushi.jp/campaign_list/',
   uobei: 'https://www.uobei.info/menu/',
