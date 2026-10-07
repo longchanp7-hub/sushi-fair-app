@@ -112,7 +112,9 @@ function parseSushiroProducts(html, sourceUrl) {
 }
 
 function sushiroStartDate(title, body, today = jstTodayKey()) {
-  const source = `${title} ${body.slice(0, 1200)}`;
+  // Food pages often contain unrelated X/Twitter campaign dates in the body.
+  // Only the official card/detail title is trusted for a campaign start date.
+  const source = clean(title);
   const full = source.match(/(20\d{2})\s*年\s*(\d{1,2})\s*[月\/]\s*(\d{1,2})\s*日?[^。！？]{0,20}(?:～|〜|から|より|開始)/);
   if (full) return isoDate(Number(full[1]), Number(full[2]), Number(full[3]));
   const short = source.match(/(\d{1,2})\s*[月\/]\s*(\d{1,2})\s*日?(?:\s*[（(][^）)]*[）)])?[^。！？]{0,20}(?:～|〜|から|より|開始)/);
