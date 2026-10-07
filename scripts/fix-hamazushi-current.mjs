@@ -214,7 +214,7 @@ function parseItems(html, sourceUrl, startDate, today = jstTodayKey()) {
     }
 
     const sameLinePrice = taxIncludedPrice(line);
-    if (sameLinePrice && !quotedPairs.length) {
+    if (sameLinePrice) {
       for (const name of namesBeforePrice(line)) {
         addItem(items, seen, { name, price: sameLinePrice, sourceUrl, startDate, endDate, today, note });
       }
