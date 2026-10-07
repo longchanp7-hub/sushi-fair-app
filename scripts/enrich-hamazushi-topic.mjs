@@ -5,7 +5,7 @@ import * as cheerio from 'cheerio';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const FAIR_PATH = path.join(ROOT, 'app', 'data', 'fairs.json');
-const HAMAZUSHI_HOST = 'www.hamazushi.com';
+const HAMAZUSHI_HOSTS = new Set(['www.hama-sushi.co.jp','www.hamazushi.com']);
 const UA = 'Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138 Safari/537.36';
 
 const clean = (value = '') => String(value).replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim();
@@ -62,7 +62,7 @@ export function extractSharedPriceProducts(html) {
 
 async function fetchHtml(url) {
   const parsed = new URL(url);
-  if (parsed.protocol !== 'https:' || parsed.hostname !== HAMAZUSHI_HOST) {
+  if (parsed.protocol !== 'https:' || !HAMAZUSHI_HOSTS.has(parsed.hostname)) {
     throw new Error(`Unexpected Hamazushi campaign source: ${url}`);
   }
   const response = await fetch(url, {
@@ -136,7 +136,7 @@ function runSelfTests() {
     startDate: '2026-09-08',
     endDate: null,
     campaignPhase: 'active',
-    officialCampaignUrl: 'https://www.hamazushi.com/topics/2026/example.html',
+    officialCampaignUrl: 'https://www.hama-sushi.co.jp/topics/2026/example.html',
     items: [{ name: '厳選まぐろ中とろ', price: 176, sourceUrl: 'old' }],
   }, products);
   assert.equal(merged.corrected, 1);
@@ -152,7 +152,9 @@ async function main() {
   if (index < 0) throw new Error('Hamazushi chain row missing');
   const chain = data.chains[index];
 
-  if (!chain.officialCampaignUrl || !/^https:\/\/www\.hamazushi\.com\/topics\//.test(chain.officialCampaignUrl)) {
+  let campaignUrl;
+  try { campaignUrl = new URL(chain.officialCampaignUrl); } catch {}
+  if (!campaignUrl || campaignUrl.protocol !== 'https:' || !HAMAZUSHI_HOSTS.has(campaignUrl.hostname) || !campaignUrl.pathname.startsWith('/topics/')) {
     throw new Error('Hamazushi official campaign URL is missing or unexpected');
   }
 

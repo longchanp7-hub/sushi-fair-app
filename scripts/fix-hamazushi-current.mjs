@@ -111,7 +111,9 @@ function fairNameFrom(title, body) {
     .filter(value => !/X|Twitter|キャンペーン応募|ご優待券/.test(value));
   if (quoted.length) return quoted.sort((a, b) => b.length - a.length)[0];
   const bare = sourceText.match(/(はま寿司[^。！？!?]{2,90}?(?:フェア|祭り|まつり))/);
-  return clean(bare?.[1] || '');
+  const value = clean(bare?.[1] || '');
+  if (/公式X|Xでは|Twitter|SNS|キャンペーン/.test(value)) return '';
+  return value;
 }
 
 function taxIncludedPrice(value) {
