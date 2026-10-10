@@ -62,7 +62,7 @@ export function reconcileKappaOfficial(data,today=todayJst()){
     promoted=true;
   }
   const base=chain.campaignCatalog.find(c=>source(c,NAGANO_URL));
-  if(base&&base.startDate===TARGET_FIRST&&base.endDate===TARGET_LAST
+  if(base&&base.startDate===TARGET_FIRST&&[TARGET_LAST,SECOND_LAST].includes(base.endDate)
       &&base.items.length>=8
       &&today<=SECOND_LAST){
     const replacements=NAGANO_PHASES.map((spec,i)=>({
@@ -110,7 +110,8 @@ function selfTest(){
   assert.deepEqual(nagano[1].items.map(x=>x.startDate),Array(5).fill(TARGET_SECOND));
   assert.ok(nagano[0].items.every(x=>x.saleStatus==='active'));
   assert.ok(nagano[1].items.every(x=>x.saleStatus==='upcoming'));
-  const after=mk();const check=reconcileKappaOfficial(after,'2026-10-22');
+  const after=mk();after.chains[0].campaignCatalog[1].endDate=SECOND_LAST;
+  const check=reconcileKappaOfficial(after,'2026-10-22');
   assert.equal(check.promoted,false,'Expired national fair must not be advertised as current');
   assert.equal(after.chains[0].campaignCatalog.filter(x=>x.sourceUrl===NAGANO_URL)[1].campaignPhase,'active');
   const unavailable=mk();unavailable.chains[0].campaignCoverage.state='partial';
