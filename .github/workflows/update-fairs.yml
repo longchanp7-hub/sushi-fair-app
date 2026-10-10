@@ -51,6 +51,7 @@ jobs:
           node --check scripts/source-registry.mjs
           node --check scripts/quality-gate.mjs
           node --check scripts/normalize-campaigns.mjs
+          node --check scripts/reconcile-kappa-official.mjs
           node --check scripts/build-store-contexts.mjs
           node --check scripts/validate-store-contexts.mjs
           node scripts/fix-kura.mjs --self-test
@@ -66,6 +67,7 @@ jobs:
           node scripts/update-local-tokai.mjs --self-test
           node scripts/fix-local-official-releases.mjs --self-test
           node scripts/normalize-campaigns.mjs --self-test
+          node scripts/reconcile-kappa-official.mjs --self-test
           node scripts/quality-gate.mjs --self-test
           node --experimental-vm-modules --test scripts/test-campaign-catalog.mjs scripts/test-campaign-integration.mjs
       - name: Preserve previous published fair snapshot
@@ -124,6 +126,8 @@ jobs:
         env:
           PREVIOUS_FAIRS: /tmp/previous-fairs.json
         run: node scripts/campaign-catalog.mjs --report /tmp/campaign-coverage.json
+      - name: Reconcile verified Kappa current fair and Nagano campaign phases
+        run: node scripts/reconcile-kappa-official.mjs
       - name: Validate independent announcement inventory and connected renderer
         run: |
           node scripts/campaign-catalog.mjs --verify --report /tmp/campaign-coverage.json
