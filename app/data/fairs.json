@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-10T13:29:27.840Z",
+  "updatedAt": "2026-10-10T13:33:33.145Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -399,7 +399,7 @@
           "itemStatus": "parsed",
           "imageUrl": "https://www.akindo-sushiro.co.jp/shared/images/ogp.png?260319",
           "scopeNote": "スシロー公式「おすすめ」掲載中の商品です。店舗により価格・取扱いが異なる場合があります。",
-          "lastConfirmedAt": "2026-10-10T13:29:10.887Z"
+          "lastConfirmedAt": "2026-10-10T13:33:17.874Z"
         },
         {
           "id": "sushiro-4534",
@@ -440,7 +440,7 @@
           "itemStatus": "parsed",
           "imageUrl": "https://www.akindo-sushiro.co.jp/shared/images/ogp.png?260319",
           "scopeNote": "スシロー公式「おすすめ」掲載中の商品です。店舗により価格・取扱いが異なる場合があります。",
-          "lastConfirmedAt": "2026-10-10T13:29:10.906Z"
+          "lastConfirmedAt": "2026-10-10T13:33:17.971Z"
         },
         {
           "id": "sushiro-4450",
@@ -501,7 +501,7 @@
           "itemStatus": "parsed",
           "imageUrl": "https://www.akindo-sushiro.co.jp/shared/images/ogp.png?260319",
           "scopeNote": "商品・税込価格はスシロー公式「豊橋新栄店」の店舗別メニューで確認。ほかの店舗では価格・取扱いが異なる場合があります。特典は数量限定で、なくなり次第終了です。主フェア商品ではありません。",
-          "lastConfirmedAt": "2026-10-10T13:29:11.547Z"
+          "lastConfirmedAt": "2026-10-10T13:33:18.020Z"
         }
       ],
       "officialCampaignTitle": "さんまを楽しむ スシローの秋／バター醤油×旨ネタ！ バター醤油すし",
@@ -518,14 +518,14 @@
         "炙りえびバター醤油",
         "炙りまるごと帆立バター醤油"
       ],
-      "campaignDiscoveryAt": "2026-10-10T13:29:12.420Z",
+      "campaignDiscoveryAt": "2026-10-10T13:33:19.455Z",
       "group": "national",
       "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260930_6151.png",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "本鮪大とろ",
       "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.932Z"
+      "qualityCheckedAt": "2026-10-10T13:33:33.233Z"
     },
     {
       "chain": "hamazushi",
@@ -1123,7 +1123,7 @@
           "itemStatus": "parsed",
           "imageUrl": "https://www.hama-sushi.co.jp/assets/common/img/og_images_hs.png",
           "scopeNote": "はま寿司公式トピックス掲載のフェアです。店舗により価格・取扱いが異なる場合があります。",
-          "lastConfirmedAt": "2026-10-10T13:29:04.725Z"
+          "lastConfirmedAt": "2026-10-10T13:33:11.490Z"
         },
         {
           "id": "hamazushi-1005000864",
@@ -1167,7 +1167,7 @@
           "itemStatus": "parsed",
           "imageUrl": "https://www.hama-sushi.co.jp/assets/common/img/og_images_hs.png",
           "scopeNote": "はま寿司公式トピックス掲載の期間限定商品です。主フェアと分離して掲載します。",
-          "lastConfirmedAt": "2026-10-10T13:29:04.725Z"
+          "lastConfirmedAt": "2026-10-10T13:33:11.490Z"
         }
       ],
       "dataScope": "national_official_topic",
@@ -1182,7 +1182,7 @@
       },
       "group": "national",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.933Z"
+      "qualityCheckedAt": "2026-10-10T13:33:33.233Z"
     },
     {
       "chain": "kurasushi",
@@ -1296,7 +1296,7 @@
       "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
       "group": "national",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.933Z",
+      "qualityCheckedAt": "2026-10-10T13:33:33.234Z",
       "campaigns": [
         {
           "id": "kurasushi-008669",
@@ -1393,7 +1393,7 @@
           "itemStatus": "parsed",
           "scopeNote": "くら寿司公式プレスリリース掲載の期間限定フェアです。店舗により価格・取扱いが異なる場合があります。",
           "campaignPhase": "active",
-          "lastConfirmedAt": "2026-10-10T13:29:13.646Z"
+          "lastConfirmedAt": "2026-10-10T13:33:23.386Z"
         },
         {
           "id": "kurasushi-008568",
@@ -1500,7 +1500,7 @@
           "itemStatus": "parsed",
           "scopeNote": "くら寿司公式プレスリリース掲載の期間限定フェアです。店舗により価格・取扱いが異なる場合があります。",
           "campaignPhase": "active",
-          "lastConfirmedAt": "2026-10-10T13:29:13.646Z"
+          "lastConfirmedAt": "2026-10-10T13:33:23.386Z"
         }
       ]
     },
@@ -1582,7 +1582,7 @@
       "representativeImageProduct": "うに軍艦",
       "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001227.000018731.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.936Z",
+      "qualityCheckedAt": "2026-10-10T13:33:33.237Z",
       "campaignCatalog": [
         {
           "id": "kappasushi-374e8dafeb25ca73ad7c",
@@ -1597,7 +1597,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:33.721Z"
+          "lastConfirmedAt": "2026-10-10T13:33:38.549Z"
         },
         {
           "id": "kappasushi-3e33a8e3fafc0251c6c4",
@@ -1612,7 +1612,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:34.053Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.138Z"
         },
         {
           "id": "kappasushi-5e6eaad542793c43e07f",
@@ -1627,7 +1627,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:33.808Z"
+          "lastConfirmedAt": "2026-10-10T13:33:38.778Z"
         },
         {
           "id": "kappasushi-6b8617392dbc02067d7c",
@@ -1642,7 +1642,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:33.164Z"
+          "lastConfirmedAt": "2026-10-10T13:33:38.018Z"
         },
         {
           "id": "kappasushi-7d464d684500c2aaf497",
@@ -1657,7 +1657,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:33.196Z"
+          "lastConfirmedAt": "2026-10-10T13:33:38.721Z"
         },
         {
           "id": "kappasushi-7e367fdb0f8907d38fe9",
@@ -1672,7 +1672,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:33.074Z"
+          "lastConfirmedAt": "2026-10-10T13:33:37.802Z"
         },
         {
           "id": "kappasushi-89f7abf772b600724371",
@@ -1687,7 +1687,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:30.534Z"
+          "lastConfirmedAt": "2026-10-10T13:33:35.781Z"
         },
         {
           "id": "kappasushi-8dffbb3484371499480a",
@@ -1702,7 +1702,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:33.457Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.176Z"
         },
         {
           "id": "kappasushi-9c638583bf896bf93f4e",
@@ -1717,7 +1717,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:30.997Z"
+          "lastConfirmedAt": "2026-10-10T13:33:36.278Z"
         },
         {
           "id": "kappasushi-be35672cc952a1c93368",
@@ -1783,7 +1783,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:34.110Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.356Z"
         },
         {
           "id": "kappasushi-c855177a1e36589bf4b0",
@@ -1798,7 +1798,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:32.830Z"
+          "lastConfirmedAt": "2026-10-10T13:33:38.430Z"
         },
         {
           "id": "kappasushi-14cae4b820a7d8f4c488",
@@ -1813,7 +1813,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:31.303Z"
+          "lastConfirmedAt": "2026-10-10T13:33:36.561Z"
         },
         {
           "id": "kappasushi-3846f4b90c5541282355",
@@ -1828,7 +1828,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:31.905Z"
+          "lastConfirmedAt": "2026-10-10T13:33:36.902Z"
         },
         {
           "id": "kappasushi-8704239b71e8d9c27109",
@@ -1843,7 +1843,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:32.316Z"
+          "lastConfirmedAt": "2026-10-10T13:33:37.429Z"
         },
         {
           "id": "kappasushi-ce029b045a48e17acbcb",
@@ -1858,7 +1858,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:31.565Z"
+          "lastConfirmedAt": "2026-10-10T13:33:36.808Z"
         },
         {
           "id": "kappasushi-e9a74ab31bd6bda22829",
@@ -1873,7 +1873,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:32.401Z"
+          "lastConfirmedAt": "2026-10-10T13:33:37.552Z"
         },
         {
           "id": "kappasushi-ed9ed0edec6d228025a1",
@@ -1888,7 +1888,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:32.272Z"
+          "lastConfirmedAt": "2026-10-10T13:33:37.739Z"
         },
         {
           "id": "kappasushi-f6d6189993839bc194f5",
@@ -1903,7 +1903,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:32.534Z"
+          "lastConfirmedAt": "2026-10-10T13:33:37.548Z"
         },
         {
           "id": "kappasushi-301e4c80c6a2df7d34b6",
@@ -1989,7 +1989,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:35.044Z"
+          "lastConfirmedAt": "2026-10-10T13:33:40.019Z"
         },
         {
           "id": "kappasushi-45be6fc840592e860e53",
@@ -2004,7 +2004,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:30.889Z"
+          "lastConfirmedAt": "2026-10-10T13:33:35.552Z"
         },
         {
           "id": "kappasushi-8f4e400346253bfe6ce1",
@@ -2019,7 +2019,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:29.897Z"
+          "lastConfirmedAt": "2026-10-10T13:33:35.021Z"
         },
         {
           "id": "kappasushi-d3727561b98a777f2825",
@@ -2034,7 +2034,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:31.156Z"
+          "lastConfirmedAt": "2026-10-10T13:33:37.208Z"
         },
         {
           "id": "kappasushi-a35a32508b628fbfdc18",
@@ -2049,7 +2049,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:30.764Z"
+          "lastConfirmedAt": "2026-10-10T13:33:35.796Z"
         },
         {
           "id": "kappasushi-07f6156a23e297aca7aa",
@@ -2064,7 +2064,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:29.893Z"
+          "lastConfirmedAt": "2026-10-10T13:33:35.361Z"
         },
         {
           "id": "kappasushi-1445dc28b8db1ae56b82",
@@ -2130,7 +2130,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.552Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.634Z"
         },
         {
           "id": "kappasushi-1d7405d2a48c997cac19",
@@ -2216,7 +2216,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.828Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.617Z"
         },
         {
           "id": "kappasushi-32ca09e7d9dc0579c56a",
@@ -2272,7 +2272,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.589Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.742Z"
         },
         {
           "id": "kappasushi-32ca09e7d9dc0579c56a-phase2",
@@ -2338,7 +2338,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.589Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.742Z"
         },
         {
           "id": "kappasushi-5762a3a532a1f47a4f43",
@@ -2353,7 +2353,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:29.772Z"
+          "lastConfirmedAt": "2026-10-10T13:33:34.793Z"
         },
         {
           "id": "kappasushi-58811c4b31ba1b7824d0",
@@ -2368,7 +2368,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.437Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.444Z"
         },
         {
           "id": "kappasushi-74e8a3d4377c886af813",
@@ -2383,7 +2383,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:31.861Z"
+          "lastConfirmedAt": "2026-10-10T13:33:36.026Z"
         },
         {
           "id": "kappasushi-7ad94cfda587a9bf92f5",
@@ -2419,7 +2419,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.247Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.650Z"
         },
         {
           "id": "kappasushi-7d1290241f5a9336e7c4",
@@ -2434,7 +2434,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.357Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.316Z"
         },
         {
           "id": "kappasushi-8282a1a883a35d32a56d",
@@ -2449,7 +2449,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.415Z"
+          "lastConfirmedAt": "2026-10-10T13:33:39.581Z"
         },
         {
           "id": "kappasushi-9f0ab8bd553ffe314816",
@@ -2485,13 +2485,13 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:34.993Z"
+          "lastConfirmedAt": "2026-10-10T13:33:40.001Z"
         }
       ],
       "campaignCoverage": {
         "version": 1,
         "state": "complete",
-        "attemptedAt": "2026-10-10T13:29:28.152Z",
+        "attemptedAt": "2026-10-10T13:33:33.451Z",
         "indices": [
           {
             "url": "https://www.kappasushi.jp/campaign_list/",
@@ -5437,7 +5437,7 @@
       "group": "national",
       "campaignPhase": "active",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.937Z"
+      "qualityCheckedAt": "2026-10-10T13:33:33.237Z"
     },
     {
       "chain": "totomaru",
@@ -5528,7 +5528,7 @@
       "representativeImageProduct": "【さび抜】ボイルたらば蟹のにぎり",
       "representativeImagePage": "https://totomaru.ec-design.co.jp/news/detail/622f5b56-dfa6-4e42-8a14-c8eb017bbb56",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.937Z"
+      "qualityCheckedAt": "2026-10-10T13:33:33.237Z"
     },
     {
       "chain": "musashimaru",
@@ -5576,7 +5576,7 @@
       "representativeImageProduct": "釣り魚の調理例",
       "representativeImagePage": "https://www.634-jp.com/lovefish.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.937Z"
+      "qualityCheckedAt": "2026-10-10T13:33:33.238Z"
     },
     {
       "chain": "tokubei",
@@ -5775,7 +5775,7 @@
       "representativeImageProduct": "福井甘えび",
       "representativeImagePage": "https://www.nigirinotokubei.com/info/11363/",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-10-10T13:29:27.937Z",
+      "qualityCheckedAt": "2026-10-10T13:33:33.238Z",
       "campaignCatalog": [
         {
           "id": "tokubei-1b9cc2cec8aaa94a277b",
@@ -5790,7 +5790,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:43.103Z"
+          "lastConfirmedAt": "2026-10-10T13:33:45.740Z"
         },
         {
           "id": "tokubei-a3d524875fef0adbb4e6",
@@ -5826,7 +5826,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-10-10T13:29:42.943Z"
+          "lastConfirmedAt": "2026-10-10T13:33:46.856Z"
         },
         {
           "id": "tokubei-a1a3331a77e2cdb99860",
@@ -5841,7 +5841,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:43.300Z"
+          "lastConfirmedAt": "2026-10-10T13:33:46.552Z"
         },
         {
           "id": "tokubei-16e8a6c9d39fd2ea2eab",
@@ -5856,7 +5856,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:41.508Z"
+          "lastConfirmedAt": "2026-10-10T13:33:44.680Z"
         },
         {
           "id": "tokubei-1799940ad28e0c3a725d",
@@ -5871,7 +5871,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:42.032Z"
+          "lastConfirmedAt": "2026-10-10T13:33:45.402Z"
         },
         {
           "id": "tokubei-65380d0b84d09954d46c",
@@ -5886,7 +5886,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:41.846Z"
+          "lastConfirmedAt": "2026-10-10T13:33:45.651Z"
         },
         {
           "id": "tokubei-eb58b7f56a1c8f2ec547",
@@ -5901,7 +5901,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:40.202Z"
+          "lastConfirmedAt": "2026-10-10T13:33:43.883Z"
         },
         {
           "id": "tokubei-eeb2ebc5bf024a7ab693",
@@ -5916,7 +5916,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:40.671Z"
+          "lastConfirmedAt": "2026-10-10T13:33:44.309Z"
         },
         {
           "id": "tokubei-c1ddd15820b117a2199c",
@@ -5931,13 +5931,13 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-10-10T13:29:40.668Z"
+          "lastConfirmedAt": "2026-10-10T13:33:44.280Z"
         }
       ],
       "campaignCoverage": {
         "version": 1,
         "state": "complete",
-        "attemptedAt": "2026-10-10T13:29:37.308Z",
+        "attemptedAt": "2026-10-10T13:33:41.274Z",
         "indices": [
           {
             "url": "https://www.nigirinotokubei.com/",
@@ -6038,7 +6038,7 @@
   ],
   "qualityGate": {
     "version": 2,
-    "checkedAt": "2026-10-10T13:29:27.937Z",
+    "checkedAt": "2026-10-10T13:33:33.238Z",
     "fallbackChains": [],
     "quarantined": [],
     "warnings": []
