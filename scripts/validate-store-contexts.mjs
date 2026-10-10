@@ -70,6 +70,7 @@ function rowIssue(issue){return issue.key!==null&&issue.reasons.every(r=>!r.star
 
 function repair(data){
   const copy=structuredClone(data),removed=[];
+  let expired=0;
   for(const issue of inspectCatalog(copy)){
     if(!rowIssue(issue))continue;
     if(copy.catalog?.[issue.chain]?.[issue.key]){
@@ -77,20 +78,29 @@ function repair(data){
       delete copy.catalog[issue.chain][issue.key];
     }
   }
-  if(removed.length)copy.updatedAt=new Date().toISOString();
-  return {data:copy,removed};
+  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  for(const store of Object.values(copy.catalog?.sushiro||{})){
+    for(const item of store.localFairItems||[]){
+      if(item?.endDate&&item.endDate<today&&item.saleStatus!=='ended'){
+        item.saleStatus='ended';
+        expired++;
+      }
+    }
+  }
+  if(removed.length||expired)copy.updatedAt=new Date().toISOString();
+  return {data:copy,removed,expired};
 }
 
 async function validateFile(file,{fallback=false,repairMode=false}={}){
   let data=JSON.parse(await fs.readFile(file,'utf8'));
-  let removed=[];
+  let removed=[],expired=0;
   if(repairMode&&!fallback){
-    const fixed=repair(data);data=fixed.data;removed=fixed.removed;
-    if(removed.length)await fs.writeFile(file,JSON.stringify(data,null,2)+'\n');
+    const fixed=repair(data);data=fixed.data;removed=fixed.removed;expired=fixed.expired;
+    if(removed.length||expired)await fs.writeFile(file,JSON.stringify(data,null,2)+'\n');
   }
   const issues=inspectCatalog(data,{fallback});
   if(issues.length)throw new Error(`${path.basename(file)} store catalog invalid: ${JSON.stringify(issues.slice(0,20))}`);
-  return {file:path.basename(file),removed,count:Object.fromEntries(Object.entries(data.catalog||{}).map(([k,v])=>[k,Object.keys(v||{}).length]))};
+  return {file:path.basename(file),removed,expired,count:Object.fromEntries(Object.entries(data.catalog||{}).map(([k,v])=>[k,Object.keys(v||{}).length]))};
 }
 
 function selfTest(){
@@ -101,6 +111,10 @@ function selfTest(){
   for(const code of ['generic_store_name','page_chrome_leak','sushiro_non_store_url'])assert.ok(reasons.includes(code),code);
   const mismatch={...good,storeId:'999'};assert.ok(inspectStoreRow('sushiro','愛知県/豊橋市',mismatch).includes('sushiro_store_id_url_mismatch'));
   const malformed={...good,officialUrl:'not-a-url'};assert.ok(inspectStoreRow('sushiro','愛知県/豊橋市',malformed).includes('sushiro_non_store_url'));
+  const sample={catalog:{sushiro:{'愛知県/豊橋市':{...good,localFairItems:[{name:'国産ほたて食べ比べ',price:360,startDate:'2026-08-05',endDate:'2026-08-30',saleStatus:'active'}]}}}};
+  const fixed=repair(sample);
+  assert.equal(fixed.expired,1);
+  assert.equal(fixed.data.catalog.sushiro['愛知県/豊橋市'].localFairItems[0].saleStatus,'ended');
   console.log('Store context validator self-tests passed.');
 }
 

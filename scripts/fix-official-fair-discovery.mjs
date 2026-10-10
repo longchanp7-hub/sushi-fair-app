@@ -5,6 +5,7 @@ import * as cheerio from 'cheerio';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const FAIR_PATH = path.join(ROOT, 'app', 'data', 'fairs.json');
+const STORE_PATH = path.join(ROOT, 'app', 'data', 'store-contexts.json');
 const UA = 'Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138 Safari/537.36';
 const SUSHIRO_INDEX = 'https://www.akindo-sushiro.co.jp/campaign/';
 const KURA_ARCHIVE = year => `https://www.kurasushi.co.jp/author/${year}.html`;
@@ -157,6 +158,69 @@ function parseSushiroDetail(html, sourceUrl, today = jstTodayKey()) {
   };
 }
 
+
+function uniqueSushiroCampaignUrls(urls) {
+  const seen = new Set(), distinct = [];
+  for (const url of urls) {
+    const id = sushiroCampaignId(url);
+    if (seen.has(id)) continue;
+    seen.add(id);
+    distinct.push(url);
+  }
+  return distinct;
+}
+
+// Product text and price must appear together on the official store menu.
+// These prices belong to the referenced store, not to all stores nationwide.
+function parseSushiroCollaborationMenu(html, sourceUrl, startDate, today = jstTodayKey()) {
+  const $ = cheerio.load(html), items = [];
+  $('img[alt]').each((_, element) => {
+    const name = clean($(element).attr('alt'));
+    if (!/ポムポムプリン/.test(name) || !/コラボ(?:ピック|ステッカー|キラキラステッカー)付き/.test(name)) return;
+    let node = $(element), detail = null;
+    for (let level = 0; level < 10 && node.length; level += 1, node = node.parent()) {
+      const text = clean(node.text()), pos = text.indexOf(name);
+      if (pos < 0 || text.length > 1000) continue;
+      const tail = text.slice(pos + name.length);
+      const price = tail.match(/^.{0,90}?([\d,]+)\s*円\s*[（(]税込[）)]/);
+      if (!price) continue;
+      detail = { text, price:Number(price[1].replace(/,/g,'')) };
+      break;
+    }
+    if (!detail || !Number.isFinite(detail.price) || detail.price <= 0 || detail.price > 5000) return;
+    const found = detail.text.match(/(?:^|[\[［])\s*(\d{1,2})\s*\/\s*(\d{1,2})\s*(?:日|[（(][^）)]*[）)])?\s*[～〜]/);
+    const itemStart = found ? isoDate(Number((startDate || today).slice(0,4)), Number(found[1]), Number(found[2])) : startDate;
+    if (!itemStart) return; // No unverified open-ended listing.
+    items.push({
+      name, price:detail.price, priceType:'listed', startDate:itemStart, endDate:null,
+      saleStatus:itemStart > today ? 'upcoming':'active', scrapeStatus:'ok', sourceUrl,
+      availabilityNote:detail.text.includes('完売次第終了') ? 'コラボ特典がなくなり次第終了。店舗や時間帯により品切れ・取扱い差があります。' : '販売・取扱い条件は公式の店舗メニューを確認してください。',
+    });
+  });
+  return uniqItems(items);
+}
+
+async function enrichSushiroCollaboration(candidates, today) {
+  const target = candidates.find(row => row.id === 'sushiro-4450' && row.category === 'other');
+  if (!target) return;
+  try {
+    const data = JSON.parse(await fs.readFile(STORE_PATH, 'utf8'));
+    const store = data.catalog?.sushiro?.['愛知県/豊橋市'];
+    const url = new URL(store?.menuUrl || '');
+    if (!store?.verified || url.hostname !== 'www.akindo-sushiro.co.jp' || url.pathname !== '/menu/menu_detail/' || !/^\d+$/.test(url.searchParams.get('s_id') || '')) {
+      throw new Error('official Toyohashi store menu reference unavailable');
+    }
+    const products = parseSushiroCollaborationMenu(await fetchHtml(url.href), url.href, target.startDate, today);
+    if (!products.length) throw new Error('official store menu has no verifiable collaboration products');
+    target.items = products;
+    target.itemStatus = 'parsed';
+    target.scopeNote = '商品・税込価格はスシロー公式「' + store.storeName + '」の店舗別メニューで確認。ほかの店舗では価格・取扱いが異なる場合があります。特典は数量限定で、なくなり次第終了です。主フェア商品ではありません。';
+    console.log('Verified Sushiro collaboration items from official Toyohashi store menu: ' + products.length);
+  } catch (error) {
+    console.warn('::warning title=Sushiro collaboration items::Could not confirm official store product list: ' + error.message);
+  }
+}
+
 async function discoverSushiro(chain, today = jstTodayKey()) {
   const indexHtml = await fetchHtml(SUSHIRO_INDEX);
   const $ = cheerio.load(indexHtml);
@@ -165,7 +229,7 @@ async function discoverSushiro(chain, today = jstTodayKey()) {
     const href = absoluteUrl($(element).attr('href'), SUSHIRO_INDEX);
     if (href && /\/campaign\/detail\.php\?id=\d+/.test(href)) urls.push(href);
   });
-  const unique = [...new Set(urls)].slice(0, 24);
+  const unique = uniqueSushiroCampaignUrls(urls).slice(0, 24);
   const candidates = [];
   for (let offset = 0; offset < unique.length; offset += 4) {
     const batch = await Promise.all(unique.slice(offset, offset + 4).map(async url => {
@@ -174,7 +238,9 @@ async function discoverSushiro(chain, today = jstTodayKey()) {
     }));
     candidates.push(...batch.filter(Boolean));
   }
-  const main = candidates.filter(candidate => candidate.category === 'fair');
+  const distinct = [...new Map(candidates.map(candidate => [candidate.id, candidate])).values()];
+  await enrichSushiroCollaboration(distinct, today);
+  const main = distinct.filter(candidate => candidate.category === 'fair');
   if (!main.length) return chain;
   const existing = (chain.items || []).filter(item => activeItem(item, today));
   const items = uniqItems([...existing, ...main.flatMap(candidate => candidate.items)]);
@@ -183,7 +249,7 @@ async function discoverSushiro(chain, today = jstTodayKey()) {
     ...chain,
     fairName:names.slice(0, 6).join('／') || chain.fairName,
     items,
-    campaigns:candidates,
+    campaigns:distinct,
     officialCampaignTitle:names.join('／'),
     officialCampaignUrl:SUSHIRO_INDEX,
     fairNameSource:'official_campaign_index',
@@ -369,6 +435,20 @@ function runSelfTests() {
   assert.equal(pom.campaignPhase, 'active');
   assert.equal(pom.itemStatus, 'unavailable');
   assert.equal(pom.items.length, 0);
+  assert.deepEqual(uniqueSushiroCampaignUrls([
+    'https://www.akindo-sushiro.co.jp/campaign/detail.php?id=4450',
+    'https://www.akindo-sushiro.co.jp/campaign/detail.php?id=4450&utm_source=index',
+    'https://www.akindo-sushiro.co.jp/campaign/detail.php?id=4533',
+  ]).map(sushiroCampaignId), ['sushiro-4450','sushiro-4533']);
+  const menuFixture = '<li><img alt="第1弾 ポムポムプリン コラボピック付き ハンバーグにぎり">' +
+    '<span>第1弾 ポムポムプリン コラボピック付き ハンバーグにぎり</span><b>250円(税込)</b>' +
+    '<p>[10/7(水)～ コラボピックが完売次第終了]</p></li>' +
+    '<li><img alt="第1弾 ポムポムプリン コラボステッカー付き ティラミスケーキ">' +
+    '<b>380円(税込)</b><p>[10/7(水)～ 完売次第終了]</p></li>';
+  const menuItems = parseSushiroCollaborationMenu(menuFixture, 'https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179', '2026-10-07', '2026-10-10');
+  assert.equal(menuItems.length, 1, 'An item with no adjacent name and price must fail closed');
+  assert.equal(menuItems[0].price, 250);
+  assert.equal(menuItems[0].startDate, '2026-10-07');
 
   const kuraFixture = `<!doctype html><html><head><meta property="og:title" content="カニやサーモンが集結 「北海」フェア -9月4日（金）より期間限定で販売-"><meta property="og:image" content="/fair.png"></head><body>
   <p>2026.09.01</p><h1>カニやサーモンが集結 「北海」フェア -9月4日（金）より期間限定で販売-</h1>

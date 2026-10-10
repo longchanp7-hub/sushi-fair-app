@@ -33,8 +33,17 @@ function ctx(f){return resolveChainContext(f.chain,location);}
 
 function sushiroLocalItem(f,item){
   if(f.chain!=='sushiro')return null;
-  const local=ctx(f).store?.localFairItems||[];
-  return local.find(x=>clean(x.name)===clean(item.name))||null;
+  const store=ctx(f).store, today=dateKey();
+  // Never reuse a historical store-menu price as the current price for a later release.
+  const checked=String(store?.localMenuCheckedAt||'').slice(0,10);
+  const checkedTime=Date.parse(checked+'T00:00:00+09:00');
+  const nowTime=Date.parse(today+'T00:00:00+09:00');
+  if(!Number.isFinite(checkedTime)||checkedTime>nowTime||nowTime-checkedTime>14*86400000)return null;
+  const local=store?.localFairItems||[];
+  return local.find(x=>clean(x.name)===clean(item.name)&&x.saleStatus!=='ended'
+    &&(!x.startDate||x.startDate<=today)&&(!x.endDate||x.endDate>=today)
+    &&(!item.startDate||!x.endDate||x.endDate>=item.startDate)
+    &&(!item.endDate||!x.startDate||x.startDate<=item.endDate))||null;
 }
 function sourceItems(f){
   const base=Array.isArray(f.items)?f.items.filter(i=>!isCampaignAnnouncement(f.chain,i)):[];
