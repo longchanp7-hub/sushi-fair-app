@@ -125,7 +125,7 @@ function parsePricedLine(line) {
   const price = Number(tax[1].replace(/,/g, ''));
   if (!Number.isFinite(price) || price <= 0) return null;
   let name = value.slice(0, tax.index).trim()
-    .replace(/[／/]\s*(?:\d+|一|二|三|四|五)?\s*貫?\s*[\d,]+\s*円\s*$/, '')
+    .replace(/[／/]\s*(?:\d+|一|二|三|四|五)?\s*(?:貫|皿)?\s*[\d,]+\s*円\s*$/, '')
     .replace(/\s+(?:\d+|一|二|三|四|五)\s*貫\s*[\d,]+\s*円\s*$/, '')
     .replace(/\s+[\d,]+\s*円\s*$/, '')
     .replace(/^(?:Image|画像)\s*/i, '')
@@ -152,12 +152,12 @@ function dedupeItems(items) {
 
 function findFairName(title, body, fallback) {
   const source = `${title} ${body.slice(0, 1600)}`;
-  const quoted = [...source.matchAll(/[「『]([^」』]{2,80}?(?:フェア|祭り|キャンペーン))[」』]/g)]
+  const quoted = [...source.matchAll(/[「『]([^」』]{2,80}?(?:フェア|祭り?|キャンペーン))[」』]/g)]
     .map(match => clean(match[1]))
     .filter(Boolean)
     .sort((a, b) => a.length - b.length);
   if (quoted.length) return quoted[0];
-  const bare = clean(source).match(/([^。！？!?]{2,70}?(?:フェア|祭り|キャンペーン))/);
+  const bare = clean(source).match(/([^。！？!?]{2,70}?(?:フェア|祭り?|キャンペーン))/);
   return clean(bare?.[1] || fallback);
 }
 
@@ -240,6 +240,19 @@ async function findCurrentRelease(chain, today = jstTodayKey()) {
     urls = discoverReleaseUrls(await fetchHtml(indexUrl), config, indexUrl);
   } catch (error) {
     console.warn(`${chain} PR TIMES index unavailable; verified current release fallback will be used: ${error.message}`);
+  }
+
+  if (chain === 'uobei') {
+    // The company archive can return an empty body even with HTTP 200.
+    // Use its official company RSS feed as an independent discovery source.
+    const feedUrl = `https://prtimes.jp/companyrdf.php?company_id=${config.companyId}`;
+    try {
+      const feedUrls = discoverReleaseUrls(await fetchHtml(feedUrl), config, feedUrl);
+      const releaseNumber = url => Number(url.match(/\/p\/(\d+)\./)?.[1] || 0);
+      urls = [...new Set([...urls, ...feedUrls])].sort((a, b) => releaseNumber(b) - releaseNumber(a));
+    } catch (error) {
+      console.warn(`${chain} PR TIMES company feed unavailable: ${error.message}`);
+    }
   }
 
   for (const url of urls.slice(0, 30)) {
@@ -337,8 +350,19 @@ function runSelfTests() {
   `, SOURCES.uobei, 'https://prtimes.jp/main/html/searchrlp/company_id/20954');
   assert.match(uobeiReleaseUrls[0], /000000246\.000020954\.html$/);
 
+  const feedUrls = discoverReleaseUrls(`<rdf:RDF><item><link>https://prtimes.jp/main/html/rd/p/000000248.000020954.html</link></item><item><link>https://prtimes.jp/main/html/rd/p/000000999.000018731.html</link></item></rdf:RDF>`, SOURCES.uobei, 'https://prtimes.jp/companyrdf.php?company_id=20954');
+  assert.match(feedUrls[0], /000000248\.000020954\.html$/);
+  assert.equal(feedUrls.length, 2, 'Company RSS discovery must reject another publisher');
+  const dekaHtml = uobeiHtml.replaceAll('豪華ネタフェア', 'でかネタ祭')
+    .replace('2026年8月4日', '2026年10月9日')
+    .replace('すけそう鱈／2貫100円（税込110円）', '一本穴子／1皿480円（税込528円）');
+  const deka = parseRelease(dekaHtml, 'uobei', feedUrls[0], '2026-10-14');
+  assert.equal(deka.fairName, 'でかネタ祭');
+  assert.deepEqual([deka.items[0].name, deka.items[0].price], ['一本穴子', 528]);
+
   console.log('National release fix self-tests passed.');
 }
 
 if (process.argv.includes('--self-test')) runSelfTests();
 else await main();
+
