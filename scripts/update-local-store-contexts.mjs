@@ -50,7 +50,11 @@ function buildMunicipalityIndex(raw){
   for(const [pref,values] of Object.entries(raw||{})){
     for(const name of Array.isArray(values)?values:[]){
       const n=clean(name);if(!n)continue;
-      const set=byName.get(n)||new Set();set.add(pref);byName.set(n,set);
+      // Keep the parent city usable when an upstream index still has old ward names.
+      const city=n.match(/^(.+?市).+区$/)?.[1];
+      for(const key of new Set([n,...(city?[city]:[])])){
+        const set=byName.get(key)||new Set();set.add(pref);byName.set(key,set);
+      }
     }
   }
   return byName;
@@ -82,6 +86,8 @@ function inferredLocation(text,geoIndex){
   for(const [name,prefs] of geoIndex){
     const i=t.indexOf(name);
     if(i<0||prefs.size!==1)continue;
+    // A ward inside a city address is not the same as a standalone Tokyo ward.
+    if(!name.includes('市')&&name.endsWith('区')&&/市\s*$/.test(t.slice(0,i)))continue;
     matches.push({name,pref:[...prefs][0],i});
   }
   if(!matches.length)return null;
@@ -286,9 +292,18 @@ async function main(){
 async function selfTest(){
   assert.equal(municipality('愛知県','愛知県豊橋市西岩田6丁目17-2'),'豊橋市');
   assert.equal(municipality('静岡県','静岡県浜松市中央区森田町101'),'浜松市中央区');
-  const geo=buildMunicipalityIndex({'愛知県':['豊橋市','岡崎市'],'静岡県':['湖西市'],'広島県':['府中市'],'東京都':['府中市']});
+  const geo=buildMunicipalityIndex({'愛知県':['豊橋市','岡崎市','名古屋市中区'],'静岡県':['湖西市','浜松市中区','浜松市東区'],'広島県':['府中市'],'東京都':['府中市','中央区','港区'],'北海道':['札幌市中央区'],'福岡県':['福岡市中央区']});
   assert.equal(inferredLocation('〒441-8059 豊橋市柱五番町116-1',geo)?.pref,'愛知県');
   assert.equal(inferredLocation('府中市本町1-1',geo),null,'Ambiguous municipality must not guess a prefecture');
+  for(const ward of ['中央区','浜名区']){
+    const loc=inferredLocation(`〒432-8048 浜松市${ward}森田町101`,geo);
+    assert.equal(loc?.pref,'静岡県');assert.equal(loc?.municipality,`浜松市${ward}`);
+  }
+  assert.equal(inferredLocation('中央区銀座1-1',geo)?.pref,'東京都');
+  for(const [area,pref] of [['名古屋市中区','愛知県'],['札幌市中央区','北海道'],['福岡市中央区','福岡県']])assert.equal(inferredLocation(`${area}1-1`,geo)?.pref,pref);
+  assert.equal(locationFromText('広島県府中市本町1-1',geo)?.pref,'広島県','Explicit prefecture must take precedence over ambiguous inference');
+  assert.equal(inferredLocation('浜松市森田町101',geo)?.municipality,'浜松市','City fallback must not invent a ward');
+  assert.equal(inferredLocation('未確認市中央区1-1',geo),null,'Unknown city must not be misread as a Tokyo ward');
 
   const [totoHtml,musaHtml,tokuHtml]=await Promise.all([
     fs.readFile(path.join(FIXTURE_DIR,'totomaru-store-list.html'),'utf8'),
@@ -315,3 +330,4 @@ async function selfTest(){
 }
 
 if(process.argv.includes('--self-test'))await selfTest();else await main();
+
