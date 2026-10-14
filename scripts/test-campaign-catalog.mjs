@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseDates,discoverIndex,parseDetail,collectChain,verifyCoverage,SOURCES} from './campaign-catalog.mjs';
+import {parseDates,parseProducts,discoverIndex,parseDetail,collectChain,verifyCoverage,SOURCES} from './campaign-catalog.mjs';
 import {campaignPhase,canonicalCampaignUrl,renderCampaignCatalog,visibleCampaigns} from '../app/campaign-catalog.js';
 const today='2026-09-07';
 const toro='https://prtimes.jp/main/html/rd/p/000001212.000018731.html';
@@ -9,6 +9,28 @@ const early='https://prtimes.jp/main/html/rd/p/000001218.000018731.html';
 const release='<article><h1>かっぱ寿司「トロの日」</h1><p>2026年9月16日（水）限定、かっぱ寿司全店にて</p><p>『ほおばる贅沢！大とろ尽くし包み いくらのせ』</p><p>一貫355円（税込390円）〜</p></article>';
 const entry={sourceUrl:toro,indexUrl:SOURCES.kappasushi.indices[1],fairName:'トロの日',indexText:'2026年9月16日（水）限定'};
 const tororow=()=>parseDetail(release,entry,'kappasushi',today);
+test('MOMOREI buffet admission and leftover charges are not food items',()=>{
+ const url='https://prtimes.jp/main/html/rd/p/000001216.000018731.html';
+ const title='かっぱ寿司「MOMOREI」食べ放題キャンペーン';
+ const html=`<article><h1>${title}</h1><p>キャンペーン開始日：2026年10月1日（木）～なくなり次第終了</p><p>小学生：1,990 円（税込）、幼児（未就学児）：無料</p><p>※シャリを残された場合、一貫につき33円（税込）をいただいております。</p></article>`;
+ const row=parseDetail(html,{sourceUrl:url,fairName:title,indexText:title,publishedAt:'2026-09-09T16:00:00+09:00'},'kappasushi','2026-10-14');
+ assert.equal(row.campaignPhase,'active');
+ assert.equal(row.startDate,'2026-10-01');
+ assert.deepEqual(row.items,[]);
+ assert.equal(row.itemStatus,'unavailable');
+});
+test('buffet admission labels are excluded in single and split lines',()=>{
+ const range={startDate:'2026-10-01',endDate:null};
+ for(const name of ['一般','大人','小学生:','中学生〜大学院生','シニア(65歳以上)','幼児(未就学児)','平日学割']){
+  assert.deepEqual(parseProducts([`${name} 税込1,990円`],toro,range),[],name);
+  assert.deepEqual(parseProducts([name,'税込1,990円'],toro,range),[],name);
+ }
+});
+test('real rice dishes and child meals keep their tax-inclusive prices',()=>{
+ const items=parseProducts(['『追いシャリ』 税込110円','『お子様セット』 税込390円','『うに軍艦』 一貫173円（税込190円）〜'],toro,{startDate:'2026-10-01',endDate:null});
+ assert.deepEqual(items.map(x=>[x.name,x.price]),[['追いシャリ',110],['お子様セット',390],['うに軍艦',190]]);
+ assert.equal(items[2].priceType,'from');
+});
 test('one day and Unicode dates; publication date is not sale date',()=>{
  assert.deepEqual(parseDates('2026年9月16日（水）限定',2026),{startDate:'2026-09-16',endDate:'2026-09-16'});
  assert.deepEqual(parseDates('２０２６年９月１８日（金）～１０月４日（日）',2026),{startDate:'2026-09-18',endDate:'2026-10-04'});
@@ -55,3 +77,4 @@ test('future price is isolated from current chain product prices',()=>{const cha
 test('render after end date removes the one-day event even with stale phase',()=>{const c={campaignCatalog:[tororow()],campaignCoverage:{state:'complete'}};assert.equal(visibleCampaigns(c,'2026-09-17').length,0);assert.doesNotMatch(renderCampaignCatalog(c,'2026-09-17'),/大とろ尽くし/);});
 test('HTML escape and HTTPS URL guard',()=>{const r={...tororow(),fairName:'<script>alert(1)</script>',sourceUrl:'javascript:alert(1)'};const s=renderCampaignCatalog({campaignCatalog:[r],campaignCoverage:{state:'complete'}},today);assert.doesNotMatch(s,/<script>|href="javascript:/);assert.match(s,/&lt;script&gt;/);assert.equal(canonicalCampaignUrl(toro+'?utm_source=x'),toro);});
 test('pre-existing main fair is not mutated by catalog rendering',()=>{const c={fairName:'秋の味覚祭り',items:[{name:'秋の特選五貫盛り',price:1155}],campaignCatalog:[tororow()],campaignCoverage:{state:'complete'}};const before=JSON.stringify(c);renderCampaignCatalog(c,today);assert.equal(JSON.stringify(c),before);});
+
