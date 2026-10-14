@@ -24,6 +24,7 @@ test('buffet admission labels are excluded in single and split lines',()=>{
  for(const name of ['一般','大人','小学生:','中学生〜大学院生','シニア(65歳以上)','幼児(未就学児)','平日学割']){
   assert.deepEqual(parseProducts([`${name} 税込1,990円`],toro,range),[],name);
   assert.deepEqual(parseProducts([name,'税込1,990円'],toro,range),[],name);
+  assert.deepEqual(parseProducts(['食べ放題の料金',`${name} 税込1,990円`],toro,range),[],name);
  }
 });
 test('real rice dishes and child meals keep their tax-inclusive prices',()=>{

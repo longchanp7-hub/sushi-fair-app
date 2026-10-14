@@ -100,8 +100,8 @@ export function parseProducts(lines,sourceUrl,range){
   let name=quotes.at(-1)?.[1]||before.replace(/\s*[（(]?\s*[\d,]+円.*$/,'').replace(/\s*(?:一|二|三|\d+)貫\s*$/,'').replace(/[（(\s]+$/,'');
   name=clean(name).replace(/^(?:店内切付(?:\/直火炙り)?|直火炙り)\s*/,'').replace(/[.．・]{2,}$/,'').trim();
   // Admission categories and leftover charges are conditions, not food products.
-  // Match whole demographic labels so real dishes such as お子様セット survive.
-  if(/^(?:一般|大人|小学生|中学生|高校生|大学生|大学院生|中学生[~〜～]大学院生|シニア|幼児|未就学児|平日学割)(?:\s*\([^)]*\))?\s*[:：]?$/.test(name)
+  // A preceding heading may be joined to the label; real お子様セット dishes survive.
+  if(/(?:^|\s)(?:一般|大人|小学生|中学生|高校生|大学生|大学院生|中学生[~〜～]大学院生|シニア|幼児|未就学児|平日学割)(?:\s*\([^)]*\))?\s*[:：]?$/.test(name)
     ||/食べ残し|(?:シャリ|しゃり|食事)を?残|キャンセル料/.test(name))continue;
   if(!name||name.length>65||/^[※*＊・●■◆◇\-―ー]+$/.test(name)||/[。]|税込|販売|提供|購入|価格|通常|全店|プレス/.test(name)||/^(?:トロの日|.+キャンペーン|.+祭り)$/.test(name))continue;
   const price=Number((p[1]||p[2]).replace(/,/g,''));if(!(price>0&&price<100000))continue;
