@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-14T00:19:48.212Z",
+  "updatedAt": "2026-10-14T03:44:50.576Z",
   "policy": "Official store directories only. Exact municipality is preferred; ordinance-city fallback may use another ward in the same city. Unknown price/menu classes remain null.",
   "catalog": {
     "sushiro": {
@@ -23425,12 +23425,12 @@
         "verified": true,
         "source": "official_store_directory"
       },
-      "東京都/浜松市中央区": {
+      "静岡県/浜松市中央区": {
         "chain": "totomaru",
-        "prefecture": "東京都",
+        "prefecture": "静岡県",
         "municipality": "浜松市中央区",
         "storeName": "魚魚丸 浜松森田店",
-        "address": "東京都浜松市中央区森田町101 地図",
+        "address": "静岡県浜松市中央区森田町101 地図",
         "officialUrl": "https://www.comline.co.jp/shoplist/",
         "verified": true,
         "source": "official_store_directory"
