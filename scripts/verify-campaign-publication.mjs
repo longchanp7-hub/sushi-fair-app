@@ -6,6 +6,7 @@ import {canonicalCampaignUrl,renderCampaignCatalog,visibleCampaigns,visibleConcu
 const ROOT=fileURLToPath(new URL('..',import.meta.url));
 export const TARGETS=['kappasushi','tokubei'];
 export const CONCURRENT_TARGETS=['sushiro','kurasushi'];
+const KAPPA_SET_URL='https://prtimes.jp/main/html/rd/p/000001235.000018731.html';
 const validDate=v=>v===null||v===undefined||(typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&Number.isFinite(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v);
 function validateItems(id,row){
  assert.ok(Array.isArray(row.items),`${id}: items must be an array`);
@@ -32,6 +33,18 @@ export function validateCatalog(data,inventory=null){
    assert.ok(validDate(row.startDate)&&validDate(row.endDate),`${id}: invalid date`);
    assert.ok(!row.startDate||!row.endDate||row.startDate<=row.endDate,`${id}: reversed dates`);
    validateItems(id,row);
+   if(id==='kappasushi'&&row.sourceUrl===KAPPA_SET_URL
+      &&(!row.endDate||row.endDate>=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()))
+      &&proof.state==='complete'){
+    assert.equal(row.category,'set','Kappa limited set category regressed');
+    assert.equal(row.itemStatus,'parsed','Kappa limited set prices missing');
+    assert.equal(row.startDate,'2026-10-22','Kappa limited set start date changed');
+    assert.equal(row.endDate,'2026-10-25','Kappa limited set end date changed');
+    assert.deepEqual(row.items.map(x=>[x.name,x.price,x.priceType]),
+     [['まぐろ＆貝食べ比べセット',1012,'from'],['贅沢よくばり寿司セット',1584,'from'],
+      ['ラーメン＆サラダセット',649,'from'],['アサイー＆わらび餅セット',495,'from']],
+     'Kappa receipt lottery or regular prices polluted the four bundles');
+   }
    assert.ok(['parsed','unavailable'].includes(row.itemStatus),`${id}: item extraction state missing`);
    ids.add(row.id);urls.add(canonicalCampaignUrl(row.sourceUrl));
   }

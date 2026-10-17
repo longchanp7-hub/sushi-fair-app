@@ -19,6 +19,7 @@ const transactionEvidence=/販売期間|販売店舗|実施店舗|予約受付�
 const foodServiceEvidence=/寿司|すし|鮨|しゃり|シャリ|メニュー|商品|まぐろ|鮪|サーモン|さんま|秋刀魚|えび|海老|かに|蟹|うに|イクラ|いくら|ほたて|帆立|スイーツ|セット|おせち|食べ放題/;
 const key=u=>createHash('sha256').update(u).digest('hex').slice(0,20);
 const NAGANO_TWO_PHASE_URL='https://prtimes.jp/main/html/rd/p/000001226.000018731.html';
+const KAPPA_SET_URL='https://prtimes.jp/main/html/rd/p/000001235.000018731.html';
 function iso(y,m,d){const v=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const parsed=new Date(v+'T00:00:00Z');return Number.isFinite(+parsed)&&parsed.toISOString().slice(0,10)===v?v:null;}
 export function parseDates(value,year=Number(catalogToday().slice(0,4))){
  const s=clean(value).replace(/20\d{2}[./年]\d{1,2}[./月]\d{1,2}日?\s*更新/g,'');
@@ -38,7 +39,7 @@ export function parseDates(value,year=Number(catalogToday().slice(0,4))){
  return {startDate:null,endDate:null};
 }
 function titleOnly(v){return clean(v).replace(/^20\d{2}[./年]\d{1,2}[./月]\d{1,2}日?\s*更新\s*/,'').replace(/\s*[|｜].*$/,'').replace(/^予告\s*/,'').trim();}
-function category(t){return /お持ち帰り|持ち帰り|テイクアウト/.test(t)?'takeout':/ランチ/.test(t)?'lunch':/スイーツ|ゼリー|アイス|アサイー/.test(t)?'dessert':/パスポート|優待/.test(t)?'benefit':/おせち|予約/.test(t)?'preorder':/店舗限定|店[】〗\]]|周年祭/.test(t)?'store_limited':/フェア|祭り|トロの日|増量/.test(t)?'fair':'other';}
+function category(t){return /セットメニュー|お得なセット/.test(t)?'set':/お持ち帰り|持ち帰り|テイクアウト/.test(t)?'takeout':/ランチ/.test(t)?'lunch':/スイーツ|ゼリー|アイス|アサイー/.test(t)?'dessert':/パスポート|優待/.test(t)?'benefit':/おせち|予約/.test(t)?'preorder':/店舗限定|店[】〗\]]|周年祭/.test(t)?'store_limited':/フェア|祭り|トロの日|増量/.test(t)?'fair':'other';}
 function textLines($,root){const el=root.clone();el.find('script,style,nav,header,footer').remove();el.find('br').replaceWith('\n');el.find('p,div,li,dt,dd,h1,h2,h3,h4,tr').append('\n');return el.text().split(/\n+/).map(clean).filter(Boolean);}
 function hasCampaignEvidence(title,lines){const text=clean([title,...lines].join(' '));return campaignAction.test(text)&&transactionEvidence.test(text);}
 function labeledPickupRange(lines,year){
@@ -102,7 +103,9 @@ export function parseProducts(lines,sourceUrl,range){
   // Admission categories and leftover charges are conditions, not food products.
   // A preceding heading may be joined to the label; real お子様セット dishes survive.
   if(/(?:^|\s)(?:一般|大人|小学生|中学生|高校生|大学生|大学院生|中学生[~〜～]大学院生|シニア|幼児|未就学児|平日学割)(?:\s*\([^)]*\))?\s*[:：]?$/.test(name)
-    ||/食べ残し|(?:シャリ|しゃり|食事)を?残|キャンセル料/.test(name))continue;
+    ||/食べ残し|(?:シャリ|しゃり|食事)を?残|キャンセル料/.test(name)
+    ||/^(?:※|\*|注[:：]|注意事項)/.test(name)
+    ||/レシート|応募(?:条件|期間|方法|対象|口数)|抽選(?:対象|応募)|お会計(?:金額)?/.test(name))continue;
   if(!name||name.length>65||/^[※*＊・●■◆◇\-―ー]+$/.test(name)||/[。]|税込|販売|提供|購入|価格|通常|全店|プレス/.test(name)||/^(?:トロの日|.+キャンペーン|.+祭り)$/.test(name))continue;
   const price=Number((p[1]||p[2]).replace(/,/g,''));if(!(price>0&&price<100000))continue;
   const suffix=text.slice(p.index+p[0].length,p.index+p[0].length+5);
@@ -110,6 +113,29 @@ export function parseProducts(lines,sourceUrl,range){
  }
  return [...new Map(out.map(x=>[`${x.name}|${x.price}`,x])).values()];
 }
+
+// The October four-day food bundles appear next to an unrelated receipt lottery.
+// Read only explicit set headings and the four labelled promotional prices.
+export function parseKappaLimitedSets(lines,url,range,today=catalogToday()){
+ const names=['まぐろ＆貝食べ比べセット','贅沢よくばり寿司セット','ラーメン＆サラダセット','アサイー＆わらび餅セット'];
+ const rows=lines.map(clean);
+ const starts=names.map(name=>rows.findIndex(line=>line.replace(/^[■◆●・\s]+/,'').replace(/^[「『]|[」』]$/g,'')===clean(name)));
+ if(starts.some(i=>i<0)||!starts.every((v,i)=>!i||v>starts[i-1]))return [];
+ const out=[];
+ for(let i=0;i<names.length;i++){
+  const body=rows.slice(starts[i]+1,Math.min(starts[i+1]??rows.length,starts[i]+18));
+  const pos=body.findIndex(s=>/4日間限定特別価格/.test(s));
+  if(pos<0)return [];
+  const priceText=clean(body[pos]+' '+(body[pos+1]||''));
+  const m=priceText.match(/4日間限定特別価格\s*[:：]?\s*税込\s*([0-9,]+)\s*円\s*[~〜～]?/);
+  const price=m?Number(m[1].replace(/,/g,'')):null;
+  if(!Number.isFinite(price)||price<=0||price>=100000)return [];
+  out.push({name:names[i],price,priceType:'from',...range,sourceUrl:url,
+   saleStatus:campaignPhase(range,today),scrapeStatus:'ok'});
+ }
+ return out;
+}
+
 export function parseDetail(html,entry,chain,today=catalogToday()){
  const $=cheerio.load(html),root=$('#press-release-body,.press-release-body,.release-body,article,main,#main,#contents').first();
  const lines=textLines($,root.length?root:$('body')),heading=clean($('h1').first().text()),meta=clean($('meta[property="og:title"]').attr('content')||$('title').text());
@@ -121,6 +147,11 @@ export function parseDetail(html,entry,chain,today=catalogToday()){
  const texts=entry.fromOfficialList?[entry.indexText,...periods,`${heading} ${meta}`]:[...periods,entry.indexText,`${heading} ${meta}`,...lines.slice(0,45)];
  for(const text of texts){const r=parseDates(text,year);if(r.startDate||r.endDate){range=r;break;}}
  const body=lines.join(' ');
+ if(chain==='kappasushi'&&entry.sourceUrl===KAPPA_SET_URL){
+  const saleLine=lines.find(line=>/販売期間/.test(line)&&/10月22日/.test(line)&&/10月25日/.test(line));
+  const rangeFromSale=saleLine?parseDates(saleLine,2026):null;
+  if(rangeFromSale?.startDate==='2026-10-22'&&rangeFromSale.endDate==='2026-10-25')range=rangeFromSale;
+ }
  if(chain==='kappasushi'&&!/かっぱ寿司|カッパ・クリエイト/.test(body+' '+meta))throw new Error('Wrong brand in release');
   // Retain the published multi-phase release until 11/11. The final reconciliation
   // step builds accurately dated and separately classified per-phase products.
@@ -136,9 +167,11 @@ export function parseDetail(html,entry,chain,today=catalogToday()){
  // Not 'ended': this older release simply cannot establish present availability by itself.
  if(releaseNeedsConfirmation(entry,range,today))return {excludedReason:'current_status_unconfirmed',title,...range};
  const sharedMenu=new URL(entry.sourceUrl).pathname==='/menu2';
- const items=sharedMenu?[]:parseProducts(lines,entry.sourceUrl,range).map(x=>({...x,saleStatus:campaignPhase(x,today)}));
- const note=cat==='takeout'?takeoutScopeNote(lines,year):cat==='lunch'?'平日限定ランチ。提供時間・対象店舗は公式告知で確認してください。':cat==='benefit'?'優待・配布条件があります。年齢条件、配布期間と利用期間を公式告知で確認してください。':cat==='store_limited'?'対象店舗限定の告知です。選択店舗での実施を保証しません。':cat==='preorder'?'予約商品の告知です。申込期限と受取・販売日は公式で確認してください。':/店内飲食限定/.test(body)?'店内飲食限定。店舗により価格・取扱いが異なり、数量限定・売り切れの場合があります。':'対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。';
- return {id:`${chain}-${key(entry.identity||entry.sourceUrl)}`,fairName:title,sourceUrl:entry.sourceUrl,indexUrl:entry.indexUrl,...range,campaignPhase:phase,category:cat,scopeNote:note,items,itemStatus:items.length?'parsed':'unavailable',metadataStatus:range.startDate?'parsed':'partial',lastConfirmedAt:new Date().toISOString()};
+ const items=sharedMenu?[]:chain==='kappasushi'&&entry.sourceUrl===KAPPA_SET_URL
+  ?parseKappaLimitedSets(lines,entry.sourceUrl,range,today)
+  :parseProducts(lines,entry.sourceUrl,range).map(x=>({...x,saleStatus:campaignPhase(x,today)}));
+ const note=chain==='kappasushi'&&entry.sourceUrl===KAPPA_SET_URL?'2026年10月22日〜25日の4日間限定セット。店内飲食限定で、店舗ごとに価格・取扱商品が異なる場合があります。品切れ・早期終了の場合があります。レシート応募は別企画です。':cat==='takeout'?takeoutScopeNote(lines,year):cat==='lunch'?'平日限定ランチ。提供時間・対象店舗は公式告知で確認してください。':cat==='benefit'?'優待・配布条件があります。年齢条件、配布期間と利用期間を公式告知で確認してください。':cat==='store_limited'?'対象店舗限定の告知です。選択店舗での実施を保証しません。':cat==='preorder'?'予約商品の告知です。申込期限と受取・販売日は公式で確認してください。':/店内飲食限定/.test(body)?'店内飲食限定。店舗により価格・取扱いが異なり、数量限定・売り切れの場合があります。':'対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。';
+ return {id:`${chain}-${key(entry.identity||entry.sourceUrl)}`,fairName:chain==='kappasushi'&&entry.sourceUrl===KAPPA_SET_URL?'秋のお得なセットメニュー（4日間限定）':title,sourceUrl:entry.sourceUrl,indexUrl:entry.indexUrl,...range,campaignPhase:phase,category:cat,scopeNote:note,items,itemStatus:items.length?'parsed':'unavailable',metadataStatus:range.startDate?'parsed':'partial',lastConfirmedAt:new Date().toISOString()};
 }
 async function get(url){let last;for(let attempt=0;attempt<2;attempt++){try{const r=await fetch(url,{signal:AbortSignal.timeout(16000),headers:{'user-agent':'Mozilla/5.0 SushiFairOfficialCatalog/1.0','accept-language':'ja-JP','cache-control':'no-cache'}});if(!r.ok){const e=new Error(`HTTP ${r.status}`);e.retryable=r.status>=500||r.status===429;throw e;}return await r.text();}catch(e){last=e;if(e.retryable===false)break;if(!attempt)await new Promise(r=>setTimeout(r,800));}}throw last;}
 async function pool(values,fn){let cursor=0;await Promise.all(Array.from({length:3},async()=>{while(cursor<values.length){const n=cursor++;await fn(values[n]);}}));}

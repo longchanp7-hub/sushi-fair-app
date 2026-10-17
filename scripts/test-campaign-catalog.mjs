@@ -9,6 +9,37 @@ const early='https://prtimes.jp/main/html/rd/p/000001218.000018731.html';
 const release='<article><h1>かっぱ寿司「トロの日」</h1><p>2026年9月16日（水）限定、かっぱ寿司全店にて</p><p>『ほおばる贅沢！大とろ尽くし包み いくらのせ』</p><p>一貫355円（税込390円）〜</p></article>';
 const entry={sourceUrl:toro,indexUrl:SOURCES.kappasushi.indices[1],fairName:'トロの日',indexText:'2026年9月16日（水）限定'};
 const tororow=()=>parseDetail(release,entry,'kappasushi',today);
+
+test('Kappa four-day sets parse only four special prices, not receipt lottery spending',()=>{
+ const url='https://prtimes.jp/main/html/rd/p/000001235.000018731.html';
+ const title='かっぱ寿司の「秋のお得なセットメニュー」4種、アサイーボウルも';
+ const html='<article><h1>'+title+'</h1>'+
+ '<p>■販売期間：2026年10月22日（木）～10月25日（日）（予定）</p>'+
+ '<p>まぐろ＆貝食べ比べセット</p><p>・ミナミマグロ3種</p><p>通常価格：税込１,０５６円～</p><p>→4日間限定特別価格：税込１,０１２円～</p>'+
+ '<p>贅沢よくばり寿司セット</p><p>・サーモン</p><p>通常価格：税込1,650円～</p><p>→4日間限定特別価格：税込1,584円～</p>'+
+ '<p>ラーメン＆サラダセット</p><p>・ラーメン</p><p>通常価格：税込671円～</p><p>→4日間限定特別価格：税込649円～</p>'+
+ '<p>アサイー＆わらび餅セット</p><p>・わらび餅</p><p>通常価格：税込517円～</p><p>→4日間限定特別価格：税込495円～</p>'+
+ '<h2>■10月レシート応募キャンペーン</h2><p>※本キャンペーンは1枚の対象レシートにつき、税込3,000円ごとに抽選</p></article>';
+ const entry={sourceUrl:url,fairName:title,indexText:'2026年10月22日～10月25日',publishedAt:'2026-10-16T11:00:00+09:00'};
+ const row=parseDetail(html,entry,'kappasushi','2026-10-17');
+ assert.equal(row.category,'set');
+ assert.equal(row.fairName,'秋のお得なセットメニュー（4日間限定）');
+ assert.deepEqual([row.startDate,row.endDate,row.campaignPhase,row.itemStatus],['2026-10-22','2026-10-25','upcoming','parsed']);
+ assert.deepEqual(row.items.map(x=>[x.name,x.price,x.priceType,x.saleStatus]),[
+  ['まぐろ＆貝食べ比べセット',1012,'from','upcoming'],
+  ['贅沢よくばり寿司セット',1584,'from','upcoming'],
+  ['ラーメン＆サラダセット',649,'from','upcoming'],
+  ['アサイー＆わらび餅セット',495,'from','upcoming']]);
+ assert.equal(row.items.some(x=>x.price===3000),false);
+ assert.equal(parseDetail(html,entry,'kappasushi','2026-10-22').campaignPhase,'active');
+ assert.equal(parseDetail(html,entry,'kappasushi','2026-10-26').excludedReason,'ended');
+ assert.deepEqual(parseDetail(html.replace('<p>→4日間限定特別価格：税込495円～</p>',''),entry,'kappasushi','2026-10-17').items,[]);
+});
+test('receipt/application charges never become food products',()=>{
+ const u='https://prtimes.jp/main/html/rd/p/000001235.000018731.html';
+ assert.deepEqual(parseProducts(['※本キャンペーンは1枚の対象レシートにつき 税込3,000円','応募条件 レシート金額','税込3,000円','レシートをお持ちの方 税込3,000円'],u,{startDate:'2026-10-22',endDate:'2026-10-25'}),[]);
+});
+
 test('MOMOREI buffet admission and leftover charges are not food items',()=>{
  const url='https://prtimes.jp/main/html/rd/p/000001216.000018731.html';
  const title='かっぱ寿司「MOMOREI」食べ放題キャンペーン';

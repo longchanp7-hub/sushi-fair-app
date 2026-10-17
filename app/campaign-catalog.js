@@ -37,7 +37,7 @@ export function canonicalCampaignUrl(value) {
   } catch { return null; }
 }
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const TYPES = {fair:'フェア',dessert:'スイーツ',lunch:'平日ランチ',takeout:'持ち帰り',benefit:'優待',preorder:'予約商品',store_limited:'店舗限定',other:'キャンペーン'};
+const TYPES = {fair:'フェア',set:'期間限定セット',dessert:'スイーツ',lunch:'平日ランチ',takeout:'持ち帰り',benefit:'優待',preorder:'予約商品',store_limited:'店舗限定',other:'キャンペーン'};
 export function visibleCampaigns(chain, today = catalogToday()) {
   return (chain.campaignCatalog || []).filter(c => campaignPhase(c,today) !== 'ended').sort((a,b) => {
     const pa=campaignPhase(a,today),pb=campaignPhase(b,today);
