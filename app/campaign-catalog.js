@@ -39,7 +39,7 @@ export function canonicalCampaignUrl(value) {
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const TYPES = {fair:'フェア',set:'期間限定セット',dessert:'スイーツ',lunch:'平日ランチ',takeout:'持ち帰り',benefit:'優待',preorder:'予約商品',store_limited:'店舗限定',other:'キャンペーン'};
 export function visibleCampaigns(chain, today = catalogToday()) {
-  return (chain.campaignCatalog || []).filter(c => campaignPhase(c,today) !== 'ended').sort((a,b) => {
+  return (chain.campaignCatalog || []).filter(c => c.kind!=='recurrence_summary' && campaignPhase(c,today) !== 'ended').sort((a,b) => {
     const pa=campaignPhase(a,today),pb=campaignPhase(b,today);
     return (pa==='upcoming'?1:0)-(pb==='upcoming'?1:0) || String(a.startDate||'').localeCompare(String(b.startDate||'')) || a.id.localeCompare(b.id);
   });
@@ -58,12 +58,12 @@ function renderCard(c,today,attribute='data-campaign-id') {
   const itemList=products.length ? `<ul>${products.map(i=>`<li>${esc(i.name)} <strong>${i.price!=null?`${Number(i.price).toLocaleString('ja-JP')}円${i.priceType==='from'?'〜':''}`:'価格は公式で確認'}</strong></li>`).join('')}</ul>` : '';
   const url=canonicalCampaignUrl(c.sourceUrl);
   const id=esc(c.id||`${c.fairName}|${c.sourceUrl||''}`);
-  return `<details class="catalog-campaign" ${attribute}="${id}" style="margin:10px 0;padding:10px;border:1px solid currentColor;border-radius:8px"><summary><strong>${esc(c.fairName)}</strong><br><small>${esc(label)} · ${esc(TYPES[c.category]||TYPES.other)} · ${esc(dates)}</small></summary><p>${esc(c.scopeNote||'対象店舗・利用条件は公式告知で確認してください。')}</p>${itemList}<p><small>${c.itemStatus==='parsed'?'公式本文から確認できた商品を掲載。画像内などの未取得商品がある場合があります。':'商品・価格の一覧は未取得です。0件＝商品なしではありません。'}</small></p>${c.retainedFromPrevious?'<p>前回確認情報を表示しています。</p>':''}${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">この告知を公式で確認</a>`:''}</details>`;
+  return `<details class="catalog-campaign" ${attribute}="${id}" style="margin:10px 0;padding:10px;border:1px solid currentColor;border-radius:8px"><summary><strong>${esc(c.fairName)}</strong><br><small>${esc(label)} · ${esc(TYPES[c.category]||TYPES.other)} · ${esc(dates)}</small></summary><p>${esc(c.scopeNote||'対象店舗・利用条件は公式告知で確認してください。')}</p>${itemList}<p><small>${c.kind==='monthly_benefit'||c.kind==='coupon_redemption'?'優待の配布・利用条件です。商品ではありません。':c.itemStatus==='parsed'?'公式本文から確認できた商品を掲載。画像内などの未取得商品がある場合があります。':'商品・価格の一覧は未取得です。0件＝商品なしではありません。'}</small></p>${c.retainedFromPrevious?'<p>前回確認情報を表示しています。</p>':''}${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">この告知を公式で確認</a>`:''}</details>`;
 }
 export function renderCampaignCatalog(chain, today = catalogToday()) {
   const rows=visibleCampaigns(chain,today), concurrent=visibleConcurrentCampaigns(chain,today), coverage=chain.campaignCoverage;
   if (!chain.campaignCoverage && !chain.campaignCatalog && !concurrent.length) return '';
-  const warning=Array.isArray(chain.campaignCatalog)&&coverage?.state!=='complete' ? '<p role="status">告知一覧は一部未確認です。前回確認情報または公式リンクを表示しています。</p>' : '';
+  const warning=Array.isArray(chain.campaignCatalog)&&(coverage?.state!=='complete'||chain.recurringDayCoverage?.state==='partial') ? '<p role="status">告知一覧は一部未確認です。前回確認情報または公式リンクを表示しています。</p>' : '';
   const active=rows.filter(c=>campaignPhase(c,today)!=='upcoming'),next=rows.filter(c=>campaignPhase(c,today)==='upcoming');
   const concurrentActive=concurrent.filter(c=>displayPhase(c,today)!=='upcoming'),concurrentNext=concurrent.filter(c=>displayPhase(c,today)==='upcoming');
   const unconfirmed=coverage?.unconfirmedUrls?.length||0;

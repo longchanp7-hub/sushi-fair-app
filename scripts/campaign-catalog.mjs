@@ -176,6 +176,78 @@ export function parseDetail(html,entry,chain,today=catalogToday()){
 async function get(url){let last;for(let attempt=0;attempt<2;attempt++){try{const r=await fetch(url,{signal:AbortSignal.timeout(16000),headers:{'user-agent':'Mozilla/5.0 SushiFairOfficialCatalog/1.0','accept-language':'ja-JP','cache-control':'no-cache'}});if(!r.ok){const e=new Error(`HTTP ${r.status}`);e.retryable=r.status>=500||r.status===429;throw e;}return await r.text();}catch(e){last=e;if(e.retryable===false)break;if(!attempt)await new Promise(r=>setTimeout(r,800));}}throw last;}
 async function pool(values,fn){let cursor=0;await Promise.all(Array.from({length:3},async()=>{while(cursor<values.length){const n=cursor++;await fn(values[n]);}}));}
 function freshPrevious(row,now){return Boolean(row?.lastConfirmedAt&&now-Date.parse(row.lastConfirmedAt)<3*DAY&&now>=Date.parse(row.lastConfirmedAt));}
+
+const TOKU_MAIN='https://www.nigirinotokubei.com/info/10346';
+const TOKU_ATOM='https://www.atom-corp.co.jp/fair/fair.php?fair_no=3729';
+const TOKU_PREFIX='tokubei-recurring-';
+const TOKU_SNAPSHOT='2026-10-23',TOKU_SNAPSHOT_END='2026-10-30';
+const DAY_MS=86400000;
+const shift=(s,n)=>new Date(Date.parse(s+'T00:00:00Z')+n*DAY_MS).toISOString().slice(0,10);
+const dayIso=(y,m,d)=>{const v=new Date(Date.UTC(y,m-1,d));return v.getUTCFullYear()===y&&v.getUTCMonth()===m-1&&v.getUTCDate()===d?v.toISOString().slice(0,10):null;};
+export function tokubeiSourceVerified(html){
+ const t=clean(cheerio.load(html)('body').text()).replace(/\s+/g,'');
+ return /徳兵衛の日/.test(t)&&/毎月9日/.test(t)&&/毎月19日/.test(t)&&/毎月29日/.test(t)
+  &&/7貫盛り/.test(t)&&/1,?089円/.test(t)&&/1,?000円以上/.test(t)
+  &&/200円券/.test(t)&&/翌月18日/.test(t)&&/3倍/.test(t);
+}
+const tokuNote=d=>d===9
+ ?'毎月9日は限定7貫盛り税込1,089円。店内飲食限定・季節で内容変更・数量限定。稲沢店など独自実施店は価格や内容が異なります。'
+ :d===19
+ ?'毎月19日、割引・株主優待適用後の税込1,000円以上のお会計（1会計）につき200円券1枚配布。券は翌20日～翌月18日まで有効、9日・19日・29日は利用不可。'
+ :'毎月29日はアトムアプリ共通来店ポイント3倍。天王店・扶桑店・関店・桑名店・今伊勢店・稲沢店はアトムアプリを運用しておらず、内容が異なります。';
+export function tokubeiRecurringRows(today,sourceUrl=TOKU_MAIN,stale=false){
+ const rows=[],start=Date.parse(today+'T00:00:00Z');
+ for(let t=start;t<=start+45*DAY_MS;t+=DAY_MS){
+  const dt=new Date(t),day=dt.getUTCDate();
+  if(![9,19,29].includes(day))continue;
+  const date=dt.toISOString().slice(0,10),phase=date===today?'active':'upcoming';
+  const items=day===9?[{name:'徳兵衛の日限定7貫盛り',price:1089,priceType:'listed',sourceUrl,startDate:date,endDate:date,saleStatus:phase,scrapeStatus:'ok'}]:[];
+  rows.push({id:TOKU_PREFIX+'day-'+date,kind:day===9?'monthly_food':'monthly_benefit',
+   fairName:day===9?'徳兵衛の日｜9日限定7貫盛り':day===19?'徳兵衛の日｜19日200円券配布':'徳兵衛の日｜29日アトムポイント3倍',
+   sourceUrl,startDate:date,endDate:date,campaignPhase:phase,category:day===9?'fair':'benefit',
+   scopeNote:tokuNote(day),items,itemStatus:items.length?'parsed':'unavailable',
+   metadataStatus:'parsed',...(stale?{retainedFromPrevious:true}:{})});
+ }
+ // A previously issued 200-yen voucher is redeemable; no coupon is handed out outside the 19th.
+ for(let i=-45;i<=0;i++){
+  const issued=shift(today,i),d=new Date(issued+'T00:00:00Z');
+  if(d.getUTCDate()!==19)continue;
+  const startDate=dayIso(d.getUTCFullYear(),d.getUTCMonth()+1,20);
+  const endDate=dayIso(d.getUTCFullYear(),d.getUTCMonth()+2,18);
+  if(endDate<today)continue;
+  rows.push({id:TOKU_PREFIX+'coupon-'+issued,kind:'coupon_redemption',
+   fairName:'徳兵衛の日｜'+issued.slice(5).replace('-','/')+'配布の200円券（保有者限定）',
+   sourceUrl,startDate,endDate,campaignPhase:campaignPhase({startDate,endDate},today),category:'benefit',
+   scopeNote:'19日に配布された券を受け取った方のみ対象。翌20日～翌月18日まで使用可、毎月9日・19日・29日は使用不可。新しい200円券の配布は19日だけです。',
+   items:[],itemStatus:'unavailable',metadataStatus:'parsed',...(stale?{retainedFromPrevious:true}:{})});
+ }
+ return rows;
+}
+async function attachTokubeiRows(rows,today,fetcher){
+ let verified=null;const errors=[];
+ for(const url of [TOKU_MAIN,TOKU_ATOM]){
+  try{if(tokubeiSourceVerified(await fetcher(url))){verified=url;break;}errors.push(url+': changed or incomplete official terms');}
+  catch(e){errors.push(url+': '+e.message);}
+ }
+ const snapshot=!verified&&today>=TOKU_SNAPSHOT&&today<=TOKU_SNAPSHOT_END;
+ for(let i=rows.length-1;i>=0;i--)if(String(rows[i].id||'').startsWith(TOKU_PREFIX))rows.splice(i,1);
+ const parent=rows.find(x=>canonical(x.sourceUrl)===canonical(TOKU_MAIN));
+ if(parent)Object.assign(parent,{kind:'recurrence_summary',fairName:'徳兵衛の日（毎月9日・19日・29日）',
+  category:'benefit',startDate:null,endDate:null,campaignPhase:'unknown',
+  items:[],itemStatus:'unavailable',scopeNote:'9日：限定7貫盛り、19日：200円券配布、29日：アトムアプリポイント3倍（一部店舗は対象外）。'});
+ else if(verified||snapshot)rows.push({id:TOKU_PREFIX+'source',kind:'recurrence_summary',fairName:'徳兵衛の日（毎月9日・19日・29日）',
+  sourceUrl:TOKU_MAIN,startDate:null,endDate:null,campaignPhase:'unknown',category:'benefit',
+  items:[],itemStatus:'unavailable',scopeNote:'毎月9日・19日・29日は特典内容が異なります。'});
+ const generated=verified||snapshot?tokubeiRecurringRows(today,verified||TOKU_MAIN,snapshot):[];
+ rows.push(...generated);
+ const report={state:verified?'verified':'partial',sourceUrl:verified,
+  checkedAt:verified?new Date().toISOString():null,verifiedSnapshotAt:TOKU_SNAPSHOT,
+  usingRecentSnapshot:snapshot,failures:errors,
+  upcomingDays:generated.filter(x=>x.kind==='monthly_food'||x.kind==='monthly_benefit').map(x=>x.startDate)};
+ console.log('Tokubei dated specials '+report.state+': '+generated.length+(snapshot?' (previously verified; current source unavailable)':''));
+ return report;
+}
+
 export async function collectChain(chain,previous=[],today=catalogToday(),fetcher=get){
  const attemptedAt=new Date().toISOString(),indexResults=[],entries=new Map(),failures=[];
  for(const url of SOURCES[chain].indices){try{const html=await fetcher(url),links=discoverIndex(html,url,chain);if(!links.length)throw new Error('No announcement links: index structure may have changed');indexResults.push({url,status:'ok',count:links.length});for(const e of links){const id=e.identity||e.sourceUrl,old=entries.get(id);if(!old||e.indexText.length>old.indexText.length)entries.set(id,e);}}catch(e){indexResults.push({url,status:'failed',error:e.message});failures.push({url,error:e.message});}}
@@ -193,9 +265,10 @@ export async function collectChain(chain,previous=[],today=catalogToday(),fetche
   }
  });
  if(failures.length)for(const old of previous)if(freshPrevious(old,now)&&campaignPhase(old,today)!=='ended'&&!rows.some(x=>x.id===old.id)&&!inventory.some(x=>canonical(x.sourceUrl)===canonical(old.sourceUrl)&&x.excludedReason))rows.push({...old,retainedFromPrevious:true});
+ const recurringDayCoverage=chain==='tokubei'?await attachTokubeiRows(rows,today,fetcher):null;
  rows.sort((a,b)=>String(a.startDate||'').localeCompare(String(b.startDate||''))||a.id.localeCompare(b.id));
  const coverage={version:1,state:failures.length||inventory.some(x=>x.unresolved)?'partial':'complete',attemptedAt,indices:indexResults,expectedUrls:[...new Set(inventory.filter(x=>x.expected).map(x=>x.sourceUrl))].sort(),expectedIds:inventory.filter(x=>x.expected).map(x=>x.id).sort(),failures,inventory:inventory.sort((a,b)=>a.sourceUrl.localeCompare(b.sourceUrl)),horizonDays:HORIZON,feedLookbackDays:LOOKBACK,openEndedReleaseReviewAfterDays:RECENT_OPEN_RELEASE,unconfirmedUrls:inventory.filter(x=>x.excludedReason==='current_status_unconfirmed').map(x=>x.sourceUrl)};
- return {rows,coverage};
+ return {rows,coverage,recurringDayCoverage};
 }
 export function verifyCoverage(data,inventory){
  for(const id of Object.keys(SOURCES)){
@@ -218,7 +291,7 @@ export async function main(argv=process.argv.slice(2)){
  for(const id of Object.keys(SOURCES)){
   const chain=data.chains.find(x=>x.chain===id);if(!chain)throw new Error(`${id}: chain missing`);
   const result=await collectChain(id,previous.chains?.find(x=>x.chain===id)?.campaignCatalog||[],value('--today')||catalogToday());
-  chain.campaignCatalog=result.rows;chain.campaignCoverage=result.coverage;inventory[id]=result.coverage;
+  chain.campaignCatalog=result.rows;chain.campaignCoverage=result.coverage;if(id==='tokubei')chain.recurringDayCoverage=result.recurringDayCoverage;inventory[id]=result.coverage;
   if(result.coverage.state!=='complete')console.warn(`::warning::${id} announcement coverage is partial; do not claim completeness`);
   console.log(JSON.stringify({chain:id,coverage:result.coverage.state,indices:result.coverage.indices,failures:result.coverage.failures,unconfirmed:result.coverage.unconfirmedUrls.length,campaigns:result.rows.map(x=>({id:x.id,title:x.fairName,start:x.startDate,end:x.endDate,url:x.sourceUrl,itemCount:x.items.length,items:/トロの日/.test(x.fairName)?x.items:undefined}))}));
  }

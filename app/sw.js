@@ -1,5 +1,5 @@
 const CACHE_PREFIX='sushi-fair-v';
-const CACHE='sushi-fair-v20261006-icons-csp1';
+const CACHE='sushi-fair-v20261023-tokubei-days1';
 const STATIC=[
   './',
   './index.html',

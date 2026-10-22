@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseDates,parseProducts,discoverIndex,parseDetail,collectChain,verifyCoverage,SOURCES} from './campaign-catalog.mjs';
+import {parseDates,parseProducts,discoverIndex,parseDetail,collectChain,verifyCoverage,SOURCES,tokubeiSourceVerified,tokubeiRecurringRows} from './campaign-catalog.mjs';
 import {campaignPhase,canonicalCampaignUrl,renderCampaignCatalog,visibleCampaigns} from '../app/campaign-catalog.js';
 const today='2026-09-07';
 const toro='https://prtimes.jp/main/html/rd/p/000001212.000018731.html';
@@ -38,6 +38,36 @@ test('Kappa four-day sets parse only four special prices, not receipt lottery sp
 test('receipt/application charges never become food products',()=>{
  const u='https://prtimes.jp/main/html/rd/p/000001235.000018731.html';
  assert.deepEqual(parseProducts(['※本キャンペーンは1枚の対象レシートにつき 税込3,000円','応募条件 レシート金額','税込3,000円','レシートをお持ちの方 税込3,000円'],u,{startDate:'2026-10-22',endDate:'2026-10-25'}),[]);
+});
+
+
+test('Tokubei 9/19/29 are separate dated food, coupon, app benefits with valid redemption phase',()=>{
+ const u='https://www.nigirinotokubei.com/info/10346',r=tokubeiRecurringRows('2026-10-19',u);
+ const ninth=r.find(x=>x.id==='tokubei-recurring-day-2026-11-09');
+ const nineteenth=r.find(x=>x.id==='tokubei-recurring-day-2026-10-19');
+ const redeem=r.find(x=>x.id==='tokubei-recurring-coupon-2026-10-19');
+ assert.deepEqual(ninth.items.map(x=>[x.name,x.price]),[['徳兵衛の日限定7貫盛り',1089]]);
+ assert.equal(nineteenth.category,'benefit');assert.equal(nineteenth.campaignPhase,'active');assert.equal(nineteenth.items.length,0);
+ assert.deepEqual([redeem.startDate,redeem.endDate,redeem.campaignPhase],['2026-10-20','2026-11-18','upcoming']);
+ const now=tokubeiRecurringRows('2026-10-23',u);
+ assert.ok(now.some(x=>x.id==='tokubei-recurring-coupon-2026-10-19'&&x.campaignPhase==='active'));
+ assert.ok(now.some(x=>x.id==='tokubei-recurring-day-2026-10-29'&&x.campaignPhase==='upcoming'));
+ assert.ok(!now.some(x=>x.id==='tokubei-recurring-day-2026-10-19'));
+ assert.ok(now.some(x=>x.id==='tokubei-recurring-day-2026-10-29'&&x.scopeNote.includes('稲沢店')));
+ assert.ok(!tokubeiRecurringRows('2027-02-28',u).some(x=>x.id==='tokubei-recurring-day-2027-02-29'));
+});
+test('Tokubei official fallthrough still verifies recurrence when main indexes are HTTP503',async()=>{
+ const body='<main>9のつく日は徳兵衛の日 毎月9日・19日・29日に実施中 毎月9日 徳兵衛の日限定7貫盛り 990円（税込1,089円） 毎月19日 税込1,000円以上のお会計で200円券配布 毎月29日 アトムアプリポイント3倍 200円券の有効期限は配布翌日～翌月18日まで</main>';
+ assert.ok(tokubeiSourceVerified(body));
+ assert.ok(!tokubeiSourceVerified(body.replace('翌月18日','翌月17日')));
+ const r=await collectChain('tokubei',[],'2026-10-23',async url=>{
+  if(url==='https://www.atom-corp.co.jp/fair/fair.php?fair_no=3729')return body;
+  throw new Error('HTTP 503');
+ });
+ assert.equal(r.coverage.state,'partial');assert.equal(r.recurringDayCoverage.state,'verified');
+ assert.equal(r.recurringDayCoverage.sourceUrl,'https://www.atom-corp.co.jp/fair/fair.php?fair_no=3729');
+ assert.equal(r.rows.filter(x=>x.id==='tokubei-recurring-day-2026-11-19').length,1);
+ assert.ok(!visibleCampaigns({campaignCatalog:r.rows},'2026-10-23').some(x=>x.kind==='recurrence_summary'));
 });
 
 test('MOMOREI buffet admission and leftover charges are not food items',()=>{
