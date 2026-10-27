@@ -200,30 +200,6 @@ function parseSushiroCollaborationMenu(html, sourceUrl, startDate, today = jstTo
       availabilityNote:detail.text.includes('完売次第終了') ? 'コラボ特典がなくなり次第終了。店舗や時間帯により品切れ・取扱い差があります。' : '販売・取扱い条件は公式の店舗メニューを確認してください。',
     });
   });
-  // Only recover merchandise named in the visible official store menu with an adjacent
-  // tax-included price and product-specific date. Never inherit a price from a sibling card.
-  const seen = new Set(items.map(item => normalize(item.name)));
-  const lines = pageLines(html);
-  for (let index = 0; index < lines.length; index += 1) {
-    const name = clean(lines[index]);
-    if (!/ポムポムプリン.*コラボ(?:ピック|ファスナーポーチ|ステッカー|キラキラステッカー)付き/.test(name)
-      || name.length > 110 || seen.has(normalize(name))) continue;
-    const following = lines.slice(index + 1, index + 9);
-    const nextProduct = following.findIndex(line => /ポムポムプリン.*コラボ(?:ピック|ファスナーポーチ|ステッカー|キラキラステッカー)付き/.test(line));
-    const local = nextProduct >= 0 ? following.slice(0, nextProduct) : following;
-    const priceLine = local.find(line => /^[\d,]+\s*円\s*[（(]税込[）)]/.test(line));
-    const saleLine = local.find(line => /[\[［]\s*\d{1,2}\s*\/\s*\d{1,2}.*[～〜]/.test(line));
-    const price = Number(priceLine?.match(/^([\d,]+)/)?.[1]);
-    const date = saleLine?.match(/(\d{1,2})\s*\/\s*(\d{1,2})/);
-    if (!Number.isFinite(price) || price <= 0 || price > 5000 || !date) continue;
-    const itemStart = isoDate(Number((startDate || today).slice(0, 4)), Number(date[1]), Number(date[2]));
-    items.push({
-      name, price, priceType:'listed', startDate:itemStart, endDate:null,
-      saleStatus:itemStart > today ? 'upcoming' : 'active', scrapeStatus:'ok', sourceUrl,
-      availabilityNote:'コラボ商品は数量限定・お持ち帰り不可。取扱い・品切れは公式店舗別メニューで確認してください。',
-    });
-    seen.add(normalize(name));
-  }
   return uniqItems(items);
 }
 
