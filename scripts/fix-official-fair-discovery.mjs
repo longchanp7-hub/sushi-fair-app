@@ -325,7 +325,8 @@ function parseKuraCollaborationRelease(html, sourceUrl, today = jstTodayKey()) {
   const year = publicationYear(title, clean($('body').text()), today);
   const items = [];
   for (let index = 0; index < section.length; index += 1) {
-    const match = section[index].match(/^(.{2,65}?)\s+([\d,]+)\s*円\s*$/);
+    // Real notices may concatenate the name and price without a space.
+    const match = section[index].match(/^(.{2,65}?)\s*([\d,]+)\s*円\s*$/);
     if (!match) continue;
     const name = clean(match[1]);
     if (/景品|グッズ|プレゼント|お会計|クーポン/.test(name)) continue;
@@ -553,7 +554,7 @@ function runSelfTests() {
   ];
   assert.equal(kuraFairEndDate(endMajority), '2026-10-25', 'side dish end must not extend headline fair');
   const collabFixture = '<!doctype html><html><head><meta property="og:title" content="くら寿司×「にじさんじ」コラボキャンペーン ～10月30日（金）から開催～"></head><body><h1>くら寿司×「にじさんじ」コラボキャンペーン</h1>' +
-    '<h6>■くら寿司×「にじさんじ」コラボメニュー（ステッカー付）</h6><p>咎人のえびカレータルタル 230 円</p><p>販売期間：10 月30 日（金）～11 月26 日（木）</p>' +
+    '<h6>■くら寿司×「にじさんじ」コラボメニュー（ステッカー付）</h6><p>咎人のえびカレータルタル230 円</p><p>販売期間：10 月30 日（金）～11 月26 日（木）</p>' +
     '<p>リトテツのユーリンチー寿司 230 円</p><p>販売期間：10 月30 日（金）～11 月26 日（木）</p><p>おうとうのピーチマンゴーフラッペ 400 円</p><p>販売期間：10 月30 日（金）～11 月26 日（木）</p>' +
     '<h6>■景品・グッズ</h6><p>税込2,500円のお会計</p></body></html>';
   const collab = parseKuraCollaborationRelease(collabFixture,'https://www.kurasushi.co.jp/author/008785.html','2026-10-27');
