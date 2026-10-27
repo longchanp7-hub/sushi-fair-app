@@ -181,7 +181,8 @@ async function scrapeSushiro() {
 
   $('img[alt]').each((_, element) => {
     const name = clean($(element).attr('alt') || '');
-    if (!name || /スシロー|ロゴ|メニュー|電話|店舗|アプリ|TOP|PAGE/.test(name)) return;
+    // Collaboration products use an independently verified store-card parser.
+    if (!name || /スシロー|ロゴ|メニュー|電話|店舗|アプリ|TOP|PAGE|ポムポムプリン/.test(name)) return;
 
     let node = $(element);
     let block = null;

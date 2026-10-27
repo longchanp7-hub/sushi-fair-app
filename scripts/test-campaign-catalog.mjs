@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseDates,parseProducts,discoverIndex,parseDetail,collectChain,verifyCoverage,SOURCES,tokubeiSourceVerified,tokubeiRecurringRows} from './campaign-catalog.mjs';
+import {parseDates,parseProducts,discoverIndex,parseDetail,collectChain,verifyCoverage,entryExclusion,SOURCES,tokubeiSourceVerified,tokubeiRecurringRows} from './campaign-catalog.mjs';
 import {campaignPhase,canonicalCampaignUrl,renderCampaignCatalog,visibleCampaigns} from '../app/campaign-catalog.js';
 const today='2026-09-07';
 const toro='https://prtimes.jp/main/html/rd/p/000001212.000018731.html';
@@ -10,6 +10,10 @@ const release='<article><h1>かっぱ寿司「トロの日」</h1><p>2026年9月
 const entry={sourceUrl:toro,indexUrl:SOURCES.kappasushi.indices[1],fairName:'トロの日',indexText:'2026年9月16日（水）限定'};
 const tororow=()=>parseDetail(release,entry,'kappasushi',today);
 
+test('Kappa call-up notifications never become food or benefit campaigns',()=>{
+ const e={sourceUrl:'https://www.kappasushi.jp/20161024/oshirase',fairName:'呼出通知メールについてのご案内'};
+ assert.equal(entryExclusion(e,[],'2026-10-27'),'not_food_campaign');
+});
 test('Kappa four-day sets parse only four special prices, not receipt lottery spending',()=>{
  const url='https://prtimes.jp/main/html/rd/p/000001235.000018731.html';
  const title='かっぱ寿司の「秋のお得なセットメニュー」4種、アサイーボウルも';

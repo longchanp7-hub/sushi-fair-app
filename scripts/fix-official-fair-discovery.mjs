@@ -134,7 +134,8 @@ function parseSushiroDetail(html, sourceUrl, today = jstTodayKey()) {
   const category = sushiroCategory(title);
   const startDate = sushiroStartDate(title, body, today);
   const imageOnlyCollaboration = !items.length && /コラボ|コラボレーション/.test(title) && Boolean(startDate);
-  if (!items.length && !imageOnlyCollaboration) return null;
+  const imageOnlyUpcoming = !items.length && /予告/.test(title) && Boolean(startDate) && startDate > today;
+  if (!items.length && !imageOnlyCollaboration && !imageOnlyUpcoming) return null;
   const campaignPhase = startDate && startDate > today ? 'upcoming' : 'active';
   return {
     id:sushiroCampaignId(sourceUrl),
@@ -149,7 +150,9 @@ function parseSushiroDetail(html, sourceUrl, today = jstTodayKey()) {
     items,
     itemStatus:items.length ? 'parsed' : 'unavailable',
     imageUrl,
-    scopeNote:category === 'fair'
+    scopeNote:imageOnlyUpcoming
+      ? '公式に予告された近日開始商品です。画像内の商品・価格は未取得です。開始前の現行販売商品には混入させません。'
+      : category === 'fair'
       ? 'スシロー公式「おすすめ」掲載中の商品です。店舗により価格・取扱いが異なる場合があります。'
       : items.length
         ? 'スシロー公式「おすすめ」掲載中の関連商品です。主フェア商品とは分けて表示します。'
@@ -176,7 +179,7 @@ function parseSushiroCollaborationMenu(html, sourceUrl, startDate, today = jstTo
   const $ = cheerio.load(html), items = [];
   $('img[alt]').each((_, element) => {
     const name = clean($(element).attr('alt'));
-    if (!/ポムポムプリン/.test(name) || !/コラボ(?:ピック|ステッカー|キラキラステッカー)付き/.test(name)) return;
+    if (!/ポムポムプリン/.test(name) || !/コラボ(?:ピック|ファスナーポーチ|ステッカー|キラキラステッカー)付き/.test(name)) return;
     let node = $(element), detail = null;
     for (let level = 0; level < 10 && node.length; level += 1, node = node.parent()) {
       const text = clean(node.text()), pos = text.indexOf(name);
@@ -197,6 +200,30 @@ function parseSushiroCollaborationMenu(html, sourceUrl, startDate, today = jstTo
       availabilityNote:detail.text.includes('完売次第終了') ? 'コラボ特典がなくなり次第終了。店舗や時間帯により品切れ・取扱い差があります。' : '販売・取扱い条件は公式の店舗メニューを確認してください。',
     });
   });
+  // Only recover merchandise named in the visible official store menu with an adjacent
+  // tax-included price and product-specific date. Never inherit a price from a sibling card.
+  const seen = new Set(items.map(item => normalize(item.name)));
+  const lines = pageLines(html);
+  for (let index = 0; index < lines.length; index += 1) {
+    const name = clean(lines[index]);
+    if (!/ポムポムプリン.*コラボ(?:ピック|ファスナーポーチ|ステッカー|キラキラステッカー)付き/.test(name)
+      || name.length > 110 || seen.has(normalize(name))) continue;
+    const following = lines.slice(index + 1, index + 9);
+    const nextProduct = following.findIndex(line => /ポムポムプリン.*コラボ(?:ピック|ファスナーポーチ|ステッカー|キラキラステッカー)付き/.test(line));
+    const local = nextProduct >= 0 ? following.slice(0, nextProduct) : following;
+    const priceLine = local.find(line => /^[\d,]+\s*円\s*[（(]税込[）)]/.test(line));
+    const saleLine = local.find(line => /[\[［]\s*\d{1,2}\s*\/\s*\d{1,2}.*[～〜]/.test(line));
+    const price = Number(priceLine?.match(/^([\d,]+)/)?.[1]);
+    const date = saleLine?.match(/(\d{1,2})\s*\/\s*(\d{1,2})/);
+    if (!Number.isFinite(price) || price <= 0 || price > 5000 || !date) continue;
+    const itemStart = isoDate(Number((startDate || today).slice(0, 4)), Number(date[1]), Number(date[2]));
+    items.push({
+      name, price, priceType:'listed', startDate:itemStart, endDate:null,
+      saleStatus:itemStart > today ? 'upcoming' : 'active', scrapeStatus:'ok', sourceUrl,
+      availabilityNote:'コラボ商品は数量限定・お持ち帰り不可。取扱い・品切れは公式店舗別メニューで確認してください。',
+    });
+    seen.add(normalize(name));
+  }
   return uniqItems(items);
 }
 
@@ -240,9 +267,10 @@ async function discoverSushiro(chain, today = jstTodayKey()) {
   }
   const distinct = [...new Map(candidates.map(candidate => [candidate.id, candidate])).values()];
   await enrichSushiroCollaboration(distinct, today);
-  const main = distinct.filter(candidate => candidate.category === 'fair');
-  if (!main.length) return chain;
-  const existing = (chain.items || []).filter(item => activeItem(item, today));
+  const main = distinct.filter(candidate => candidate.category === 'fair' && candidate.campaignPhase !== 'upcoming');
+  if (!main.length) return { ...chain, campaigns:distinct };
+  // Collaboration items are verified by their own store-local campaign, not the generic menu parser.
+  const existing = (chain.items || []).filter(item => activeItem(item, today) && !/ポムポムプリン/.test(item.name || ''));
   const items = uniqItems([...existing, ...main.flatMap(candidate => candidate.items)]);
   const names = [...new Set(main.map(candidate => candidate.fairName).filter(Boolean))];
   return {
@@ -299,6 +327,58 @@ function kuraCampaignId(sourceUrl) {
   return `kurasushi-${match?.[1] || normalize(sourceUrl).slice(-20)}`;
 }
 
+// A later-running side dish must not extend a fixed-duration headline sushi fair.
+function kuraFairEndDate(items) {
+  const ends = (items || []).map(item => item.endDate).filter(Boolean);
+  if (!ends.length) return null;
+  const counts = new Map();
+  for (const date of ends) counts.set(date, (counts.get(date) || 0) + 1);
+  const [dominant, count] = [...counts].sort((a, b) => b[1] - a[1])[0];
+  return ends.length >= 5 && count / ends.length >= 0.6 ? dominant : ends.sort().at(-1);
+}
+
+function parseKuraCollaborationRelease(html, sourceUrl, today = jstTodayKey()) {
+  const $ = cheerio.load(html);
+  const title = clean($('meta[property="og:title"]').attr('content') || $('h1,h2').first().text());
+  if (!/コラボ(?:レーション)?キャンペーン/.test(title)) return null;
+  const lines = pageLines(html);
+  const begin = lines.findIndex(line => /^■.*コラボメニュー/.test(line));
+  if (begin < 0) return null;
+  const finish = lines.findIndex((line, i) => i > begin && /^■/.test(line));
+  const section = lines.slice(begin + 1, finish < 0 ? lines.length : finish);
+  const year = publicationYear(title, clean($('body').text()), today);
+  const items = [];
+  for (let index = 0; index < section.length; index += 1) {
+    const match = section[index].match(/^(.{2,65}?)\s+([\d,]+)\s*円\s*$/);
+    if (!match) continue;
+    const name = clean(match[1]);
+    if (/景品|グッズ|プレゼント|お会計|クーポン/.test(name)) continue;
+    const saleLine = section.slice(index + 1, index + 4).find(line => /販売期間/.test(line));
+    if (!saleLine) continue;
+    const period = parseMonthDayRange(saleLine, year);
+    if (!period.startDate || !period.endDate || period.endDate < today) continue;
+    const price = Number(match[2].replace(/,/g, ''));
+    if (!(price > 0 && price <= 5000)) continue;
+    items.push({
+      name, price, priceType:'listed', ...period,
+      saleStatus:period.startDate > today ? 'upcoming' : 'active',
+      scrapeStatus:'ok', sourceUrl,
+      availabilityNote:'数量限定・お持ち帰り不可。店舗によって価格が異なります。',
+    });
+  }
+  if (!items.length) return null;
+  const label = title.match(/[「『]([^」』]{2,40})[」』]/)?.[1] || '公式';
+  const starts = items.map(item => item.startDate).sort();
+  const ends = items.map(item => item.endDate).sort();
+  return {
+    id:kuraCampaignId(sourceUrl), fairName:'くら寿司×' + label + ' コラボメニュー',
+    startDate:starts[0], endDate:ends.at(-1), items, category:'other',
+    sourceUrl, officialReleaseUrl:sourceUrl, officialCampaignTitle:title,
+    itemStatus:'parsed', scopeNote:'店内飲食のコラボ限定商品です。数量限定・持ち帰り不可。お会計によるグッズ配布条件は別企画です。',
+    imageUrl:absoluteUrl($('meta[property="og:image"]').attr('content'), sourceUrl),
+  };
+}
+
 function parseKuraRelease(html, sourceUrl, today = jstTodayKey()) {
   const $ = cheerio.load(html);
   const title = clean($('meta[property="og:title"]').attr('content') || $('h1,h2').first().text());
@@ -333,11 +413,11 @@ function parseKuraRelease(html, sourceUrl, today = jstTodayKey()) {
   }
   const unique = [...new Map(items.map(item => [`${normalize(item.name)}|${item.price}`, item])).values()].slice(0, 30);
   if (!unique.length) return null;
-  const ends = unique.map(item => item.endDate).filter(Boolean).sort();
+  const endDate = kuraFairEndDate(unique);
   const imageUrl = absoluteUrl($('meta[property="og:image"]').attr('content') || $('meta[name="twitter:image"]').attr('content'), sourceUrl);
   return {
     id:kuraCampaignId(sourceUrl),
-    fairName:kuraFairName(title), startDate, endDate:ends.at(-1) || null, items:unique,
+    fairName:kuraFairName(title), startDate, endDate, items:unique,
     sourceUrl, officialReleaseUrl:sourceUrl, imageUrl, officialCampaignTitle:title,
     category:'fair', itemStatus:'parsed',
     scopeNote:'くら寿司公式プレスリリース掲載の期間限定フェアです。店舗により価格・取扱いが異なる場合があります。',
@@ -354,11 +434,12 @@ function kuraCandidateRank(candidate, today) {
 }
 
 function selectKuraCandidate(candidates, today) {
-  const active = candidates
+  const fairs = candidates.filter(candidate => candidate.category === 'fair');
+  const active = fairs
     .filter(candidate => candidate.startDate <= today && (!candidate.endDate || candidate.endDate >= today))
     .sort((a, b) => String(b.startDate).localeCompare(String(a.startDate)));
   if (active.length) return active[0];
-  return candidates
+  return fairs
     .filter(candidate => candidate.startDate > today && dayDistance(candidate.startDate, today) <= MAX_UPCOMING_DAYS)
     .sort((a, b) => String(a.startDate).localeCompare(String(b.startDate)))[0] || null;
 }
@@ -371,26 +452,47 @@ async function discoverKura(chain, today = jstTodayKey()) {
   const urls = [];
   $('a[href]').each((_, element) => {
     const text = clean(`${$(element).text()} ${$(element).find('img[alt]').map((__, image) => $(image).attr('alt') || '').get().join(' ')}`);
-    if (!/(?:フェア|祭り)/.test(text)) return;
+    if (!/(?:フェア|祭り|コラボ)/.test(text)) return;
     const href = absoluteUrl($(element).attr('href'), indexUrl);
     if (href && /\/author\/\d+\.html(?:$|[?#])/.test(href)) urls.push(href);
   });
   const candidates = [];
-  for (const url of [...new Set(urls)].slice(0, 20)) {
+  for (const url of [...new Set(urls)].slice(0, 30)) {
     try {
-      const parsed = parseKuraRelease(await fetchHtml(url, 1), url, today);
+      const html = await fetchHtml(url, 1);
+      const parsed = parseKuraRelease(html, url, today) || parseKuraCollaborationRelease(html, url, today);
       const rank = kuraCandidateRank(parsed, today);
       if (Number.isFinite(rank)) candidates.push({ ...parsed, rank });
     } catch {}
   }
   candidates.sort((a, b) => a.rank - b.rank || String(b.startDate).localeCompare(String(a.startDate)));
   const selected = selectKuraCandidate(candidates, today);
-  if (!selected) return chain;
-  const campaigns = candidates.map(({ rank, ...candidate }) => ({
+  // Preserve previously verified ended fair records while keeping upcoming
+  // collaborations independently visible (not as current main-sushi products).
+  const older = (chain.campaigns || []).map(candidate => {
+    const endDate = candidate.category === 'fair'
+      ? kuraFairEndDate(candidate.items) || candidate.endDate || null : candidate.endDate || null;
+    return {
+      ...candidate, endDate,
+      campaignPhase:endDate && endDate < today ? 'ended' : candidate.startDate > today ? 'upcoming' : 'active',
+    };
+  });
+  const fresh = candidates.map(({ rank, ...candidate }) => ({
     ...candidate,
     campaignPhase:candidate.endDate && candidate.endDate < today ? 'ended' : candidate.startDate > today ? 'upcoming' : 'active',
     lastConfirmedAt:new Date().toISOString(),
   }));
+  const campaigns = [...new Map([...older, ...fresh].map(candidate => [candidate.id || candidate.sourceUrl, candidate])).values()];
+  if (!selected) {
+    const endDate = kuraFairEndDate(chain.items) || chain.endDate || null;
+    const ended = Boolean(endDate && endDate < today);
+    return {
+      ...chain, endDate, campaigns,
+      campaignPhase:ended ? 'ended' : chain.campaignPhase,
+      status:ended ? 'warning' : chain.status,
+      message:ended ? '主フェアの販売期間は終了しています。別途継続販売中のサイドメニューは公式ページで確認してください。' : chain.message,
+    };
+  }
   const upcoming = selected.startDate > today;
   return {
     ...chain,
@@ -445,6 +547,11 @@ function runSelfTests() {
     '<p>[10/7(水)～ コラボピックが完売次第終了]</p></li>' +
     '<li><img alt="第1弾 ポムポムプリン コラボステッカー付き ティラミスケーキ">' +
     '<b>380円(税込)</b><p>[10/7(水)～ 完売次第終了]</p></li>';
+  const futureFixture = '<!doctype html><html><head><meta property="og:title" content="〖予告〗国産ほたて貝柱 3種仕立て！ 各［税込110円～］ 10/28(水)～"></head><body><h1>〖予告〗国産ほたて貝柱 3種仕立て！ 各［税込110円～］ 10/28(水)～</h1></body></html>';
+  const future = parseSushiroDetail(futureFixture,'https://www.akindo-sushiro.co.jp/campaign/detail.php?id=4570','2026-10-27');
+  assert.equal(future.campaignPhase,'upcoming');
+  assert.equal(future.itemStatus,'unavailable');
+  assert.equal(future.items.length,0);
   const menuItems = parseSushiroCollaborationMenu(menuFixture, 'https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179', '2026-10-07', '2026-10-10');
   assert.equal(menuItems.length, 1, 'An item with no adjacent name and price must fail closed');
   assert.equal(menuItems[0].price, 250);
@@ -464,6 +571,24 @@ function runSelfTests() {
   const kuraAfterPartialEnd = parseKuraRelease(kuraFixture, 'https://www.kurasushi.co.jp/author/008437.html', '2026-09-15');
   assert.deepEqual(kuraAfterPartialEnd.items.map(item => [item.name,item.saleStatus]), [['厳選かに軍艦（一貫）','ended'],['北海道サーモン','ended'],['〖北海道産〗秋刀魚','active']]);
 
+  const endMajority = [
+    ...Array.from({length:9}, (_, i) => ({name:'寿司' + i,endDate:'2026-10-25'})),
+    {name:'サイドメニュー',endDate:'2026-10-29'},
+  ];
+  assert.equal(kuraFairEndDate(endMajority), '2026-10-25', 'side dish end must not extend headline fair');
+  const collabFixture = '<!doctype html><html><head><meta property="og:title" content="くら寿司×「にじさんじ」コラボキャンペーン ～10月30日（金）から開催～"></head><body><h1>くら寿司×「にじさんじ」コラボキャンペーン</h1>' +
+    '<h6>■くら寿司×「にじさんじ」コラボメニュー（ステッカー付）</h6><p>咎人のえびカレータルタル 230 円</p><p>販売期間：10 月30 日（金）～11 月26 日（木）</p>' +
+    '<p>リトテツのユーリンチー寿司 230 円</p><p>販売期間：10 月30 日（金）～11 月26 日（木）</p><p>おうとうのピーチマンゴーフラッペ 400 円</p><p>販売期間：10 月30 日（金）～11 月26 日（木）</p>' +
+    '<h6>■景品・グッズ</h6><p>税込2,500円のお会計</p></body></html>';
+  const collab = parseKuraCollaborationRelease(collabFixture,'https://www.kurasushi.co.jp/author/008785.html','2026-10-27');
+  assert.ok(collab);
+  assert.equal(collab.category,'other');
+  assert.deepEqual(collab.items.map(i => [i.name,i.price,i.startDate,i.endDate,i.saleStatus]), [
+    ['咎人のえびカレータルタル',230,'2026-10-30','2026-11-26','upcoming'],
+    ['リトテツのユーリンチー寿司',230,'2026-10-30','2026-11-26','upcoming'],
+    ['おうとうのピーチマンゴーフラッペ',400,'2026-10-30','2026-11-26','upcoming'],
+  ]);
+  assert.equal(selectKuraCandidate([collab],'2026-10-27'),null);
   const upcomingFixture = `<!doctype html><html><head><meta property="og:title" content="「濃厚うにといくら」フェア ―9月18日（金）から期間・数量限定で販売―"></head><body>
   <p>2026.09.15</p><h1>「濃厚うにといくら」フェア ―9月18日（金）から期間・数量限定で販売―</h1><h6>■販売概要 商品名 / 価格 / 販売期間</h6>
   <p>濃厚うに(一貫) 230円</p><p>販売期間：～9月27日（日）</p><p>海水仕込み 純いくら(一貫) 330円</p><p>販売期間：～10月1日（木）</p><p>北海風軍艦 380円</p><p>販売期間：9月18日（金）～9月27日（日）</p><h6>■コラボ商品</h6></body></html>`;

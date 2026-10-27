@@ -13,7 +13,7 @@ const ROOT=fileURLToPath(new URL('..',import.meta.url)),FAIR=path.join(ROOT,'app
 const clean=v=>String(v??'').normalize('NFKC').replace(/\s+/g,' ').trim();
 const DAY=86400000,HORIZON=45,LOOKBACK=90,RECENT_OPEN_RELEASE=14,MAX_DETAILS=240;
 const eligible=/フェア|祭り|まつり|キャンペーン|トロの日|ランチ|スイーツ|パスポート|優待|お徳なセット|周年祭|おせち|期間限定|増量|おすすめ|食べ放題/;
-const irrelevant=/訂正|お詫び|休止|休業|偽|なりすまし|テレビ|放送|採用|募集|決算|株主|業績|会社説明|価格改定|価格変更|値上げ/;
+const irrelevant=/訂正|お詫び|休止|休業|偽|なりすまし|テレビ|放送|採用|募集|決算|株主|業績|会社説明|価格改定|価格変更|値上げ|呼出通知|呼び出し通知|呼出し通知|通知メール/;
 const campaignAction=/販売|提供|発売|実施|予約受付|ご予約|注文|クーポン|割引|OFF|オフ|新登場|登場|コラボ/;
 const transactionEvidence=/販売期間|販売店舗|実施店舗|予約受付期間|(?:お受け取り|受け取り|受取).*期間|税込\s*[\d,]+\s*円|[\d,]+\s*円\s*[（(]税込|お持ち帰りWEB予約|クーポン/;
 const foodServiceEvidence=/寿司|すし|鮨|しゃり|シャリ|メニュー|商品|まぐろ|鮪|サーモン|さんま|秋刀魚|えび|海老|かに|蟹|うに|イクラ|いくら|ほたて|帆立|スイーツ|セット|おせち|食べ放題/;

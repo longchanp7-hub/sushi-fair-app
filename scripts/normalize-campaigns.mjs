@@ -61,6 +61,15 @@ async function main(){
   }catch(error){
     console.warn(`::warning title=Totomaru current source::Current official-site refresh failed; quality gate will decide whether verified LKG is usable: ${error.message}`);
   }
+  // If the newer direct-official parser fails, sanitize the older local fallback too.
+  const toto = (data.chains || []).find(c => c.chain === 'totomaru');
+  if (toto) {
+    const food = row => !/(?:フェア|祭り)(?:開催(?:中|決定))?[!！。\s]*$/.test(clean(row?.name));
+    toto.items = (toto.items || []).filter(food);
+    toto.menuHighlights = (toto.menuHighlights || []).filter(food);
+    toto.campaigns = (toto.campaigns || []).map(c => ({...c,items:(c.items || []).filter(food)}));
+    if (!toto.items.length && toto.menuHighlights.length) toto.message = '公式フェア告知を商品とは区別しています。商品・価格は公式メニューで確認してください。';
+  }
   normalizeConcurrentCampaigns(data);
   data.updatedAt=new Date().toISOString();
   await fs.writeFile(FAIR_PATH,`${JSON.stringify(data,null,2)}\n`);
