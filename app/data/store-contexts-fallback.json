@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-03T02:56:12.175Z",
+  "updatedAt": "2026-11-04T01:26:06.430Z",
   "policy": "Verified local Tokai fallback snapshot. Used only when the live public store catalog cannot be loaded; exact municipality/ordinance-city match only, no distant same-prefecture fallback.",
   "catalog": {
     "totomaru": {
@@ -240,6 +240,16 @@
         "municipality": "額田郡幸田町",
         "storeName": "魚魚丸 三ヶ根店",
         "address": "愛知県額田郡幸田町大字深溝字中池田2-3 地図",
+        "officialUrl": "https://www.comline.co.jp/shoplist/",
+        "verified": true,
+        "source": "official_store_directory"
+      },
+      "愛知県/名古屋市天白区": {
+        "chain": "totomaru",
+        "prefecture": "愛知県",
+        "municipality": "名古屋市天白区",
+        "storeName": "魚魚丸 天白店",
+        "address": "愛知県名古屋市天白区保呂町2591番地 地図",
         "officialUrl": "https://www.comline.co.jp/shoplist/",
         "verified": true,
         "source": "official_store_directory"
