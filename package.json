@@ -8,7 +8,8 @@
     "refresh-local": "node scripts/update-local-tokai.mjs",
     "verify-local": "node scripts/update-local-tokai.mjs --self-test",
     "quality-gate": "node scripts/quality-gate.mjs --self-test",
-    "normalize-campaigns": "node scripts/normalize-campaigns.mjs --self-test"
+    "normalize-campaigns": "node scripts/normalize-campaigns.mjs --self-test",
+    "test": "node --experimental-vm-modules --test scripts/test-campaign-catalog.mjs scripts/test-campaign-integration.mjs"
   },
   "dependencies": {
     "cheerio": "^1.0.0"
