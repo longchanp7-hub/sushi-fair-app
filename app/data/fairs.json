@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-11-16T01:05:29.005Z",
+  "updatedAt": "2026-11-17T03:57:03.852Z",
   "timezone": "Asia/Tokyo",
   "locationModel": {
     "mode": "manual_prefecture_city",
@@ -24,7 +24,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_207.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -37,7 +37,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4040.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -50,7 +50,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4036.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -63,7 +63,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4037.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -76,7 +76,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4039.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -89,7 +89,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261028_4024.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -102,7 +102,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4035.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -115,7 +115,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_240.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -128,7 +128,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4038.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -141,7 +141,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/260805_000306.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -154,7 +154,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4034.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -167,7 +167,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_2248.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -180,7 +180,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_3415.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -193,7 +193,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_2624.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -206,7 +206,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_4030.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -219,7 +219,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_2585.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -232,7 +232,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_5024.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -245,7 +245,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_3141.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -258,7 +258,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_5019.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -271,7 +271,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_5018.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -284,7 +284,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_3008.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -297,7 +297,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_5021.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -310,7 +310,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_5022.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -323,7 +323,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_987.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -336,7 +336,7 @@
           "scrapeStatus": "ok",
           "sourceUrl": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
           "imageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_5023.png",
-          "lastSeenAt": "2026-11-16",
+          "lastSeenAt": "2026-11-17",
           "missingSince": null,
           "graceUntil": null
         },
@@ -492,7 +492,7 @@
           "itemStatus": "parsed",
           "imageUrl": "https://www.akindo-sushiro.co.jp/shared/images/ogp.png?260319",
           "scopeNote": "スシロー公式「おすすめ」掲載中の商品です。店舗により価格・取扱いが異なる場合があります。",
-          "lastConfirmedAt": "2026-11-16T01:05:10.959Z"
+          "lastConfirmedAt": "2026-11-17T03:56:43.951Z"
         },
         {
           "id": "sushiro-4515",
@@ -508,7 +508,7 @@
           "itemStatus": "unavailable",
           "imageUrl": "https://www.akindo-sushiro.co.jp/shared/images/ogp.png?260319",
           "scopeNote": "公式に予告された近日開始商品です。画像内の商品・価格は未取得です。開始前の現行販売商品には混入させません。",
-          "lastConfirmedAt": "2026-11-16T01:05:12.000Z"
+          "lastConfirmedAt": "2026-11-17T03:56:45.073Z"
         }
       ],
       "officialCampaignTitle": "バター醤油×旨ネタ！ バター醤油すし",
@@ -519,585 +519,529 @@
         "炙りえびバター醤油",
         "炙りまるごと帆立バター醤油"
       ],
-      "campaignDiscoveryAt": "2026-11-16T01:05:12.342Z",
+      "campaignDiscoveryAt": "2026-11-17T03:56:45.622Z",
       "group": "national",
       "representativeImageUrl": "https://cmsimage.akindo-sushiro.co.jp/menu/261111_207.png",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "ジャンボとろサーモン",
       "representativeImagePage": "https://www.akindo-sushiro.co.jp/menu/menu_detail/?s_id=179",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.083Z"
+      "qualityCheckedAt": "2026-11-17T03:57:03.929Z"
     },
     {
       "chain": "hamazushi",
       "storeName": "選択地域",
-      "fairName": "はま寿司のうにと旨ねた秋祭り",
-      "startDate": "2026-09-25",
+      "fairName": "＃はま寿司の旨ねた冬祭り",
+      "startDate": "2026-11-17",
       "endDate": null,
       "items": [
         {
-          "name": "うにつつみ",
+          "name": "あぶらがれい",
           "price": 110,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
-          "name": "大切りまぐろはらみ",
+          "name": "国産 まいたけの天ぷら握り",
           "price": 110,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
-          "name": "炙り大切りまぐろはらみゆず塩",
+          "name": "炙りあぶらがれいゆず塩",
           "price": 110,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
-          "name": "えび 大分県産かぼすおろし",
-          "price": 176,
-          "startDate": "2026-09-25",
+          "name": "広島県産牡蠣のカキフライつつみ",
+          "price": 110,
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "アカイカ 大分県産かぼすおろし",
-          "price": 176,
-          "startDate": "2026-09-25",
+          "name": "広島県産牡蠣のカキフライつつみ（タルタルソース）",
+          "price": 110,
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "合鴨 大分県産かぼすおろし",
-          "price": 176,
-          "startDate": "2026-09-25",
+          "name": "広島県産牡蠣のカキフライつつみ（お好みソース）",
+          "price": 110,
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "生ハム 大分県産かぼすおろし",
+          "name": "炙り北海道噴火湾産大粒ほたて焦がし醤油",
           "price": 176,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+        },
+        {
+          "name": "炙り北海道産さんま塩レモン",
+          "price": 176,
+          "startDate": "2026-11-17",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+        },
+        {
+          "name": "えび天握りシャキシャキ葱チリソース",
+          "price": 176,
+          "startDate": "2026-11-17",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "旨だしたまご 大分県産かぼすおろし",
+          "name": "いか天握りシャキシャキ葱チリソース",
           "price": 176,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
           "name": "厳選まぐろ中とろ",
           "price": 176,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
           "name": "炙り厳選まぐろ中とろゆず塩",
           "price": 176,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
           "name": "特製漬け中とろ",
           "price": 176,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
-          "name": "活〆まだい 大分県産かぼすおろし",
-          "price": 231,
-          "startDate": "2026-09-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-          "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
-        },
-        {
-          "name": "活〆はまち 大分県産かぼすおろし",
-          "price": 231,
-          "startDate": "2026-09-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-          "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
-        },
-        {
-          "name": "なすの揚げびたし握りおろし盛り",
-          "price": 231,
-          "startDate": "2026-09-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-          "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
-        },
-        {
-          "name": "炙り地中海産大切り本鮪中とろゆず塩",
+          "name": "大えびフライ握り（タルタルソース）",
           "price": 319,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
+          "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "時鮭",
+          "name": "大えびフライ握り（お好みソース）",
           "price": 319,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
+          "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
           "name": "重ね厳選まぐろ中とろ",
           "price": 319,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
           "name": "炙り重ね厳選まぐろ中とろゆず塩",
           "price": 319,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
         },
         {
-          "name": "一本穴子",
-          "price": 528,
-          "startDate": "2026-09-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-        },
-        {
-          "name": "焼豚増量 横浜家系ラーメン",
+          "name": "焼豚増量 濃厚北海道味噌ラーメン",
           "price": 506,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "辛旨とんこつ醤油ラーメン",
+          "name": "北海道味噌バターコーンラーメン",
           "price": 506,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "長崎県産あじのアジフライ（お好みソース）",
-          "price": 242,
-          "startDate": "2026-09-25",
+          "name": "特製辛味噌担々麺",
+          "price": 506,
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-        },
-        {
-          "name": "長崎県産あじのアジフライ",
-          "price": 242,
-          "startDate": "2026-09-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-        },
-        {
-          "name": "追加トッピング 大根おろし＆かぼす",
-          "price": 132,
-          "startDate": "2026-09-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "ブルーベリーチーズケーキ風パルフェ",
-          "price": 473,
-          "startDate": "2026-09-25",
+          "name": "五目中華茶碗蒸し",
+          "price": 319,
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
-          "name": "和栗モンブラン",
+          "name": "広島県産牡蠣のカキフライ3個（タルタルソース）",
+          "price": 429,
+          "startDate": "2026-11-17",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+        },
+        {
+          "name": "広島県産牡蠣のカキフライ3個（お好みソース）",
+          "price": 429,
+          "startDate": "2026-11-17",
+          "endDate": null,
+          "saleStatus": "active",
+          "scrapeStatus": "ok",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+        },
+        {
+          "name": "おつまみチーズ餃子",
           "price": 297,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-        },
-        {
-          "name": "冷凍ぶどう",
-          "price": 176,
-          "startDate": "2026-09-25",
-          "endDate": null,
-          "saleStatus": "active",
-          "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         },
         {
           "name": "純米酒 晴雲",
           "price": 924,
-          "startDate": "2026-09-25",
+          "startDate": "2026-11-17",
           "endDate": null,
           "saleStatus": "active",
           "scrapeStatus": "ok",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
           "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
         }
       ],
       "sourceUrl": "https://www.hama-sushi.co.jp/menu/",
       "storeUrl": "https://maps.hama-sushi.co.jp/jp/detail/4208.html",
-      "imageUrl": "https://www.hama-sushi.co.jp/assets/topics/img/fair_poster_260924.jpg",
+      "imageUrl": "https://www.hama-sushi.co.jp/assets/topics/img/fair_poster_261116.jpg",
       "status": "ok",
       "message": null,
-      "officialCampaignTitle": "はま寿司のうにと旨ねた秋祭り",
-      "officialCampaignUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+      "officialCampaignTitle": "＃はま寿司の旨ねた冬祭り",
+      "officialCampaignUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
       "fairNameSource": "official_topic_page",
       "campaignPhase": "active",
-      "representativeImageUrl": "https://www.hama-sushi.co.jp/assets/topics/img/fair_poster_260924.jpg",
+      "representativeImageUrl": "https://www.hama-sushi.co.jp/assets/topics/img/fair_poster_261116.jpg",
       "representativeImageSource": "official_food_or_fair_image",
       "representativeImageProduct": "厳選まぐろ中とろ",
-      "representativeImagePage": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+      "representativeImagePage": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
       "campaigns": [
         {
-          "id": "hamazushi-0924000859",
-          "fairName": "はま寿司のうにと旨ねた秋祭り",
-          "officialCampaignTitle": "はま寿司のうにと旨ねた秋祭り",
-          "officialCampaignUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-          "startDate": "2026-09-25",
+          "id": "hamazushi-1116000877",
+          "fairName": "＃はま寿司の旨ねた冬祭り",
+          "officialCampaignTitle": "＃はま寿司の旨ねた冬祭り",
+          "officialCampaignUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
+          "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
+          "startDate": "2026-11-17",
           "endDate": null,
           "campaignPhase": "active",
           "category": "fair",
           "items": [
             {
-              "name": "うにつつみ",
+              "name": "あぶらがれい",
               "price": 110,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
-              "name": "大切りまぐろはらみ",
+              "name": "国産 まいたけの天ぷら握り",
               "price": 110,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
-              "name": "炙り大切りまぐろはらみゆず塩",
+              "name": "炙りあぶらがれいゆず塩",
               "price": 110,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
-              "name": "えび 大分県産かぼすおろし",
-              "price": 176,
-              "startDate": "2026-09-25",
+              "name": "広島県産牡蠣のカキフライつつみ",
+              "price": 110,
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "アカイカ 大分県産かぼすおろし",
-              "price": 176,
-              "startDate": "2026-09-25",
+              "name": "広島県産牡蠣のカキフライつつみ（タルタルソース）",
+              "price": 110,
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "合鴨 大分県産かぼすおろし",
-              "price": 176,
-              "startDate": "2026-09-25",
+              "name": "広島県産牡蠣のカキフライつつみ（お好みソース）",
+              "price": 110,
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "生ハム 大分県産かぼすおろし",
+              "name": "炙り北海道噴火湾産大粒ほたて焦がし醤油",
               "price": 176,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+            },
+            {
+              "name": "炙り北海道産さんま塩レモン",
+              "price": 176,
+              "startDate": "2026-11-17",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+            },
+            {
+              "name": "えび天握りシャキシャキ葱チリソース",
+              "price": 176,
+              "startDate": "2026-11-17",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "旨だしたまご 大分県産かぼすおろし",
+              "name": "いか天握りシャキシャキ葱チリソース",
               "price": 176,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
               "name": "厳選まぐろ中とろ",
               "price": 176,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
               "name": "炙り厳選まぐろ中とろゆず塩",
               "price": 176,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
               "name": "特製漬け中とろ",
               "price": 176,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
-              "name": "活〆まだい 大分県産かぼすおろし",
-              "price": 231,
-              "startDate": "2026-09-25",
-              "endDate": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-              "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
-            },
-            {
-              "name": "活〆はまち 大分県産かぼすおろし",
-              "price": 231,
-              "startDate": "2026-09-25",
-              "endDate": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-              "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
-            },
-            {
-              "name": "なすの揚げびたし握りおろし盛り",
-              "price": 231,
-              "startDate": "2026-09-25",
-              "endDate": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
-              "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
-            },
-            {
-              "name": "炙り地中海産大切り本鮪中とろゆず塩",
+              "name": "大えびフライ握り（タルタルソース）",
               "price": 319,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
+              "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "時鮭",
+              "name": "大えびフライ握り（お好みソース）",
               "price": 319,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
+              "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
               "name": "重ね厳選まぐろ中とろ",
               "price": 319,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
               "name": "炙り重ね厳選まぐろ中とろゆず塩",
               "price": 319,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
             },
             {
-              "name": "一本穴子",
-              "price": 528,
-              "startDate": "2026-09-25",
-              "endDate": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-            },
-            {
-              "name": "焼豚増量 横浜家系ラーメン",
+              "name": "焼豚増量 濃厚北海道味噌ラーメン",
               "price": 506,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "辛旨とんこつ醤油ラーメン",
+              "name": "北海道味噌バターコーンラーメン",
               "price": 506,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "長崎県産あじのアジフライ（お好みソース）",
-              "price": 242,
-              "startDate": "2026-09-25",
+              "name": "特製辛味噌担々麺",
+              "price": 506,
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-            },
-            {
-              "name": "長崎県産あじのアジフライ",
-              "price": 242,
-              "startDate": "2026-09-25",
-              "endDate": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-            },
-            {
-              "name": "追加トッピング 大根おろし＆かぼす",
-              "price": 132,
-              "startDate": "2026-09-25",
-              "endDate": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "ブルーベリーチーズケーキ風パルフェ",
-              "price": 473,
-              "startDate": "2026-09-25",
+              "name": "五目中華茶碗蒸し",
+              "price": 319,
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
-              "name": "和栗モンブラン",
+              "name": "広島県産牡蠣のカキフライ3個（タルタルソース）",
+              "price": 429,
+              "startDate": "2026-11-17",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+            },
+            {
+              "name": "広島県産牡蠣のカキフライ3個（お好みソース）",
+              "price": 429,
+              "startDate": "2026-11-17",
+              "endDate": null,
+              "saleStatus": "active",
+              "scrapeStatus": "ok",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html"
+            },
+            {
+              "name": "おつまみチーズ餃子",
               "price": 297,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html"
-            },
-            {
-              "name": "冷凍ぶどう",
-              "price": 176,
-              "startDate": "2026-09-25",
-              "endDate": null,
-              "saleStatus": "active",
-              "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             },
             {
               "name": "純米酒 晴雲",
               "price": 924,
-              "startDate": "2026-09-25",
+              "startDate": "2026-11-17",
               "endDate": null,
               "saleStatus": "active",
               "scrapeStatus": "ok",
-              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/0924000859.html",
+              "sourceUrl": "https://www.hama-sushi.co.jp/topics/2026/1116000877.html",
               "availabilityNote": "お持ち帰り不可。店舗・数量などの販売条件は公式告知を確認してください。"
             }
           ],
           "itemStatus": "parsed",
           "imageUrl": "https://www.hama-sushi.co.jp/assets/common/img/og_images_hs.png",
           "scopeNote": "はま寿司公式トピックス掲載のフェアです。店舗により価格・取扱いが異なる場合があります。",
-          "lastConfirmedAt": "2026-11-16T01:05:03.353Z"
+          "lastConfirmedAt": "2026-11-17T03:56:35.118Z"
         }
       ],
       "dataScope": "national_official_topic",
@@ -1112,7 +1056,7 @@
       },
       "group": "national",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.084Z"
+      "qualityCheckedAt": "2026-11-17T03:57:03.929Z"
     },
     {
       "chain": "kurasushi",
@@ -1196,7 +1140,7 @@
       "priceNote": "くら寿司公式プレスリリース掲載価格です。店舗により価格や取扱いが異なる場合があります。",
       "group": "national",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.084Z",
+      "qualityCheckedAt": "2026-11-17T03:57:03.929Z",
       "campaigns": [
         {
           "id": "kurasushi-008740",
@@ -1480,7 +1424,7 @@
           "itemStatus": "parsed",
           "scopeNote": "くら寿司公式プレスリリース掲載の期間限定フェアです。店舗により価格・取扱いが異なる場合があります。",
           "campaignPhase": "active",
-          "lastConfirmedAt": "2026-11-16T01:05:17.927Z"
+          "lastConfirmedAt": "2026-11-17T03:56:52.166Z"
         },
         {
           "id": "kurasushi-008785",
@@ -1530,7 +1474,7 @@
           "scopeNote": "店内飲食のコラボ限定商品です。数量限定・持ち帰り不可。お会計によるグッズ配布条件は別企画です。",
           "imageUrl": "https://www.kurasushi.co.jp/shared/img/ogp.png",
           "campaignPhase": "active",
-          "lastConfirmedAt": "2026-11-16T01:05:17.927Z"
+          "lastConfirmedAt": "2026-11-17T03:56:52.166Z"
         },
         {
           "id": "kurasushi-009016",
@@ -1597,7 +1541,7 @@
           "itemStatus": "parsed",
           "scopeNote": "くら寿司公式プレスリリース掲載の期間限定フェアです。店舗により価格・取扱いが異なる場合があります。",
           "campaignPhase": "active",
-          "lastConfirmedAt": "2026-11-16T01:05:17.927Z"
+          "lastConfirmedAt": "2026-11-17T03:56:52.166Z"
         }
       ]
     },
@@ -1818,7 +1762,7 @@
       "representativeImageProduct": "北海道産 ほたて",
       "representativeImagePage": "https://prtimes.jp/main/html/rd/p/000001227.000018731.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.087Z",
+      "qualityCheckedAt": "2026-11-17T03:57:03.932Z",
       "campaignCatalog": [
         {
           "id": "kappasushi-374e8dafeb25ca73ad7c",
@@ -1833,7 +1777,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:33.795Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.302Z"
         },
         {
           "id": "kappasushi-3e33a8e3fafc0251c6c4",
@@ -1848,7 +1792,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:34.386Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.451Z"
         },
         {
           "id": "kappasushi-4338f5cdfafc502fae4f",
@@ -1863,7 +1807,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:34.126Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.681Z"
         },
         {
           "id": "kappasushi-5e6eaad542793c43e07f",
@@ -1878,7 +1822,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:33.757Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.107Z"
         },
         {
           "id": "kappasushi-677df4c568f21f8cc778",
@@ -1893,7 +1837,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:32.994Z"
+          "lastConfirmedAt": "2026-11-17T03:57:06.223Z"
         },
         {
           "id": "kappasushi-7d464d684500c2aaf497",
@@ -1908,7 +1852,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:33.507Z"
+          "lastConfirmedAt": "2026-11-17T03:57:07.910Z"
         },
         {
           "id": "kappasushi-7e367fdb0f8907d38fe9",
@@ -1923,22 +1867,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:33.545Z"
-        },
-        {
-          "id": "kappasushi-89f7abf772b600724371",
-          "fairName": "トロの日",
-          "sourceUrl": "https://www.kappasushi.jp/cp/toronohi",
-          "indexUrl": "https://www.kappasushi.jp/campaign_list/",
-          "startDate": null,
-          "endDate": null,
-          "campaignPhase": "unknown",
-          "category": "fair",
-          "scopeNote": "対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。",
-          "items": [],
-          "itemStatus": "unavailable",
-          "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:30.859Z"
+          "lastConfirmedAt": "2026-11-17T03:57:07.795Z"
         },
         {
           "id": "kappasushi-9c638583bf896bf93f4e",
@@ -1953,7 +1882,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:33.235Z"
+          "lastConfirmedAt": "2026-11-17T03:57:07.083Z"
         },
         {
           "id": "kappasushi-a3849a1ade316eb2cc49",
@@ -1968,7 +1897,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:31.422Z"
+          "lastConfirmedAt": "2026-11-17T03:57:07.664Z"
         },
         {
           "id": "kappasushi-be35672cc952a1c93368",
@@ -1983,7 +1912,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:34.546Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.508Z"
         },
         {
           "id": "kappasushi-ce029b045a48e17acbcb",
@@ -1998,7 +1927,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:33.007Z"
+          "lastConfirmedAt": "2026-11-17T03:57:06.942Z"
         },
         {
           "id": "kappasushi-301e4c80c6a2df7d34b6",
@@ -2084,7 +2013,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:35.863Z"
+          "lastConfirmedAt": "2026-11-17T03:57:10.265Z"
         },
         {
           "id": "kappasushi-8f4e400346253bfe6ce1",
@@ -2099,7 +2028,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:33.004Z"
+          "lastConfirmedAt": "2026-11-17T03:57:06.627Z"
         },
         {
           "id": "kappasushi-7d1290241f5a9336e7c4",
@@ -2114,7 +2043,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:35.278Z"
+          "lastConfirmedAt": "2026-11-17T03:57:09.623Z"
         },
         {
           "id": "kappasushi-8282a1a883a35d32a56d",
@@ -2129,7 +2058,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:35.438Z"
+          "lastConfirmedAt": "2026-11-17T03:57:09.856Z"
         },
         {
           "id": "kappasushi-23f478f0fd1c73c1d949",
@@ -2144,7 +2073,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:30.883Z"
+          "lastConfirmedAt": "2026-11-17T03:57:06.766Z"
         },
         {
           "id": "kappasushi-903fa94d6985c6e6733c",
@@ -2159,7 +2088,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.753Z"
+          "lastConfirmedAt": "2026-11-17T03:57:09.250Z"
         },
         {
           "id": "kappasushi-8e990ff48b3ff2cefba1",
@@ -2185,7 +2114,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.897Z"
+          "lastConfirmedAt": "2026-11-17T03:57:09.193Z"
         },
         {
           "id": "kappasushi-bd08f46548c0141cacce",
@@ -2211,7 +2140,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.721Z"
+          "lastConfirmedAt": "2026-11-17T03:57:09.039Z"
         },
         {
           "id": "kappasushi-0b5bed09c0ba0608e11a",
@@ -2267,7 +2196,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.964Z"
+          "lastConfirmedAt": "2026-11-17T03:57:09.373Z"
         },
         {
           "id": "kappasushi-cc288f633d95b5dc8a75",
@@ -2282,7 +2211,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:30.301Z"
+          "lastConfirmedAt": "2026-11-17T03:57:06.625Z"
         },
         {
           "id": "kappasushi-aef3f6bbaf22bd79428c",
@@ -2328,7 +2257,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.604Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.887Z"
         },
         {
           "id": "kappasushi-e00a2e6b2a1fb6400d1e",
@@ -2494,7 +2423,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.664Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.853Z"
         },
         {
           "id": "kappasushi-04e2e17e02bdddd5ee42",
@@ -2520,7 +2449,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.273Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.670Z"
         },
         {
           "id": "kappasushi-77018afcb548c38a5e05",
@@ -2576,7 +2505,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:33.968Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.497Z"
         },
         {
           "id": "kappasushi-e15c3574c33f9768cdd0",
@@ -2622,7 +2551,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.537Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.740Z"
         },
         {
           "id": "kappasushi-087ca098dd39fb7854f8",
@@ -2637,7 +2566,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:33.246Z"
+          "lastConfirmedAt": "2026-11-17T03:57:07.589Z"
         },
         {
           "id": "kappasushi-b6c4cab1774593b6c998",
@@ -2693,7 +2622,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.980Z"
+          "lastConfirmedAt": "2026-11-17T03:57:09.206Z"
         },
         {
           "id": "kappasushi-1692c66ff898ff8cc6bb",
@@ -2708,18 +2637,18 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:34.736Z"
+          "lastConfirmedAt": "2026-11-17T03:57:08.933Z"
         }
       ],
       "campaignCoverage": {
         "version": 1,
         "state": "complete",
-        "attemptedAt": "2026-11-16T01:05:29.277Z",
+        "attemptedAt": "2026-11-17T03:57:04.096Z",
         "indices": [
           {
             "url": "https://www.kappasushi.jp/campaign_list/",
             "status": "ok",
-            "count": 15
+            "count": 14
           },
           {
             "url": "https://prtimes.jp/companyrdf.php?company_id=18731",
@@ -2755,7 +2684,6 @@
           "https://www.kappasushi.jp/cp/gochisushi",
           "https://www.kappasushi.jp/cp/kappa-no-tabeho",
           "https://www.kappasushi.jp/cp/premium",
-          "https://www.kappasushi.jp/cp/toronohi",
           "https://www.kappasushi.jp/kappa_lunch",
           "https://www.kappasushi.jp/platinum-card"
         ],
@@ -2776,7 +2704,6 @@
           "kappasushi-7d464d684500c2aaf497",
           "kappasushi-7e367fdb0f8907d38fe9",
           "kappasushi-8282a1a883a35d32a56d",
-          "kappasushi-89f7abf772b600724371",
           "kappasushi-8e990ff48b3ff2cefba1",
           "kappasushi-8f4e400346253bfe6ce1",
           "kappasushi-903fa94d6985c6e6733c",
@@ -4408,8 +4335,7 @@
             "startDate": "2026-08-20",
             "endDate": null,
             "publishedAt": "2026-08-18T14:00:02+09:00",
-            "excludedReason": "current_status_unconfirmed",
-            "title": "今日はちょっと贅沢に。かっぱの「ごち寿司」に、大とろ・大切りまぐろ・活〆真鯛・北海道産ほたて・赤えび・上煮穴子一本など、珠玉の豪華ネタを一皿に集めた『かっぱの極みごち寿司』が期間限定で登場!"
+            "excludedReason": "feed_older_than_90_days"
           },
           {
             "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001189.000018731.html",
@@ -5018,12 +4944,6 @@
             "id": "kappasushi-3e33a8e3fafc0251c6c4"
           },
           {
-            "sourceUrl": "https://www.kappasushi.jp/cp/toronohi",
-            "fairName": "トロの日",
-            "expected": true,
-            "id": "kappasushi-89f7abf772b600724371"
-          },
-          {
             "sourceUrl": "https://www.kappasushi.jp/kappa_lunch",
             "fairName": "お昼はお得に!かっぱ寿司の日替わりランチセット",
             "expected": true,
@@ -5040,7 +4960,6 @@
         "feedLookbackDays": 90,
         "openEndedReleaseReviewAfterDays": 14,
         "unconfirmedUrls": [
-          "https://prtimes.jp/main/html/rd/p/000001188.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001191.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001195.000018731.html",
           "https://prtimes.jp/main/html/rd/p/000001196.000018731.html",
@@ -5526,7 +5445,7 @@
       "group": "national",
       "campaignPhase": "active",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.087Z"
+      "qualityCheckedAt": "2026-11-17T03:57:03.933Z"
     },
     {
       "chain": "totomaru",
@@ -5719,7 +5638,7 @@
       "representativeImageProduct": "注文書",
       "representativeImagePage": "https://www.comline.co.jp/totomaru/menu/",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.088Z"
+      "qualityCheckedAt": "2026-11-17T03:57:03.933Z"
     },
     {
       "chain": "musashimaru",
@@ -5767,7 +5686,7 @@
       "representativeImageProduct": "釣り魚の調理例",
       "representativeImagePage": "https://www.634-jp.com/lovefish.html",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.088Z"
+      "qualityCheckedAt": "2026-11-17T03:57:03.933Z"
     },
     {
       "chain": "tokubei",
@@ -5817,7 +5736,7 @@
       "representativeImageProduct": "ぶり、八角、かきなど冬のごちそう満載！「ぶりと北海祭り」",
       "representativeImagePage": "https://www.nigirinotokubei.com/info/11410/",
       "qualityState": "verified",
-      "qualityCheckedAt": "2026-11-16T01:05:29.088Z",
+      "qualityCheckedAt": "2026-11-17T03:57:03.933Z",
       "campaignCatalog": [
         {
           "id": "tokubei-1b9cc2cec8aaa94a277b",
@@ -5832,7 +5751,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:41.186Z"
+          "lastConfirmedAt": "2026-11-17T03:57:15.904Z"
         },
         {
           "id": "tokubei-a3d524875fef0adbb4e6",
@@ -5847,7 +5766,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "partial",
-          "lastConfirmedAt": "2026-11-16T01:05:43.024Z",
+          "lastConfirmedAt": "2026-11-17T03:57:17.949Z",
           "kind": "recurrence_summary"
         },
         {
@@ -5863,7 +5782,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:42.414Z"
+          "lastConfirmedAt": "2026-11-17T03:57:17.694Z"
         },
         {
           "id": "tokubei-recurring-coupon-2026-10-19",
@@ -5892,22 +5811,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:42.215Z"
-        },
-        {
-          "id": "tokubei-904a6fb10df8b64f41b8",
-          "fairName": "ジャパン・フード・セレクション受賞商品4品合計100万食達成感謝祭【第三弾・第四弾】第三弾:11/2~11/16 第四弾:11/17~11/30",
-          "sourceUrl": "https://www.nigirinotokubei.com/info/11374",
-          "indexUrl": "https://www.nigirinotokubei.com/",
-          "startDate": "2026-11-02",
-          "endDate": "2026-11-16",
-          "campaignPhase": "active",
-          "category": "other",
-          "scopeNote": "対象店舗・店内／持ち帰り・数量限定などの条件は公式告知で確認してください。",
-          "items": [],
-          "itemStatus": "unavailable",
-          "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:42.097Z"
+          "lastConfirmedAt": "2026-11-17T03:57:17.702Z"
         },
         {
           "id": "tokubei-7158933b134135684d57",
@@ -5922,7 +5826,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:40.150Z"
+          "lastConfirmedAt": "2026-11-17T03:57:15.141Z"
         },
         {
           "id": "tokubei-7213e9ba3b54e8b2a5ea",
@@ -5937,7 +5841,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:40.199Z"
+          "lastConfirmedAt": "2026-11-17T03:57:14.827Z"
         },
         {
           "id": "tokubei-f8774b0138f1f13da368",
@@ -5952,7 +5856,7 @@
           "items": [],
           "itemStatus": "unavailable",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:41.203Z"
+          "lastConfirmedAt": "2026-11-17T03:57:15.906Z"
         },
         {
           "id": "tokubei-recurring-day-2026-11-19",
@@ -6181,7 +6085,7 @@
           ],
           "itemStatus": "parsed",
           "metadataStatus": "parsed",
-          "lastConfirmedAt": "2026-11-16T01:05:39.982Z"
+          "lastConfirmedAt": "2026-11-17T03:57:14.825Z"
         },
         {
           "id": "tokubei-recurring-day-2026-12-19",
@@ -6215,7 +6119,7 @@
       "campaignCoverage": {
         "version": 1,
         "state": "complete",
-        "attemptedAt": "2026-11-16T01:05:37.318Z",
+        "attemptedAt": "2026-11-17T03:57:11.497Z",
         "indices": [
           {
             "url": "https://www.nigirinotokubei.com/",
@@ -6233,7 +6137,6 @@
           "https://www.nigirinotokubei.com/info/10346",
           "https://www.nigirinotokubei.com/info/10850",
           "https://www.nigirinotokubei.com/info/11364",
-          "https://www.nigirinotokubei.com/info/11374",
           "https://www.nigirinotokubei.com/info/11408",
           "https://www.nigirinotokubei.com/info/11409",
           "https://www.nigirinotokubei.com/info/11410",
@@ -6243,7 +6146,6 @@
           "tokubei-1b9cc2cec8aaa94a277b",
           "tokubei-7158933b134135684d57",
           "tokubei-7213e9ba3b54e8b2a5ea",
-          "tokubei-904a6fb10df8b64f41b8",
           "tokubei-a1a3331a77e2cdb99860",
           "tokubei-a3d524875fef0adbb4e6",
           "tokubei-bb5b57592b83ea99d3d4",
@@ -6290,9 +6192,14 @@
           },
           {
             "sourceUrl": "https://www.nigirinotokubei.com/info/11374",
+            "identity": "https://www.nigirinotokubei.com/info/11374",
             "fairName": "ジャパン・フード・セレクション受賞商品4品合計100万食達成感謝祭【第三弾・第四弾】第三弾:11/2~11/16 第四弾:11/17~11/30",
-            "expected": true,
-            "id": "tokubei-904a6fb10df8b64f41b8"
+            "indexText": "2026.11.02更新 ジャパン・フード・セレクション受賞商品4品合計100万食達成感謝祭【第三弾・第四弾】第三弾:11/2~11/16 第四弾:11/17~11/30 2026.11.02更新 ジャパン・フード・セレクション受賞商品4品合計100万食達成感謝祭【第三弾・第四弾】第三弾:11/2~11/16 第四弾:11/17~11/30",
+            "indexUrl": "https://www.nigirinotokubei.com/",
+            "startDate": "2026-11-02",
+            "endDate": "2026-11-16",
+            "fromOfficialList": false,
+            "excludedReason": "ended"
           },
           {
             "sourceUrl": "https://www.nigirinotokubei.com/info/11408",
@@ -6327,7 +6234,7 @@
       "recurringDayCoverage": {
         "state": "verified",
         "sourceUrl": "https://www.nigirinotokubei.com/info/10346",
-        "checkedAt": "2026-11-16T01:05:44.441Z",
+        "checkedAt": "2026-11-17T03:57:18.819Z",
         "verifiedSnapshotAt": "2026-10-23",
         "usingRecentSnapshot": false,
         "failures": [],
@@ -6343,7 +6250,7 @@
   ],
   "qualityGate": {
     "version": 2,
-    "checkedAt": "2026-11-16T01:05:29.088Z",
+    "checkedAt": "2026-11-17T03:57:03.933Z",
     "fallbackChains": [],
     "quarantined": [],
     "warnings": []
