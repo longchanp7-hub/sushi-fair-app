@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-19T02:36:38.740Z",
+  "updatedAt": "2026-11-20T02:21:29.325Z",
   "policy": "Verified local Tokai fallback snapshot. Used only when the live public store catalog cannot be loaded; exact municipality/ordinance-city match only, no distant same-prefecture fallback.",
   "catalog": {
     "totomaru": {
