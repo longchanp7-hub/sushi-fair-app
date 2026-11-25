@@ -29,7 +29,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url || steps.deployment_final.outputs.page_url }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -160,16 +160,33 @@ jobs:
         with:
           include-hidden-files: true
           path: './app'
+      # Retry GitHub Pages artifact listing races without reuploading the artifact.
       - name: Deploy refreshed nationwide app
         if: steps.save.outputs.changed == 'true' || github.event_name != 'schedule'
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - name: Wait for Pages artifact indexing
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 20
+      - name: Retry Pages deploy
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - name: Wait before final Pages attempt
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
+        run: sleep 30
+      - name: Final Pages deploy attempt
+        id: deployment_final
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
         uses: actions/deploy-pages@v5
       - name: Verify published nationwide app
-        if: steps.deployment.outcome == 'success'
-        run: node scripts/verify-pages.mjs "${{ steps.deployment.outputs.page_url }}"
+        if: steps.deployment.outcome == 'success' || steps.deployment_retry.outcome == 'success' || steps.deployment_final.outcome == 'success'
+        run: node scripts/verify-pages.mjs "${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url || steps.deployment_final.outputs.page_url }}"
       - name: Verify published announcement payload and renderer assets
-        if: steps.deployment.outcome == 'success'
-        run: node scripts/verify-campaign-publication.mjs --url "${{ steps.deployment.outputs.page_url }}" --inventory /tmp/campaign-coverage.json --report /tmp/campaign-publication.json
+        if: steps.deployment.outcome == 'success' || steps.deployment_retry.outcome == 'success' || steps.deployment_final.outcome == 'success'
+        run: node scripts/verify-campaign-publication.mjs --url "${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url || steps.deployment_final.outputs.page_url }}" --inventory /tmp/campaign-coverage.json --report /tmp/campaign-publication.json
       - name: Upload quality and coverage evidence
         if: always()
         uses: actions/upload-artifact@v7

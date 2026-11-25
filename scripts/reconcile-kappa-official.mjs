@@ -85,6 +85,36 @@ export function reconcileKappaOfficial(data,today=todayJst()){
     chain.campaignCatalog=chain.campaignCatalog.flatMap(row=>row.id===base.id?replacements:[row]);
     nagano=true;
   }
+  // Promote a current, dated, itemized official company release over stale legacy banners.
+  if(!promoted){
+    const current=chain.campaignCatalog.filter(c=>
+      c.category==='fair'&&c.itemStatus==='parsed'&&c.metadataStatus==='parsed'
+      &&c.startDate&&c.endDate&&c.startDate<=today&&c.endDate>=today
+      &&/^https:\/\/prtimes\.jp\/main\/html\/rd\/p\/\d+\.000018731\.html$/.test(c.sourceUrl||'')
+      &&Array.isArray(c.items)&&c.items.length>=3
+      &&c.items.every(i=>i.sourceUrl===c.sourceUrl&&clean(i.name)&&Number.isFinite(i.price)&&i.price>0)
+    ).sort((a,b)=>b.startDate.localeCompare(a.startDate)||b.items.length-a.items.length)[0];
+    if(current){
+      const label=current.fairName.match(/[「『]([^「」『』]{2,60}(?:祭り|フェア))[」』]/)?.[1]||current.fairName;
+      chain.fairName=label;
+      chain.startDate=current.startDate;
+      chain.endDate=current.endDate;
+      chain.campaignPhase='active';
+      chain.items=structuredClone(current.items);
+      chain.sourceUrl=current.sourceUrl;
+      chain.officialCampaignUrl=current.sourceUrl;
+      chain.officialCampaignTitle=current.fairName;
+      chain.priceNote='公式プレスリリース掲載の税込価格です。店舗・販売状況により取扱いや価格は異なる場合があります。';
+      chain.status='ok';
+      chain.message=null;
+      chain.representativeImageUrl=null;
+      chain.imageUrl=null;
+      chain.representativeImageProduct=current.items[0].name;
+      chain.representativeImagePage=current.sourceUrl;
+      chain.representativeImageSource='unavailable_for_current_fair';
+      promoted=true;
+    }
+  }
   return {promoted,nagano};
 }
 
@@ -118,6 +148,19 @@ function selfTest(){
   assert.equal(reconcileKappaOfficial(unavailable,'2026-10-10').promoted,false);
   const stale=mk();stale.chains[0].campaignCatalog[0].retainedFromPrevious=true;
   assert.equal(reconcileKappaOfficial(stale,'2026-10-10').promoted,false);
+  const modern=mk();
+  const release=(id,title,startDate,endDate,n,url)=>({id,category:'fair',fairName:title,startDate,endDate,itemStatus:'parsed',metadataStatus:'parsed',sourceUrl:url,items:Array.from({length:n},(_,i)=>({name:'旬のネタ'+i,price:110+i,sourceUrl:url}))});
+  modern.chains[0].campaignCatalog=[
+    release('hokkaido','かっぱ寿司「かっぱの北海道祭り」','2026-11-12','2026-11-25',15,'https://prtimes.jp/main/html/rd/p/000001250.000018731.html'),
+    release('kanburi','かっぱ寿司「かっぱの国産 活〆寒ぶり祭り」','2026-11-26','2026-12-16',12,'https://prtimes.jp/main/html/rd/p/000001262.000018731.html')
+  ];
+  assert.equal(reconcileKappaOfficial(modern,'2026-11-25').promoted,true);
+  assert.equal(modern.chains[0].fairName,'かっぱの北海道祭り');
+  assert.equal(modern.chains[0].items.length,15);
+  const tomorrow=structuredClone(modern);
+  assert.equal(reconcileKappaOfficial(tomorrow,'2026-11-26').promoted,true);
+  assert.equal(tomorrow.chains[0].fairName,'かっぱの国産 活〆寒ぶり祭り');
+  assert.equal(tomorrow.chains[0].items.length,12);
   console.log('Kappa official current fair and Nagano phase separation self-tests passed.');
 }
 
